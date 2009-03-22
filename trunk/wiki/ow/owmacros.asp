@@ -287,7 +287,7 @@ End Sub
 
 Function FormatDate(pTimestamp)
     ' TODO: apply user preferences
-    FormatDate = MonthName(Month(pTimestamp)) & " " & Day(pTimestamp) & ", " & Year(pTimestamp)
+    FormatDate = (Month(pTimestamp)) & "/" & Day(pTimestamp) & "/" & Year(pTimestamp)
 End Function
 
 Function FormatTime(pTimestamp)
