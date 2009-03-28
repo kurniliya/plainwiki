@@ -176,8 +176,10 @@
             |
             <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>View XML</a>
             <br />
+<!--            
             <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=FindPage&amp;txt=<xsl:value-of select="$name"/></xsl:attribute>Find page</a> by browsing, searching or an index
             <br />
+-->            
             <xsl:if test="not(@changes='0')">
                 Edited <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>
                 <xsl:text> </xsl:text>
@@ -642,8 +644,10 @@
         |
         <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;revision=<xsl:value-of select="ow:change/@revision"/>&amp;xml=1</xsl:attribute>View XML</a>
         <br />
+<!--        
         <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=FindPage&amp;txt=<xsl:value-of select="$name"/></xsl:attribute>Find page</a> by browsing, searching or an index
         <br />
+-->        
         <xsl:if test="not(ow:page/@changes='0')">
             Edited <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
             <xsl:text> </xsl:text>
