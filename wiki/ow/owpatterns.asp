@@ -140,7 +140,7 @@ Sub InitLinkPatterns
     If cEmbeddedMode Then
         gMacros = "BR|TableOfContents|Icon|Anchor|Date|Time|DateTime|Footnote"
     Else
-        ' override this in mymacros.asp or mywifify.asp if you want
+        ' override this in mymacros.asp or mywikify.asp if you want
         gMacros = "BR|RecentChanges|RecentChangesLong|TitleSearch|FullSearch|TextSearch|TableOfContents|WordIndex|TitleIndex|GoTo|RandomPage|" _
                 & "InterWiki|SystemInfo|Include|" _
                 & "PageCount|UserPreferences|Icon|Anchor|" _
