@@ -14,7 +14,7 @@
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
   <meta name="keywords" content="math, partial differential equations, mephi"/>
-  <meta name="description" content="OpenWiki - The post-it note of the web."/>
+  <meta name="description" content="EqWiki - ecnyclopedia of nonlinear differential equations"/>
   <meta name="ROBOTS" content="INDEX,FOLLOW"/>
   <meta name="MSSmartTagsPreventParsing" content="true"/>
   <title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
@@ -23,7 +23,7 @@
 </xsl:template>
 
 <xsl:template name="brandingImage">
-    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" border="0" alt="OpenWiki" /></a>
+    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" border="0" alt="EqWiki" /></a>
 </xsl:template>
 
 <xsl:template name="poweredBy">

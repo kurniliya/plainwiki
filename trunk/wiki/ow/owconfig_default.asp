@@ -18,7 +18,7 @@
 OPENWIKI_IMAGEPATH       = "ow/images"        ' path to images directory
 OPENWIKI_ICONPATH        = "ow/images/icons"  ' path to icons directory
 OPENWIKI_ENCODING        = "UTF-8"            ' character encoding to use
-OPENWIKI_TITLE           = "O p e n W i k i"  ' title of your wiki
+OPENWIKI_TITLE           = "EqWiki"  ' title of your wiki
 OPENWIKI_FRONTPAGE       = "FrontPage"        ' name of your front page.
 OPENWIKI_SCRIPTNAME      = "ow.asp"           ' "mydir/ow.asp" : in case the auto-detected scriptname isn't correct
 OPENWIKI_STYLESHEETS     = "ow/xsl/"          ' the subdirectory where the stylesheet files (*.xsl) are located
@@ -26,7 +26,7 @@ OPENWIKI_MAXTEXT         = 204800             ' Maximum 200K texts
 OPENWIKI_MAXINCLUDELEVEL = 5                  ' Maximum depth of Include's
 OPENWIKI_RCNAME          = "RecentChanges"    ' Name of recent changes page (change space to _)
 OPENWIKI_RCDAYS          = 30                 ' Default number of RecentChanges days
-OPENWIKI_MAXTRAIL        = 5                  ' Maximum number of links in the trail
+OPENWIKI_MAXTRAIL        = 0                  ' Maximum number of links in the trail
 OPENWIKI_STOPWORDS       = "StopWords"        ' Name of page containing stop words (change space to _). Stop words are words that won't be hyperlinked. Use empty string "" if you do not want to support stop words.
 OPENWIKI_TEMPLATES       = "Template$"        ' Pattern for templates usable when creating a new page
 OPENWIKI_TIMEZONE        = "+03:00"           ' Timezone of the server running this wiki, valid values are e.g. "+04:00", "-09:00", etc.
@@ -46,7 +46,7 @@ gEditPassword = ""    ' use empty string "" if anyone may edit
 ' In case you want more sophisticated security, then you should
 ' rely on the Integrated Windows authentication feature of IIS.
 
-gDefaultBookmarks = "FrontPage TitleIndex FindPage RandomPage RecentChanges Sandbox UserPreferences Help"
+gDefaultBookmarks = "FrontPage TitleIndex FindPage RandomPage RecentChanges"
 
 ' Major system options
 cUseXhtmlHttpHeaders  = 1        ' 1 = application/xhtml+xml 0 = text/html
