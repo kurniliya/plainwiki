@@ -88,7 +88,7 @@ cNewSkool             = 1        ' 1 = use //, **, -- and __ 0 = don't use //, *
 cNumTOC               = 0        ' 1 = TOC numbered          0 = TOC just indented text
 cNTAuthentication     = 1        ' 1 = Use NT username       0 = blank username in preferences
 cDirectEdit           = 1        ' 1 = go direct to edit     0 = go to blank page first
-cAllowCharRefs        = 0        ' 1 = allow char refs       0 = no character references allowed (like &copy; or &#151;)
+cAllowCharRefs        = 1        ' 1 = allow char refs       0 = no character references allowed (like &copy; or &#151;)
 cWikifyHeaders        = 0        ' 1 = wikify headers        0 = do not apply wiki formatting within headers
 
 ' User options
