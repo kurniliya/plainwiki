@@ -46,7 +46,7 @@ gEditPassword = ""    ' use empty string "" if anyone may edit
 ' In case you want more sophisticated security, then you should
 ' rely on the Integrated Windows authentication feature of IIS.
 
-gDefaultBookmarks = "FrontPage TitleIndex FindPage RandomPage RecentChanges"
+gDefaultBookmarks = "TitleIndex FindPage RandomPage RecentChanges"
 
 ' Major system options
 cUseXhtmlHttpHeaders  = 1        ' 1 = application/xhtml+xml 0 = text/html
