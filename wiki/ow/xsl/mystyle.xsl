@@ -10,6 +10,8 @@
 
 <xsl:variable name="brandingText">EqWiki - ecnyclopedia of nonlinear differential equations.</xsl:variable>
 
+<xsl:variable name="mainPageHeading">EqWiki</xsl:variable>
+
 <xsl:template name="head">
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
