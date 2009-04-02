@@ -99,11 +99,20 @@
     <body onload="window.defaultStatus='{$brandingText}'">
       <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
         <xsl:call-template name="brandingImage"/>
+<!-- Next block creates a page heading. Old heading equals to system name of page. Commented as unneeded. -->        
+<!--        
         <h1>
           <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true" title="Do a full text search for {ow:page/ow:link/text()}">
             <xsl:value-of select="ow:page/ow:link/text()"/>
           </a>
         </h1>
+-->
+<!-- Heading now is a static text from mainPageHeading variable in mystyle.xsl -->
+        <h1>
+<!--          <xsl:value-of select="$mainPageHeading"/> -->
+              <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
+        </h1>
+
         <xsl:apply-templates select="ow:page"/>
     </body>
   </html>
@@ -168,6 +177,10 @@
                 |
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=attach</xsl:attribute>Attachments</a> (<xsl:value-of select="count(ow:attachments/ow:attachment[@deprecated='false'])"/>)
             </xsl:if>
+                |
+                <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
+                  Referencing pages
+                </a>
         </td>
       </tr>
       <tr>
@@ -639,6 +652,10 @@
             |
             <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/></xsl:attribute>View current revision</a>
         </xsl:if>
+            |
+            <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
+                  Referencing pages
+            </a>
         <br />
         <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:page/ow:change/@revision"/></xsl:attribute>Print this page</a>
         |
