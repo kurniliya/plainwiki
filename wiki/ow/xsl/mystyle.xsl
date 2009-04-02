@@ -8,7 +8,7 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
-<xsl:variable name="brandingText">OpenWiki, the post-it note of the web.</xsl:variable>
+<xsl:variable name="brandingText">EqWiki - ecnyclopedia of nonlinear differential equations.</xsl:variable>
 
 <xsl:template name="head">
   <head>
