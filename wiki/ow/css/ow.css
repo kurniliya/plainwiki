@@ -22,16 +22,22 @@ pre.code {
     width:100%;
 }
 
-a:link      {color:blue; background-color: #ffffff; text-decoration:none;}
-a:visited   {color:purple; background-color: #ffffff; text-decoration:none;}
-a:active    {color:purple; background-color: #ffffff; text-decoration:none;}
-a:hover     {background:#ffffaa; text-decoration:underline;}
+a:link      {color: blue; background-color: #ffffff; text-decoration: none;}
+a:visited   {color: purple; background-color: #ffffff; text-decoration: none;}
+a:active    {color: purple; background-color: #ffffff; text-decoration: none;}
+a:hover     {background-color: #ffffff; text-decoration: underline;}
 
-.same            {color:blue; background-color: #ffffff; text-decoration:none;}
-a.same           {color:blue; background-color: #ffffff; text-decoration:none;}
-a.same:Visited   {color:purple; background-color: #ffffff; text-decoration:none;}
-a.same:Active    {color:purple; background-color: #ffffff; text-decoration:none;}
-a.same:Hover     {color:#000000; background-color: #ffffaa; text-decoration:underline;}
+.same            {color: blue; background-color: #ffffff; text-decoration: none;}
+a.same           {color: blue; background-color: #ffffff; text-decoration: none;}
+a.same:Visited   {color: blue; background-color: #ffffff; text-decoration: none;}
+a.same:Active    {color: purple; background-color: #ffffff; text-decoration: none;}
+a.same:Hover     {background-color: #ffffff; text-decoration: underline;}
+
+.userBookmark            {color: blue; background-color: #ffffff; text-decoration: none;}
+a.userBookmark           {color: blue; background-color: #ffffff; text-decoration: none;}
+a.userBookmark:Visited   {color: blue; background-color: #ffffff; text-decoration: none;}
+a.userBookmark:Active    {color: purple; background-color: #ffffff; text-decoration: none;}
+a.userBookmark:Hover     {background-color: #ffffff; text-decoration: underline;}
 
 a.nonexistent {
     font-weight: bold;
