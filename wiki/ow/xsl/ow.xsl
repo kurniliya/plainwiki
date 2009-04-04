@@ -155,17 +155,14 @@
     <hr noshade="noshade" size="1" />
     <table cellspacing="0" cellpadding="0" border="0" width="100%">
 
-      <xsl:if test="not(/ow:wiki/ow:userpreferences/ow:bookmarks='None')">
-        <tr>
-          <td align="left" class="n">
-            <xsl:if test="$showBookmarksInFooter='1'">
+      <xsl:if test="$showBookmarksInFooter='1'">
+        <xsl:if test="not(/ow:wiki/ow:userpreferences/ow:bookmarks='None')">
+          <tr>
+            <td align="left" class="n">
               <xsl:apply-templates select="/ow:wiki/ow:userpreferences/ow:bookmarks"/>
-            </xsl:if>
-          </td>
-          <td align="right" rowspan="2">
-            <xsl:call-template name="poweredBy"/>
-          </td>
-        </tr>
+            </td>
+          </tr>
+        </xsl:if>        
       </xsl:if>
 
       <tr>
@@ -210,12 +207,22 @@
             <input type="hidden" name="a" value="fullsearch" />
             <input type="text" name="txt" size="30" ondblclick='event.cancelBubble=true;' /> <input type="submit" value="Search"/>
         </td>
-        <td align="right">
-            <xsl:call-template name="validatorButtons"/>
-        </td>
       </tr>
     </table>
     </form>
+
+    <xsl:if test="$showValidatorButtons='1'">    
+      <br />
+      <br />
+      <xsl:call-template name="validatorButtons"/>    
+    </xsl:if>
+    
+    <xsl:if test="$showPoweredBy='1'">    
+      <br />
+      <br />
+      <xsl:call-template name="poweredBy"/>
+    </xsl:if>
+    
 </xsl:template>
 
 <!-- ==================== wiki link to an existing page ==================== -->
