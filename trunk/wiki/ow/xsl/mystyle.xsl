@@ -12,18 +12,6 @@
 
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
-<!-- if editOnDblCklick='1' then double click on page will change it into edit mode. -->
-<xsl:variable name="editOnDblCklick" select="'0'" />
-
-<!-- if showThirdLineInFooter='1' then Print this page, View XML and Find page links will be shown in page footer. -->
-<xsl:variable name="showThirdLineInFooter" select="'0'" />
-
-<!-- if showBookmarksInFooter='1' then bookmarks are shown also in footer. -->
-<xsl:variable name="showBookmarksInFooter" select="'0'" />
-
-<!-- if showEditLinkOnTop='1' then Edit this page link is shown on top. -->
-<xsl:variable name="showEditLinkOnTop" select="'0'" />
-
 <xsl:template name="head">
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
