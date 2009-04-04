@@ -12,8 +12,11 @@
 
 <xsl:variable name="mainPageHeading">EqWiki</xsl:variable>
 
-<!-- if editOnDblCklick='1' then double click on page will change it into edit mode. Else nothing will happen. -->
+<!-- if editOnDblCklick='1' then double click on page will change it into edit mode. -->
 <xsl:variable name="editOnDblCklick" select="'0'" />
+
+<!-- if showThirdLineInFooter='1' then Print this page, View XML and Find page links will be shown in page footer. -->
+<xsl:variable name="showThirdLineInFooter" select="'0'" />
 
 <xsl:template name="head">
   <head>
