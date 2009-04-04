@@ -12,6 +12,9 @@
 
 <xsl:variable name="mainPageHeading">EqWiki</xsl:variable>
 
+<!-- if editOnDblCklick='1' then double click on page will change it into edit mode. Else nothing will happen. -->
+<xsl:variable name="editOnDblCklick" select="'0'" />
+
 <xsl:template name="head">
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />

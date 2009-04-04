@@ -97,8 +97,10 @@
   <html>
   <xsl:call-template name="head"/>
     <body onload="window.defaultStatus='{$brandingText}'">
-      <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
-        <xsl:call-template name="brandingImage"/>
+      <xsl:if test="$editOnDblCklick='1'">
+        <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
+      </xsl:if>        
+      <xsl:call-template name="brandingImage"/>
 <!-- Next block creates a page heading. Old heading equals to system name of page. Commented as unneeded. -->        
 <!--        
         <h1>
@@ -108,12 +110,11 @@
         </h1>
 -->
 <!-- Heading now is a static text from mainPageHeading variable in mystyle.xsl -->
-        <h1>
-<!--          <xsl:value-of select="$mainPageHeading"/> -->
-              <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
-        </h1>
+      <h1>
+        <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
+      </h1>
 
-        <xsl:apply-templates select="ow:page"/>
+      <xsl:apply-templates select="ow:page"/>
     </body>
   </html>
 </xsl:template>
