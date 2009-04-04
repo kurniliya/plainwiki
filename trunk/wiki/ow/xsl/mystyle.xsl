@@ -8,9 +8,9 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
-<xsl:variable name="brandingText">EqWiki - ecnyclopedia of nonlinear differential equations.</xsl:variable>
+<xsl:variable name="brandingText">NEQwiki - ecnyclopedia of nonlinear differential equations.</xsl:variable>
 
-<xsl:variable name="mainPageHeading">EqWiki</xsl:variable>
+<xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
 <!-- if editOnDblCklick='1' then double click on page will change it into edit mode. -->
 <xsl:variable name="editOnDblCklick" select="'0'" />
@@ -18,11 +18,14 @@
 <!-- if showThirdLineInFooter='1' then Print this page, View XML and Find page links will be shown in page footer. -->
 <xsl:variable name="showThirdLineInFooter" select="'0'" />
 
+<!-- if showBookmarksInFooter='1' then bookmarks are shown also in footer. -->
+<xsl:variable name="showBookmarksInFooter" select="'0'" />
+
 <xsl:template name="head">
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
   <meta name="keywords" content="math, partial differential equations, mephi"/>
-  <meta name="description" content="EqWiki - ecnyclopedia of nonlinear differential equations"/>
+  <meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations"/>
   <meta name="ROBOTS" content="INDEX,FOLLOW"/>
   <meta name="MSSmartTagsPreventParsing" content="true"/>
   <title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
@@ -31,7 +34,7 @@
 </xsl:template>
 
 <xsl:template name="brandingImage">
-    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" border="0" alt="EqWiki" /></a>
+    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" border="0" alt="NEQwiki" /></a>
 </xsl:template>
 
 <xsl:template name="poweredBy">

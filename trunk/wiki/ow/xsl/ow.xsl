@@ -155,7 +155,9 @@
       <xsl:if test="not(/ow:wiki/ow:userpreferences/ow:bookmarks='None')">
         <tr>
           <td align="left" class="n">
-            <xsl:apply-templates select="/ow:wiki/ow:userpreferences/ow:bookmarks"/>
+            <xsl:if test="$showBookmarksInFooter='1'">
+              <xsl:apply-templates select="/ow:wiki/ow:userpreferences/ow:bookmarks"/>
+            </xsl:if>
           </td>
           <td align="right" rowspan="2">
             <xsl:call-template name="poweredBy"/>
@@ -644,7 +646,11 @@
         <form name="f" method="get">
         <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
         <hr size="1" />
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+
+        <xsl:if test="$showBookmarksInFooter='1'">
+          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+        </xsl:if>
+
         <br />
         <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if></xsl:attribute>Edit <xsl:if test='ow:page/@revision'>revision <xsl:value-of select="ow:page/@revision"/> of</xsl:if> this page</a>
         <xsl:if test="ow:page/@revision or (ow:page/ow:change and not(ow:page/ow:change/@revision = 1))">
@@ -844,7 +850,11 @@
         <form name="f" method="get">
         <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
         <hr size="1" />
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+        
+        <xsl:if test="$showBookmarksInFooter='1'">
+          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+        </xsl:if>  
+          
         <br />
         <input type="hidden" name="a" value="fullsearch"/>
         <input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:titlesearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
