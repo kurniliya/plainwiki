@@ -123,11 +123,13 @@
 
 <xsl:template match="ow:page">
     <xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop">
-        <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit</a> this page
-        <xsl:if test="not(@changes='0')">
-            <font size="-2">(last edited <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>)</font>
-        </xsl:if>
-        <br />
+      <xsl:if test="$showEditLinkOnTop='1'">    
+          <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit</a> this page
+          <xsl:if test="not(@changes='0')">
+              <font size="-2">(last edited <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>)</font>
+          </xsl:if>
+          <br />
+      </xsl:if>        
     </xsl:if>
     <xsl:if test="/ow:wiki/ow:userpreferences/ow:bookmarksontop">
       <xsl:if test="not(/ow:wiki/ow:userpreferences/ow:bookmarks='None')">

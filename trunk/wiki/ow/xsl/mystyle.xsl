@@ -21,6 +21,9 @@
 <!-- if showBookmarksInFooter='1' then bookmarks are shown also in footer. -->
 <xsl:variable name="showBookmarksInFooter" select="'0'" />
 
+<!-- if showEditLinkOnTop='1' then Edit this page link is shown on top. -->
+<xsl:variable name="showEditLinkOnTop" select="'0'" />
+
 <xsl:template name="head">
   <head>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
