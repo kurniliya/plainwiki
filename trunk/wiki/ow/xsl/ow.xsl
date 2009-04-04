@@ -1000,7 +1000,11 @@
         <form name="f" method="get">
         <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
         <hr size="1" />
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+        
+        <xsl:if test="$showBookmarksInFooter='1'">
+          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+        </xsl:if>  
+          
         <br />
         <input type="hidden" name="a" value="fullsearch"/>
         <input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:fullsearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
