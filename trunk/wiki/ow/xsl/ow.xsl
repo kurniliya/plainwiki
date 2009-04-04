@@ -228,7 +228,7 @@
 <!-- ==================== bookmarks from the user preferences ==================== -->
 <xsl:template match="ow:bookmarks">
     <xsl:for-each select="ow:link">
-        <a href="{@href}"><xsl:value-of select="text()"/></a>
+        <a class="userBookmark" href="{@href}"><xsl:value-of select="text()"/></a>
         <xsl:if test="not(position()=last())"> | </xsl:if>
     </xsl:for-each>
 </xsl:template>
