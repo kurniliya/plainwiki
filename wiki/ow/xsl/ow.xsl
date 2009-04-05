@@ -127,7 +127,7 @@
       <xsl:if test="$showEditLinkOnTop='1'">    
           <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit</a> this page
           <xsl:if test="not(@changes='0')">
-              <font size="-2">(last edited <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>)</font>
+              <font size="-2">(This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>)</font>
           </xsl:if>
           <br />
       </xsl:if>        
@@ -184,6 +184,9 @@
                 <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
                   Referencing pages
                 </a>
+                |
+                <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>Printable version
+                </a>
         </td>
       </tr>
       <tr>
@@ -199,7 +202,7 @@
             </xsl:if>
             
             <xsl:if test="not(@changes='0')">
-                Edited <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>
+                This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>
                 <xsl:text> </xsl:text>
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="@revision">&amp;difffrom=<xsl:value-of select="@revision"/></xsl:if>&amp;a=diff</xsl:attribute>(diff)</a>
                 <br />
@@ -675,6 +678,9 @@
             <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
                   Referencing pages
             </a>
+            |
+            <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>Printable version
+            </a>
         <br />
 
         <xsl:if test="$showThirdLineInFooter='1'">
@@ -688,7 +694,7 @@
         </xsl:if>
 
         <xsl:if test="not(ow:page/@changes='0')">
-            Edited <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
+            This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
             <xsl:text> </xsl:text>
             <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="ow:diff/@to">&amp;revision=<xsl:value-of select="ow:diff/@to"/></xsl:if></xsl:attribute>(hide diff)</a>
             <br />
