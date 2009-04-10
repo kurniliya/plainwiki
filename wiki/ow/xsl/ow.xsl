@@ -556,9 +556,9 @@
   <html>
   <xsl:call-template name="head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-      <h2>
-        <a name="h0" class="same"><xsl:value-of select="ow:page/ow:link"/></a>
-      </h2>
+      <h1>
+      	<xsl:value-of select="$mainPageHeading"/>
+      </h1>
       <xsl:apply-templates select="ow:page/ow:body"/>
     </body>
   </html>
