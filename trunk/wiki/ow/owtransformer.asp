@@ -189,13 +189,13 @@ Class Transformer
         'Response.End
 
         If gAction = "xml" Or InStrRev(Request.QueryString, "&xml=1") > 0 Then
-            If vIsIE Or gAction = "xml" Then
+'            If vIsIE Or gAction = "xml" Then
                 Response.ContentType = "text/xml; charset:" & OPENWIKI_ENCODING & ";"
                 Response.Write(vXmlStr)
                 Response.End
-            Else
-                pXslFilename = "xmldisplay.xsl"
-            End If
+'            Else
+'                pXslFilename = "xmldisplay.xsl"
+'            End If
         End If
 
         If Not vXmlDoc.loadXML(vXmlStr) Then
