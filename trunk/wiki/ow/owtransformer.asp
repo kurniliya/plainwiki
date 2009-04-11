@@ -90,8 +90,10 @@ Class Transformer
                 EndWithErrorMessage()
             Elseif MSXML_VERSION = 3 Then
                 Response.Write("<b>WARNING:</b>You have configured your OpenWiki to use the MSXML v4 component, but you don't appear to have this installed. The application now falls back to use the MSXML v3 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v4.<br />")
+                Response.End
             Else
                 Response.Write("<b>WARNING:</b>You've configured your OpenWiki to use the MSXML v3 component, but you don't appear to have this installed. The application now falls back to use the MSXML v4 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v3.<br />")
+                Response.End
             End If
         End If
 
