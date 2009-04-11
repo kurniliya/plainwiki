@@ -340,9 +340,7 @@
 						</li>
 					</xsl:when>
 					<xsl:otherwise>
-						<ul>
 							<xsl:call-template name="toc" />
-						</ul>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:for-each>
