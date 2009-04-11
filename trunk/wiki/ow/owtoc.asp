@@ -98,8 +98,8 @@ Class TableOfContents
     Private Function GetTOCElement(pLevel)
         If cNumTOC = 0 then
         '    GetTOCElement = "dl"
-        '	Changed because multi level "dl"'s don't indend in FF
-            GetTOCElement = "ul"
+        '	Changed because multi level "dl"'s don't indent in FF
+            GetTOCElement = "ow:toc mode=""indented"""
         Elseif pLevel = 0 Then
             GetTOCElement = "ol"
         Elseif pLevel = 1 Then
@@ -118,8 +118,8 @@ Class TableOfContents
     Private Function GetTOCEndElement()
         If cNumTOC = 0 then
         '    GetTOCEndElement = "dl"
-        '	Changed because multi level "dl"'s don't indend in FF        
-            GetTOCEndElement = "ul"        
+        '	Changed because multi level "dl"'s don't intend in FF        
+            GetTOCEndElement = "ow:toc"        
         Else
             GetTOCEndElement = "ol"
         End if

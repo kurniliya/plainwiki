@@ -325,6 +325,31 @@
   </math> 
 </xsl:template>
 
+<!-- ==================== handles the openwiki-toc element ==================== -->
+<xsl:template match="ow:toc" name="toc">
+  <xsl:choose>
+    <xsl:when test="@mode='indented'">
+		<ul>
+			<xsl:for-each select="./*">
+				<xsl:choose>
+					<xsl:when test="number">
+						<li>
+							<a href="#h{number}">
+								<xsl:value-of select="text" disable-output-escaping="yes" />
+							</a>
+						</li>
+					</xsl:when>
+					<xsl:otherwise>
+						<ul>
+							<xsl:call-template name="toc" />
+						</ul>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:for-each>
+		</ul>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
 
 <!-- ==================== inclusion of another wikipage in this wikipage ==================== -->
 <xsl:template match="ow:body/ow:page">
