@@ -145,6 +145,7 @@
     </xsl:if>
 
 	<div id="bodyContent">
+		<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
 		<xsl:apply-templates select="ow:body"/>
 	</div>
 
