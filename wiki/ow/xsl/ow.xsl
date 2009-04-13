@@ -97,7 +97,7 @@
   <xsl:call-template name="pi"/>
   <html>
   <xsl:call-template name="head"/>
-      <body onload="window.defaultStatus='{$brandingText}'">
+      <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
       <xsl:if test="$editOnDblCklick='1'">
         <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
       </xsl:if>        
@@ -330,7 +330,13 @@
 		<tr>
 			<td>
 				 <div id="toctitle">
-					<h2>Contents</h2>
+					<h2>Contents</h2> 
+					<xsl:text disable-output-escaping="yes"> </xsl:text>
+						<span class="toctoggle">
+							<a href="javascript:toggleToc()" class="internal" id="togglelink">
+								hide
+							</a>
+						</span>
 				</div>
 				<xsl:apply-templates select="./ow:toc" />
 			</td>
@@ -338,7 +344,7 @@
 	</table>
 	<script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
 		<xsl:text disable-output-escaping="yes">
-			 if (window.showTocToggle) { var tocShowText = "myShow"; var tocHideText = "myHide"; showTocToggle(); } 
+			 if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
 		</xsl:text>
 	</script>
 </xsl:template>
