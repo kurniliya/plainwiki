@@ -94,30 +94,22 @@
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="view">
-  <xsl:call-template name="pi"/>
-  <html>
-  <xsl:call-template name="head"/>
-      <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
-      <xsl:if test="$editOnDblCklick='1'">
-        <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
-      </xsl:if>        
-      <xsl:call-template name="brandingImage"/>
-<!-- Next block creates a page heading. Old heading equals to system name of page. Commented as unneeded. -->        
-<!--        
-        <h1>
-          <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true" title="Do a full text search for {ow:page/ow:link/text()}">
-            <xsl:value-of select="ow:page/ow:link/text()"/>
-          </a>
-        </h1>
--->
-<!-- Heading now is a static text from mainPageHeading variable in mystyle.xsl -->
-      <h1>
-        <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
-      </h1>
-
-      <xsl:apply-templates select="ow:page"/>
-    </body>
-  </html>
+	<xsl:call-template name="pi"/>
+	<html>
+		<xsl:call-template name="head"/>
+		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+			<div id="globalWrapper">
+				<xsl:if test="$editOnDblCklick='1'">
+					<xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
+				</xsl:if>        
+				<xsl:call-template name="brandingImage"/>
+				 <h1>
+					 <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
+				 </h1>
+				 <xsl:apply-templates select="ow:page"/>
+			 </div>
+		 </body>
+	 </html>
 </xsl:template>
 
 
