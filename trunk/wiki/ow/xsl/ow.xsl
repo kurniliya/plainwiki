@@ -97,7 +97,7 @@
   <xsl:call-template name="pi"/>
   <html>
   <xsl:call-template name="head"/>
-    <body onload="window.defaultStatus='{$brandingText}'">
+      <body onload="window.defaultStatus='{$brandingText}'">
       <xsl:if test="$editOnDblCklick='1'">
         <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
       </xsl:if>        
@@ -119,7 +119,6 @@
     </body>
   </html>
 </xsl:template>
-
 
 
 <xsl:template match="ow:page">
@@ -326,27 +325,42 @@
 </xsl:template>
 
 <!-- ==================== handles the openwiki-toc element ==================== -->
+<xsl:template match="ow:toc_root">
+	<table id="toc" class="toc" summary="Contents">
+		<tr>
+			<td>
+				 <div id="toctitle">
+					<h2>Contents</h2>
+				</div>
+				<xsl:apply-templates select="./ow:toc" />
+			</td>
+		</tr>
+	</table>
+</xsl:template>
+
 <xsl:template match="ow:toc" name="toc">
-  <xsl:choose>
-    <xsl:when test="@mode='indented'">
-		<ul>
-			<xsl:for-each select="./*">
-				<xsl:choose>
-					<xsl:when test="number">
-						<li>
-							<a href="#h{number}">
-								<xsl:value-of select="text" disable-output-escaping="yes" />
-							</a>
-						</li>
-					</xsl:when>
-					<xsl:otherwise>
-							<xsl:call-template name="toc" />
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:for-each>
-		</ul>
-    </xsl:when>
-  </xsl:choose>
+	<xsl:choose>
+		<xsl:when test="@mode='indented'">
+			<ul>
+				<xsl:for-each select="./*">
+					<xsl:choose>
+						<xsl:when test="number">
+							<li class="toclevel-1">
+								<a href="#h{number}">
+									<span class="toctext">
+										<xsl:value-of select="text" disable-output-escaping="yes" />
+									</span>	
+								</a>
+							</li>
+						</xsl:when>
+						<xsl:otherwise>
+								<xsl:call-template name="toc" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:for-each>
+			</ul>
+		</xsl:when>
+	</xsl:choose>
 </xsl:template>
 
 <!-- ==================== inclusion of another wikipage in this wikipage ==================== -->
