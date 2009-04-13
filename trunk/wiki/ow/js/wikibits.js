@@ -107,7 +107,7 @@ if (wgBreakFrames) {
 		window.top.location = window.location;
 	}
 }
-
+/*
 function showTocToggle() {
 	if (document.createTextNode) {
 		// Uses DOM calls to avoid document.write + XHTML issues
@@ -117,14 +117,15 @@ function showTocToggle() {
 			return;
 		}
 
-		var outerSpan = document.createElement('span');
-		outerSpan.className = 'toctoggle';
 
 		var toggleLink = document.createElement('a');
 		toggleLink.id = 'togglelink';
 		toggleLink.className = 'internal';
 		toggleLink.href = 'javascript:toggleToc()';
 		toggleLink.appendChild(document.createTextNode(tocHideText));
+
+		var outerSpan = document.createElement('span');
+		outerSpan.className = 'toctoggle';
 
 		outerSpan.appendChild(document.createTextNode('['));
 		outerSpan.appendChild(toggleLink);
@@ -139,6 +140,7 @@ function showTocToggle() {
 		}
 	}
 }
+*/
 
 function changeText(el, newText) {
 	// Safari work around
