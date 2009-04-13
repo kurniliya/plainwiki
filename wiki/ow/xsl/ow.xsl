@@ -336,6 +336,11 @@
 			</td>
 		</tr>
 	</table>
+	<script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
+		<xsl:text disable-output-escaping="yes">
+			 if (window.showTocToggle) { var tocShowText = "myShow"; var tocHideText = "myHide"; showTocToggle(); } 
+		</xsl:text>
+	</script>
 </xsl:template>
 
 <xsl:template match="ow:toc" name="toc">
@@ -416,7 +421,7 @@
 
 <xsl:template match="ow:interlinks">
     <script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
-      <xsl:text disable-output-escaping="yes">&lt;!--
+      <xsl:text disable-output-escaping="yes">
         function ask(pURL) {
             var x = prompt("Enter the word you're searching for:", "");
             if (x != null) {
@@ -428,7 +433,7 @@
                 }
             }
         }
-    //--&gt;</xsl:text>
+	  </xsl:text>
     </script>
     <table cellspacing="0" cellpadding="2" border="0">
       <xsl:for-each select="ow:interlink">
