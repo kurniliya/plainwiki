@@ -118,6 +118,7 @@
 
 
 <xsl:template match="ow:page">
+	<a name="top" id="top"></a>
     <xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop">
       <xsl:if test="$showEditLinkOnTop='1'">    
           <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit</a> this page
