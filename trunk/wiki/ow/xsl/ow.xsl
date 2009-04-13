@@ -103,10 +103,14 @@
 					<xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
 				</xsl:if>        
 				<xsl:call-template name="brandingImage"/>
-				 <h1>
-					 <a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
-				 </h1>
-				 <xsl:apply-templates select="ow:page"/>
+				<h1>
+					<a href="{/ow:wiki/ow:frontpage/@href}"><xsl:value-of select="$mainPageHeading"/></a>
+				</h1>
+				<div id="column-content">
+					<div id="content">
+						<xsl:apply-templates select="ow:page"/>
+					</div>
+				</div>
 			 </div>
 		 </body>
 	 </html>
