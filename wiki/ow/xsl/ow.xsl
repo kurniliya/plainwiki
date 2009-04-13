@@ -144,7 +144,9 @@
         <b>Showing revision <xsl:value-of select="@revision"/></b>
     </xsl:if>
 
-    <xsl:apply-templates select="ow:body"/>
+	<div id="bodyContent">
+		<xsl:apply-templates select="ow:body"/>
+	</div>
 
     <form name="f" method="get">
     <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
