@@ -92,7 +92,8 @@ Function Wikify(pText)
     If gIncludeLevel = 0 Then
         If cUseHeadings Then
             vText = s(vText, gFS & "(\=+)[ \t]+(.*?)[ \t]+\=+ " & gFS, "&GetWikiHeading($1, $2)", False, True)
-            vText = Replace(vText, gFS & "TOC" & gFS, gTOC.GetTOC)
+'            vText = Replace(vText, gFS & "TOC" & gFS, gTOC.GetTOC)
+             vText = Replace(vText, gFS & "TOC" & gFS, "<ow:toc_root>" & gTOC.GetTOC & "</ow:toc_root>")
         End If
 
         If InStr(gMacros, "Footnote") > 0 Then

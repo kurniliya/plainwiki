@@ -21,6 +21,7 @@
   <meta name="MSSmartTagsPreventParsing" content="true"/>
   <title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
   <link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
+  <link rel="stylesheet" type="text/css" href="ow/css/monobook/main.css?207xx" />
   </head>
 </xsl:template>
 
