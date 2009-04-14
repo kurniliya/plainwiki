@@ -23,7 +23,11 @@
 <!--
   <link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
 -->
-  <link rel="stylesheet" type="text/css" href="ow/css/monobook/main.css?207xx" />
+	<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
+	<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
+	<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
+	<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
+
   <script type="text/javascript" src="ow/js/wikibits.js?207xx">
 	<!-- wikibits js -->
   </script>
