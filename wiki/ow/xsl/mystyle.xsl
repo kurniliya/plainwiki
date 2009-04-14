@@ -44,12 +44,53 @@
 </xsl:template>
 
 <xsl:template name="menu_column">
-	<a class="same">
-		<xsl:attribute name="href">
-			<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/>
-		</xsl:attribute>
-		View XML
-	</a>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<xsl:call-template name="menu_section_navigation" />
+			</ul>
+		</div>
+	</div>
+
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<xsl:call-template name="menu_section_toolbox" />
+			</ul>
+		</div>
+	</div>
+</xsl:template>
+
+<xsl:template name="menu_section_navigation">
+	<li id="n-mainpage-description">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:frontpage/@href"/>
+			</xsl:attribute>
+			Main page
+		</a>
+	</li>
+	<li id="n-randompage">
+		<a>
+			<xsl:attribute name="href">
+				ow.asp?RandomPage
+			</xsl:attribute>
+			Random article
+		</a>
+	</li>	
+</xsl:template>
+
+<xsl:template name="menu_section_toolbox">
+	<li id="t-viewxml">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/>
+			</xsl:attribute>
+			View XML
+		</a>
+	</li>
 </xsl:template>
 
 </xsl:stylesheet>
