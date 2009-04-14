@@ -43,5 +43,13 @@
     <a href="http://jigsaw.w3.org/css-validator/validator?uri={/ow:wiki/ow:location}ow.css"><img src="{/ow:wiki/ow:imagepath}/valid-css.gif" alt="Valid CSS!" width="88" height="31" border="0" /></a>
 </xsl:template>
 
+<xsl:template name="menu_column">
+	<a class="same">
+		<xsl:attribute name="href">
+			<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/>
+		</xsl:attribute>
+		View XML
+	</a>
+</xsl:template>
 
 </xsl:stylesheet>
