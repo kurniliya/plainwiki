@@ -13,25 +13,34 @@
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
 <xsl:template name="head">
-  <head>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
-  <meta name="keywords" content="math, partial differential equations, mephi"/>
-  <meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations"/>
-  <meta name="ROBOTS" content="INDEX,FOLLOW"/>
-  <meta name="MSSmartTagsPreventParsing" content="true"/>
-  <title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
+	<head>
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
+		<meta name="keywords" content="math, partial differential equations, mephi"/>
+		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations"/>
+		<meta name="ROBOTS" content="INDEX,FOLLOW"/>
+		<meta name="MSSmartTagsPreventParsing" content="true"/>
+		<title>
+			<xsl:value-of select="ow:title"/> 
+			- 
+			<xsl:value-of select="ow:page/ow:link"/>
+		</title>
 <!--
-  <link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
+	<link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
 -->
-	<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
-	<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
-	<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
-	<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
-
-  <script type="text/javascript" src="ow/js/wikibits.js?207xx">
-	<!-- wikibits js -->
-  </script>
-  </head>
+		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
+		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
+		<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
+		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE50Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE55Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins-1.5/monobook/IE60Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins-1.5/monobook/IE70Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
+			<!-- wikibits js -->
+		</script>
+	</head>
 </xsl:template>
 
 <xsl:template name="brandingImage">
