@@ -53,6 +53,13 @@
 		</div>
 	</div>
 
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<xsl:call-template name="menu_section_search" />
+		</div>
+	</div>
+
 	<div class="portlet" id="p-tb">
 		<h5>Toolbox</h5>
 		<div class="pBody">
@@ -80,6 +87,19 @@
 			Random article
 		</a>
 	</li>	
+</xsl:template>
+
+<xsl:template name="menu_section_search">
+	<form method="get" id="searchform">
+		<xsl:attribute name="action">
+			<xsl:value-of select="/ow:wiki/ow:scriptname"/>
+		</xsl:attribute>
+		<div>
+			<input type="hidden" name="a" value="fullsearch" />
+            <input  type="text" name="txt"  class="searchButton" id="searchInput" size="30" ondblclick='event.cancelBubble=true;' /> 
+            <input type="submit"  class="searchButton" id="mw-searchButton"  value="Search"/>
+        </div>
+    </form>
 </xsl:template>
 
 <xsl:template name="menu_section_toolbox">
