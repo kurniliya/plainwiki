@@ -12,7 +12,7 @@
 <xsl:variable name="editOnDblCklick" select="'0'" />
 
 <!-- if showThirdLineInFooter='1' then Print this page, View XML and Find page links will be shown in page footer. -->
-<xsl:variable name="showThirdLineInFooter" select="'0'" />
+<xsl:variable name="showThirdLineInFooter" select="'1'" />
 
 <!-- if showBookmarksInFooter='1' then bookmarks are shown also in footer. -->
 <xsl:variable name="showBookmarksInFooter" select="'0'" />
