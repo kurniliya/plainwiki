@@ -39,7 +39,7 @@
 '
 
 Class Transformer
-    Private vXmlDoc, vXslDoc, vXslTemplate, vXslProc, vIsIE
+    Private vXmlDoc, vXslDoc, vXslTemplate, vXslProc, vIsIE, vIsGecko
 
 '    Public Property Let MSXML_VERSION(pMSXML_VERSION)
 '        vMSXML_VERSION = pMSXML_VERSION
@@ -103,6 +103,12 @@ Class Transformer
             vIsIE = True
         Else
             vIsIE = False
+        End If
+        
+        If (InStr(vTemp, " Gecko") > 0) Then
+            vIsGecko = True
+        Else
+            vIsGecko = False
         End If
     End Sub
 
