@@ -111,6 +111,9 @@
 						<xsl:apply-templates select="ow:page"/>
 					</div>
 				</div>
+				<div id="column-one">
+					<xsl:call-template name="menu_column" />					
+				</div>
 			 </div>
 		 </body>
 	 </html>
