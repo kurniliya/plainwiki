@@ -15,19 +15,13 @@
 <xsl:template name="head">
 	<head>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
-		<meta name="generator" content="OpenWiki 0.78" />
 		<meta name="keywords" content="math, partial differential equations, mephi" />
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="ROBOTS" content="INDEX,FOLLOW" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
-		<link rel="alternate" type="application/x-wiki" title="Edit this page">
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
-		</link>
-		<link rel="edit" title="Edit this page">
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
-		</link>
-		<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
-		<title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
+		<title>
+			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
+		</title>
 
 <!--
 	<link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
@@ -286,7 +280,7 @@
 <xsl:template name="footer_list_lastmod">
 	<li id="lastmod">
         <xsl:if test="not(ow:page/@changes='0')">
-              This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
+              This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>, at <xsl:value-of select="ow:formatTime(string(ow:page/ow:change/ow:date))"/>
         </xsl:if>
 	</li>
 </xsl:template>
