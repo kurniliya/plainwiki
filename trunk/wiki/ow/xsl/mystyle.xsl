@@ -15,13 +15,19 @@
 <xsl:template name="head">
 	<head>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
+		<meta name="generator" content="OpenWiki 0.78" />
 		<meta name="keywords" content="math, partial differential equations, mephi" />
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="ROBOTS" content="INDEX,FOLLOW" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
-		<title>
-			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
-		</title>
+		<link rel="alternate" type="application/x-wiki" title="Edit this page">
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
+		</link>
+		<link rel="edit" title="Edit this page">
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
+		</link>
+		<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+		<title><xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/></title>
 
 <!--
 	<link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
@@ -172,14 +178,6 @@
 			Article
 		</a>
 	</li>
-	<li id="ca-history">
-		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=changes</xsl:attribute>
-			<xsl:attribute name="title">Past versions of this page [h]</xsl:attribute>
-			<xsl:attribute name="accesskey">h</xsl:attribute>
-			History
-		</a>
-	</li>	
 	<li id="ca-edit">
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
@@ -188,6 +186,14 @@
 			Edit this page
 		</a>
 	</li>	
+	<li id="ca-history">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=changes</xsl:attribute>
+			<xsl:attribute name="title">Past versions of this page [h]</xsl:attribute>
+			<xsl:attribute name="accesskey">h</xsl:attribute>
+			History
+		</a>
+	</li>		
 </xsl:template>
 
 <xsl:template name="menu_section_navigation">
