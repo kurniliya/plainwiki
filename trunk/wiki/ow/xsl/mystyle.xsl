@@ -15,6 +15,7 @@
 <xsl:template name="head">
 	<head>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
+		<meta name="generator" content="OpenWiki 0.78" />
 		<meta name="keywords" content="math, partial differential equations, mephi" />
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="ROBOTS" content="INDEX,FOLLOW" />
