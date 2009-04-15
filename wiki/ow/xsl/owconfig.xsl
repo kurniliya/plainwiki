@@ -19,7 +19,7 @@
 
 <!-- if showEditLinkOnTop='1' then Edit this page link is shown on top. -->
 <xsl:variable name="showEditLinkOnTop" select="'0'" />
-<xsl:variable name="showValidatorButtons" select="'1'" />
+<xsl:variable name="showValidatorButtons" select="'0'" />
 <xsl:variable name="showPoweredBy" select="'1'" />
 
 </xsl:stylesheet>

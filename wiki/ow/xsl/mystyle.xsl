@@ -166,34 +166,46 @@
 <xsl:template name="menu_section_cactions">
 	<li id="ca-nstab-main" class="selected">
 		<a> 
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>
-			</xsl:attribute>
-			<xsl:attribute name="title">
-				View the content page [c]
-			</xsl:attribute>
-			<xsl:attribute name="accesskey">
-				c
-			</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/></xsl:attribute>
+			<xsl:attribute name="title">View the content page [c]</xsl:attribute>
+			<xsl:attribute name="accesskey">c</xsl:attribute>
 			Article
 		</a>
 	</li>
+	<li id="ca-history">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=changes</xsl:attribute>
+			<xsl:attribute name="title">Past versions of this page [h]</xsl:attribute>
+			<xsl:attribute name="accesskey">h</xsl:attribute>
+			History
+		</a>
+	</li>	
+	<li id="ca-edit">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
+			<xsl:attribute name="title">You can edit this page. &#10;Please use the preview button before saving. [e]</xsl:attribute>
+			<xsl:attribute name="accesskey">e</xsl:attribute>
+			Edit this page
+		</a>
+	</li>	
 </xsl:template>
 
 <xsl:template name="menu_section_navigation">
 	<li id="n-mainpage-description">
 		<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:frontpage/@href"/>
-			</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:frontpage/@href"/></xsl:attribute>
 			Main page
 		</a>
 	</li>
+	<li id="n-titleindex">
+		<a>
+			<xsl:attribute name="href">ow.asp?TitleIndex</xsl:attribute>
+			Title index
+		</a>
+	</li>	
 	<li id="n-randompage">
 		<a>
-			<xsl:attribute name="href">
-				ow.asp?RandomPage
-			</xsl:attribute>
+			<xsl:attribute name="href">ow.asp?RandomPage</xsl:attribute>
 			Random article
 		</a>
 	</li>	
@@ -215,21 +227,38 @@
 <xsl:template name="menu_section_interaction">
 	<li id="n-recentchanges">
 		<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=RecentChanges
-			</xsl:attribute>
-			<xsl:attribute name="title">
-				The list of recent changes in the wiki [r]
-			</xsl:attribute>
-			<xsl:attribute name="accesskey">
-				r
-			</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=RecentChanges</xsl:attribute>
+			<xsl:attribute name="title">The list of recent changes in the wiki [r]</xsl:attribute>
+			<xsl:attribute name="accesskey">r	</xsl:attribute>
 			Recent changes
+		</a>
+	</li>
+	<li id="n-help">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=Help</xsl:attribute>
+			<xsl:attribute name="title">Guidance on how to use and edit this wiki</xsl:attribute>
+			Help
 		</a>
 	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_toolbox">
+	<li id="t-whatlinkshere">
+		<a href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
+			<xsl:attribute name="title">List of all pages containing links to this page [j]</xsl:attribute>
+			<xsl:attribute name="accesskey">j</xsl:attribute>
+			What links here
+		</a>
+	</li>
+	<li id="t-print">
+		<a href="/w/index.php?title=Libretto&amp;printable=yes">
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>
+			<xsl:attribute name="rel">alternate</xsl:attribute>
+			<xsl:attribute name="title">Printable version of this page [p]</xsl:attribute>
+			<xsl:attribute name="accesskey">p</xsl:attribute>
+			Printable version
+		</a>
+	</li>	
 	<li id="t-viewxml">
 		<a>
 			<xsl:attribute name="href">
