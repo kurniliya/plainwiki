@@ -115,7 +115,9 @@
 </xsl:template>
 
 <xsl:template name="poweredBy">
-    <a href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" border="0" alt="" /></a>
+	<div id="f-poweredbyico">
+		<a href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" border="0" alt="Powered by OpenWiki" /></a>
+    </div>
 </xsl:template>
 
 <xsl:template name="validatorButtons">
@@ -272,6 +274,20 @@
 			</xsl:attribute>
 			View XML
 		</a>
+	</li>
+</xsl:template>
+
+<xsl:template name="footer_list">
+	<ul id="f-list">
+		<xsl:call-template name="footer_list_lastmod" />
+	</ul>
+</xsl:template>
+
+<xsl:template name="footer_list_lastmod">
+	<li id="lastmod">
+        <xsl:if test="not(ow:page/@changes='0')">
+              This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
+        </xsl:if>
 	</li>
 </xsl:template>
 

@@ -116,6 +116,11 @@
 				<div id="column-one">
 					<xsl:call-template name="menu_column" />					
 				</div>
+				<div class="visualClear"></div>
+				<div id="footer">
+					<xsl:call-template name="poweredBy" />
+					<xsl:call-template name="footer_list" />
+				</div>
 			 </div>
 		 </body>
 	 </html>
@@ -128,10 +133,11 @@
 
       <xsl:if test="$showEditLinkOnTop='1'">    
           <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit</a> this page
-
+<!--
           <xsl:if test="not(@changes='0')">
               <font size="-2">(This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>)</font>
           </xsl:if>
+-->
           <br />
       </xsl:if>        
     </xsl:if>
@@ -218,7 +224,9 @@
 -->
             
             <xsl:if test="not(@changes='0')">
+<!--            
                 This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>
+-->
                 <xsl:text> </xsl:text>
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="@revision">&amp;difffrom=<xsl:value-of select="@revision"/></xsl:if>&amp;a=diff</xsl:attribute>(diff)</a>
                 <br />
@@ -231,7 +239,7 @@
       </tr>
     </table>
     </form>
-
+<!--
     <xsl:if test="$showValidatorButtons='1'">    
       <br />
       <br />
@@ -243,7 +251,7 @@
       <br />
       <xsl:call-template name="poweredBy"/>
     </xsl:if>
-    
+-->    
 </xsl:template>
 
 <!-- ==================== wiki link to an existing page ==================== -->
