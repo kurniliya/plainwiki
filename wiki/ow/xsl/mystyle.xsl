@@ -15,15 +15,14 @@
 <xsl:template name="head">
 	<head>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
-		<meta name="keywords" content="math, partial differential equations, mephi"/>
-		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations"/>
-		<meta name="ROBOTS" content="INDEX,FOLLOW"/>
-		<meta name="MSSmartTagsPreventParsing" content="true"/>
+		<meta name="keywords" content="math, partial differential equations, mephi" />
+		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
+		<meta name="ROBOTS" content="INDEX,FOLLOW" />
+		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<title>
-			<xsl:value-of select="ow:title"/> 
-			- 
-			<xsl:value-of select="ow:page/ow:link"/>
+			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
 		</title>
+
 <!--
 	<link rel="stylesheet" type="text/css" href="ow/css/ow.css" />
 -->
@@ -31,14 +30,76 @@
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
 		<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
-		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE50Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE55Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 6]><link rel="stylesheet" href="/skins-1.5/monobook/IE60Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 7]><link rel="stylesheet" href="/skins-1.5/monobook/IE70Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
-		<!--[if lt IE 7]><script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
-		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 5.5000]&gt;</xsl:text>
+		<link rel="stylesheet" href="ow/css/monobook/IE50Fixes.css?207xx" type="text/css" media="screen" />			
+		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
+		</xsl:text>
+		
+		<xsl:text disable-output-escaping="yes">&lt;!--[if IE 5.5000]&gt;</xsl:text>
+			<link rel="stylesheet" href="ow/css/monobook/IE55Fixes.css?207xx" type="text/css" media="screen" />
+		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
+		</xsl:text>
+		
+		<xsl:text disable-output-escaping="yes">&lt;!--[if IE 6]&gt;</xsl:text>
+			<link rel="stylesheet" href="ow/css/monobook/IE60Fixes.css?207xx" type="text/css" media="screen" />
+		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
+		</xsl:text>
+		
+		<xsl:text disable-output-escaping="yes">&lt;!--[if IE 7]&gt;</xsl:text>
+			<link rel="stylesheet" href="ow/css/monobook/IE70Fixes.css?207xx" type="text/css" media="screen" />
+		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
+		</xsl:text>
+		
+		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
+			<script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
+			<meta http-equiv="imagetoolbar" content="no" />
+		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
+		</xsl:text>
+
+		<script type= "text/javascript">
+			<xsl:text disable-output-escaping="yes">
+				/*&lt;![CDATA[*/
+			</xsl:text>
+			var skin = "monobook";
+			var stylepath = "/skins-1.5";
+			var wgArticlePath = "/wiki/$1";
+			var wgScriptPath = "/w";
+			var wgScript = "/w/index.php";
+			var wgVariantArticlePath = false;
+			var wgActionPaths = {};
+			var wgServer = "http://en.wikipedia.org";
+			var wgCanonicalNamespace = "";
+			var wgCanonicalSpecialPageName = false;
+			var wgNamespaceNumber = 0;
+			var wgPageName = "Agrippina_(opera)";
+			var wgTitle = "Agrippina (opera)";
+			var wgAction = "view";
+			var wgArticleId = "1257935";
+			var wgIsArticle = true;
+			var wgUserName = null;
+			var wgUserGroups = null;
+			var wgUserLanguage = "en";
+			var wgContentLanguage = "en";
+			var wgBreakFrames = false;
+			var wgCurRevisionId = 283719792;
+			var wgVersion = "1.15alpha";
+			var wgEnableAPI = true;
+			var wgEnableWriteAPI = true;
+			var wgSeparatorTransformTable = ["", ""];
+			var wgDigitTransformTable = ["", ""];
+			var wgMWSuggestTemplate = "http://en.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest";
+			var wgDBname = "enwiki";
+			var wgSearchNamespaces = [0];
+			var wgMWSuggestMessages = ["with suggestions", "no suggestions"];
+			var wgRestrictionEdit = [];
+			var wgRestrictionMove = ["sysop"];
+			<xsl:text disable-output-escaping="yes">
+				/*]]&gt;*/
+			</xsl:text>
+		</script>
+
 		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
-			<!-- wikibits js -->
 		</script>
 	</head>
 </xsl:template>
@@ -57,6 +118,16 @@
 </xsl:template>
 
 <xsl:template name="menu_column">
+
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+				<xsl:call-template name="menu_section_cactions" />
+			</ul>
+		</div>
+	</div>
+
 	<div class='generated-sidebar portlet' id='p-navigation'>
 		<h5>Navigation</h5>
 		<div class='pBody'>
@@ -72,6 +143,15 @@
 			<xsl:call-template name="menu_section_search" />
 		</div>
 	</div>
+	
+	<div class='generated-sidebar portlet' id='p-interaction'>
+		<h5>Interaction</h5>
+		<div class='pBody'>
+			<ul>	
+				<xsl:call-template name="menu_section_interaction" />
+			</ul>
+		</div>
+	</div>
 
 	<div class="portlet" id="p-tb">
 		<h5>Toolbox</h5>
@@ -81,6 +161,23 @@
 			</ul>
 		</div>
 	</div>
+</xsl:template>
+
+<xsl:template name="menu_section_cactions">
+	<li id="ca-nstab-main" class="selected">
+		<a> 
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>
+			</xsl:attribute>
+			<xsl:attribute name="title">
+				View the content page [c]
+			</xsl:attribute>
+			<xsl:attribute name="accesskey">
+				c
+			</xsl:attribute>
+			Article
+		</a>
+	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_navigation">
@@ -113,6 +210,23 @@
             <input type="submit"  class="searchButton" id="mw-searchButton"  value="Search"/>
         </div>
     </form>
+</xsl:template>
+
+<xsl:template name="menu_section_interaction">
+	<li id="n-recentchanges">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=RecentChanges
+			</xsl:attribute>
+			<xsl:attribute name="title">
+				The list of recent changes in the wiki [r]
+			</xsl:attribute>
+			<xsl:attribute name="accesskey">
+				r
+			</xsl:attribute>
+			Recent changes
+		</a>
+	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_toolbox">
