@@ -131,6 +131,11 @@
 		</div>
 	</div>
 
+<div class="portlet" id="p-logo">
+	<a style="background-image: url(ow/images/logo.gif);" href="http://www.primat.mephi.ru" title="Visit the main page [z]" accesskey="z">
+	</a>
+</div>
+
 	<div class='generated-sidebar portlet' id='p-navigation'>
 		<h5>Navigation</h5>
 		<div class='pBody'>
