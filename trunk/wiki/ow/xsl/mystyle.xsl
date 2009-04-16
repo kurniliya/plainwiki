@@ -111,7 +111,7 @@
 
 <xsl:template name="poweredBy">
 	<div id="f-poweredbyico">
-		<a href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" border="0" alt="Powered by OpenWiki" /></a>
+		<a href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" alt="Powered by OpenWiki" /></a>
     </div>
 </xsl:template>
 
