@@ -8,6 +8,7 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
+<xsl:include href="owpi.xsl"/>
 <xsl:include href="owinc.xsl"/>
 <xsl:include href="owattach.xsl"/>
 <xsl:include href="owconfig.xsl"/>
@@ -83,14 +84,6 @@
       <xsl:apply-templates select="." mode="embedded"/>
     </xsl:when>
   </xsl:choose>
-</xsl:template>
-
-<xsl:template name="pi">
-  <xsl:text disable-output-escaping="yes">&lt;?xml version="1.0" encoding="</xsl:text><xsl:value-of select="@encoding"/><xsl:text disable-output-escaping="yes">"?>
-&lt;?xml-stylesheet type="text/xsl" href="ow/xsl/mathml.xsl"?&gt;
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" 
-		"ow/dtd/xhtml-math11-f.dtd">
-</xsl:text>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="view">
