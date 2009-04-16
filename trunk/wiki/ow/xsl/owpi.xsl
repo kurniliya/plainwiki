@@ -10,7 +10,7 @@
   <xsl:text disable-output-escaping="yes">&lt;?xml version="1.0" encoding="</xsl:text><xsl:value-of select="@encoding"/><xsl:text disable-output-escaping="yes">"?>
 &lt;?xml-stylesheet type="text/xsl" href="ow/xsl/mathml.xsl"?&gt;
 &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" 
-		"ow/dtd/xhtml-math11-f.dtd">
+		"http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg-flat.dtd">
 </xsl:text>
 </xsl:template>            
                 
