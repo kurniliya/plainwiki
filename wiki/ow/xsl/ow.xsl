@@ -159,6 +159,7 @@
 		<xsl:apply-templates select="ow:body"/>
 	</div>
 
+<!--
     <form name="f" method="get">
     <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
     <hr noshade="noshade" size="1" />
@@ -176,7 +177,7 @@
 
       <tr>
         <td align="left" class="n">
-<!--        
+        
             <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='@revision'>&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>Edit <xsl:if test='@revision'>revision <xsl:value-of select="@revision"/> of</xsl:if> this page</a>
             <xsl:if test="@revision or (ow:change and not(ow:change/@revision = 1))">
                 |
@@ -187,12 +188,12 @@
                 |
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/></xsl:attribute>View current revision</a>
             </xsl:if>
--->
+
             <xsl:if test="/ow:wiki/ow:allowattachments">
                 |
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=attach</xsl:attribute>Attachments</a> (<xsl:value-of select="count(ow:attachments/ow:attachment[@deprecated='false'])"/>)
             </xsl:if>
-<!--            
+            
                 |
                 <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
                   Referencing pages
@@ -201,12 +202,12 @@
                 |
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>Printable version
                 </a>
--->
+
         </td>
       </tr>
       <tr>
         <td align="left" class="n">
-<!--        
+        
             <xsl:if test="$showThirdLineInFooter='1'">
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>View XML</a>
               <br />
@@ -214,24 +215,24 @@
               <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=FindPage&amp;txt=<xsl:value-of select="$name"/></xsl:attribute>Find page</a> by browsing, searching or an index
               <br />
             </xsl:if>
--->
             
             <xsl:if test="not(@changes='0')">
-<!--            
+            
                 This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/>
--->
+
                 <xsl:text> </xsl:text>
                 <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="@revision">&amp;difffrom=<xsl:value-of select="@revision"/></xsl:if>&amp;a=diff</xsl:attribute>(diff)</a>
                 <br />
             </xsl:if>
-<!--            
+            
             <input type="hidden" name="a" value="fullsearch" />
             <input type="text" name="txt" size="30" ondblclick='event.cancelBubble=true;' /> <input type="submit" value="Search"/>
--->
+
         </td>
       </tr>
     </table>
     </form>
+-->  
 <!--
     <xsl:if test="$showValidatorButtons='1'">    
       <br />
