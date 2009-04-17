@@ -620,12 +620,27 @@
 <xsl:template match="/ow:wiki" mode="print">
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-  <xsl:call-template name="nofollow_head"/>
-    <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-      <h1>
-      	<xsl:value-of select="$mainPageHeading"/>
-      </h1>
-      <xsl:apply-templates select="ow:page/ow:body"/>
+  <xsl:call-template name="nofollow_head_print"/>
+    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<div id="globalWrapper">
+			<div id="column-content">
+				<div id="content">
+					<a name="top" id="top"></a>
+					<div id="bodyContent">	
+						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
+						<xsl:apply-templates select="ow:page/ow:body"/>
+					</div>
+				</div>
+			</div>
+			<div id="column-one">
+				<xsl:call-template name="menu_column" />					
+			</div>
+			<div class="visualClear"></div>
+			<div id="footer">
+				<xsl:call-template name="poweredBy" />
+				<xsl:call-template name="footer_list" />
+			</div>
+		</div>
     </body>
   </html>
 </xsl:template>
