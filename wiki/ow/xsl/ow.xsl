@@ -13,6 +13,7 @@
 <xsl:include href="owattach.xsl"/>
 <xsl:include href="owconfig.xsl"/>
 <xsl:include href="mystyle.xsl"/>
+<xsl:include href="owhead.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
 
