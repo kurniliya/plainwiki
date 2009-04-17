@@ -89,7 +89,7 @@
 	</li>
 	<li id="ca-edit">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="@revision">&amp;revision=<xsl:value-of select="@revision"/></xsl:if></xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test="ow:page/@revision">&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if></xsl:attribute>
 			<xsl:attribute name="title">You can edit this page. &#10;Please use the preview button before saving. [e]</xsl:attribute>
 			<xsl:attribute name="accesskey">e</xsl:attribute>
 			Edit this page
@@ -166,8 +166,10 @@
 		</a>
 	</li>
 	<li id="t-print">
-		<a href="/w/index.php?title=Libretto&amp;printable=yes">
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:page/@revision"/>
+			</xsl:attribute>
 			<xsl:attribute name="rel">alternate</xsl:attribute>
 			<xsl:attribute name="title">Printable version of this page [p]</xsl:attribute>
 			<xsl:attribute name="accesskey">p</xsl:attribute>
@@ -177,7 +179,7 @@
 	<li id="t-viewxml">
 		<a>
 			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:change/@revision"/>
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:page/@revision"/>
 			</xsl:attribute>
 			View XML
 		</a>
