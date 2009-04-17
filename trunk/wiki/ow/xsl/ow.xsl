@@ -1066,32 +1066,41 @@
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="fullsearch">
-  <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-  <xsl:call-template name="nofollow_head"/>
-    <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-        <xsl:call-template name="brandingImage"/>
-        <h1>Full text search for "<xsl:value-of select="ow:fullsearch/@value"/>"</h1>
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        <hr size="1" />
-        <xsl:apply-templates select="ow:fullsearch"/>
-        <xsl:value-of select="count(ow:fullsearch/ow:page)"/> hits out of
-        <xsl:value-of select="ow:fullsearch/@pagecount"/> pages searched.
-
-        <form name="f" method="get">
-        <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-        <hr size="1" />
-        
-        <xsl:if test="$showBookmarksInFooter='1'">
-          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        </xsl:if>  
-          
-        <br />
-        <input type="hidden" name="a" value="fullsearch"/>
-        <input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:fullsearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
-        </form>
-    </body>
-  </html>
+	<xsl:call-template name="pi"/>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+		<xsl:call-template name="nofollow_head"/>
+		<body class="mediawiki ltr ns--1 ns-special page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+			<div id="globalWrapper">
+				<div id="column-content">
+					<div id="content">
+						<a name="top" id="top"></a>
+						<h1 id="firstHeading" class="firstHeading">Search results for "<xsl:value-of select="ow:fullsearch/@value"/>"</h1>
+						<div id="bodyContent">
+							<xsl:apply-templates select="ow:fullsearch"/>
+							<xsl:value-of select="count(ow:fullsearch/ow:page)"/> hits out of
+							<xsl:value-of select="ow:fullsearch/@pagecount"/> pages searched.
+							<p>
+								<form method="get">
+								<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
+								<br />
+								<input type="hidden" name="a" value="fullsearch"/>
+								<input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:fullsearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
+								</form>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div id="column-one">
+					<xsl:call-template name="menu_column" />					
+				</div>
+				<div class="visualClear"></div>
+				<div id="footer">
+					<xsl:call-template name="poweredBy" />
+					<xsl:call-template name="footer_list" />
+				</div>
+			</div>
+		</body>
+	</html>
 </xsl:template>
 
 <xsl:template match="ow:message">
