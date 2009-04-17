@@ -198,7 +198,7 @@
 		<title>
 			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
 		</title>
-		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
+		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" />
 		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
