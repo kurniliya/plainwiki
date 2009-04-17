@@ -473,7 +473,7 @@
 <xsl:template match="/ow:wiki" mode="edit">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff">
         <xsl:attribute name="onload">document.f.text.focus();</xsl:attribute>
 
@@ -623,7 +623,7 @@
 <xsl:template match="/ow:wiki" mode="print">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
       <h1>
       	<xsl:value-of select="$mainPageHeading"/>
@@ -665,7 +665,7 @@
 <xsl:template match="/ow:wiki" mode="diff">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
         <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
         <h1>
@@ -894,7 +894,7 @@
 <xsl:template match="ow:wiki" mode="changes">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <h1>History of "<xsl:value-of select="ow:page/ow:link/text()"/>"</h1>
         <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
@@ -1030,7 +1030,7 @@
 <xsl:template match="/ow:wiki" mode="titlesearch">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
         <h1>Title search for "<xsl:value-of select="ow:titlesearch/@value"/>"</h1>
@@ -1070,7 +1070,7 @@
 <xsl:template match="/ow:wiki" mode="fullsearch">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
         <h1>Full text search for "<xsl:value-of select="ow:fullsearch/@value"/>"</h1>
@@ -1179,7 +1179,7 @@
 <xsl:template match="/ow:wiki" mode="login">
   <xsl:call-template name="pi"/>
   <html>
-  <xsl:call-template name="head"/>
+  <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="this.document.f.pwd.focus();">
         <table width="100%" height="100%">
           <tr>
