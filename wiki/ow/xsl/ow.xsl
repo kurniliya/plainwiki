@@ -89,7 +89,7 @@
 
 <xsl:template match="/ow:wiki" mode="view">
 	<xsl:call-template name="pi"/>
-	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="head"/>
 		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="globalWrapper">
@@ -154,7 +154,7 @@
         <b>Showing revision <xsl:value-of select="@revision"/></b>
     </xsl:if>
 
-	<div id="bodyContent">
+	<div id="bodyContent">	
 		<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
 		<xsl:apply-templates select="ow:body"/>
 	</div>
@@ -464,7 +464,7 @@
 
 <xsl:template match="/ow:wiki" mode="edit">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff">
         <xsl:attribute name="onload">document.f.text.focus();</xsl:attribute>
@@ -612,7 +612,7 @@
 
 <xsl:template match="/ow:wiki" mode="print">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
       <h1>
@@ -625,7 +625,7 @@
 
 <xsl:template match="/ow:wiki" mode="naked">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
       <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
@@ -649,7 +649,7 @@
 
 <xsl:template match="/ow:wiki" mode="diff">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
         <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
@@ -872,7 +872,7 @@
 
 <xsl:template match="ow:wiki" mode="changes">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 		<div id="globalWrapper">
@@ -1007,7 +1007,7 @@
 
 <xsl:template match="/ow:wiki" mode="titlesearch">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
@@ -1045,7 +1045,7 @@
 
 <xsl:template match="/ow:wiki" mode="fullsearch">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
         <xsl:call-template name="brandingImage"/>
@@ -1151,7 +1151,7 @@
 
 <xsl:template match="/ow:wiki" mode="login">
   <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body bgcolor="#ffffff" onload="this.document.f.pwd.focus();">
         <table width="100%" height="100%">
