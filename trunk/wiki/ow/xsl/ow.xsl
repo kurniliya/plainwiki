@@ -120,7 +120,6 @@
 	 </html>
 </xsl:template>
 
-
 <xsl:template match="ow:page">
 	<a name="top" id="top"></a>
     <xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop">
@@ -288,7 +287,6 @@
     </xsl:if>
 </xsl:template>
 
-
 <!-- ==================== actual body of a page ==================== -->
 <xsl:template match="ow:body">
     <xsl:if test=".='' and not(/ow:wiki/@mode='embedded')">
@@ -306,7 +304,6 @@
         <xsl:with-param name="showactions">false</xsl:with-param>
     </xsl:apply-templates>
 </xsl:template>
-
 
 <!-- ==================== templates one can use to create a new page ==================== -->
 <xsl:template match="ow:templates">
@@ -330,12 +327,10 @@
     </li>
 </xsl:template>
 
-
 <!-- ==================== handles the openwiki-html element ==================== -->
 <xsl:template match="ow:html">
   <xsl:value-of select="." disable-output-escaping="yes" />
 </xsl:template>
-
 
 <!-- ==================== handles the openwiki-math element ==================== -->
 <xsl:template match="ow:math">
@@ -403,7 +398,6 @@
     <p/>
 </xsl:template>
 
-
 <!-- ==================== shows an error message ==================== -->
 <xsl:template match="ow:error">
     <li><font color="red"><xsl:value-of select="."/></font></li>
@@ -419,7 +413,6 @@
 <xsl:template match="ow:footnote">
     <br /><a name="#footnote{@index}"></a><sup>&#x20;&#x20;&#x20;<xsl:value-of select="@index"/>&#x20;</sup><xsl:apply-templates />
 </xsl:template>
-
 
 <!-- ==================== show an RSS feed ==================== -->
 <xsl:template match="ow:feed">
@@ -446,7 +439,6 @@
     </small>
 </xsl:template>
 
-
 <xsl:template match="ow:interlinks">
     <script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
       <xsl:text disable-output-escaping="yes">
@@ -469,7 +461,6 @@
       </xsl:for-each>
     </table>
 </xsl:template>
-
 
 <xsl:template match="/ow:wiki" mode="edit">
   <xsl:call-template name="pi"/>
@@ -619,8 +610,6 @@
   </html>
 </xsl:template>
 
-
-
 <xsl:template match="/ow:wiki" mode="print">
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
@@ -633,8 +622,6 @@
     </body>
   </html>
 </xsl:template>
-
-
 
 <xsl:template match="/ow:wiki" mode="naked">
   <xsl:call-template name="pi"/>
@@ -650,12 +637,9 @@
   </html>
 </xsl:template>
 
-
 <xsl:template match="/ow:wiki" mode="embedded">
     <xsl:apply-templates select="ow:page/ow:body"/>
 </xsl:template>
-
-
 
 <xsl:template match="ow:diff">
     <pre class="diff">
@@ -774,10 +758,6 @@
   </html>
 </xsl:template>
 
-
-
-
-
 <xsl:template match="ow:recentchanges" mode="shortversion">
     <table cellspacing="0" cellpadding="2" border="0">
     <xsl:for-each select="ow:page">
@@ -851,7 +831,6 @@
     </xsl:choose>
 </xsl:template>
 
-
 <xsl:template match="ow:recentchanges_original">
     <ul>
     <xsl:for-each select="ow:page">
@@ -891,62 +870,64 @@
     </ul>
 </xsl:template>
 
-
 <xsl:template match="ow:wiki" mode="changes">
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
-    <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-        <h1>History of "<xsl:value-of select="ow:page/ow:link/text()"/>"</h1>
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        <hr size="1" />
-        <ul>
-        <xsl:for-each select="ow:page/ow:change">
-            <li>
-                Revision:
-                <xsl:value-of select="@revision"/>
-                . .
-                <xsl:value-of select="ow:formatLongDate(string(ow:date))"/>
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="ow:formatTime(string(ow:date))"/>
-                <xsl:text> </xsl:text>
-                <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;revision=<xsl:value-of select="@revision"/></xsl:attribute>View</a>
-                <xsl:if test="position() > 1">
-                    (<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;difffrom=<xsl:value-of select="@revision"/></xsl:attribute>diff</a>)
-                </xsl:if>
-                . . . . . .
-                <xsl:choose>
-                  <xsl:when test="ow:by/@alias">
-                    <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(ow:by/@alias))"/></xsl:attribute><xsl:value-of select="ow:by/text()"/></a>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:value-of select="ow:by/@name"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <xsl:if test="ow:comment">
-                    <br />
-                    <xsl:text> </xsl:text>
-                    <span class="comment"><xsl:value-of select="ow:comment"/></span>
-                </xsl:if>
-            </li>
-        </xsl:for-each>
-        </ul>
-        <form name="f" method="get">
-        <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-        <hr size="1" />
-        
-        <xsl:if test="$showBookmarksInFooter='1'">
-          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        </xsl:if>  
-          
-        <br />
-        <input type="hidden" name="a" value="fullsearch"/>
-        <input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:titlesearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
-        </form>
+    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<div id="globalWrapper">
+			<div id="column-content">
+				<div id="content">
+					<a name="top" id="top"></a>
+					<h1 id="firstHeading" class="firstHeading">Revision history of <xsl:value-of select="ow:page/ow:link/text()"/></h1>
+					<div id="bodyContent">
+						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
+						<ul>
+						<xsl:for-each select="ow:page/ow:change">
+							<li>
+								Revision:
+								<xsl:value-of select="@revision"/>
+								. .
+								<xsl:value-of select="ow:formatLongDate(string(ow:date))"/>
+								<xsl:text> </xsl:text>
+								<xsl:value-of select="ow:formatTime(string(ow:date))"/>
+								<xsl:text> </xsl:text>
+								<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;revision=<xsl:value-of select="@revision"/></xsl:attribute>View</a>
+								<xsl:if test="position() > 1">
+									(<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;difffrom=<xsl:value-of select="@revision"/></xsl:attribute>diff</a>)
+								</xsl:if>
+								. . . . . .
+								<xsl:choose>
+								  <xsl:when test="ow:by/@alias">
+									<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(ow:by/@alias))"/></xsl:attribute><xsl:value-of select="ow:by/text()"/></a>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:value-of select="ow:by/@name"/>
+								  </xsl:otherwise>
+								</xsl:choose>
+								<xsl:if test="ow:comment">
+									<br />
+									<xsl:text> </xsl:text>
+									<span class="comment"><xsl:value-of select="ow:comment"/></span>
+								</xsl:if>
+							</li>
+						</xsl:for-each>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="column-one">
+				<xsl:call-template name="menu_column" />					
+			</div>
+			<div class="visualClear"></div>
+			<div id="footer">
+				<xsl:call-template name="poweredBy" />
+				<xsl:call-template name="footer_list" />
+			</div>					
+		</div>
       </body>
   </html>
 </xsl:template>
-
 
 <xsl:template match="ow:titleindex">
     <center>
@@ -968,7 +949,6 @@
         <br />
     </xsl:for-each>
 </xsl:template>
-
 
 <xsl:template match="ow:wordindex">
     <center>
@@ -997,7 +977,6 @@
     <xsl:text disable-output-escaping="yes">&lt;/ul&gt;</xsl:text>
 </xsl:template>
 
-
 <xsl:template match="ow:randompages">
     <xsl:choose>
         <xsl:when test='count(ow:page)=1'>
@@ -1013,7 +992,6 @@
     </xsl:choose>
 </xsl:template>
 
-
 <xsl:template match="ow:titlesearch">
     <ul>
     <xsl:for-each select="ow:page">
@@ -1026,7 +1004,6 @@
     </xsl:for-each>
     </ul>
 </xsl:template>
-
 
 <xsl:template match="/ow:wiki" mode="titlesearch">
   <xsl:call-template name="pi"/>
@@ -1053,7 +1030,6 @@
   </html>
 </xsl:template>
 
-
 <xsl:template match="ow:fullsearch">
     <ul>
     <xsl:for-each select="ow:page">
@@ -1066,7 +1042,6 @@
     </xsl:for-each>
     </ul>
 </xsl:template>
-
 
 <xsl:template match="/ow:wiki" mode="fullsearch">
   <xsl:call-template name="pi"/>
@@ -1097,7 +1072,6 @@
   </html>
 </xsl:template>
 
-
 <xsl:template match="ow:message">
     <xsl:if test="@code='userpreferences_saved'">
       <b>User preferences saved successfully.</b>
@@ -1106,7 +1080,6 @@
       <b>User preferences cleared successfully.</b>
     </xsl:if>
 </xsl:template>
-
 
 <xsl:template match="ow:userpreferences">
     <form name="f" method="post">
@@ -1175,7 +1148,6 @@
       <input type="hidden" name="a" value="userpreferences"/>
     </form>
 </xsl:template>
-
 
 <xsl:template match="/ow:wiki" mode="login">
   <xsl:call-template name="pi"/>
