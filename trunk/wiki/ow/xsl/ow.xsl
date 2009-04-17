@@ -466,7 +466,7 @@
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
-    <body bgcolor="#ffffff">
+    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
         <xsl:attribute name="onload">document.f.text.focus();</xsl:attribute>
 
         <script language="javascript" type="text/javascript" charset="{@encoding}">
@@ -528,84 +528,91 @@
 
           //--&gt;</xsl:text>
         </script>
-
-        <h1>Editing <xsl:if test="ow:page/@revision">revision <xsl:value-of select="ow:page/@revision"/> of </xsl:if><xsl:value-of select="ow:page/@name"/></h1>
-        <hr size="1" />
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;">Help</a>
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-        |
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;">Help On Formatting</a>
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-        |
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;">Help On Editing</a>
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-        |
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;">Help On Emoticons</a>
-        <a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-        <br />
-        <br />
-        <xsl:if test="ow:page/@revision">
-            <b>Editing old revision <xsl:value-of select="ow:page/@revision"/>. Saving this page will replace the latest revision with this text.</b>
-        </xsl:if>
-        <xsl:apply-templates select="ow:error"/>
-
-        <xsl:if test="ow:textedits">
-            <p>
-                The text you edited is shown below.
-                The text in the textarea box shows the latest version of this page.
-            </p>
-            <hr size="1" />
-            <pre><xsl:value-of select="ow:textedits"/></pre>
-            <hr size="1" />
-        </xsl:if>
-
-        <form name="f" method="post" onsubmit="setText(theTextAreaValue()); return true;">
-            <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
-            <input type="submit" name="save" value="Save" />
-            &#x20;
-            <input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-            <!-- <input type="submit" name="preview" value="Preview" /> -->
-            &#x20;
-            <input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
-            <br />
-            <br />
-            <textarea id="text" name="text" wrap="virtual" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
-            <input type="checkbox" name="rc" value="1">
-              <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
-                <xsl:attribute name="checked">checked</xsl:attribute>
-              </xsl:if>
-            </input>
-            Include page in
-            <a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;">Recent Changes</a>
-            <a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-            list.
-            <br />
-            <br />
-            Optional comment about this change:
-            <br />
-            <input type="text" name="comment" style="color:#333333; width:100%" maxlength="1000"><xsl:attribute name="size"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:attribute name="value"><xsl:value-of select="ow:page/ow:change/ow:comment/text()"/></xsl:attribute></input>
-            <br />
-            <input type="hidden" name="revision" value="{ow:page/@revision}" />
-            <input type="hidden" name="newrev" value="{ow:page/ow:change/@revision}" />
-            <input type="hidden" name="p" value="{$name}" />
-            <input type="submit" name="save" value="Save" />
-            &#x20;
-            <input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
-            <!-- <input type="submit" name="preview" value="Preview" /> -->
-            &#x20;
-            <input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
-        </form>
-
-        <xsl:if test="ow:page/ow:body">
-          <!-- this shows the preview, pre 0.74 versions -->
-             <a name="preview"/>
-             <hr size="1" />
-             <h1>Preview</h1>
-             <hr size="1" />
-             <xsl:apply-templates select="ow:page/ow:body"/>
-             <hr size="1" />
-          <!-- end preview -->
-        </xsl:if>
+		<div id="globalWrapper">
+		<div id="column-content">
+			<div id="content">
+				<a name="top" id="top"></a>
+					<h1 id="firstHeading" class="firstHeading">Editing <xsl:if test="ow:page/@revision">revision <xsl:value-of select="ow:page/@revision"/> of </xsl:if><xsl:value-of select="ow:page/@name"/></h1>
+<!--			
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;">Help</a>
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
+			|
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;">Help On Formatting</a>
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
+			|
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;">Help On Editing</a>
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
+			|
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;">Help On Emoticons</a>
+			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
+			<br />
+			<br />
+-->
+					<div id="bodyContent">
+						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
+						<xsl:if test="ow:page/@revision">
+							<b>Editing old revision <xsl:value-of select="ow:page/@revision"/>. Saving this page will replace the latest revision with this text.</b>
+						</xsl:if>
+						<xsl:apply-templates select="ow:error"/>
+				
+						<xsl:if test="ow:textedits">
+							<p>
+								The text you edited is shown below.
+								The text in the textarea box shows the latest version of this page.
+							</p>
+							<hr size="1" />
+							<pre><xsl:value-of select="ow:textedits"/></pre>
+							<hr size="1" />
+						</xsl:if>
+				
+						<form name="f" method="post" onsubmit="setText(theTextAreaValue()); return true;">
+							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
+							<input type="submit" name="save" value="Save" />
+							&#x20;
+							<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
+							<!-- <input type="submit" name="preview" value="Preview" /> -->
+							&#x20;
+							<input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							<br />
+							<br />
+							<textarea id="text" name="text" wrap="virtual" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
+							<input type="checkbox" name="rc" value="1">
+							  <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
+								<xsl:attribute name="checked">checked</xsl:attribute>
+							  </xsl:if>
+							</input>
+							Include page in
+							<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;">Recent Changes</a>
+							<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
+							list.
+							<br />
+							<br />
+							Optional comment about this change:
+							<br />
+							<input type="text" name="comment" style="color:#333333; width:100%" maxlength="1000"><xsl:attribute name="size"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:attribute name="value"><xsl:value-of select="ow:page/ow:change/ow:comment/text()"/></xsl:attribute></input>
+							<br />
+							<input type="hidden" name="revision" value="{ow:page/@revision}" />
+							<input type="hidden" name="newrev" value="{ow:page/ow:change/@revision}" />
+							<input type="hidden" name="p" value="{$name}" />
+							<input type="submit" name="save" value="Save" />
+							&#x20;
+							<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
+							<!-- <input type="submit" name="preview" value="Preview" /> -->
+							&#x20;
+							<input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="column-one">
+				<xsl:call-template name="menu_column" />					
+			</div>
+			<div class="visualClear"></div>
+			<div id="footer">
+				<xsl:call-template name="poweredBy" />
+				<xsl:call-template name="footer_list" />
+			</div>
+		</div>
     </body>
   </html>
 </xsl:template>
