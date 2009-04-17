@@ -194,9 +194,11 @@
 
 <xsl:template name="footer_list_lastmod">
 	<li id="lastmod">
-        <xsl:if test="not(ow:page/@changes='0')">
-              This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>, at <xsl:value-of select="ow:formatTime(string(ow:page/ow:change/ow:date))"/>
-        </xsl:if>
+		<xsl:if test="ow:page/@changes">
+			<xsl:if test="not(ow:page/@changes='0')">
+				  This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>, at <xsl:value-of select="ow:formatTime(string(ow:page/ow:change/ow:date))"/>
+			</xsl:if>
+		</xsl:if>
 	</li>
 </xsl:template>
 
