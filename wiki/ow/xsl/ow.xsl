@@ -670,114 +670,97 @@
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="diff">
-  <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-  <xsl:call-template name="nofollow_head"/>
-        <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-        <xsl:call-template name="brandingImage"/>
-        <h1>
-          <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true" title="Do a full text search for {ow:page/ow:link/text()}">
-            <xsl:value-of select="ow:page/ow:link/text()"/>
-          </a>
-        </h1>
-        <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        <hr noshade="noshade" size="1" />
-
-        <xsl:choose>
-            <xsl:when test="ow:diff = ''">
-                <b>No difference available. This is the first <xsl:value-of select="ow:diff/@type"/> revision.</b>
-                <hr noshade="noshade" size="1"/>
-                <xsl:apply-templates select="ow:trail"/>
-                <xsl:if test='ow:page/@revision'>
-                    <b>Showing revision <xsl:value-of select="ow:page/@revision"/></b>
-                    <p></p>
-                </xsl:if>
-                <xsl:apply-templates select="ow:page/ow:body"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:if test="not(ow:diff/@type='selected')">
-                    <b>Difference from prior <xsl:value-of select="ow:diff/@type"/>
-                    revision<xsl:if test="not(ow:diff/@to = ow:page/@lastminor)"> relative to revision
-                    <xsl:value-of select="ow:diff/@to"/>
-                    </xsl:if>.</b>
-                </xsl:if>
-                <xsl:if test="ow:diff/@type='selected'">
-                    <b>Difference from revision <xsl:value-of select="ow:diff/@from"/> to
-                    <xsl:choose>
-                        <xsl:when test="ow:diff/@to = ow:page/@lastminor">
-                            the current revision.
-                        </xsl:when>
-                        <xsl:otherwise>
-                            revision <xsl:value-of select="ow:diff/@to"/>.
-                        </xsl:otherwise>
-                    </xsl:choose>
-                    </b>
-                </xsl:if>
-                <br />
-                <xsl:if test="not(ow:diff/@type='major')">
-                    <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff</xsl:attribute>major diff</a>
-                    <xsl:text> </xsl:text>
-                </xsl:if>
-                <xsl:if test="not(ow:diff/@type='minor')">
-                    <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;diff=1</xsl:attribute>minor diff</a>
-                    <xsl:text> </xsl:text>
-                </xsl:if>
-                <xsl:if test="not(ow:diff/@type='author')">
-                    <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;diff=2</xsl:attribute>author diff</a>
-                    <xsl:text> </xsl:text>
-                </xsl:if>
-                <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="ow:diff/@to">&amp;revision=<xsl:value-of select="ow:diff/@to"/></xsl:if></xsl:attribute>hide diff</a>
-                <p></p>
-                <xsl:apply-templates select="ow:diff"/>
-            </xsl:otherwise>
-        </xsl:choose>
-
-        <form name="f" method="get">
-        <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-        <hr size="1" />
-
-        <xsl:if test="$showBookmarksInFooter='1'">
-          <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        </xsl:if>
-
-        <br />
-        <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if></xsl:attribute>Edit <xsl:if test='ow:page/@revision'>revision <xsl:value-of select="ow:page/@revision"/> of</xsl:if> this page</a>
-        <xsl:if test="ow:page/@revision or (ow:page/ow:change and not(ow:page/ow:change/@revision = 1))">
-            |
-            <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=changes</xsl:attribute>View other revisions</a>
-        </xsl:if>
-        <xsl:if test='ow:page/@revision'>
-            |
-            <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/></xsl:attribute>View current revision</a>
-        </xsl:if>
-            |
-            <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true">
-                  Referencing pages
-            </a>
-            |
-            <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=print&amp;revision=<xsl:value-of select="ow:change/@revision"/></xsl:attribute>Printable version
-            </a>
-        <br />
-
-        <xsl:if test="$showThirdLineInFooter='1'">
-            <a class="same"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;revision=<xsl:value-of select="ow:change/@revision"/>&amp;xml=1</xsl:attribute>View XML</a>
-          <br />
-          
-          <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=FindPage&amp;txt=<xsl:value-of select="$name"/></xsl:attribute>Find page</a> by browsing, searching or an index
-          <br />
-        </xsl:if>
-
-        <xsl:if test="not(ow:page/@changes='0')">
-            This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
-            <xsl:text> </xsl:text>
-            <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="ow:diff/@to">&amp;revision=<xsl:value-of select="ow:diff/@to"/></xsl:if></xsl:attribute>(hide diff)</a>
-            <br />
-        </xsl:if>
-        <input type="hidden" name="a" value="fullsearch"/>
-        <input type="text" name="txt" size="30"/> <input type="submit" value="Search"/>
-        </form>
-        </body>
-  </html>
+	<xsl:call-template name="pi"/>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+		<xsl:call-template name="nofollow_head"/>
+		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+			<div id="globalWrapper">
+				<div id="column-content">
+					<div id="content">
+						<a name="top" id="top"></a>			
+						<h1>
+						  <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true" title="Do a full text search for {ow:page/ow:link/text()}">
+							<xsl:value-of select="ow:page/ow:link/text()"/>
+						  </a>
+						</h1>
+						<xsl:choose>
+							<xsl:when test="ow:diff = ''">
+								<b>No difference available. This is the first <xsl:value-of select="ow:diff/@type"/> revision.</b>
+								<hr noshade="noshade" size="1"/>
+								<xsl:apply-templates select="ow:trail"/>
+								<xsl:if test='ow:page/@revision'>
+									<b>Showing revision <xsl:value-of select="ow:page/@revision"/></b>
+									<p></p>
+								</xsl:if>
+								<xsl:apply-templates select="ow:page/ow:body"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:if test="not(ow:diff/@type='selected')">
+									<b>Difference from prior <xsl:value-of select="ow:diff/@type"/>
+									revision<xsl:if test="not(ow:diff/@to = ow:page/@lastminor)"> relative to revision
+									<xsl:value-of select="ow:diff/@to"/>
+									</xsl:if>.</b>
+								</xsl:if>
+								<xsl:if test="ow:diff/@type='selected'">
+									<b>Difference from revision <xsl:value-of select="ow:diff/@from"/> to
+									<xsl:choose>
+										<xsl:when test="ow:diff/@to = ow:page/@lastminor">
+											the current revision.
+										</xsl:when>
+										<xsl:otherwise>
+											revision <xsl:value-of select="ow:diff/@to"/>.
+										</xsl:otherwise>
+									</xsl:choose>
+									</b>
+								</xsl:if>
+								<br />
+								<xsl:if test="not(ow:diff/@type='major')">
+									<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff</xsl:attribute>major diff</a>
+									<xsl:text> </xsl:text>
+								</xsl:if>
+								<xsl:if test="not(ow:diff/@type='minor')">
+									<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;diff=1</xsl:attribute>minor diff</a>
+									<xsl:text> </xsl:text>
+								</xsl:if>
+								<xsl:if test="not(ow:diff/@type='author')">
+									<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=diff&amp;diff=2</xsl:attribute>author diff</a>
+									<xsl:text> </xsl:text>
+								</xsl:if>
+								<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="ow:diff/@to">&amp;revision=<xsl:value-of select="ow:diff/@to"/></xsl:if></xsl:attribute>hide diff</a>
+								<p></p>
+								<xsl:apply-templates select="ow:diff"/>
+							</xsl:otherwise>
+						</xsl:choose>
+				
+						<form name="f" method="get">
+						<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
+						<hr size="1" />
+				
+						<xsl:if test="$showBookmarksInFooter='1'">
+						  <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
+						</xsl:if>				
+						<xsl:if test="not(ow:page/@changes='0')">
+							This page was last modified on <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>
+							<xsl:text> </xsl:text>
+							<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/><xsl:if test="ow:diff/@to">&amp;revision=<xsl:value-of select="ow:diff/@to"/></xsl:if></xsl:attribute>(hide diff)</a>
+							<br />
+						</xsl:if>
+						<input type="hidden" name="a" value="fullsearch"/>
+						<input type="text" name="txt" size="30"/> <input type="submit" value="Search"/>
+						</form>
+					</div>
+				</div>
+				<div id="column-one">
+					<xsl:call-template name="menu_column" />					
+				</div>
+				<div class="visualClear"></div>
+				<div id="footer">
+					<xsl:call-template name="poweredBy" />
+					<xsl:call-template name="footer_list" />
+				</div>
+			 </div>				
+		</body>
+	</html>
 </xsl:template>
 
 <xsl:template match="ow:recentchanges" mode="shortversion">
