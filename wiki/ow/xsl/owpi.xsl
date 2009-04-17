@@ -5,6 +5,7 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
+<xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
 <xsl:template name="pi">
   <xsl:text disable-output-escaping="yes">&lt;?xml version="1.0" encoding="</xsl:text><xsl:value-of select="@encoding"/><xsl:text disable-output-escaping="yes">"?>
