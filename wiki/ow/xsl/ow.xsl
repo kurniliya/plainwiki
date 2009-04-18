@@ -455,7 +455,7 @@
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
-        <xsl:attribute name="onload">document.f.text.focus();</xsl:attribute>
+        <xsl:attribute name="onload">document.editform.text.focus();</xsl:attribute>
 
         <script language="javascript" type="text/javascript" charset="{@encoding}">
           <xsl:text disable-output-escaping="yes">&lt;!--
@@ -537,8 +537,28 @@
 							<pre><xsl:value-of select="ow:textedits"/></pre>
 							<hr size="1" />
 						</xsl:if>
+
+						<div id='toolbar'>
+							<script type='text/javascript'>
+								<xsl:text disable-output-escaping="yes">
+									/*&lt;![CDATA[*/</xsl:text>
+								addButton("/wiki/ow/skins/common/images/button_bold.png","Bold text","\'\'\'","\'\'\'","Bold text","mw-editbutton-bold");
+								addButton("/wiki/ow/skins/common/images/button_italic.png","Italic text","\'\'","\'\'","Italic text","mw-editbutton-italic");
+								addButton("/wiki/ow/skins/common/images/button_link.png","Internal link","[[","]]","Link title","mw-editbutton-link");
+								addButton("/wiki/ow/skins/common/images/button_extlink.png","External link (remember http:// prefix)","[","]","http://www.example.com link title","mw-editbutton-extlink");
+								addButton("/wiki/ow/skins/common/images/button_headline.png","Level 2 headline","\n== "," ==\n","Headline text","mw-editbutton-headline");
+								addButton("/wiki/ow/skins/common/images/button_image.png","Embedded file","[[File:","]]","Example.jpg","mw-editbutton-image");
+								addButton("/wiki/ow/skins/common/images/button_media.png","File link","[[Media:","]]","Example.ogg","mw-editbutton-media");
+								addButton("/wiki/ow/skins/common/images/button_math.png","Mathematical formula (LaTeX)","\x3cmath\x3e","\x3c/math\x3e","Insert formula here","mw-editbutton-math");
+								addButton("/wiki/ow/skins/common/images/button_nowiki.png","Ignore wiki formatting","\x3cnowiki\x3e","\x3c/nowiki\x3e","Insert non-formatted text here","mw-editbutton-nowiki");
+								addButton("/wiki/ow/skins/common/images/button_sig.png","Your signature with timestamp","--~~~~","","","mw-editbutton-signature");
+								addButton("/wiki/ow/skins/common/images/button_hr.png","Horizontal line (use sparingly)","\n----\n","","","mw-editbutton-hr");
+								<xsl:text disable-output-escaping="yes">
+									/*]]&gt;*/</xsl:text>
+							</script>
+						</div>
 				
-						<form name="f" method="post" onsubmit="setText(theTextAreaValue()); return true;">
+						<form id="editform" name="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
 							<input type="submit" name="save" value="Save" />
 							&#x20;

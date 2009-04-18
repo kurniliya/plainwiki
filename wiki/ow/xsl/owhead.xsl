@@ -54,8 +54,7 @@
 
 		<script type= "text/javascript">
 			<xsl:text disable-output-escaping="yes">
-				/*&lt;![CDATA[*/
-			</xsl:text>
+				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
 			var stylepath = "/skins-1.5";
 			var wgArticlePath = "/wiki/$1";
@@ -90,12 +89,14 @@
 			var wgRestrictionEdit = [];
 			var wgRestrictionMove = ["sysop"];
 			<xsl:text disable-output-escaping="yes">
-				/*]]&gt;*/
-			</xsl:text>
+				/*]]&gt;*/</xsl:text>
 		</script>
 
 		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
 		</script>
+		<script type="text/javascript" src="ow/js/edit.js?207xx">
+		</script>
+
 	</head>
 </xsl:template>
 
@@ -144,8 +145,7 @@
 
 		<script type= "text/javascript">
 			<xsl:text disable-output-escaping="yes">
-				/*&lt;![CDATA[*/
-			</xsl:text>
+				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
 			var stylepath = "/skins-1.5";
 			var wgArticlePath = "/wiki/$1";
@@ -180,11 +180,12 @@
 			var wgRestrictionEdit = [];
 			var wgRestrictionMove = ["sysop"];
 			<xsl:text disable-output-escaping="yes">
-				/*]]&gt;*/
-			</xsl:text>
+				/*]]&gt;*/</xsl:text>
 		</script>
 
 		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
+		</script>
+		<script type="text/javascript" src="ow/js/edit.js?207xx">
 		</script>
 	</head>
 </xsl:template>
@@ -212,8 +213,7 @@
 
 		<script type= "text/javascript">
 			<xsl:text disable-output-escaping="yes">
-				/*&lt;![CDATA[*/
-			</xsl:text>
+				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
 			var stylepath = "/skins-1.5";
 			var wgArticlePath = "/wiki/$1";
@@ -248,12 +248,13 @@
 			var wgRestrictionEdit = [];
 			var wgRestrictionMove = ["sysop"];
 			<xsl:text disable-output-escaping="yes">
-				/*]]&gt;*/
-			</xsl:text>
+				/*]]&gt;*/</xsl:text>
 		</script>
 
 		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
 		</script>
+		<script type="text/javascript" src="ow/js/edit.js?207xx">
+		</script>	
 	</head>
 </xsl:template>
 
