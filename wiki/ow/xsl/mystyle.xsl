@@ -148,6 +148,12 @@
 			Recent changes
 		</a>
 	</li>
+	<li id="n-todolist">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?ToDo</xsl:attribute>
+			To do list
+		</a>
+	</li>
 	<li id="n-help">
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=Help</xsl:attribute>
