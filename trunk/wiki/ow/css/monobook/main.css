@@ -937,6 +937,7 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 	padding: .4em 0 1.2em 0;
 	text-align: center;
 	font-size: 90%;
+	height: 89px;	
 }
 #footer li {
 	display: inline;

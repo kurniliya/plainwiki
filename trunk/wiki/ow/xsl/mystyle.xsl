@@ -43,6 +43,13 @@
 	</a>
 </div>
 
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<xsl:call-template name="menu_section_search" />
+		</div>
+	</div>
+
 	<div class='generated-sidebar portlet' id='p-navigation'>
 		<h5>Navigation</h5>
 		<div class='pBody'>
@@ -52,13 +59,6 @@
 		</div>
 	</div>
 
-	<div id="p-search" class="portlet">
-		<h5><label for="searchInput">Search</label></h5>
-		<div id="searchBody" class="pBody">
-			<xsl:call-template name="menu_section_search" />
-		</div>
-	</div>
-	
 	<div class='generated-sidebar portlet' id='p-interaction'>
 		<h5>Interaction</h5>
 		<div class='pBody'>
@@ -73,6 +73,15 @@
 		<div class="pBody">
 			<ul>
 				<xsl:call-template name="menu_section_toolbox" />
+			</ul>
+		</div>
+	</div>
+
+	<div class="portlet" id="p-editorial">
+		<h5>For editors</h5>
+		<div class="pBody">
+			<ul>
+				<xsl:call-template name="menu_section_foreditors" />
 			</ul>
 		</div>
 	</div>
@@ -105,6 +114,19 @@
 	</li>		
 </xsl:template>
 
+<xsl:template name="menu_section_search">
+	<form method="get" id="searchform">
+		<xsl:attribute name="action">
+			<xsl:value-of select="/ow:wiki/ow:scriptname"/>
+		</xsl:attribute>
+		<div>
+			<input type="hidden" name="a" value="fullsearch" />
+            <input  type="text" name="txt"  class="searchButton" id="searchInput" size="30" ondblclick='event.cancelBubble=true;' /> 
+            <input type="submit"  class="searchButton" id="mw-searchButton"  value="Search"/>
+        </div>
+    </form>
+</xsl:template>
+
 <xsl:template name="menu_section_navigation">
 	<li id="n-mainpage-description">
 		<a>
@@ -126,17 +148,44 @@
 	</li>	
 </xsl:template>
 
-<xsl:template name="menu_section_search">
-	<form method="get" id="searchform">
-		<xsl:attribute name="action">
-			<xsl:value-of select="/ow:wiki/ow:scriptname"/>
-		</xsl:attribute>
-		<div>
-			<input type="hidden" name="a" value="fullsearch" />
-            <input  type="text" name="txt"  class="searchButton" id="searchInput" size="30" ondblclick='event.cancelBubble=true;' /> 
-            <input type="submit"  class="searchButton" id="mw-searchButton"  value="Search"/>
-        </div>
-    </form>
+<xsl:template name="menu_section_foreditors">
+	<li id="n-help">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=Help</xsl:attribute>
+			<xsl:attribute name="title">Guidance on how to use and edit this wiki</xsl:attribute>
+			Help
+		</a>
+	</li>
+	<li id="t-sandbox">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Sandbox
+			</xsl:attribute>
+			Sandbox
+		</a>
+	</li>
+	<li id="t-createpage">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?CreatePage
+			</xsl:attribute>
+			Create new page
+		</a>
+	</li>
+	<li id="n-todolist">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?ToDo</xsl:attribute>
+			To do list
+		</a>
+	</li>	
+	<li id="t-viewxml">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:page/@revision"/>
+			</xsl:attribute>
+			View XML
+		</a>
+	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_interaction">
@@ -146,19 +195,6 @@
 			<xsl:attribute name="title">The list of recent changes in the wiki [r]</xsl:attribute>
 			<xsl:attribute name="accesskey">r	</xsl:attribute>
 			Recent changes
-		</a>
-	</li>
-	<li id="n-todolist">
-		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?ToDo</xsl:attribute>
-			To do list
-		</a>
-	</li>
-	<li id="n-help">
-		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=Help</xsl:attribute>
-			<xsl:attribute name="title">Guidance on how to use and edit this wiki</xsl:attribute>
-			Help
 		</a>
 	</li>
 </xsl:template>
@@ -182,36 +218,20 @@
 			Printable version
 		</a>
 	</li>	
-	<li id="t-viewxml">
-		<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:page/@revision"/>
-			</xsl:attribute>
-			View XML
-		</a>
-	</li>
-	<li id="t-sandbox">
-		<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Sandbox
-			</xsl:attribute>
-			Sandbox
-		</a>
-	</li>
-	<li id="t-sandbox">
-		<a>
-			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?CreatePage
-			</xsl:attribute>
-			Create new page
-		</a>
-	</li>
 </xsl:template>
 
 <xsl:template name="footer_list">
 	<ul id="f-list">
 		<xsl:call-template name="footer_list_lastmod" />
 	</ul>
+</xsl:template>
+
+<xsl:template name="copyright_ico">
+	<div id="f-copyrightico">
+		<a href="http://www.mephi.ru/">
+			<img src="{/ow:wiki/ow:imagepath}/mephi.gif" border="0"  width="100" height="100" alt="Moscow Engineering Physics Institute"/>
+		</a>
+	</div>
 </xsl:template>
 
 <xsl:template name="footer_list_lastmod">
