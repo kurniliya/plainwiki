@@ -17,6 +17,7 @@
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="ROBOTS" content="INDEX,FOLLOW" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
 			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
 		</title>
@@ -106,6 +107,7 @@
 		<meta name="keywords" content="math, partial differential equations, mephi" />
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
 			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
 		</title>
@@ -195,6 +197,7 @@
 		<meta name="keywords" content="math, partial differential equations, mephi" />
 		<meta name="description" content="NEQwiki - encyclopedia of nonlinear differential equations" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
+		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
 			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
 		</title>
