@@ -176,6 +176,14 @@
 			Printable version
 		</a>
 	</li>	
+	<li id="t-sandbox">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Sandbox
+			</xsl:attribute>
+			Sandbox
+		</a>
+	</li>
 	<li id="t-viewxml">
 		<a>
 			<xsl:attribute name="href">
