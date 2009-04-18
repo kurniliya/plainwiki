@@ -595,9 +595,6 @@ Sub StoreHref(pAnchor, pText)
         vLink = vLink & " class=""external"""
     End If
     vLink = vLink & ">"
-    If cUseLinkIcons Then
-        vLink = vLink & "<img src=""" & OPENWIKI_ICONPATH & "/wiki-http.gif"" border=""0"" hspace=""4"" alt=""""/>"
-    End If
     vLink = vLink & pText & "</a>"
     StoreRaw(vLink)
 End Sub
@@ -934,8 +931,9 @@ Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
         Dim vScheme, vImg, vPos
         vPos = Instr(pURL, ":")
         vScheme = Left(pURL, vPos - 1)
-        vImg = "/wiki-" & vScheme & ".gif"" width=""12"" height=""12"""
-        vLink = vLink & "<img src=""" & OPENWIKI_ICONPATH & vImg & " border=""0"" hspace=""4"" alt=""""/>" & pText
+'        vImg = "/wiki-" & vScheme & ".gif"" width=""12"" height=""12"""
+'        vLink = vLink & "<img src=""" & OPENWIKI_ICONPATH & vImg & " border=""0"" hspace=""4"" alt=""""/>" & pText
+		vLink = vLink & pText
     Else
         If vLinkedImage Then
             vLink = vLink & pText

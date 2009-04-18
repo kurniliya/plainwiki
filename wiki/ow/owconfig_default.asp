@@ -57,7 +57,7 @@ cFreeLinks            = 1        ' 1 = use [[word]] links    0 = LinkPattern onl
 cWikiLinks            = 1        ' 1 = use LinkPattern       0 = possibly allow [[word]] only
 cAcronymLinks         = 1        ' 1 = link acronyms         0 = do not link 3 or more capitalized characters
 cTemplateLinking      = 1        ' 1 = allow TemplateName->WikiLink   0 = don't do template linking
-cRawHtml              = 0        ' 1 = allow <html> tag      0 = no raw HTML in pages
+cRawHtml              = 1        ' 1 = allow <html> tag      0 = no raw HTML in pages
 cMathML               = 1        ' 1 = allow <math> tag      0 = no raw math in pages
 cHtmlTags             = 0        ' 1 = "unsafe" HTML tags    0 = only minimal tags
 cCacheXSL             = 0        ' 1 = cache stylesheet      0 = don't cache stylesheet
@@ -69,9 +69,9 @@ cEmbeddedMode         = 0        ' 1 = embed the wiki into another app    0 = pr
 cAllowAttachments     = 0        ' 1 = allow attachments     0 = do not allow attachments (WARNING: Allowing attachments poses a security risk!! See file owattach.asp)
 
 ' Minor system options
-cSimpleLinks          = 1        ' 1 = only letters,         0 = allow _ and numbers
+cSimpleLinks          = 0        ' 1 = only letters,         0 = allow _ and numbers
 cNonEnglish           = 1        ' 1 = extra link chars,     0 = only A-Za-z chars
-cNetworkFile          = 0        ' 1 = allow remote file:    0 = no file:// links
+cNetworkFile          = 1        ' 1 = allow remote file:    0 = no file:// links
 cBracketText          = 1        ' 1 = allow [URL text]      0 = no link descriptions
 cBracketIndex         = 1        ' 1 = [URL] -> [<index>]    0 = [URL] -> [URL]
 cHtmlLinks            = 0        ' 1 = allow A HREF links    0 = no raw HTML links
