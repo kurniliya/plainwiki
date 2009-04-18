@@ -113,6 +113,7 @@
 				<div class="visualClear"></div>
 				<div id="footer">
 					<xsl:call-template name="poweredBy" />
+					<xsl:call-template name="copyright_ico" />					
 					<xsl:call-template name="footer_list" />
 				</div>
 			 </div>
