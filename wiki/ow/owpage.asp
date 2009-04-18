@@ -386,7 +386,7 @@ Class Change
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
-        gLastModified = FormatDateISO8601(vTimestamp)
+        gLastModified = vTimestamp
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
         End If
@@ -553,7 +553,7 @@ Class Attachment
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
-        gLastModified = FormatDateISO8601(vTimestamp)
+        gLastModified = vTimestamp
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
         End If
@@ -633,7 +633,7 @@ Class AttachmentChange
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
-        gLastModified = FormatDateISO8601(vTimestamp)        
+        gLastModified = vTimestamp        
         If vAction <> "" Then
             ToXML = ToXML & "<ow:action>" & PCDATAEncode(vAction) & "</ow:action>"
         End If
