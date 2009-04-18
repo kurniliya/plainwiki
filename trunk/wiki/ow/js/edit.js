@@ -62,7 +62,7 @@ function mwSetupToolbar() {
 function insertTags(tagOpen, tagClose, sampleText) {
 	var txtarea;
 	if (document.editform) {
-		txtarea = document.editform.wpTextbox1;
+		txtarea = document.editform.text;
 	} else {
 		// some alternate form? take the first one we can find
 		var areas = document.getElementsByTagName('textarea');
@@ -141,14 +141,14 @@ function insertTags(tagOpen, tagClose, sampleText) {
  * and set up a form submission handler to remember this state
  */
 function scrollEditBox() {
-	var editBox = document.getElementById( 'wpTextbox1' );
+	var editBox = document.getElementById( 'text' );
 	var scrollTop = document.getElementById( 'wpScrolltop' );
 	var editForm = document.getElementById( 'editform' );
 	if( editBox && scrollTop ) {
 		if( scrollTop.value )
 			editBox.scrollTop = scrollTop.value;
 		addHandler( editForm, 'submit', function() {
-			document.getElementById( 'wpScrolltop' ).value = document.getElementById( 'wpTextbox1' ).scrollTop; 
+			document.getElementById( 'wpScrolltop' ).value = document.getElementById( 'text' ).scrollTop; 
 		} );
 	}
 }
