@@ -45,6 +45,7 @@ Dim gRevision            ' revision of page to be worked on
 Dim gAction              ' action
 Dim gTxt                 ' text value passed to input boxes
 
+Dim gLastModified        ' last-modified date of page to be worked on
 Dim gServerRoot          ' URL path to script
 Dim gScriptName          ' Name of this script
 Dim gTransformer         ' transformer of XML data
