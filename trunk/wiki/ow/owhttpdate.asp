@@ -4,7 +4,7 @@
 ' Converts date (19991022 11:08:38)
 ' to http form (Fri, 22 Oct 1999 12:08:38 GMT)
 function DateToHTTPDate(ByVal OleDATE)
-  OleDATE = OleDATE
+  OleDATE = OleDATE - #04:00:00#
 	DateToHTTPDate = engWeekDayName(OleDATE) & _
 	", " & Right("0" & Day(OleDATE),2) & " " & engMonthName(OleDATE) & _
 	" " & Year(OleDATE) & " " & Right("0" & Hour(OleDATE),2) & _
