@@ -233,19 +233,6 @@
     </table>
     </form>
 -->  
-<!--
-    <xsl:if test="$showValidatorButtons='1'">    
-      <br />
-      <br />
-      <xsl:call-template name="validatorButtons"/>    
-    </xsl:if>
-    
-    <xsl:if test="$showPoweredBy='1'">    
-      <br />
-      <br />
-      <xsl:call-template name="poweredBy"/>
-    </xsl:if>
--->    
 </xsl:template>
 
 <!-- ==================== wiki link to an existing page ==================== -->
@@ -533,21 +520,6 @@
 			<div id="content">
 				<a name="top" id="top"></a>
 					<h1 id="firstHeading" class="firstHeading">Editing <xsl:if test="ow:page/@revision">revision <xsl:value-of select="ow:page/@revision"/> of </xsl:if><xsl:value-of select="ow:page/@name"/></h1>
-<!--			
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;">Help</a>
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=Help" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=Help&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-			|
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;">Help On Formatting</a>
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnFormatting" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnFormatting&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-			|
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;">Help On Editing</a>
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEditing" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEditing&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-			|
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;">Help On Emoticons</a>
-			<a class="same" href="{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=HelpOnEmoticons&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-			<br />
-			<br />
--->
 					<div id="bodyContent">
 						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
 						<xsl:if test="ow:page/@revision">
@@ -646,17 +618,15 @@
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="naked">
-  <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-  <xsl:call-template name="head"/>
-    <body bgcolor="#ffffff" onload="window.defaultStatus='{$brandingText}'">
-      <xsl:attribute name="ondblclick">location.href='<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
-      <h2>
-        <a name="h0" class="same"><xsl:value-of select="ow:page/ow:link"/></a>
-      </h2>
-      <xsl:apply-templates select="ow:page/ow:body"/>
-    </body>
-  </html>
+<xsl:call-template name="pi"/>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+		<xsl:call-template name="nofollow_head"/>
+		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+			<div id="globalWrapper">
+				<xsl:apply-templates select="ow:page/ow:body"/>
+			</div>
+		</body>
+	</html>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="embedded">

@@ -147,7 +147,7 @@ Sub ActionPreview
     Dim vPage
     Set vPage = gNamespace.GetPage(gPage, 0, False, False)
     vPage.Text = Request("text")
-    gAction = "print"
+    gAction = "naked"
     Call gTransformer.Transform(vPage.ToXML(1))
     gActionReturn = True
 End Sub
