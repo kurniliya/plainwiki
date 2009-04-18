@@ -16,6 +16,7 @@
 <!-- #include file="owrss.asp"            //-->
 <!-- #include file="owauth.asp"           //-->
 <!-- #include file="owtransformer.asp"    //-->
+<!-- #include file="owhttpdate.asp"       //-->
 
 
 <%' scripts that each can be used on their own %>
