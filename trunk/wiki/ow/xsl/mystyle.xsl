@@ -182,6 +182,14 @@
 			Printable version
 		</a>
 	</li>	
+	<li id="t-viewxml">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:page/@revision"/>
+			</xsl:attribute>
+			View XML
+		</a>
+	</li>
 	<li id="t-sandbox">
 		<a>
 			<xsl:attribute name="href">
@@ -190,12 +198,12 @@
 			Sandbox
 		</a>
 	</li>
-	<li id="t-viewxml">
+	<li id="t-sandbox">
 		<a>
 			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=xml&amp;revision=<xsl:value-of select="ow:page/@revision"/>
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?CreatePage
 			</xsl:attribute>
-			View XML
+			Create new page
 		</a>
 	</li>
 </xsl:template>
