@@ -220,7 +220,11 @@ Class Transformer
 
             If cEmbeddedMode = 0 Then
                 If gAction = "edit" Then
-                    Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
+					if cUseXhtmlHttpHeaders Then
+						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+					Else
+						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
+					End If               
                     Response.Expires = 0   ' expires in a minute
                 Elseif gAction = "rss" Then
                     Response.ContentType = "text/xml; charset:" & OPENWIKI_ENCODING & ";"

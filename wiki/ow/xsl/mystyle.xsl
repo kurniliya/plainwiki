@@ -8,7 +8,7 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
-<xsl:variable name="brandingText">NEQwiki - ecnyclopedia of nonlinear differential equations.</xsl:variable>
+<xsl:variable name="brandingText">NEQwiki - the ecnyclopedia of nonlinear differential equations.</xsl:variable>
 
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
