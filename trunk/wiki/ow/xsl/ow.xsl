@@ -347,7 +347,7 @@
 			</td>
 		</tr>
 	</table>
-	<script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
+	<script type="text/javascript" charset="{/ow:wiki/@encoding}">
 		<xsl:text disable-output-escaping="yes">
 			 if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
 		</xsl:text>
@@ -428,7 +428,7 @@
 </xsl:template>
 
 <xsl:template match="ow:interlinks">
-    <script language="javascript" type="text/javascript" charset="{/ow:wiki/@encoding}">
+    <script type="text/javascript" charset="{/ow:wiki/@encoding}">
       <xsl:text disable-output-escaping="yes">
         function ask(pURL) {
             var x = prompt("Enter the word you're searching for:", "");
@@ -455,10 +455,10 @@
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
     <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
-        <xsl:attribute name="onload">document.editform.text.focus();</xsl:attribute>
+        <xsl:attribute name="onload">document.getElementById('editform').text.focus();</xsl:attribute>
 
-        <script language="javascript" type="text/javascript" charset="{@encoding}">
-          <xsl:text disable-output-escaping="yes">&lt;!--
+        <script type="text/javascript" charset="{@encoding}">
+          <xsl:text disable-output-escaping="yes">&lt;![CDATA[
             function openw(pURL)
             {
                 var w = window.open(pURL, "openw", "width=680,height=560,resizable=1,statusbar=1,scrollbars=1");
@@ -470,7 +470,7 @@
                 var w = window.open("", "preview", "width=680,height=560,resizable=1,statusbar=1,scrollbars=1");
                 w.focus();
 
-                var body = '&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=</xsl:text><xsl:value-of select="@encoding"/><xsl:text disable-output-escaping="yes">;" />&lt;/head&gt;&lt;body&gt;&lt;form name="pvw" method="post" action="</xsl:text><xsl:value-of select="/ow:wiki/ow:location"/><xsl:value-of select="/ow:wiki/ow:scriptname"/><xsl:text disable-output-escaping="yes">" /&gt;';
+                var body = '&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type" content="text/html; charset=</xsl:text><xsl:value-of select="@encoding"/><xsl:text disable-output-escaping="yes">;" />&lt;/head&gt;&lt;body&gt;&lt;form id="pvw" name="pvw" method="post" action="</xsl:text><xsl:value-of select="/ow:wiki/ow:location"/><xsl:value-of select="/ow:wiki/ow:scriptname"/><xsl:text disable-output-escaping="yes">" /&gt;';
                 body += '&lt;input type="hidden" name="a" value="preview" /&gt;';
                 body += '&lt;input type="hidden" name="p" value="</xsl:text><xsl:value-of select="$name"/><xsl:text disable-output-escaping="yes">" /&gt;';
                 body += '&lt;input id="text" type="hidden" name="text"/&gt;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;';
@@ -479,8 +479,8 @@
                 w.document.write(body);
                 w.document.close();
 
-                w.document.forms[0].elements['text'].value = window.document.forms[0].elements['text'].value;
-                w.document.forms[0].submit();
+                w.document.getElementById('pvw').elements['text'].value = window.document.getElementById('editform').elements['text'].value;
+                w.document.getElementById('pvw').submit();
             }
 
             function saveDocumentCheck(evt) {
@@ -488,13 +488,13 @@
                     var key = evt.keyCode;
                     var charS = 83;
                     if ( desiredKeyState &amp;&amp; key == charS ) {
-                            window.document.forms[0].elements['save'][0].click();
+                            window.document.getElementById('editform').elements['save'][0].click();
                             evt.returnValue = false;
                     }
             }
 
             function theTextAreaValue() {
-                return window.document.forms[0].elements['text'].value;
+                return window.document.getElementById('editform').elements['text'].value;
             }
 
             savedValue = 'Empty';
@@ -514,7 +514,7 @@
                     savedValue = v;
             }
 
-          //--&gt;</xsl:text>
+          ]]&gt;</xsl:text>
         </script>
 		<div id="globalWrapper">
 		<div id="column-content">
@@ -541,7 +541,7 @@
 						<div id='toolbar'>
 							<script type='text/javascript'>
 								<xsl:text disable-output-escaping="yes">
-									/*&lt;![CDATA[*/</xsl:text>
+									&lt;![CDATA[</xsl:text>
 								addButton("ow/skins/common/images/button_bold.png","Bold text","\'\'\'","\'\'\'","Bold text","mw-editbutton-bold");
 								addButton("ow/skins/common/images/button_italic.png","Italic text","\'\'","\'\'","Italic text","mw-editbutton-italic");
 								addButton("ow/skins/common/images/button_link.png","Internal link","[","]","SandBox title","mw-editbutton-link");
@@ -554,18 +554,18 @@
 								addButton("ow/skins/common/images/button_sig.png","Your signature with timestamp","--~~~~","","","mw-editbutton-signature");
 								addButton("ow/skins/common/images/button_hr.png","Horizontal line (use sparingly)","\n----\n","","","mw-editbutton-hr");
 								<xsl:text disable-output-escaping="yes">
-									/*]]&gt;*/</xsl:text>
+									]]&gt;</xsl:text>
 							</script>
 						</div>
 				
-						<form id="editform" name="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
+						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
 							<input type="submit" name="save" value="Save" />
 							&#x20;
 							<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
 							<!-- <input type="submit" name="preview" value="Preview" /> -->
 							&#x20;
-							<input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							<input type="button" name="cancel" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 							<br />
 							<br />
 							<textarea id="text" name="text" wrap="virtual" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />

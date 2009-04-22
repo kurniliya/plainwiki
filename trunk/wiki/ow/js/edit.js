@@ -15,7 +15,7 @@ function addButton(imageFile, speedTip, tagOpen, tagClose, sampleText, imageId) 
 // this function generates the actual toolbar buttons with localized text
 // we use it to avoid creating the toolbar where javascript is not enabled
 function mwInsertEditButton(parent, item) {
-	var image = document.createElement("img");
+	var image = document.createElementNS("http://www.w3.org/1999/xhtml", "img");
 	image.width = 23;
 	image.height = 22;
 	image.className = "mw-toolbar-editbutton";
