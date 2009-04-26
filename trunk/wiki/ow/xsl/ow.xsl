@@ -379,6 +379,18 @@
 	</xsl:choose>
 </xsl:template>
 
+<!-- ==================== handles the openwiki-infobox element ==================== -->
+<xsl:template match="ow:infobox">
+	<table class="infobox vcard" style="width: 22em; text-align: left; font-size: 90%;">
+		<xsl:for-each select="ow:infobox_row">
+			<tr>
+				<th><xsl:apply-templates select="ow:param_name" /></th>
+				<td><xsl:apply-templates select="ow:param_val" /></td>
+			</tr>
+		</xsl:for-each>
+	</table>
+</xsl:template>
+
 <!-- ==================== inclusion of another wikipage in this wikipage ==================== -->
 <xsl:template match="ow:body/ow:page">
     <xsl:apply-templates select="ow:body"/>
