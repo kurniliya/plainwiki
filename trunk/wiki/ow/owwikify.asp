@@ -306,11 +306,13 @@ Function WikiLinesToHtml(pText)
     Dim vTagStack, vRegEx, vMatch, vMatches, vLine
     Dim vFirstChar, vCode, vDepth, vPos, vStart, vAttrs
     Dim vInTable
+    Dim vInInfobox
     Dim vText
 
     vText = ""
     vDepth = 0
     vInTable = 0
+    vInInfobox = 0
     Set vTagStack = new Vector
     Set vRegEx = New RegExp
     vRegEx.IgnoreCase = False
@@ -332,7 +334,7 @@ Function WikiLinesToHtml(pText)
             End If
 
             vAttrs = ""
-            gListSet = False
+            gListSet = False	' Dictionary Lists processing block when True
             vLine = s(vLine, "^(\s+)\;(.*?) \:", "&SetListValues(True, $1, ""<dt>"" & $2 & ""</dt><dd>"")", False, True)
             If gListSet Then
                 vLine = vLine & "</dd>"
@@ -382,11 +384,11 @@ Function WikiLinesToHtml(pText)
                         Else
                             vCode = "pre"
                             vDepth = 1
-                        End If
-                    End If
-                End If
-            End If
-        Else
+                        End If	' If gListSet Then .. Else
+                    End If	' If gListSet Then .. Else
+                End If	' If gListSet Then .. Else
+            End If	' If gListSet Then .. Else
+        Else	' If (vFirstChar = " ") Or (vFirstChar = Chr(8)) Then
             If (vDepth > 0) And (vInTable > 0) Then
                 vText = vText & vbCRLF & "</table>" & vbCRLF
                 vInTable = 0
@@ -443,7 +445,7 @@ Function WikiLinesToHtml(pText)
                 Else
                     vTR = ""
                 End If
-            Loop
+            Loop	' Do While vTR <> ""
 
             If (vInTable > 0) And (vInTable <> vNrOfTDs) Then
                 vText = vText & vbCRLF & "</table>" & vbCRLF
@@ -458,12 +460,42 @@ Function WikiLinesToHtml(pText)
         Elseif vInTable > 0 Then
             vText = vText & vbCRLF & "</table>" & vbCRLF
             vInTable = 0
+        End If	' If Left(vLine, 2) = "||" And Right(vLine, 2) = "||" Then
+
+        If Left(vLine, 9) = "{{Infobox" Then
+        ' infoboxes: first line
+            vText = vText & "<ow:infobox>"
+            vInInfobox = 1
+        End If
+        
+        If Left(vLine, 1) = "|" and vInInfobox > 0 Then
+        ' infoboxes: content
+        	Dim vInfoboxRow
+        	
+            vResult = ""
+
+            gListSet = False
+            vInfoboxRow = s(vLine, "^\|(.*?)=(.*)$", "&WikifyInfoboxContent($1, $2)", False, True)
+            If Trim(sReturn) = "" Then
+                sReturn = "&#160;"
+            End If
+            vResult = sReturn
+
+        	vText = vText & vbCRLF & "<ow:infobox_row>" & vbCRLF & vResult & "</ow:infobox_row>"
         End If
 
-        If vInTable = 0 Then
+        If vInTable = 0 and vInInfobox = 0 Then
+        ' do not put wiki lines of tables to output
             vText = vText & vLine & vbCRLF
         End If
-    Next
+
+        If Left(vLine, 2) = "}}" and vInInfobox > 0 Then
+        ' infoboxes: last line
+            vText = vText & vbCRLF & "</ow:infobox>" & vbCRLF
+            vInInfobox = 0
+        End If
+        
+    Next	' For Each vMatch In vMatches
 
     If vInTable > 0 Then
         vText = vText & vbCRLF & "</table>" & vbCRLF
@@ -477,13 +509,18 @@ Function WikiLinesToHtml(pText)
     Set vTagStack = Nothing
 
     WikiLinesToHtml = vText
-End Function
+End Function	' WikiLinesToHtml(pText)
 
 Dim gListSet, gDepth
 Sub SetListValues(pListSet, pDepth, pText)
     gListSet = pListSet
     gDepth   = pDepth
     sReturn  = pText
+End Sub
+
+Sub WikifyInfoboxContent(pParameterName, pParameterValue)
+    sReturn  = "<ow:param_name>" & Trim(pParameterName) & "</ow:param_name>" & vbCRLF
+    sReturn = sReturn & "<ow:param_val>" & Trim(pParameterValue) & "</ow:param_val>" & vbCRLF
 End Sub
 
 '______________________________________________________________________________________________________________
