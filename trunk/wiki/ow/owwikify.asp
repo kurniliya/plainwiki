@@ -481,7 +481,7 @@ Function WikiLinesToHtml(pText)
             End If
             vResult = sReturn
 
-        	vText = vText & vbCRLF & "<ow:infobox_row>" & vbCRLF & vResult & "</ow:infobox_row>"
+        	vText = vText & vResult
         End If
 
         If vInTable = 0 and vInInfobox = 0 Then
@@ -519,8 +519,18 @@ Sub SetListValues(pListSet, pDepth, pText)
 End Sub
 
 Sub WikifyInfoboxContent(pParameterName, pParameterValue)
-    sReturn  = "<ow:param_name>" & Trim(pParameterName) & "</ow:param_name>" & vbCRLF
-    sReturn = sReturn & "<ow:param_val>" & Trim(pParameterValue) & "</ow:param_val>" & vbCRLF
+	Dim vParameterName, vParameterValue
+	
+	vParameterName = Trim(pParameterName)
+	vParameterValue = Trim(pParameterValue)
+	
+	If vParameterName = "name" Then
+	    sReturn  = "<ow:infobox_name>" & Trim(vParameterValue) & "</ow:infobox_name>" & vbCRLF
+	Else
+	    sReturn  = "<ow:param_name>" & Trim(vParameterName) & "</ow:param_name>" & vbCRLF
+	    sReturn = sReturn & "<ow:param_val>" & Trim(vParameterValue) & "</ow:param_val>" & vbCRLF	    
+		sReturn = vbCRLF & "<ow:infobox_row>" & vbCRLF & sReturn & "</ow:infobox_row>"	    
+    End If
 End Sub
 
 '______________________________________________________________________________________________________________
