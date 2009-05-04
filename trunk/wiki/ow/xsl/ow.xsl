@@ -381,9 +381,9 @@
 
 <!-- ==================== handles the openwiki-infobox element ==================== -->
 <xsl:template match="ow:infobox">
-	<table class="infobox vcard" style="width: 22em; text-align: center; font-size: 90%;">
+	<table class="infobox vcard"  style="width:22em; font-size:90%; text-align:left;">
 		<tr style="text-align:center;">
-			<th colspan="2"><xsl:apply-templates select="ow:infobox_name" /></th>
+			<th colspan="2" style="text-align:center; font-size:larger; background-color:SkyBlue; color:#000;" class="fn summary"><xsl:apply-templates select="ow:infobox_name" /></th>
 		</tr>
 		<xsl:for-each select="ow:infobox_row">
 			<tr>
