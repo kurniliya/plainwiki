@@ -1,0 +1,29 @@
+# Put this file into root directory of your web site and change path # (/wiki/) to appropriate.
+#
+# O P E N W I K I robots.txt
+# Last updated: August 30th 2008 - 12:57 PM CET (GMT +1)
+# Original file modified: May 4th 2009
+#
+User-agent: *
+#
+# >>> Exclude revisions, edit, print etc. etc.
+#
+Disallow: /wiki/*a=fullsearch
+Disallow: /wiki/*a=titlesearch
+Disallow: /wiki/*a=edit
+Disallow: /wiki/*a=print
+Disallow: /wiki/*a=diff
+Disallow: /wiki/*a=xml
+Disallow: /wiki/*a=changes
+Disallow: /wiki/*revision=
+#
+# Disallow: /wiki/*a=refresh
+# Disallow: /wiki/*a=naked
+# Disallow: /wiki/*a=view
+#
+# >>> Do not index pages with possible link errors
+#
+Disallow: /wiki/*WordIndex
+#
+# End of robots.txt
+#
