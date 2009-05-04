@@ -24,6 +24,15 @@ Disallow: /wiki/*revision=
 # >>> Do not index pages with possible link errors
 #
 Disallow: /wiki/*WordIndex
+Disallow: /wiki/*Sandbox
+#
+# >>> Exclude random article page
+#
+Disallow: /wiki/*RandomPage
+#
+# >>> Exclude page for creating new pages
+#
+Disallow: /wiki/*CreatePage
 #
 # End of robots.txt
 #
