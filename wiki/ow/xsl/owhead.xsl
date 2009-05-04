@@ -57,10 +57,6 @@
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
-			var stylepath = "/skins-1.5";
-			var wgArticlePath = "/wiki/$1";
-			var wgScriptPath = "/w";
-			var wgScript = "/w/index.php";
 			var wgVariantArticlePath = false;
 			var wgActionPaths = {};
 			var wgServer = "http://en.wikipedia.org";
@@ -149,10 +145,6 @@
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
-			var stylepath = "/skins-1.5";
-			var wgArticlePath = "/wiki/$1";
-			var wgScriptPath = "/w";
-			var wgScript = "/w/index.php";
 			var wgVariantArticlePath = false;
 			var wgActionPaths = {};
 			var wgServer = "http://en.wikipedia.org";
@@ -218,10 +210,6 @@
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/</xsl:text>
 			var skin = "monobook";
-			var stylepath = "/skins-1.5";
-			var wgArticlePath = "/wiki/$1";
-			var wgScriptPath = "/w";
-			var wgScript = "/w/index.php";
 			var wgVariantArticlePath = false;
 			var wgActionPaths = {};
 			var wgServer = "http://en.wikipedia.org";
