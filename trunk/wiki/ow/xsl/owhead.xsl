@@ -13,8 +13,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset={@encoding};" />
 		<meta name="generator" content="OpenWiki 0.78" />
-		<meta name="keywords" content="math, partial differential equations, mephi" />
-		<meta name="description" content="NEQwiki - the encyclopedia of nonlinear differential equations" />
+		<meta name="keywords" content="{ow:page/ow:link}, nonlinear, math, partial differential equations, mephi" />
+		<meta name="description" content="NEQwiki - {ow:page/ow:link}" />
 		<meta name="ROBOTS" content="INDEX,FOLLOW" />
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		

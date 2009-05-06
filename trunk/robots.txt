@@ -26,13 +26,11 @@ Disallow: /wiki/*revision=
 Disallow: /wiki/*WordIndex
 Disallow: /wiki/*Sandbox
 #
-# >>> Exclude random article page
+# >>> Exclude special pages page
 #
 Disallow: /wiki/*RandomPage
-#
-# >>> Exclude page for creating new pages
-#
 Disallow: /wiki/*CreatePage
+Disallow: /wiki/*RecentChanges
 #
 # End of robots.txt
 #

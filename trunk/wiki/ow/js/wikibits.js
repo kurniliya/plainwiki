@@ -107,32 +107,34 @@ if (wgBreakFrames) {
 		window.top.location = window.location;
 	}
 }
-/*
+
 function showTocToggle() {
 	if (document.createTextNode) {
 		// Uses DOM calls to avoid document.write + XHTML issues
 
-		var linkHolder = document.getElementById('toctitle');
+		var linkHolder = document.getElementById("toctitle");
 		if (!linkHolder) {
 			return;
 		}
 
+		if (!document.getElementById("togglelink")){
 
-		var toggleLink = document.createElement('a');
-		toggleLink.id = 'togglelink';
-		toggleLink.className = 'internal';
-		toggleLink.href = 'javascript:toggleToc()';
-		toggleLink.appendChild(document.createTextNode(tocHideText));
-
-		var outerSpan = document.createElement('span');
-		outerSpan.className = 'toctoggle';
-
-		outerSpan.appendChild(document.createTextNode('['));
-		outerSpan.appendChild(toggleLink);
-		outerSpan.appendChild(document.createTextNode(']'));
-
-		linkHolder.appendChild(document.createTextNode(' '));
-		linkHolder.appendChild(outerSpan);
+			var toggleLink = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+			toggleLink.id = "togglelink";
+			toggleLink.className = "internal";
+			toggleLink.href = "javascript:toggleToc()";
+			toggleLink.appendChild(document.createTextNode(tocHideText));
+			
+			var outerSpan = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
+			outerSpan.className = "toctoggle";
+	
+			outerSpan.appendChild(document.createTextNode("["));
+			outerSpan.appendChild(toggleLink);
+			outerSpan.appendChild(document.createTextNode("]"));
+	
+			linkHolder.appendChild(document.createTextNode(" "));
+			linkHolder.appendChild(outerSpan);
+		}
 
 		var cookiePos = document.cookie.indexOf("hidetoc=");
 		if (cookiePos > -1 && document.cookie.charAt(cookiePos + 8) == 1) {
@@ -140,7 +142,7 @@ function showTocToggle() {
 		}
 	}
 }
-*/
+
 
 function changeText(el, newText) {
 	// Safari work around
@@ -152,16 +154,16 @@ function changeText(el, newText) {
 }
 
 function toggleToc() {
-	var toc = document.getElementById('toc').getElementsByTagName('ul')[0];
-	var toggleLink = document.getElementById('togglelink');
+	var toc = document.getElementById("toc").getElementsByTagName("ul")[0];
+	var toggleLink = document.getElementById("togglelink");
 
-	if (toc && toggleLink && toc.style.display == 'none') {
+	if (toc && toggleLink && toc.style.display == "none") {
 		changeText(toggleLink, tocHideText);
-		toc.style.display = 'block';
+		toc.style.display = "block";
 		document.cookie = "hidetoc=0";
 	} else {
 		changeText(toggleLink, tocShowText);
-		toc.style.display = 'none';
+		toc.style.display = "none";
 		document.cookie = "hidetoc=1";
 	}
 }

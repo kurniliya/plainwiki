@@ -178,6 +178,12 @@
 			To do list
 		</a>
 	</li>	
+	<li id="n-deprecatedpages">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?DeprecatedPages</xsl:attribute>
+			Deprecated pages
+		</a>
+	</li>	
 	<li id="t-viewxml">
 		<a>
 			<xsl:attribute name="href">

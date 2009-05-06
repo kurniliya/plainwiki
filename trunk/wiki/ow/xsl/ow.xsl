@@ -336,12 +336,6 @@
 			<td>
 				 <div id="toctitle">
 					<h2>Contents</h2> 
-					<xsl:text disable-output-escaping="yes"> </xsl:text>
-						<span class="toctoggle">
-							<a href="javascript:toggleToc()" class="internal" id="togglelink">
-								hide
-							</a>
-						</span>
 				</div>
 				<xsl:apply-templates select="./ow:toc" />
 			</td>
@@ -349,7 +343,9 @@
 	</table>
 	<script type="text/javascript" charset="{/ow:wiki/@encoding}">
 		<xsl:text disable-output-escaping="yes">
-			 if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+			/*&lt;![CDATA[*/
+			if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+			/*]]&gt;*/ 
 		</xsl:text>
 	</script>
 </xsl:template>
