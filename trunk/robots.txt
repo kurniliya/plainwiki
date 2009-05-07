@@ -31,6 +31,7 @@ Disallow: /wiki/*Sandbox
 Disallow: /wiki/*RandomPage
 Disallow: /wiki/*CreatePage
 Disallow: /wiki/*RecentChanges
+Disallow: /wiki/*DeprecatedPages
 #
 # End of robots.txt
 #
