@@ -1,8 +1,11 @@
-# Put this file into root directory of your web site and change path # (/wiki/) to appropriate.
+#
+# <wiki>
+#
+# Put this file into root directory of your web site and change path (/wiki/) to appropriate.
 #
 # O P E N W I K I robots.txt
 # Last updated: August 30th 2008 - 12:57 PM CET (GMT +1)
-# Original file modified: May 4th 2009
+# Original file modified: May 10th 2009
 #
 User-agent: *
 #
@@ -26,12 +29,14 @@ Disallow: /wiki/*revision=
 Disallow: /wiki/*WordIndex
 Disallow: /wiki/*Sandbox
 #
-# >>> Exclude special pages page
+# >>> Exclude special pages
 #
 Disallow: /wiki/*RandomPage
 Disallow: /wiki/*CreatePage
 Disallow: /wiki/*RecentChanges
 Disallow: /wiki/*DeprecatedPages
+#
+# </wiki>
 #
 # End of robots.txt
 #
