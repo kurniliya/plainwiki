@@ -2,6 +2,7 @@
 
 /* Original OpenWiki styles */
 .new             {font-family:verdana,arial,helvetica; font-size:10px; font-weight:bold; color:#ff0000; background-color: #ffffff;}
+.deprecated      {font-family:verdana,arial,helvetica; font-size:10px; font-weight:bold; color:#ff0000; background-color: #ffffff;}
  
 /* Main page fixes */
 #interwiki-completelist {
