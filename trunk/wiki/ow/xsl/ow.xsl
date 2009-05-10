@@ -555,7 +555,7 @@
 									&lt;![CDATA[</xsl:text>
 								addButton("ow/skins/common/images/button_bold.png","Bold text","\'\'\'","\'\'\'","Bold text","mw-editbutton-bold");
 								addButton("ow/skins/common/images/button_italic.png","Italic text","\'\'","\'\'","Italic text","mw-editbutton-italic");
-								addButton("ow/skins/common/images/button_link.png","Internal link","[","]","SandBox title","mw-editbutton-link");
+								addButton("ow/skins/common/images/button_link.png","Internal link","[","]","WikiPageName LinkTitle","mw-editbutton-link");
 								addButton("ow/skins/common/images/button_extlink.png","External link (remember http:// prefix)","[","]","http://www.example.com link title","mw-editbutton-extlink");
 								addButton("ow/skins/common/images/button_headline.png","Level 2 headline","\n== "," ==\n","Headline text","mw-editbutton-headline");
 								addButton("ow/skins/common/images/button_image.png","Embedded file","[[File:","]]","Example.jpg","mw-editbutton-image");
