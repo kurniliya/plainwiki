@@ -46,27 +46,29 @@ gEditPassword = ""    ' use empty string "" if anyone may edit
 ' In case you want more sophisticated security, then you should
 ' rely on the Integrated Windows authentication feature of IIS.
 
-gDefaultBookmarks = "TitleIndex FindPage RecentChanges"
+gDefaultBookmarks = ""
 
 ' Major system options
-cUseXhtmlHttpHeaders  = 1        ' 1 = application/xhtml+xml 0 = text/html
-cReadOnly             = 0        ' 1 = readonly wiki         0 = editable wiki
-cNakedView            = 0        ' 1 = run in naked mode     0 = show headers/footers
-cUseSubpage           = 1        ' 1 = use /subpages         0 = do not use /subpages
-cFreeLinks            = 1        ' 1 = use [[word]] links    0 = LinkPattern only
-cWikiLinks            = 1        ' 1 = use LinkPattern       0 = possibly allow [[word]] only
-cAcronymLinks         = 1        ' 1 = link acronyms         0 = do not link 3 or more capitalized characters
-cTemplateLinking      = 1        ' 1 = allow TemplateName->WikiLink   0 = don't do template linking
-cRawHtml              = 1        ' 1 = allow <html> tag      0 = no raw HTML in pages
-cMathML               = 1        ' 1 = allow <math> tag      0 = no raw math in pages
-cHtmlTags             = 0        ' 1 = "unsafe" HTML tags    0 = only minimal tags
-cCacheXSL             = 0        ' 1 = cache stylesheet      0 = don't cache stylesheet
-cCacheXML             = 0        ' 1 = cache partial results 0 = do not cache partial results
-cAllowRSSExport       = 1        ' 1 = allow RSS feed        0 = do not export your pages to RSS
-cAllowNewSyndications = 1        ' 1 = allow new URLs to be syndicated    0 = only allow syndication of the URLs in the database table openwiki_rss
-cAllowAggregations    = 1        ' 1 = allow aggregation of syndications (note: you MUST use MSXML v3 sp2 for this to work)   0 = do not allow aggregrations
-cEmbeddedMode         = 0        ' 1 = embed the wiki into another app    0 = process browser request
-cAllowAttachments     = 0        ' 1 = allow attachments     0 = do not allow attachments (WARNING: Allowing attachments poses a security risk!! See file owattach.asp)
+cUseXhtmlHttpHeaders   = 1        ' 1 = application/xhtml+xml 0 = text/html
+cReadOnly              = 0        ' 1 = readonly wiki         0 = editable wiki
+cNakedView             = 0        ' 1 = run in naked mode     0 = show headers/footers
+cUseSubpage            = 1        ' 1 = use /subpages         0 = do not use /subpages
+cFreeLinks             = 1        ' 1 = use [[word]] links    0 = LinkPattern only
+cWikiLinks             = 1        ' 1 = use LinkPattern       0 = possibly allow [[word]] only
+cAcronymLinks          = 1        ' 1 = link acronyms         0 = do not link 3 or more capitalized characters
+cTemplateLinking       = 1        ' 1 = allow TemplateName->WikiLink   0 = don't do template linking
+cRawHtml               = 1        ' 1 = allow <html> tag      0 = no raw HTML in pages
+cMathML                = 1        ' 1 = allow <math> tag      0 = no raw math in pages
+cHtmlTags              = 0        ' 1 = "unsafe" HTML tags    0 = only minimal tags
+cCacheXSL              = 0        ' 1 = cache stylesheet      0 = don't cache stylesheet
+cCacheXML              = 0        ' 1 = cache partial results 0 = do not cache partial results
+cAllowRSSExport        = 1        ' 1 = allow RSS feed        0 = do not export your pages to RSS
+cAllowNewSyndications  = 1        ' 1 = allow new URLs to be syndicated    0 = only allow syndication of the URLs in the database table openwiki_rss
+cAllowAggregations     = 1        ' 1 = allow aggregation of syndications (note: you MUST use MSXML v3 sp2 for this to work)   0 = do not allow aggregrations
+cEmbeddedMode          = 0        ' 1 = embed the wiki into another app    0 = process browser request
+cAllowAttachments      = 0        ' 1 = allow attachments     0 = do not allow attachments (WARNING: Allowing attachments poses a security risk!! See file owattach.asp)
+cUseSpecialPagesPrefix = 1 		  ' 1 = use gSpecialPagesPrefix in gLinkPattern
+gSpecialPagesPrefix    = "Special:"
 
 ' Minor system options
 cSimpleLinks          = 0        ' 1 = only letters,         0 = allow _ and numbers
