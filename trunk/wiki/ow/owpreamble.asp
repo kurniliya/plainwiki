@@ -32,9 +32,11 @@ Dim cEmoticons, cUseLinkIcons, cPrettyLinks, cExternalOut
 Dim cAllowRSSExport, cAllowNewSyndications, cAllowAggregations, cNTAuthentication, cShowBrackets
 Dim cAllowAttachments
 Dim cUseXhtmlHttpHeaders
+Dim cUseSpecialPagesPrefix
 
 ' global variables
 Dim gLinkPattern, gSubpagePattern, gStopWords, gTimestampPattern, gUrlProtocols, gUrlPattern, gMailPattern, gInterSitePattern, gInterLinkPattern, gFreeLinkPattern, gImageExtensions, gImagePattern, gDocExtensions, gNotAcceptedExtensions, gISBNPattern, gHeaderPattern, gMacros
+Dim gSpecialPagesPrefix
 Dim gFS, gIndentLimit
 gFS = Chr(179)           ' The FS character is a superscript "3"
 gIndentLimit = 20        ' maximum indent level for bulleted/numbered items

@@ -65,6 +65,10 @@ Sub InitLinkPatterns
         ' acronyms: three or more upper case letters
         gLinkPattern = gLinkPattern & "|" & vUpperLetter & "{3,}\b"
     End If
+    
+    if cUseSpecialPagesPrefix Then
+    	gLinkPattern = gLinkPattern & "|" & gSpecialPagesPrefix & vAnyLetter & "*"
+    End If
 
     ' Optional subpage link pattern: uppercase, lowercase, then anything
     If cUseSubpage Then
