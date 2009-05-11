@@ -366,7 +366,12 @@ End Sub
 
 Sub ActionRandomPage
     Randomize
-    Set gTemp = gNamespace.TitleSearch(".*", 0, 0, 0, 0)
+    if cUseSpecialPagesPrefix Then
+    	Set gTemp = gNamespace.TitleSearch("^(?!" & gSpecialPagesPrefix & ")" & ".*", 0, 0, 0, 0)
+    Else
+	    Set gTemp = gNamespace.TitleSearch(".*", 0, 0, 0, 0)
+	End If
+    
 '    Response.Redirect(gScriptName & "?a=" & gAction & "&p=" & Server.URLEncode(gTemp.ElementAt(Int((gTemp.Count - 1) * Rnd)).Name) & "&redirect=" & Server.URLEncode(gPage))
     Response.Redirect(gScriptName & "?a=" & gAction & "&p=" & Server.URLEncode(gTemp.ElementAt(Int((gTemp.Count - 1) * Rnd)).Name))
 End Sub
