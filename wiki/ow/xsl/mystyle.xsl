@@ -213,6 +213,14 @@
 			What links here
 		</a>
 	</li>
+	<li id="t-specialpages">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:SpecialPages</xsl:attribute>
+			<xsl:attribute name="title">List of all special pages [alt-shift-q]</xsl:attribute>
+			<xsl:attribute name="accesskey">q</xsl:attribute>
+			Special pages
+		</a>
+	</li>
 	<li id="t-print">
 		<a>
 			<xsl:attribute name="href">
