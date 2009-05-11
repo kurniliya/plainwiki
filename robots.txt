@@ -35,6 +35,7 @@ Disallow: /wiki/*RandomPage
 Disallow: /wiki/*CreatePage
 Disallow: /wiki/*RecentChanges
 Disallow: /wiki/*DeprecatedPages
+Disallow: /wiki/*Special:
 #
 # </wiki>
 #
