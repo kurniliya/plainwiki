@@ -151,7 +151,7 @@
 <xsl:template name="menu_section_foreditors">
 	<li id="n-help">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Help</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:Help</xsl:attribute>
 			<xsl:attribute name="title">Guidance on how to use and edit this wiki</xsl:attribute>
 			Help
 		</a>
