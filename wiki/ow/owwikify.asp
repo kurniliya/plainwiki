@@ -94,6 +94,7 @@ Function Wikify(pText)
             vText = s(vText, gFS & "(\=+)[ \t]+(.*?)[ \t]+\=+ " & gFS, "&GetWikiHeading($1, $2)", False, True)
 '            vText = Replace(vText, gFS & "TOC" & gFS, gTOC.GetTOC)
              vText = Replace(vText, gFS & "TOC" & gFS, "<ow:toc_root>" & gTOC.GetTOC & "</ow:toc_root>")
+             vText = Replace(vText, gFS & "TOCRight" & gFS, "<ow:toc_root align=""right"">" & gTOC.GetTOC & "</ow:toc_root>")             
         End If
 
         If InStr(gMacros, "Footnote") > 0 Then

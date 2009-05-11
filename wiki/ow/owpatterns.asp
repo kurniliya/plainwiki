@@ -148,7 +148,8 @@ Sub InitLinkPatterns
         gMacros = "BR|RecentChanges|RecentChangesLong|TitleSearch|FullSearch|TextSearch|TableOfContents|WordIndex|TitleIndex|GoTo|RandomPage|" _
                 & "InterWiki|SystemInfo|Include|" _
                 & "PageCount|UserPreferences|Icon|Anchor|" _
-                & "Date|Time|DateTime|Syndicate|Aggregate|Footnote"
+                & "Date|Time|DateTime|Syndicate|Aggregate|Footnote|" _
+                & "TableOfContentsRight"
     End If
     vTemp = MyMacroPatterns()
     gMacros = gMacros & "|" & vTemp

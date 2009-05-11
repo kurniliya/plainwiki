@@ -331,23 +331,52 @@
 
 <!-- ==================== handles the openwiki-toc element ==================== -->
 <xsl:template match="ow:toc_root">
-	<table id="toc" class="toc" summary="Contents">
-		<tr>
-			<td>
-				 <div id="toctitle">
-					<h2>Contents</h2> 
-				</div>
-				<xsl:apply-templates select="./ow:toc" />
-			</td>
-		</tr>
-	</table>
-	<script type="text/javascript" charset="{/ow:wiki/@encoding}">
-		<xsl:text disable-output-escaping="yes">
-			/*&lt;![CDATA[*/
-			if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
-			/*]]&gt;*/ 
-		</xsl:text>
-	</script>
+	<xsl:choose>
+		<xsl:when test="@align='right'">
+			<table cellspacing="0" cellpadding="0" style="clear: right; margin-bottom: .5em; float: right; padding: .5em 0 .8em 1.4em; background: none; width: auto;">
+				<tr>
+					<td>
+						<table id="toc" class="toc" summary="Contents">
+							<tr>
+								<td>
+									 <div id="toctitle">
+										<h2>Contents</h2> 
+									</div>
+									<xsl:apply-templates select="./ow:toc" />
+								</td>
+							</tr>
+						</table>
+						<script type="text/javascript" charset="{/ow:wiki/@encoding}">
+							<xsl:text disable-output-escaping="yes">
+								/*&lt;![CDATA[*/
+								if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+								/*]]&gt;*/ 
+							</xsl:text>
+						</script>	
+					</td>
+				</tr>
+			</table>
+		</xsl:when>
+        <xsl:otherwise>
+			<table id="toc" class="toc" summary="Contents">
+				<tr>
+					<td>
+						 <div id="toctitle">
+							<h2>Contents</h2> 
+						</div>
+						<xsl:apply-templates select="./ow:toc" />
+					</td>
+				</tr>
+			</table>
+			<script type="text/javascript" charset="{/ow:wiki/@encoding}">
+				<xsl:text disable-output-escaping="yes">
+					/*&lt;![CDATA[*/
+					if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+					/*]]&gt;*/ 
+				</xsl:text>
+			</script>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template match="ow:toc" name="toc">
