@@ -5,6 +5,7 @@
 <!-- #include file="ow/owvector.asp" //-->
 <!-- #include file="ow/owado.asp" //-->
 <!-- #include file="ow/owattach.asp" //-->
+<!-- #include file="ow/owregexp.asp" //-->
 
 <%
 
@@ -14,7 +15,7 @@ Dim gDaysToKeep
 ' This script deletes deprecated pages and attachments.
 '
 
-Response.Write("Look in the script! <p />")
+Response.Write("<p>Look in the script!</p>")
 
 ' RUN AT YOUR OWN RISK !!!
 ' ALSO DELETES DEPRECATED ATTACHMENTS
@@ -38,7 +39,7 @@ Do While Not rs.EOF
         vText = rs("wrv_text")
         If Len(vText) >= 11 Then
             If Left(vText, 11) = "#DEPRECATED" Then
-                Response.Write(rs("wrv_name") & "<br />")
+                Response.Write("<p>" & rs("wrv_name") & "</p>")
                 v.Push "" & rs("wrv_name")
             End If
         End If
@@ -48,7 +49,11 @@ Loop
 Set rs = Nothing
 
 
-Dim vFSO, vPagename
+Dim vFSO, vPagename, vInvalidPathCharactersPattern
+
+vInvalidPathCharactersPattern = "[" & CHR(0) & CHR(9) & CHR(10) & CHR(11) & CHR(12) & CHR(13) & CHR(32) _
+							& CHR(38) & "" & CHR(42) & CHR(44) & CHR(58) & CHR(60) & CHR(62) & CHR(63) _
+							& CHR(160) & CHR(34) & "]"
 Set vFSO = Server.CreateObject("Scripting.FileSystemObject")
 
 ' delete pages and their attachments
@@ -57,9 +62,14 @@ Do While Not v.IsEmpty
     adoDMLQuery "DELETE FROM openwiki_revisions WHERE wrv_name = '" & Replace(vPagename, "'", "''") & "'"
     adoDMLQuery "DELETE FROM openwiki_attachments_log WHERE ath_wrv_name = '" & Replace(vPagename, "'", "''") & "'"
     adoDMLQuery "DELETE FROM openwiki_attachments WHERE att_wrv_name = '" & Replace(vPagename, "'", "''") & "'"
-    If vFSO.FolderExists(Server.MapPath(OPENWIKI_UPLOADDIR & vPagename & "/")) Then
-        vFSO.DeleteFolder(Server.MapPath(OPENWIKI_UPLOADDIR & vPagename & "/"))
-    End If
+    
+    If not m(OPENWIKI_UPLOADDIR & vPagename & "/", vInvalidPathCharactersPattern, 0, 1) Then
+	    If vFSO.FolderExists(Server.MapPath(OPENWIKI_UPLOADDIR & vPagename & "/")) Then
+	        vFSO.DeleteFolder(Server.MapPath(OPENWIKI_UPLOADDIR & vPagename & "/"))
+	    End If
+	Else
+		Response.Write("<p>Folder was not deleted (if exists) due to special characters in a page name. Look in the script!</p>")
+	End IF
 Loop
 Set v = Nothing
 
