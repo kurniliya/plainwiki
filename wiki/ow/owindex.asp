@@ -126,7 +126,11 @@ Class IndexSchemes
 
     Public Function GetTitleIndex()
         Dim vList, vCount, i, vResult
-        Set vList = gNamespace.TitleSearch(".*", 0, 0, 0, 0)
+	    if cUseSpecialPagesPrefix Then
+	    	Set vList = gNamespace.TitleSearch("^(?!" & gSpecialPagesPrefix & ")" & ".*", 0, 0, 0, 0)
+	    Else
+		    Set vList = gNamespace.TitleSearch(".*", 0, 0, 0, 0)
+		End If
         vCount = vList.Count - 1
         For i = 0 To vCount
             vResult = vResult & vList.ElementAt(i).ToXML(False)
