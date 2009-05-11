@@ -62,12 +62,12 @@ Function Wikify(pText)
                     End If
                     Response.Redirect(gScriptName & "?a=" & gAction & "&p=" & Server.URLEncode(gTemp) & "&redirect=" & Server.URLEncode(FreeToNormal(gPage)))
                 Elseif m(vText, "^#INCLUDE_AS_TEMPLATE", False, False) Then
-                    vText = Mid(vText, 21)
+                    vText = Mid(vText, Len("#INCLUDE_AS_TEMPLATE") + 1)
                 Elseif m(vText, "^#MINOREDIT", False, False) Then
-                    vText = Mid(vText, 11)
+                    vText = Mid(vText, Len("#MINOREDIT") + 1)
                 Elseif m(vText, "^#DEPRECATED", False, False) Then
                     StoreRaw("#DEPRECATED")
-                    vText = sReturn & Mid(vText, 12)
+                    vText = sReturn & Mid(vText, Len("#DEPRECATED") + 1)
                 End If
                 vText = MyWikifyProcessingInstructions(vText)
             End If
