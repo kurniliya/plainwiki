@@ -90,7 +90,7 @@
 <xsl:template name="menu_section_cactions">
 	<li id="ca-nstab-main" class="selected">
 		<a> 
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/></xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="$name"/></xsl:attribute>
 			<xsl:attribute name="title">View the content page [c]</xsl:attribute>
 			<xsl:attribute name="accesskey">c</xsl:attribute>
 			Article
@@ -142,7 +142,7 @@
 	</li>	
 	<li id="n-randompage">
 		<a>
-			<xsl:attribute name="href">ow.asp?RandomPage</xsl:attribute>
+			<xsl:attribute name="href">ow.asp?Special:RandomPage</xsl:attribute>
 			Random article
 		</a>
 	</li>	
@@ -151,7 +151,7 @@
 <xsl:template name="menu_section_foreditors">
 	<li id="n-help">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=Help</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Help</xsl:attribute>
 			<xsl:attribute name="title">Guidance on how to use and edit this wiki</xsl:attribute>
 			Help
 		</a>
@@ -159,7 +159,7 @@
 	<li id="t-sandbox">
 		<a>
 			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Sandbox
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:Sandbox
 			</xsl:attribute>
 			Sandbox
 		</a>
@@ -167,20 +167,20 @@
 	<li id="t-createpage">
 		<a>
 			<xsl:attribute name="href">
-				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?CreatePage
+				<xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:CreatePage
 			</xsl:attribute>
 			Create new page
 		</a>
 	</li>
 	<li id="n-todolist">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?ToDo</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:ToDo</xsl:attribute>
 			To do list
 		</a>
 	</li>	
 	<li id="n-deprecatedpages">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?DeprecatedPages</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:DeprecatedPages</xsl:attribute>
 			Deprecated pages
 		</a>
 	</li>	
@@ -197,7 +197,7 @@
 <xsl:template name="menu_section_interaction">
 	<li id="n-recentchanges">
 		<a>
-			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=RecentChanges</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:RecentChanges</xsl:attribute>
 			<xsl:attribute name="title">The list of recent changes in the wiki [r]</xsl:attribute>
 			<xsl:attribute name="accesskey">r	</xsl:attribute>
 			Recent changes
