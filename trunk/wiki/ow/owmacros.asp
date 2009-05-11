@@ -99,6 +99,14 @@ Sub MacroTableOfContents
     End If
 End Sub
 
+Sub MacroTableOfContentsRight
+    If cUseHeadings Then
+        gMacroReturn = gFS & "TOCRight" & gFS
+        ' at the end of the Wikify function this pattern will be
+        ' replaced by the actual table of contents
+    End If
+End Sub
+
 Sub MacroBR
     gMacroReturn = "<br />"
 End Sub
