@@ -66,7 +66,8 @@ Function Wikify(pText)
                 Elseif m(vText, "^#MINOREDIT", False, False) Then
                     vText = Mid(vText, Len("#MINOREDIT") + 1)
                 Elseif m(vText, "^#DEPRECATED", False, False) Then
-                    StoreRaw("#DEPRECATED")
+                    'StoreRaw("#DEPRECATED")
+                    StoreRaw("<ow:deprecated />")
                     vText = sReturn & Mid(vText, Len("#DEPRECATED") + 1)
                 End If
                 vText = MyWikifyProcessingInstructions(vText)
