@@ -282,7 +282,7 @@
         <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit</xsl:attribute>Describe <xsl:value-of select="../ow:link/text()"/> here</a>
         <xsl:apply-templates select="../../ow:templates"/>
     </xsl:if>
-    <xsl:if test="starts-with(text(), '#DEPRECATED')">
+    <xsl:if test="./ow:deprecated">
         <font color="#ff0000"><b>This page will be permanently destroyed.</b></font>
         <p />
     </xsl:if>
