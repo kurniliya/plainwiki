@@ -365,11 +365,11 @@ Function WikiLinesToHtml(pText)
                                 vStart = "start=""" & Mid(vCode, vPos + 1) & """"
                             End If
                             vCode = Left(vCode, 1)
-                            If IsNumeric(vCode) Then
-                                vAttrs = " type=""1"""
-                            Else
-                                vAttrs = " type=""" & vCode & """"
-                            End If
+'                            If IsNumeric(vCode) Then
+'                                vAttrs = " type=""1"""
+'                            Else
+'                                vAttrs = " type=""" & vCode & """"
+'                            End If
                             If vStart <> "" Then
                                 vAttrs = vAttrs & " " & vStart
                             End If
@@ -782,7 +782,7 @@ Sub GetWikiHeading(pSymbols, pText)
     End If
     vTemp = s(pText, "<ow:link name='(.*?)' href=.*?</ow:link>", "$1", False, False)
 '    Call gTOC.AddTOC(vLevel, "<li><a href=""#h" & gTOC.Count & """>" & vTemp & "</a></li>")
-    Call gTOC.AddTOC(vLevel, "<ow:toctext><number type=""xs:integer"">" & gTOC.Count & "</number><text>" & vTemp & "</text></ow:toctext>")
+    Call gTOC.AddTOC(vLevel, "<ow:toctext><number>" & gTOC.Count & "</number><text>" & vTemp & "</text></ow:toctext>")
     sReturn = "<a id=""h" & (gTOC.Count - 1) & """/><h" & vLevel & ">" & pText & "</h" & vLevel & ">"
 End Sub
 
