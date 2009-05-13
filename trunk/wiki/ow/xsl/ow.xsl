@@ -122,7 +122,7 @@
 </xsl:template>
 
 <xsl:template match="ow:page">
-	<a name="top" id="top"></a>
+	<a id="top"></a>
     <xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop">
 
       <xsl:if test="$showEditLinkOnTop='1'">    
@@ -559,7 +559,7 @@
 		<div id="globalWrapper">
 		<div id="column-content">
 			<div id="content">
-				<a name="top" id="top"></a>
+				<a id="top"></a>
 					<h1 id="firstHeading" class="firstHeading">Editing <xsl:if test="ow:page/@revision">revision <xsl:value-of select="ow:page/@revision"/> of </xsl:if><xsl:value-of select="ow:page/@name"/></h1>
 					<div id="bodyContent">
 						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
@@ -605,7 +605,7 @@
 							<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
 							<!-- <input type="submit" name="preview" value="Preview" /> -->
 							&#x20;
-							<input type="button" name="cancel" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 							<br />
 							<br />
 							<textarea id="text" name="text" wrap="virtual" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
@@ -632,7 +632,7 @@
 							<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
 							<!-- <input type="submit" name="preview" value="Preview" /> -->
 							&#x20;
-							<input type="button" name="cancel" value="Cancel" onClick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 						</form>
 					</div>
 				</div>
@@ -658,7 +658,7 @@
 		<div id="globalWrapper">
 			<div id="column-content">
 				<div id="content">
-					<a name="top" id="top"></a>
+					<a id="top"></a>
 					<div id="bodyContent">	
 						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
 						<xsl:apply-templates select="ow:page/ow:body"/>
@@ -708,7 +708,7 @@
 			<div id="globalWrapper">
 				<div id="column-content">
 					<div id="content">
-						<a name="top" id="top"></a>			
+						<a id="top"></a>			
 						<h1>
 						  <a class="same" href="{ow:scriptname}?a=fullsearch&amp;txt={$name}&amp;fromtitle=true" title="Do a full text search for {ow:page/ow:link/text()}">
 							<xsl:value-of select="ow:page/ow:link/text()"/>
@@ -914,7 +914,7 @@
 		<div id="globalWrapper">
 			<div id="column-content">
 				<div id="content">
-					<a name="top" id="top"></a>
+					<a id="top"></a>
 					<h1 id="firstHeading" class="firstHeading">Revision history of <xsl:value-of select="ow:page/ow:link/text()"/></h1>
 					<div id="bodyContent">
 						<h3 id="siteSub">From Neqwiki, the nonlinear equations encyclopedia</h3>
@@ -1087,7 +1087,7 @@
 			<div id="globalWrapper">
 				<div id="column-content">
 					<div id="content">
-						<a name="top" id="top"></a>
+						<a id="top"></a>
 						<h1 id="firstHeading" class="firstHeading">Search results for "<xsl:value-of select="ow:fullsearch/@value"/>"</h1>
 						<div id="bodyContent">
 							<xsl:apply-templates select="ow:fullsearch"/>
