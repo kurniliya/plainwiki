@@ -13,7 +13,7 @@
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
 <xsl:template name="brandingImage">
-    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" border="0" alt="NEQwiki" /></a>
+    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" alt="NEQwiki" /></a>
 </xsl:template>
 
 <xsl:template name="poweredBy">
@@ -23,8 +23,8 @@
 </xsl:template>
 
 <xsl:template name="validatorButtons">
-    <a href="http://validator.w3.org/check/referer"><img src="{/ow:wiki/ow:imagepath}/valid-xhtml10.gif" alt="Valid XHTML 1.0!" width="88" height="31" border="0" /></a>
-    <a href="http://jigsaw.w3.org/css-validator/validator?uri={/ow:wiki/ow:location}ow.css"><img src="{/ow:wiki/ow:imagepath}/valid-css.gif" alt="Valid CSS!" width="88" height="31" border="0" /></a>
+    <a href="http://validator.w3.org/check/referer"><img src="{/ow:wiki/ow:imagepath}/valid-xhtml10.gif" alt="Valid XHTML 1.0!" width="88" height="31" /></a>
+    <a href="http://jigsaw.w3.org/css-validator/validator?uri={/ow:wiki/ow:location}ow.css"><img src="{/ow:wiki/ow:imagepath}/valid-css.gif" alt="Valid CSS!" width="88" height="31" /></a>
 </xsl:template>
 
 <xsl:template name="menu_column">
@@ -243,7 +243,7 @@
 <xsl:template name="copyright_ico">
 	<div id="f-copyrightico">
 		<a href="http://www.mephi.ru/">
-			<img src="{/ow:wiki/ow:imagepath}/mephi.gif" border="0"  width="100" height="100" alt="Moscow Engineering Physics Institute"/>
+			<img src="{/ow:wiki/ow:imagepath}/mephi.gif"  width="100" height="100" alt="Moscow Engineering Physics Institute"/>
 		</a>
 	</div>
 </xsl:template>

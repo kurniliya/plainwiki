@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:msxsl="urn:schemas-microsoft-com:xslt"
-                xmlns:ow="http://openwiki.com/2001/OW/Wiki"
+                xmlns:ow="http://openwiki.com/2001/OW/Wiki"               
                 xmlns="http://www.w3.org/1999/xhtml"
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
@@ -91,7 +91,7 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="head"/>
-		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="globalWrapper">
 				<xsl:if test="$editOnDblCklick='1'">
 					<xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
@@ -310,8 +310,8 @@
     <li>
       <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit&amp;template=<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>
       &#x20;
-      (<a target="_blank"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute>view template</a>
-       <a target="_blank"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>)
+      (<a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute>view template</a>
+       <a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>)
     </li>
 </xsl:template>
 
@@ -322,7 +322,7 @@
 
 <!-- ==================== handles the openwiki-math element ==================== -->
 <xsl:template match="ow:math">
-  <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
     <mstyle mathsize="200%"> 
       <xsl:value-of select="." disable-output-escaping="yes" />    
     </mstyle>  
@@ -449,7 +449,7 @@
     <br />
     last update: <xsl:value-of select="ow:formatLongDateTime(string(@last))"/>
     <br />
-    <a href="{@href}" target="_blank"><img src="ow/images/xml.gif" width="36" height="14" border="0" alt="" /></a> |
+    <a href="{@href}" onclick="return !window.open(this.href)"><img src="ow/images/xml.gif" width="36" height="14" border="0" alt="" /></a> |
     <a href="{/ow:wiki/ow:scriptname}?p={/ow:wiki/ow:page/ow:link/@name}&amp;a=refresh&amp;refreshurl={ow:urlencode(string(@href))}">refresh</a> |
     <a href="{/ow:wiki/ow:scriptname}?p={/ow:wiki/ow:page/ow:link/@name}&amp;a=refresh">refresh all</a>
     </small>
@@ -462,7 +462,7 @@
     <br />
     last update: <xsl:value-of select="ow:formatLongDateTime(string(@last))"/>
     <br />
-    <a href="{@href}" target="_blank"><img src="ow/images/xml.gif" width="36" height="14" border="0" alt="" /></a> |
+    <a href="{@href}" onclick="return !window.open(this.href)"><img src="ow/images/xml.gif" width="36" height="14" border="0" alt="" /></a> |
     <a href="{@refreshURL}">refresh</a>
     </small>
 </xsl:template>
@@ -494,7 +494,7 @@
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
-    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+    <body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
         <xsl:attribute name="onload">document.getElementById('editform').text.focus();</xsl:attribute>
 
         <script type="text/javascript" charset="{@encoding}">
@@ -654,7 +654,7 @@
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head_print"/>
-    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+    <body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 		<div id="globalWrapper">
 			<div id="column-content">
 				<div id="content">
@@ -682,7 +682,7 @@
 <xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="nofollow_head"/>
-		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="globalWrapper">
 				<xsl:apply-templates select="ow:page/ow:body"/>
 			</div>
@@ -704,7 +704,7 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="nofollow_head"/>
-		<body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="globalWrapper">
 				<div id="column-content">
 					<div id="content">
@@ -910,7 +910,7 @@
   <xsl:call-template name="pi"/>
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
   <xsl:call-template name="nofollow_head"/>
-    <body class="mediawiki ltr ns-0 ns-subject page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+    <body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 		<div id="globalWrapper">
 			<div id="column-content">
 				<div id="content">
@@ -1083,7 +1083,7 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="nofollow_head"/>
-		<body class="mediawiki ltr ns--1 ns-special page-{$name} skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns--1 ns-special skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="globalWrapper">
 				<div id="column-content">
 					<div id="content">
