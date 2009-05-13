@@ -637,7 +637,7 @@ Sub StoreHref(pAnchor, pText)
     vLink = "<a " & pAnchor
     If cExternalOut Then
         If Not m(pAnchor, " target=\""", True, True) Then
-            vLink = vLink & " target=""_blank"""
+            vLink = vLink & " onclick=""return !window.open(this.href)"""
         End If
     End If
     If Not m(pAnchor, " class=\""", True, True) Then
@@ -961,7 +961,7 @@ Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
 
     vLink = "<a href='" & pURL & "' class='external'"
     If cExternalOut Then
-        vLink = vLink & " target='_blank'"
+        vLink = vLink & " onclick=""return !window.open(this.href)"""
     End If
     If pTitle <> "" Then
         vLink = vLink & " title='" & CDATAEncode(pTitle) & "'"
@@ -1038,7 +1038,7 @@ Sub UrlLink(pURL)
     If vLink = "" Then
         vLink = "<a href=""" & gTempLink & """ class=""external"""
         If cExternalOut Then
-            vLink = vLink & " target=""_blank"""
+            vLink = vLink & " onclick=""return !window.open(this.href)"""
         End If
         vLink = vLink & ">" & gTempLink & "</a>"
     End If
