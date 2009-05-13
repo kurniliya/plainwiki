@@ -235,7 +235,8 @@ Class Transformer
 						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
 					End If               
                     Response.Expires = -1  ' expires now
-                    Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
+'                    Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
+                    Response.AddHeader "Last-modified", DateToHTTPDate(Now)
                     'Response.ExpiresAbsolute = Now() - 1
                     'Response.AddHeader "Cache-Control", "must-revalidate"
                     Response.AddHeader "Cache-Control", "no-cache"
