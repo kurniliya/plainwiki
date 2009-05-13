@@ -249,7 +249,7 @@ Sub MacroIconP(pParam)
 End Sub
 
 Sub MacroAnchorP(pParam)
-    gMacroReturn = "<a name='" & CDATAEncode(pParam) & "'></a>"
+    gMacroReturn = "<a id='" & CDATAEncode(pParam) & "'></a>"
 End Sub
 
 Sub MacroIncludeP(pParam)
