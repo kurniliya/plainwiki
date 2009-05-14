@@ -217,7 +217,7 @@ Function MultiLineMarkup(pText)
         End If
     End If
 
-    pText = s(pText, "-{4,}", "<hr size=""1""/>", False, True)
+    pText = s(pText, "-{4,}", "<hr />", False, True)
     pText = s(pText, "\&gt;\&gt;([\s\S]*?)\&lt;\&lt;", "<center>$1</center>", False, True)
 
     If cNewSkool Then
