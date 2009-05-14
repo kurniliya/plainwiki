@@ -18,7 +18,7 @@
 OPENWIKI_IMAGEPATH       = "ow/images"        ' path to images directory
 OPENWIKI_ICONPATH        = "ow/images/icons"  ' path to icons directory
 OPENWIKI_ENCODING        = "UTF-8"            ' character encoding to use
-OPENWIKI_TITLE           = "NEQwiki"          ' title of your wiki
+OPENWIKI_TITLE           = "NEQwiki, the nonlinear equations encyclopedia"          ' title of your wiki
 OPENWIKI_FRONTPAGE       = "FrontPage"        ' name of your front page.
 OPENWIKI_SCRIPTNAME      = "ow.asp"           ' "mydir/ow.asp" : in case the auto-detected scriptname isn't correct
 OPENWIKI_STYLESHEETS     = "ow/xsl/"          ' the subdirectory where the stylesheet files (*.xsl) are located

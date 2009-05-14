@@ -19,7 +19,7 @@
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
-			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
+			<xsl:value-of select="ow:page/ow:link"/> - <xsl:value-of select="ow:title"/>
 		</title>
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
@@ -107,7 +107,7 @@
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
-			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
+			<xsl:value-of select="ow:page/ow:link"/> - <xsl:value-of select="ow:title"/>
 		</title>
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
@@ -194,7 +194,7 @@
 		<meta name="MSSmartTagsPreventParsing" content="true" />
 		<link rel="shortcut icon" href="{/ow:wiki/ow:imagepath}/favicon.ico" />		
 		<title>
-			<xsl:value-of select="ow:title"/> - <xsl:value-of select="ow:page/ow:link"/>
+			<xsl:value-of select="ow:page/ow:link"/> - <xsl:value-of select="ow:title"/>
 		</title>
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" />		
