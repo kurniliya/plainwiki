@@ -968,18 +968,18 @@
 </xsl:template>
 
 <xsl:template match="ow:titleindex">
-    <center>
-    <xsl:for-each select="ow:page">
-        <xsl:if test="not(substring(./preceding-sibling::*[position()=1]/@name, 1, 1) = substring(@name, 1, 1))">
-            <a><xsl:attribute name="href">#<xsl:value-of select="substring(@name, 1, 1)"/></xsl:attribute><xsl:value-of select="substring(@name, 1, 1)"/></a>
-            <xsl:text> </xsl:text>
-        </xsl:if>
-    </xsl:for-each>
-    </center>
+	<div style="text-align:center">
+		<xsl:for-each select="ow:page">
+			<xsl:if test="not(substring(./preceding-sibling::*[position()=1]/@name, 1, 1) = substring(@name, 1, 1))">
+				<a><xsl:attribute name="href">#<xsl:value-of select="substring(@name, 1, 1)"/></xsl:attribute><xsl:value-of select="substring(@name, 1, 1)"/></a>
+				<xsl:text> </xsl:text>
+			</xsl:if>
+		</xsl:for-each>
+	</div>
     <xsl:for-each select="ow:page">
         <xsl:if test="not(substring(./preceding-sibling::*[position()=1]/@name, 1, 1) = substring(@name, 1, 1))">
             <br />
-            <a><xsl:attribute name="name"><xsl:value-of select="substring(@name, 1, 1)"/></xsl:attribute></a>
+            <a><xsl:attribute name="id"><xsl:value-of select="substring(@name, 1, 1)"/></xsl:attribute></a>
             <b><xsl:value-of select="substring(@name, 1, 1)"/></b>
             <br />
         </xsl:if>
