@@ -575,9 +575,9 @@
 								The text you edited is shown below.
 								The text in the textarea box shows the latest version of this page.
 							</p>
-							<hr size="1" />
+							<hr />
 							<pre><xsl:value-of select="ow:textedits"/></pre>
-							<hr size="1" />
+							<hr />
 						</xsl:if>
 
 						<div id='toolbar'>
@@ -767,7 +767,7 @@
 				
 						<form name="f" method="get">
 						<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-						<hr size="1" />
+						<hr />
 				
 						<xsl:if test="$showBookmarksInFooter='1'">
 						  <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
@@ -1051,14 +1051,14 @@
         <xsl:call-template name="brandingImage"/>
         <h1>Title search for "<xsl:value-of select="ow:titlesearch/@value"/>"</h1>
         <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
-        <hr size="1" />
+        <hr />
         <xsl:apply-templates select="ow:titlesearch"/>
         <xsl:value-of select="count(ow:titlesearch/ow:page)"/> hits out of
         <xsl:value-of select="ow:titlesearch/@pagecount"/> pages searched.
 
         <form name="f" method="get">
         <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-        <hr size="1" />
+        <hr />
         <xsl:apply-templates select="ow:userpreferences/ow:bookmarks"/>
         <br />
         <input type="hidden" name="a" value="fullsearch"/>
