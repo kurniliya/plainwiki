@@ -1031,16 +1031,18 @@
 </xsl:template>
 
 <xsl:template match="ow:titlesearch">
-    <ul>
-    <xsl:for-each select="ow:page">
-      <li>
-        <xsl:if test="contains(@name, '/')">
-            ....
-        </xsl:if>
-        <xsl:apply-templates select="ow:link"/>
-      </li>
-    </xsl:for-each>
-    </ul>
+	<xsl:if test="count(ow:page)>0">
+		<ul>
+			<xsl:for-each select="ow:page">
+				<li>
+					<xsl:if test="contains(@name, '/')">
+						....
+					</xsl:if>
+					<xsl:apply-templates select="ow:link"/>
+				</li>
+			</xsl:for-each>
+		</ul>
+	</xsl:if>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="titlesearch">
@@ -1069,16 +1071,18 @@
 </xsl:template>
 
 <xsl:template match="ow:fullsearch">
-    <ul>
-    <xsl:for-each select="ow:page">
-      <li>
-        <xsl:if test="contains(@name, '/')">
-            ....
-        </xsl:if>
-        <xsl:apply-templates select="ow:link"/>
-      </li>
-    </xsl:for-each>
-    </ul>
+	<xsl:if test="count(ow:page)>0">
+		<ul>
+			<xsl:for-each select="ow:page">
+			  <li>
+				<xsl:if test="contains(@name, '/')">
+					....
+				</xsl:if>
+				<xsl:apply-templates select="ow:link"/>
+			  </li>
+			</xsl:for-each>
+		</ul>
+    </xsl:if>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="fullsearch">
