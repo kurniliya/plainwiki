@@ -18,13 +18,13 @@
 
 <xsl:template name="poweredBy">
 	<div id="f-poweredbyico">
-		<a href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" alt="Powered by OpenWiki" /></a>
+		<a onclick="return !window.open(this.href)" href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" alt="Powered by OpenWiki" /></a>
     </div>
 </xsl:template>
 
 <xsl:template name="validatorButtons">
-    <a href="http://validator.w3.org/check/referer"><img src="{/ow:wiki/ow:imagepath}/valid-xhtml10.gif" alt="Valid XHTML 1.0!" width="88" height="31" /></a>
-    <a href="http://jigsaw.w3.org/css-validator/validator?uri={/ow:wiki/ow:location}ow.css"><img src="{/ow:wiki/ow:imagepath}/valid-css.gif" alt="Valid CSS!" width="88" height="31" /></a>
+    <a onclick="return !window.open(this.href)" href="http://validator.w3.org/check/referer"><img src="{/ow:wiki/ow:imagepath}/valid-xhtml10.gif" alt="Valid XHTML 1.0!" width="88" height="31" /></a>
+    <a onclick="return !window.open(this.href)" href="http://jigsaw.w3.org/css-validator/validator?uri={/ow:wiki/ow:location}ow.css"><img src="{/ow:wiki/ow:imagepath}/valid-css.gif" alt="Valid CSS!" width="88" height="31" /></a>
 </xsl:template>
 
 <xsl:template name="menu_column">
@@ -242,9 +242,7 @@
 
 <xsl:template name="copyright_ico">
 	<div id="f-copyrightico">
-		<a href="http://www.mephi.ru/">
-			<img src="{/ow:wiki/ow:imagepath}/mephi.gif"  width="100" height="100" alt="Moscow Engineering Physics Institute"/>
-		</a>
+		<a onclick="return !window.open(this.href)" href="http://www.mephi.ru/"><img src="{/ow:wiki/ow:imagepath}/mephi.gif"  width="100" height="100" alt="Moscow Engineering Physics Institute"/></a>
 	</div>
 </xsl:template>
 
