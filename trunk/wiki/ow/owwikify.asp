@@ -133,8 +133,13 @@ Function MultiLineMarkup(pText)
     End If
     pText = s(pText, " \\ *\r?\n", "", False, True)  ' Join lines with backslash at end
 
+
+
     ' The <nowiki> tag stores text with no markup (except quoting HTML)
     pText = s(pText, "\&lt;nowiki\&gt;([\s\S]*?)\&lt;\/nowiki\&gt;", "&StoreRaw($1)", True, True)
+
+    ' <!-- and --> mark commented block
+    pText = s(pText, "\&lt;!--([\s\S]*?)--\&gt;", "", True, True)
 
     ' <code></code> and {{{ }}} do the same thing.
     pText = s(pText, "\{\{\{(.*?)\}\}\}", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
@@ -142,7 +147,7 @@ Function MultiLineMarkup(pText)
     pText = s(pText, "\{\{\{([\s\S]*?)\}\}\}", "&StoreCode($1)", True, True)
     pText = s(pText, "\&lt;code\&gt;([\s\S]*?)\&lt;\/code\&gt;", "&StoreCode($1)", True, True)
     pText = s(pText, "\&lt;pre\&gt;([\s\S]*?)\&lt;\/pre\&gt;", "<pre>$1</pre>", True, True)
-
+    
     If cHtmlTags Then
         ' Scripting is currently possible with these tags, so they are *not* particularly "safe".
         Dim vTag
