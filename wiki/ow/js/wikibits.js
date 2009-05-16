@@ -135,11 +135,12 @@ function showTocToggle() {
 			linkHolder.appendChild(document.createTextNode(" "));
 			linkHolder.appendChild(outerSpan);
 		}
-
+/*
 		var cookiePos = document.cookie.indexOf("hidetoc=");
 		if (cookiePos > -1 && document.cookie.charAt(cookiePos + 8) == 1) {
 			toggleToc();
 		}
+*/		
 	}
 }
 
