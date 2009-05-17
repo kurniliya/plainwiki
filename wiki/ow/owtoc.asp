@@ -78,6 +78,12 @@ Class TableOfContents
             vTOCStart = pLevel
             vTOCCurLevel = pLevel - 1
         End If
+        
+        ' 17/05/2009 IK: may be this block is unnecassary and not straightforward
+        ' but MediaWiki works exactly so
+		If pLevel > vTOCCurLevel + 1 Then
+			pLevel = vTOCCurLevel + 1
+		End If        
 
         vLevelRaised = False
         
