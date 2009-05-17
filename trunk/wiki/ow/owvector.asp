@@ -78,7 +78,7 @@ Class Vector
     End Function
 
     Public Function Top()
-    	If myCount >= 0 Then
+    	If myCount >= LBound(myStack) and myCount <= UBound(myStack) Then
 	        If IsObject(myStack(myCount)) Then
 	            Set Top = myStack(myCount)
 	        Else
