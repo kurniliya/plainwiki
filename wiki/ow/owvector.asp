@@ -114,5 +114,20 @@ Class Vector
     Public Function IsEmpty()
         IsEmpty = (myCount < 0)
     End Function
+    
+    Public Function Trace(pSeparator)
+    	Dim i
+    	If not IsEmpty() Then
+	    	For i = LBound(myStack) to Count - 1
+		        If not IsObject(myStack(i)) Then
+		        	If Trace = "" Then
+		        		Trace = myStack(i)
+		        	Else
+			            Trace = Trace & pSeparator & myStack(i)         
+			        End IF
+		        End If
+		    Next
+		End If
+    End Function
 End Class
 %>
