@@ -69,12 +69,14 @@ Class Vector
     End Sub
 
     Public Function Pop()
-        If IsObject(myStack(myCount)) Then
-            Set Pop = myStack(myCount)
-        Else
-            Pop = myStack(myCount)
-        End If
-        myCount = myCount - 1
+    	If myCount >= LBound(myStack) and myCount <= UBound(myStack) Then    
+	        If IsObject(myStack(myCount)) Then
+	            Set Pop = myStack(myCount)
+	        Else
+	            Pop = myStack(myCount)
+	        End If
+	        myCount = myCount - 1
+	    End If	        
     End Function
 
     Public Function Top()
