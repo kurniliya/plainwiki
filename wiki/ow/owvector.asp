@@ -78,11 +78,13 @@ Class Vector
     End Function
 
     Public Function Top()
-        If IsObject(myStack(myCount)) Then
-            Set Top = myStack(myCount)
-        Else
-            Top = myStack(myCount)
-        End If
+    	If myCount >= 0 Then
+	        If IsObject(myStack(myCount)) Then
+	            Set Top = myStack(myCount)
+	        Else
+	            Top = myStack(myCount)
+	        End If
+	    End If
     End Function
 
     Public Function ElementAt(pIndex)
