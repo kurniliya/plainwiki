@@ -386,7 +386,7 @@
 				<xsl:for-each select="./*">
 					<xsl:choose>
 						<xsl:when test="number">
-							<li class="toclevel-1">
+							<li class="toclevel-{level}">
 								<a href="#h{number}">
 									<span class="toctext">
 										<xsl:value-of select="text" disable-output-escaping="yes" />
@@ -403,6 +403,32 @@
 				</xsl:for-each>
 			</ul>
 		</xsl:when>
+		<xsl:otherwise>
+			<ul>
+				<xsl:for-each select="./*">
+					<xsl:choose>
+						<xsl:when test="number">
+							<li class="toclevel-{level}">
+								<a href="#h{number}">
+									<span class="tocnumber">
+										<xsl:value-of select="number_trace" disable-output-escaping="yes" />
+										<xsl:text> </xsl:text>
+									</span>					
+									<span class="toctext">
+										<xsl:value-of select="text" disable-output-escaping="yes" />
+									</span>	
+								</a>
+							</li>
+						</xsl:when>
+						<xsl:otherwise>
+							<li>
+								<xsl:call-template name="toc" />
+							</li>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:for-each>
+			</ul>
+		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
 

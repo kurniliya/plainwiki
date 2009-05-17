@@ -40,33 +40,57 @@
 
 Class TableOfContents
     Private vTOC, vTOCStart, vTOCCurLevel, myCount
+    Private vCurNum
+    Private vNumberStack
+    Private vLevelRaised
 
     Private Sub Class_Initialize()
         vTOCStart = 0
         vTOCCurLevel = -1
         myCount = 0
+        vCurNum = 0
+        Set vNumberStack = new Vector
+'        vNumberStack.Push(1)        
+        vLevelRaised = False
     End Sub
 
     Private Sub Class_Terminate()
+    	Set vNumberStack = Nothing
     End Sub
 
     Public Property Get Count()
         Count = myCount + 1
     End Property
 
-    Public Sub AddTOC(pLevel, pStr)
-        Dim i
+    Public Property Get NumberTrace()
+    	NumberTrace = vNumberStack.Trace(".")
+    End Property
+
+    Public Property Get CurNum()
+        CurNum = vNumberStack.Top
+    End Property
+
+    Public Sub AddTOC(pLevel, pText)
+'        Dim i
+		Dim vStr
+		
         If vTOCStart = 0 Then
             vTOCStart = pLevel
             vTOCCurLevel = pLevel - 1
         End If
+
+        vLevelRaised = False
+        
         Do While (vTOCCurLevel < pLevel)
             vTOC = vTOC & "<" & GetTOCElement(vTOCCurLevel) & ">" & vbCRLF
             vTOCCurLevel = vTOCCurLevel + 1
+            vNumberStack.Push(1)
+            vLevelRaised = True
         Loop
         Do While (vTOCCurLevel > pLevel)
             vTOC = vTOC & "</" & GetTOCEndElement() & ">" & vbCRLF
             vTOCCurLevel = vTOCCurLevel - 1
+            vNumberStack.Pop
         Loop
         Do While (vTOCStart > pLevel)
             vTOCStart = vTOCStart - 1
@@ -80,12 +104,23 @@ Class TableOfContents
         'Else
         '    vTOC = vTOC & pStr & vbCRLF
         'End if
-        vTOC = vTOC & pStr & vbCRLF
 
+		If not vLevelRaised Then
+			vCurNum = vNumberStack.Pop
+			vNumberStack.Push(vCurNum + 1)
+		End If
+		
+		vStr = "<ow:toctext>" _
+    	& "<number>" & Count & "</number>" _
+    	& "<level>" & vTOCCurLevel & "</level>" _
+    	& "<number_trace>" & NumberTrace & "</number_trace>" _
+    	& "<text>" & pText & "</text>" _
+    	& "</ow:toctext>"        
+        
+        vTOC = vTOC & vStr & vbCRLF
+		
         myCount = myCount + 1
-
     End Sub
-
 
     Public Function GetTOC
         Do While (vTOCCurLevel >= vTOCStart)
@@ -100,18 +135,19 @@ Class TableOfContents
         '    GetTOCElement = "dl"
         '	Changed because multi level "dl"'s don't indent in FF
             GetTOCElement = "ow:toc mode=""indented"""
-        Elseif pLevel = 0 Then
-            GetTOCElement = "ol"
-        Elseif pLevel = 1 Then
-            GetTOCElement = "ol type=""I"""
-        Elseif pLevel = 2 Then
-            GetTOCElement = "ol type=""a"""
-        Elseif pLevel = 3 Then
-            GetTOCElement = "ol type=""i"""
-        Elseif pLevel = 4 Then
-            GetTOCElement = "ol type=""1"""
+'        Elseif pLevel = 0 Then
+'            GetTOCElement = "ol"
+'        Elseif pLevel = 1 Then
+'            GetTOCElement = "ol type=""I"""
+'        Elseif pLevel = 2 Then
+'            GetTOCElement = "ol type=""a"""
+'        Elseif pLevel = 3 Then
+'            GetTOCElement = "ol type=""i"""
+'        Elseif pLevel = 4 Then
+'            GetTOCElement = "ol type=""1"""
         Else
-            GetTOCElement = "ol"
+'            GetTOCElement = "ol"
+            GetTOCElement = "ow:toc"
         End If
     End Function
 
@@ -121,7 +157,7 @@ Class TableOfContents
         '	Changed because multi level "dl"'s don't intend in FF        
             GetTOCEndElement = "ow:toc"        
         Else
-            GetTOCEndElement = "ol"
+            GetTOCEndElement = "ow:toc"
         End if
     End Function
 

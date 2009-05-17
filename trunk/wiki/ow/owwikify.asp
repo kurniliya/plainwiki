@@ -787,7 +787,13 @@ Sub GetWikiHeading(pSymbols, pText)
     End If
     vTemp = s(pText, "<ow:link name='(.*?)' href=.*?</ow:link>", "$1", False, False)
 '    Call gTOC.AddTOC(vLevel, "<li><a href=""#h" & gTOC.Count & """>" & vTemp & "</a></li>")
-    Call gTOC.AddTOC(vLevel, "<ow:toctext><number>" & gTOC.Count & "</number><text>" & vTemp & "</text></ow:toctext>")
+'    Call gTOC.AddTOC(vLevel, "<ow:toctext>" _
+'    	& "<number>" & gTOC.Count & "</number>" _
+'    	& "<level>" & vLevel & "</level>" _
+'    	& "<number_trail>" & gTOC.CurNum & "</number_trail>" _
+'    	& "<text>" & vTemp & "</text>" _
+'    	& "</ow:toctext>")
+	Call gTOC.AddTOC(vLevel, vTemp)
     sReturn = "<a id=""h" & (gTOC.Count - 1) & """/><h" & vLevel & ">" & pText & "</h" & vLevel & ">"
 End Sub
 
