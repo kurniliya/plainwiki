@@ -249,8 +249,8 @@ Class Transformer
             Response.Write("<br /><br /><hr />")
             Response.Write("<pre>" & Replace(Server.HTMLEncode(vXmlStr), vbCRLF, "<br />") & "</pre>")
             Response.Write("</body></html>")
-        Elseif vIsIE and cUseXhtmlHttpHeaders Then
-			ProcessIE()
+'        Elseif vIsIE and cUseXhtmlHttpHeaders Then
+'			ProcessIE()
         Else
             LoadXSL(pXslFilename)
             vXslProc.input = vXmlDoc
@@ -261,7 +261,9 @@ Class Transformer
             If cEmbeddedMode = 0 Then
                 If gAction = "edit" Then
 					if cUseXhtmlHttpHeaders Then
-						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
+'						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+						Response.ContentType = "application/xhtml+xml"
 					Else
 						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
 					End If               
@@ -270,7 +272,9 @@ Class Transformer
                     Response.ContentType = "text/xml; charset:" & OPENWIKI_ENCODING & ";"
                 Else
 					if cUseXhtmlHttpHeaders Then
-						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
+'						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+						Response.ContentType = "application/xhtml+xml"
 					Else
 						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
 					End If               
