@@ -1,0 +1,19 @@
+/*
+** CSS forpage displayed to IE users
+*/
+a {
+	padding-right: 18px;
+	padding-left: 0;
+}
+
+a.mozilla {
+	background: transparent url(http://www.mozilla-europe.org/mozilla-16.png) right center no-repeat;
+}
+
+a.seamonkey {
+	background: transparent url(http://www.seamonkey-project.org/images/seamonkey16.png) right center no-repeat;
+}
+
+a.amaya {
+	background: transparent url(http://www.w3.org/Amaya/Icons/amaya1.gif) right center no-repeat;
+}
