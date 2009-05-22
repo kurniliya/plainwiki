@@ -495,6 +495,7 @@
     </small>
 </xsl:template>
 
+<!-- ==================== holds interwiki elements ==================== -->
 <xsl:template match="ow:interlinks">
     <script type="text/javascript" charset="{/ow:wiki/@encoding}">
       <xsl:text disable-output-escaping="yes">
@@ -511,11 +512,12 @@
         }
 	  </xsl:text>
     </script>
-    <table cellspacing="0" cellpadding="2" border="0">
-      <xsl:for-each select="ow:interlink">
-        <tr><td class="n"><li><xsl:value-of select="text()"/></li> &#x20;&#x20;</td><td class="n"><a href="#" onclick="javascript:ask('{@href}');"><xsl:value-of select="@href"/></a></td></tr>
-      </xsl:for-each>
-    </table>
+    <dl>
+		<xsl:for-each select="ow:interlink">
+			<dt><xsl:value-of select="ow:name"/></dt>
+			<dd><a href="#" onclick="javascript:ask('{ow:href}');" class="external {ow:class}"><xsl:value-of select="ow:href"/></a></dd>
+		</xsl:for-each>
+    </dl>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="edit">

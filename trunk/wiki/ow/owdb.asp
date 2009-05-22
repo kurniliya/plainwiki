@@ -842,7 +842,11 @@ Class OpenWikiNamespace
         vRS.Open vQuery, vConn, adOpenForwardOnly
         Do While Not vRS.EOF
             Dim val
-            vTemp = vTemp & "<ow:interlink href='" & CDATAEncode(vRS("wik_url")) & "'>" & PCDATAEncode(vRS("wik_name")) & "</ow:interlink>"
+            vTemp = vTemp & "<ow:interlink>" _
+            	& "<ow:name>" & PCDATAEncode(vRS("wik_name")) & "</ow:name>" _            
+            	& "<ow:href>" & CDATAEncode(vRS("wik_url")) & "</ow:href>" _
+            	& "<ow:class>" & CDATAEncode(LCase(Trim(vRS("wik_name")))) & "</ow:class>" _            	
+            	& "</ow:interlink>"
             vRS.MoveNext
         Loop
         vRS.Close
