@@ -133,14 +133,7 @@ Class Transformer
 		Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
 		Response.Write("<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01//EN"" ""http://www.w3.org/TR/html4/strict.dtd"">")
 		Response.Write("<html><head><title>Internet Explorer is not supported</title>")
-		Response.Write("<STYLE type=""text/css"">" _
-					& "BODY { font: 8pt/12pt verdana }" _
-					& "H1 { font: 13pt/15pt verdana }" _
-					& "H2 { font: 8pt/12pt verdana }" _
-					& "A:link { color: red }" _
-					& "A:visited { color: maroon }" _
-					& "</STYLE>" _
-					& "<link rel=""stylesheet"" href=""ow/css/processie.css"" type=""text/css"" media=""screen"" />" _
+		Response.Write("<link rel=""stylesheet"" href=""ow/css/processie.css"" type=""text/css"" media=""screen"" />" _
 					& "</head>")
         Response.Write("<body>")
         Response.Write("<h1>Internet Explorer is not supported</b></h1>")        

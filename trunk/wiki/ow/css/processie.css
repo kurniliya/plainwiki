@@ -1,6 +1,14 @@
 /*
 ** CSS for page displayed to IE users
 */
+
+body { font: 8pt/12pt verdana }
+h1 { font: 13pt/15pt verdana }
+h2 { font: 8pt/12pt verdana }
+a:link { color: red }
+a:visited { color: maroon }
+
+
 a {
 	padding-right: 18px;
 	padding-left: 0;
