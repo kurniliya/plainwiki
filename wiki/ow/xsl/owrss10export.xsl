@@ -24,7 +24,7 @@
       <channel rdf:about="{ow:about}">
         <title><xsl:value-of select="ow:title"/></title>
         <link><xsl:value-of select="ow:location"/><xsl:value-of select="ow:scriptname"/></link>
-        <description>The post-it note of the web</description>
+        <description><xsl:value-of select="ow:title"/></description>
         <image rdf:resource="{ow:location}ow/images/logo_tiny.gif"/>
         <dc:language>en-us</dc:language>
         <dc:rights>Copyright 2001 - OpenWiki.com</dc:rights>
