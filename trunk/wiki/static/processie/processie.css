@@ -14,6 +14,10 @@ a {
 	padding-left: 0;
 }
 
+img.mathplayer {
+	border: 0;
+}
+
 a.mozilla {
 	background: transparent url(http://www.mozilla-europe.org/mozilla-16.png) right center no-repeat;
 }
@@ -24,4 +28,8 @@ a.seamonkey {
 
 a.amaya {
 	background: transparent url(http://www.w3.org/Amaya/Icons/amaya1.gif) right center no-repeat;
+}
+
+a.mathplayer {
+	padding-right: 0px;
 }
