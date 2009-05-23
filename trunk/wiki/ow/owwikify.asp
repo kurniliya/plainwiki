@@ -679,7 +679,7 @@ Sub StoreBracketWikiLink(pPrefix, pID, pText)
 End Sub
 
 Sub StoreInterPage(pID, pText, pUseBrackets)
-    Dim vPos, vSite, vRemotePage, vURL, vTemp
+    Dim vPos, vSite, vRemotePage, vURL, vTemp, vClass
     If pUseBrackets Then
         gTempLink = pID
         gTempJunk = ""
@@ -691,6 +691,7 @@ Sub StoreInterPage(pID, pText, pUseBrackets)
         vSite = Left(gTempLink, vPos - 1)
         vRemotePage = Mid(gTempLink, vPos + 1)
         vURL = gNamespace.GetInterWiki(vSite)
+        vClass = LCase(Trim(vSite))
     End If
     If vURL = "" Then
         sReturn = pID & pText
@@ -726,7 +727,7 @@ Sub StoreInterPage(pID, pText, pUseBrackets)
         If vSite = "This" Then
             StoreRaw("<ow:link name='" & pText & "' href='" & vURL & "' date='" & FormatDateISO8601(Now()) & "'>" & pText & "</ow:link>" & gTempJunk)
         Else
-            StoreRaw(GetExternalLink(vURL, pText, vSite, pUseBrackets) & gTempJunk)
+            StoreRaw(GetExternalLink_x(vURL, pText, vSite, pUseBrackets, vClass) & gTempJunk)
         End If
     End If
 End Sub
@@ -946,7 +947,6 @@ Sub Capitalize(pChars, pWord)
     sReturn = pChars & UCase(Left(pWord, 1)) & Mid(pWord, 2)
 End Sub
 
-
 Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
     Dim vLink, vLinkedImage, vTemp
     If pUseBrackets And pText = "" Then
@@ -1009,6 +1009,70 @@ Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
     End If
     vLink = vLink & "</a>"
     GetExternalLink = vLink
+End Function
+
+Function GetExternalLink_x(pURL, pText, pTitle, pUseBrackets, pClass)
+    Dim vLink, vLinkedImage, vTemp
+    If pUseBrackets And pText = "" Then
+        If cBracketIndex Then
+            pText = "[" & GetBracketUrlIndex(pURL) & "]"
+        Else
+            pText = pURL
+        End If
+    Else
+        pText = Trim(pText)
+    End If
+
+    If cAllowAttachments And (Left(pURL, 13) = "attachment://") Then
+        If pUseBrackets And cShowBrackets Then
+            pText = "[" & pText & "]"
+        End If
+        GetExternalLink = AttachmentLink(Mid(pURL, 14), pText)
+        If GetExternalLink = "" Then
+            GetExternalLink = "[" & pURL & " " & pText & "]"
+        End If
+        Exit Function
+    End If
+
+    vLink = "<a href='" & pURL & "' class='external " & pClass & "'" 
+    If cExternalOut Then
+        vLink = vLink & " onclick=""return !window.open(this.href)"""
+    End If
+    If pTitle <> "" Then
+        vLink = vLink & " title='" & CDATAEncode(pTitle) & "'"
+    End If
+    vLink = vLink & ">"
+
+    vLinkedImage = False
+    If pText <> "" Then
+        If m(pText, gImagePattern, False, True) Then
+            pText = "<img src=""" & pText & """ border=""0"" alt=""""/>"
+            vLinkedImage = True
+        End If
+    End If
+
+    If pUseBrackets And cUseLinkIcons And Not vLinkedImage Then
+        Dim vScheme, vImg, vPos
+        vPos = Instr(pURL, ":")
+        vScheme = Left(pURL, vPos - 1)
+'        vImg = "/wiki-" & vScheme & ".gif"" width=""12"" height=""12"""
+'        vLink = vLink & "<img src=""" & OPENWIKI_ICONPATH & vImg & " border=""0"" hspace=""4"" alt=""""/>" & pText
+		vLink = vLink & pText
+    Else
+        If vLinkedImage Then
+            vLink = vLink & pText
+        Else
+            If pUseBrackets And cShowBrackets Then
+                vLink = vLink & "["
+            End If
+            vLink = vLink & pText
+            If pUseBrackets And cShowBrackets Then
+                vLink = vLink & "]"
+            End If
+        End If
+    End If
+    vLink = vLink & "</a>"
+    GetExternalLink_x = vLink
 End Function
 
 Function GetBracketUrlIndex(pID)
