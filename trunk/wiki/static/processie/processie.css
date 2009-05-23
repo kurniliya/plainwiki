@@ -34,3 +34,7 @@ a.amaya {
 a.mathplayer {
 	padding-right: 0px;
 }
+
+a.opera {
+	background: transparent url(http://www.opera.com/favicon.ico) right center no-repeat;
+}
