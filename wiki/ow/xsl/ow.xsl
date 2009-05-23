@@ -1161,71 +1161,51 @@
 </xsl:template>
 
 <xsl:template match="ow:userpreferences">
-    <form name="f" method="post">
-      <xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
-      <table>
-        <tr><td>Username:</td><td><input type="text" name="username" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:username"/></xsl:attribute></input></td></tr>
-        <tr><td>Bookmarks:</td><td><input type="text" name="bookmarks" size="60" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:for-each select="/ow:wiki/ow:userpreferences/ow:bookmarks/ow:link"><xsl:value-of select="@name"/><xsl:text> </xsl:text></xsl:for-each></xsl:attribute></input></td></tr>
-        <tr><td colspan="2">Edit form columns: <input type="text" name="cols" size="3" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute></input> rows: <input type="text" name="rows" size="3" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute></input></td></tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="prettywikilinks" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:prettywikilinks"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Show pretty wiki links
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="bookmarksontop" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:bookmarksontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Show bookmarks on top
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="editlinkontop" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Show edit link on top
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="trailontop" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:trailontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Show trail on top
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="opennew" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:opennew"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Open external links in new window
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="checkbox" name="emoticons" value="1">
-              <xsl:if test="/ow:wiki/ow:userpreferences/ow:emoticons"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
-            </input>
-            Show emoticons in text <small>(goto <a href="?HelpOnEmoticons">HelpOnEmoticons</a>)</small>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <input type="submit" name="save" value="Save Preferences"/>
-            &#x20;&#x20;
-            <input type="submit" name="clear" value="Clear Preferences"/>
-          </td>
-        </tr>
-      </table>
-      <input type="hidden" name="p"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:page/@name"/></xsl:attribute></input>
-      <input type="hidden" name="a" value="userpreferences"/>
-    </form>
+	<form id="f" method="post">
+	<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/></xsl:attribute>
+		<fieldset>
+			<legend>User preferences:</legend>
+			Username: <input type="text" name="username" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:username"/></xsl:attribute></input><br />
+			Bookmarks: <input type="text" name="bookmarks" size="60" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:for-each select="/ow:wiki/ow:userpreferences/ow:bookmarks/ow:link"><xsl:value-of select="@name"/><xsl:text> </xsl:text></xsl:for-each></xsl:attribute></input><br />
+			Edit form columns: <input type="text" name="cols" size="3" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute></input> rows: <input type="text" name="rows" size="3" ondblclick="event.cancelBubble=true;"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute></input><br />
+			<input type="checkbox" name="prettywikilinks" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:prettywikilinks"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Show pretty wiki links
+			<br />
+			<input type="checkbox" name="bookmarksontop" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:bookmarksontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Show bookmarks on top
+			<br />
+			<input type="checkbox" name="editlinkontop" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:editlinkontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Show edit link on top
+			<br />
+			<input type="checkbox" name="trailontop" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:trailontop"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Show trail on top
+			<br />
+			<input type="checkbox" name="opennew" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:opennew"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Open external links in new window
+			<br />
+			<input type="checkbox" name="emoticons" value="1">
+			<xsl:if test="/ow:wiki/ow:userpreferences/ow:emoticons"><xsl:attribute name="checked">checked</xsl:attribute></xsl:if>
+			</input>
+			Show emoticons in text <small>(goto <a href="?HelpOnEmoticons">HelpOnEmoticons</a>)</small>
+			<br />
+			<input type="submit" name="save" value="Save Preferences"/>
+			&#x20;&#x20;
+			<input type="submit" name="clear" value="Clear Preferences"/>
+			<br />
+			<input type="hidden" name="p"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:page/@name"/></xsl:attribute></input>
+			<input type="hidden" name="a" value="userpreferences"/>
+		</fieldset>
+	</form>
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="login">
