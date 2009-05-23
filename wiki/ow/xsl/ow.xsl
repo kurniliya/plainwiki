@@ -1229,47 +1229,34 @@
 </xsl:template>
 
 <xsl:template match="/ow:wiki" mode="login">
-  <xsl:call-template name="pi"/>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-  <xsl:call-template name="nofollow_head"/>
-    <body bgcolor="#ffffff" onload="this.document.f.pwd.focus();">
-        <table width="100%" height="100%">
-          <tr>
-            <td align="center" valign="center">
-                <table border="0" cellspacing="0" cellpadding="70" bgcolor="#eeeeee">
-                  <tr><td>
-                    <xsl:if test="ow:login/@mode='edit'">
-                      <b>Enter password to edit content</b>
-                      <br />
-                      <br />
-                    </xsl:if>
-                    <xsl:apply-templates select="ow:error"/>
-                    <table>
-                    <form name="f" method="post" action="{/ow:wiki/ow:scriptname}?a=login&amp;mode={ow:login/@mode}">
-                    <tr><td>password</td><td><input type="password" name="pwd" size="10"/>
-                    <xsl:text> </xsl:text>
-                    <input type="submit" name="submit" value="let me in!"/>
-                    </td></tr>
-                    <tr><td>&#x20;</td><td>
-                    <input type="checkbox" name="r" value="1">
-                      <xsl:if test="ow:login/ow:rememberme='false'">
-                        <xsl:attribute name="checked">checked</xsl:attribute>
-                      </xsl:if>
-                    </input>
-                    Remember me
-                    </td></tr>
-                    <input type="hidden" name="backlink">
-                      <xsl:attribute name="value"><xsl:value-of select="ow:login/ow:backlink"/></xsl:attribute>
-                    </input>
-                    </form>
-                    </table>
-                  </td></tr>
-                </table>
-            </td>
-          </tr>
-        </table>
-    </body>
-  </html>
+	<xsl:call-template name="pi"/>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+	<xsl:call-template name="nofollow_head"/>
+		<body onload="document.getElementById('pwd').focus();">
+			<xsl:apply-templates select="ow:error"/>
+			<form id="f" method="post" action="{/ow:wiki/ow:scriptname}?a=login&amp;mode={ow:login/@mode}">
+				<fieldset>
+					<xsl:if test="ow:login/@mode='edit'">
+						<legend>Enter password to edit content:</legend>
+					</xsl:if>	
+					<b>Note</b>: cookies and JavaScript must be enabled!<br />
+					Password<input type="password" id="pwd" name="pwd" size="10"/>
+					<xsl:text> </xsl:text>
+					<input type="submit" name="submit" value="let me in!"/>
+					<br />
+					<input type="checkbox" name="r" value="1">
+						<xsl:if test="ow:login/ow:rememberme='false'">
+							<xsl:attribute name="checked">checked</xsl:attribute>
+						</xsl:if>
+					</input>
+					Remember me
+					<input type="hidden" name="backlink">
+						<xsl:attribute name="value"><xsl:value-of select="ow:login/ow:backlink"/></xsl:attribute>
+					</input>
+				</fieldset>
+			</form>
+		</body>
+	</html>
 </xsl:template>
 
 </xsl:stylesheet>
