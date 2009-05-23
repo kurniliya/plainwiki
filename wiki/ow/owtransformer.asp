@@ -39,7 +39,7 @@
 '
 
 Class Transformer
-    Private vXmlDoc, vXslDoc, vXslTemplate, vXslProc, vIsIE, vIsGecko
+    Private vXmlDoc, vXslDoc, vXslTemplate, vXslProc, vIsIE, vIsGecko, vIsMathPlayer
 
 '    Public Property Let MSXML_VERSION(pMSXML_VERSION)
 '        vMSXML_VERSION = pMSXML_VERSION
@@ -104,6 +104,12 @@ Class Transformer
         Else
             vIsIE = False
         End If
+
+        If (InStr(vTemp, "MathPlayer ") > 0) Then
+            vIsMathPlayer = True
+        Else
+            vIsMathPlayer = False
+        End If
         
         If (InStr(vTemp, " Gecko") > 0) Then
             vIsGecko = True
@@ -129,42 +135,8 @@ Class Transformer
         Response.End
     End Sub
     
-    Private Sub ProcessIE()
-		Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
-		Response.Write("<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01//EN"" ""http://www.w3.org/TR/html4/strict.dtd"">")
-		Response.Write("<html><head><title>Internet Explorer is not supported</title>")
-		Response.Write("<link rel=""stylesheet"" href=""ow/css/processie.css"" type=""text/css"" media=""screen"" />" _
-					& "</head>")
-        Response.Write("<body>")
-        Response.Write("<h1>Internet Explorer is not supported</b></h1>")        
-    	Response.Write("<p>You are trying to view this page with <b>Internet Explorer</b>. Unfortunatelly this browser is not supported.</p>")
-		Response.Write("<hr>")
-		Response.Write("<p>Do one of the following:</p>")
-		Response.Write("<ul>" _
-					& "<li>" _
-					& "go to our main page <a href=""http://www.primat.mephi.ru/"" class=""dam"">http://www.primat.mephi.ru/</a>" _
-					& "</li>" _							
-					& "<li>" _    	
-					& "use browser that supports MathML e.g." _
-					& "<ul>" _
-					& "<li>" _
-					& "<a href=""http://www.mozilla.com/firefox/""  onclick=""return !window.open(this.href)"" class=""mozilla"">Mozilla Firefox</a>" _					
-					& "</li>" _
-					& "<li>" _
-					& "<a href=""http://www.seamonkey-project.org/"" onclick=""return !window.open(this.href)"" class=""seamonkey"">SeaMonkey</a>" _					
-					& "</li>" _					
-					& "<li>" _
-					& "<a href=""http://www.w3.org/Amaya/"" onclick=""return !window.open(this.href)"" class=""amaya"">Amaya</a>" _
-					& "</li>" _
-					& "</ul>" _																									
-					& "</li>" _
-					& "</ul>")										
-		Response.Write("<hr>")
-		Response.Write("<p>Technical details:</p>")
-		Response.Write("This section of our site is served with MIME type 'application/xml+xhtml'. That's why it can not be viewed with Internet Explorer.")
-        Response.Write("</body>")    	
-        Response.Write("</html>")    	
-    	Response.End
+    Private Sub ProcessIEWithoutMathPlayer()
+    	Response.Redirect "static/processie/processie.html"
     End Sub
 
     Public Sub LoadXSL(pFilename)
@@ -249,8 +221,8 @@ Class Transformer
             Response.Write("<br /><br /><hr />")
             Response.Write("<pre>" & Replace(Server.HTMLEncode(vXmlStr), vbCRLF, "<br />") & "</pre>")
             Response.Write("</body></html>")
-'        Elseif vIsIE and cUseXhtmlHttpHeaders Then
-'			ProcessIE()
+        Elseif vIsIE and cUseXhtmlHttpHeaders and not vIsMathPlayer Then
+			ProcessIEWithoutMathPlayer()
         Else
             LoadXSL(pXslFilename)
             vXslProc.input = vXmlDoc
