@@ -580,8 +580,8 @@ table.rimage {
 #bodyContent a.external[href *=".pdf#"], #bodyContent a.external[href *=".PDF#"],
 #bodyContent a.external[href *=".pdf?"], #bodyContent a.external[href *=".PDF?"],
 .link-document {
-	background: url("document.png") center right no-repeat;
-	padding: 0 12px;
+	background: url("acrobat.gif") center right no-repeat;
+	padding: 0 16px;
 }
 
 /* for rtl wikis */
