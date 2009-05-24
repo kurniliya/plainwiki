@@ -21,6 +21,9 @@
 		<title>
 			<xsl:value-of select="ow:page/ow:link"/> - <xsl:value-of select="ow:title"/>
 		</title>
+
+		<link rel="alternate" type="application/rss+xml" href="{/ow:wiki/ow:scriptname}?a=rss" title="Recent changes" />
+				
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
@@ -110,6 +113,9 @@
 		<title>
 			<xsl:value-of select="ow:page/ow:link"/> - <xsl:value-of select="ow:title"/>
 		</title>
+		
+		<link rel="alternate" type="application/rss+xml" href="{/ow:wiki/ow:scriptname}?a=rss" title="Recent changes" />		
+		
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />

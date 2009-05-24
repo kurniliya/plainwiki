@@ -207,6 +207,7 @@
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=rss</xsl:attribute>
 			<xsl:attribute name="title">RSS feed of recent changes in the wiki</xsl:attribute>
+			<xsl:attribute name="type">application/rss+xml</xsl:attribute>
 			RSS
 		</a>
 	</li>
