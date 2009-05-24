@@ -1,4 +1,4 @@
-/* <source lang="css"> */
+zz
 
 /* Original OpenWiki styles */
 .new             {font-family:verdana,arial,helvetica; font-size:10px; font-weight:bold; color:#ff0000; background-color: #ffffff;}
@@ -1019,5 +1019,10 @@ sup, sub {
 .wpbs-inner .wpb .wpb-header { display: block; }     /* for IE */
 .wpbs-inner .wpb .wpb-header { display: table-row; } /* for real browsers */
 .wpbs-inner .wpb-outside     { display: none; }      /* hide things that should only display outside shells */
+
+/* RSS ico in menu */
+li#n-recentchangesrss {
+	background: transparent url(../images/icons/rss_small.gif) no-repeat scroll right center;
+}
  
 /* </source> */

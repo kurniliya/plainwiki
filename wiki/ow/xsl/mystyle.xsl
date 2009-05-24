@@ -203,6 +203,13 @@
 			Recent changes
 		</a>
 	</li>
+	<li id="n-recentchangesrss">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=rss</xsl:attribute>
+			<xsl:attribute name="title">RSS feed of recent changes in the wiki</xsl:attribute>
+			RSS
+		</a>
+	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_toolbox">
