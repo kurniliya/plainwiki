@@ -1018,7 +1018,7 @@ sup, sub {
 .wpbs-inner .wpb .wpb-header { display: table-row; } /* for real browsers */
 .wpbs-inner .wpb-outside     { display: none; }      /* hide things that should only display outside shells */
 
-/* RSS ico in menu */
+/* RSS menu icon */
 li#n-recentchangesrss {
 	background: transparent url(../images/icons/rss_small.gif) no-repeat scroll right center;
 }
@@ -1026,11 +1026,19 @@ li#n-recentchangesrss a {
 	display: block;
 }
 
-/* Sandbox ico in menu */
+/* Sandbox menu icon */
 li#t-sandbox {
 	background: transparent url(../images/icons/sndbx.png) no-repeat scroll right center;
 }
 li#t-sandbox a {
+	display: block;
+}
+
+/* Help menu icon */
+li#n-help {
+	background: transparent url(../images/icons/help-icon.gif) no-repeat scroll right center;
+}
+li#n-help a {
 	display: block;
 }
  
