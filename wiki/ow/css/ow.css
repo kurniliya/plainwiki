@@ -1073,5 +1073,21 @@ li#t-createpage {
 li#t-createpage a {
 	display: block;
 }
+
+/* Special pages menu icon */
+li#t-specialpages {
+	background: transparent url(../images/icons/Superman_shield.png) no-repeat scroll right center;
+}
+li#t-specialpages a {
+	display: block;
+}
+
+/* Printable version menu icon */
+li#t-print {
+	background: transparent url(../images/icons/Gnome-dev-printer.png) no-repeat scroll right center;
+}
+li#t-print a {
+	display: block;
+}
  
 /* </source> */
