@@ -1049,5 +1049,13 @@ li#n-randompage {
 li#n-randompage a {
 	display: block;
 }
+
+/* Deprecated pages menu icon */
+li#n-deprecatedpages {
+	background: transparent url(../images/icons/Recycle-symbol.png) no-repeat scroll right center;
+}
+li#n-deprecatedpages a {
+	display: block;
+}
  
 /* </source> */
