@@ -1025,5 +1025,13 @@ li#n-recentchangesrss {
 li#n-recentchangesrss a {
 	display: block;
 }
+
+/* Sandbox ico in menu */
+li#t-sandbox {
+	background: transparent url(../images/icons/sndbx.png) no-repeat scroll right center;
+}
+li#t-sandbox a {
+	display: block;
+}
  
 /* </source> */
