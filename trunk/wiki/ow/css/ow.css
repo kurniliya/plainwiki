@@ -1052,9 +1052,25 @@ li#n-randompage a {
 
 /* Deprecated pages menu icon */
 li#n-deprecatedpages {
-	background: transparent url(../images/icons/Recycle-symbol.png) no-repeat scroll right center;
+	background: transparent url(../images/icons/Edit-delete-not_encyclopedic.png) no-repeat scroll right center;
 }
 li#n-deprecatedpages a {
+	display: block;
+}
+
+/* To-do menu icon */
+li#n-todolist {
+	background: transparent url(../images/icons/Applications-development_current.png) no-repeat scroll right center;
+}
+li#n-todolist a {
+	display: block;
+}
+
+/* Create new page menu icon */
+li#t-createpage {
+	background: transparent url(../images/icons/New_text_document.png) no-repeat scroll right center;
+}
+li#t-createpage a {
 	display: block;
 }
  
