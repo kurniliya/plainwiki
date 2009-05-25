@@ -1220,7 +1220,7 @@
 						<legend>Enter password to edit content:</legend>
 					</xsl:if>	
 					<b>Note</b>: cookies and JavaScript must be enabled!<br />
-					Password<input type="password" id="pwd" name="pwd" size="10"/>
+					Password: <input type="password" id="pwd" name="pwd" size="10"/>
 					<xsl:text> </xsl:text>
 					<input type="submit" name="submit" value="let me in!"/>
 					<br />
