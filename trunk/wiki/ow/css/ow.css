@@ -1041,5 +1041,13 @@ li#n-help {
 li#n-help a {
 	display: block;
 }
+
+/* Random page menu icon */
+li#n-randompage {
+	background: transparent url(../images/icons/dice.png) no-repeat scroll right center;
+}
+li#n-randompage a {
+	display: block;
+}
  
 /* </source> */
