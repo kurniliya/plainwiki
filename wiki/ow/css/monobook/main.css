@@ -677,7 +677,7 @@ special external link styling */
 	line-height: 1.5em;
 	list-style-type: square;
 	list-style-image: url(bullet.gif);
-	font-size: 95%;
+	font-size: 95%;	
 }
 .portlet li {
 	padding: 0;
@@ -954,6 +954,7 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 #f-copyrightico {
 	float: left;
 	height: 1%;
+	display: none;
 }
 
 /* js pref toc */
