@@ -181,7 +181,7 @@
 	<li id="n-deprecatedpages">
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:DeprecatedPages</xsl:attribute>
-			Deprecated pages
+			Deprecated
 		</a>
 	</li>	
 	<li id="t-viewxml">

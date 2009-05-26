@@ -1089,5 +1089,37 @@ li#t-print {
 li#t-print a {
 	display: block;
 }
+
+/* Title index menu icon */
+li#n-titleindex {
+	background: transparent url(../images/icons/Alphaomega.png) no-repeat scroll right center;
+}
+li#n-titleindex a {
+	display: block;
+}
+
+/* Recent changes menu icon */
+li#n-recentchanges {
+	background: transparent url(../images/icons/Gnome-document-open-recent.png) no-repeat scroll right center;
+}
+li#n-recentchanges a {
+	display: block;
+}
+
+/* What links here menu icon */
+li#t-whatlinkshere {
+	background: transparent url(../images/icons/Gnome-insert-link.png) no-repeat scroll right center;
+}
+li#t-whatlinkshere a {
+	display: block;
+}
+
+/* View XML menu icon */
+li#t-viewxml {
+	background: transparent url(../images/icons/xml-logo.png) no-repeat scroll right center;
+}
+li#t-viewxml a {
+	display: block;
+}
  
 /* </source> */
