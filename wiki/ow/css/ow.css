@@ -1018,108 +1018,102 @@ sup, sub {
 .wpbs-inner .wpb .wpb-header { display: table-row; } /* for real browsers */
 .wpbs-inner .wpb-outside     { display: none; }      /* hide things that should only display outside shells */
 
+/* Hides bullets in left menu ul's
+*/
+div#p-navigation ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0;
+}
+div#p-interaction ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0;	
+}
+div#p-tb ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0;	
+}
+div#p-editorial ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0;	
+}
+
+/* Creates padding between icon and text for left menu items
+*/
+div#p-navigation ul li {
+	padding-left: 25px;
+}
+div#p-interaction ul li {
+	padding-left: 25px;
+}
+div#p-tb ul li {
+	padding-left: 25px;
+}
+div#p-editorial ul li {
+	padding-left: 25px;
+}
+
+/* Creates icons in left menu
+*/
+
 /* RSS menu icon */
-li#n-recentchangesrss {
-	background: transparent url(../images/icons/rss_small.gif) no-repeat scroll right center;
+#column-one ul li#n-recentchangesrss {
+	background: transparent url(../images/icons/rss_small.gif) no-repeat left center;
 }
-li#n-recentchangesrss a {
-	display: block;
-}
-
 /* Sandbox menu icon */
-li#t-sandbox {
-	background: transparent url(../images/icons/sndbx.png) no-repeat scroll right center;
+#column-one ul li#t-sandbox {
+	background: transparent url(../images/icons/sndbx.png) no-repeat left center;
 }
-li#t-sandbox a {
-	display: block;
-}
-
 /* Help menu icon */
-li#n-help {
-	background: transparent url(../images/icons/help-icon.gif) no-repeat scroll right center;
+#column-one ul li#n-help {
+	background: transparent url(../images/icons/help-icon.gif) no-repeat left center;
 }
-li#n-help a {
-	display: block;
-}
-
 /* Random page menu icon */
-li#n-randompage {
-	background: transparent url(../images/icons/dice.png) no-repeat scroll right center;
+#column-one ul li#n-randompage {
+	background: transparent url(../images/icons/dice.png) no-repeat left center;
 }
-li#n-randompage a {
-	display: block;
-}
-
 /* Deprecated pages menu icon */
-li#n-deprecatedpages {
-	background: transparent url(../images/icons/Edit-delete-not_encyclopedic.png) no-repeat scroll right center;
+#column-one ul li#n-deprecatedpages {
+	background: transparent url(../images/icons/Edit-delete-not_encyclopedic.png) no-repeat left center;
 }
-li#n-deprecatedpages a {
-	display: block;
-}
-
 /* To-do menu icon */
-li#n-todolist {
-	background: transparent url(../images/icons/Applications-development_current.png) no-repeat scroll right center;
+#column-one ul li#n-todolist {
+	background: transparent url(../images/icons/Applications-development_current.png) no-repeat left center;
 }
-li#n-todolist a {
-	display: block;
-}
-
 /* Create new page menu icon */
-li#t-createpage {
-	background: transparent url(../images/icons/New_text_document.png) no-repeat scroll right center;
+#column-one ul li#t-createpage {
+	background: transparent url(../images/icons/New_text_document.png) no-repeat left center;
 }
-li#t-createpage a {
-	display: block;
-}
-
 /* Special pages menu icon */
-li#t-specialpages {
-	background: transparent url(../images/icons/Superman_shield.png) no-repeat scroll right center;
+#column-one ul li#t-specialpages {
+	background: transparent url(../images/icons/Superman_shield.png) no-repeat left center;
 }
-li#t-specialpages a {
-	display: block;
-}
-
 /* Printable version menu icon */
-li#t-print {
-	background: transparent url(../images/icons/Gnome-dev-printer.png) no-repeat scroll right center;
+#column-one ul li#t-print {
+	background: transparent url(../images/icons/Gnome-dev-printer.png) no-repeat left center;
 }
-li#t-print a {
-	display: block;
-}
-
 /* Title index menu icon */
-li#n-titleindex {
-	background: transparent url(../images/icons/Alphaomega.png) no-repeat scroll right center;
+#column-one ul li#n-titleindex {
+	background: transparent url(../images/icons/Alphaomega.png) no-repeat left center;
 }
-li#n-titleindex a {
-	display: block;
-}
-
 /* Recent changes menu icon */
-li#n-recentchanges {
-	background: transparent url(../images/icons/Gnome-document-open-recent.png) no-repeat scroll right center;
+#column-one ul li#n-recentchanges {
+	background: transparent url(../images/icons/Gnome-document-open-recent.png) no-repeat left center;
 }
-li#n-recentchanges a {
-	display: block;
-}
-
 /* What links here menu icon */
-li#t-whatlinkshere {
-	background: transparent url(../images/icons/Gnome-insert-link.png) no-repeat scroll right center;
+#column-one ul li#t-whatlinkshere {
+	background: transparent url(../images/icons/Gnome-insert-link.png) no-repeat left center;
 }
-li#t-whatlinkshere a {
-	display: block;
+/* View XML menu icon */
+#column-one ul li#t-viewxml {
+	background: transparent url(../images/icons/xml-logo.png) no-repeat left center;
+}
+/* Main page menu icon */
+#column-one ul li#n-mainpage-description {
+	background: transparent url(../images/icons/Crystal_Clear_action_bookmark.png) no-repeat left center;
 }
 
-/* View XML menu icon */
-li#t-viewxml {
-	background: transparent url(../images/icons/xml-logo.png) no-repeat scroll right center;
-}
-li#t-viewxml a {
-	display: block;
-}
- 
 /* </source> */
