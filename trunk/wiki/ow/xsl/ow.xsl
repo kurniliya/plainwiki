@@ -1211,30 +1211,48 @@
 <xsl:template match="/ow:wiki" mode="login">
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
-	<xsl:call-template name="nofollow_head"/>
-		<body onload="document.getElementById('pwd').focus();">
-			<xsl:apply-templates select="ow:error"/>
-			<form id="f" method="post" action="{/ow:wiki/ow:scriptname}?a=login&amp;mode={ow:login/@mode}">
-				<fieldset>
-					<xsl:if test="ow:login/@mode='edit'">
-						<legend>Enter password to edit content:</legend>
-					</xsl:if>	
-					<b>Note</b>: cookies and JavaScript must be enabled!<br />
-					Password: <input type="password" id="pwd" name="pwd" size="10"/>
-					<xsl:text> </xsl:text>
-					<input type="submit" name="submit" value="let me in!"/>
-					<br />
-					<input type="checkbox" name="r" value="1">
-						<xsl:if test="ow:login/ow:rememberme='false'">
-							<xsl:attribute name="checked">checked</xsl:attribute>
-						</xsl:if>
-					</input>
-					Remember me
-					<input type="hidden" name="backlink">
-						<xsl:attribute name="value"><xsl:value-of select="ow:login/ow:backlink"/></xsl:attribute>
-					</input>
-				</fieldset>
-			</form>
+		<xsl:call-template name="nofollow_head"/>
+		<body class="mediawiki ltr ns--1 ns-special skin-monobook" onload="document.getElementById('pwd').focus();">
+			<div id="globalWrapper">
+				<div id="column-content">
+					<div id="content">
+						<a id="top"></a>
+						<h1 id="firstHeading" class="firstHeading">Log in</h1>
+						<div id="bodyContent">
+							<xsl:apply-templates select="ow:error"/>
+							<form id="f" method="post" action="{/ow:wiki/ow:scriptname}?a=login&amp;mode={ow:login/@mode}">
+								<fieldset>
+									<xsl:if test="ow:login/@mode='edit'">
+										<legend>Enter password to edit content:</legend>
+									</xsl:if>	
+									Password: <input type="password" id="pwd" name="pwd" size="10"/>
+									<xsl:text> </xsl:text>
+									<input type="submit" name="submit" value="let me in!"/>
+									<br />
+									<b>Note</b>: cookies and JavaScript must be enabled!<br />
+									<input type="checkbox" name="r" value="1">
+										<xsl:if test="ow:login/ow:rememberme='false'">
+											<xsl:attribute name="checked">checked</xsl:attribute>
+										</xsl:if>
+									</input>
+									Remember me
+									<input type="hidden" name="backlink">
+										<xsl:attribute name="value"><xsl:value-of select="ow:login/ow:backlink"/></xsl:attribute>
+									</input>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id="column-one">
+					<xsl:call-template name="menu_column" />					
+				</div>
+				<div class="visualClear"></div>
+				<div id="footer">
+					<xsl:call-template name="poweredBy" />
+					<xsl:call-template name="footer_list" />
+				</div>
+			</div>
 		</body>
 	</html>
 </xsl:template>
