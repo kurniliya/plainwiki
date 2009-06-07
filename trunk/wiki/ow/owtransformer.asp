@@ -214,12 +214,29 @@ Class Transformer
 '            End If
         End If
 
+' XML error handling: shows source text of a page with lines numbered
         If Not vXmlDoc.loadXML(vXmlStr) Then
             Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
             Response.Write("<html><body><b>Invalid XML document</b>:<br /><br />")
             Response.Write(vXmlDoc.parseError.reason & " line: " & vXmlDoc.parseError.Line & " col: " & vXmlDoc.parseError.linepos)
             Response.Write("<br /><br /><hr />")
-            Response.Write("<pre>" & Replace(Server.HTMLEncode(vXmlStr), vbCRLF, "<br />") & "</pre>")
+            Response.Write("<pre>") 
+            
+            Dim vRegEx, vText, vLineNum, vMatches, vMatch
+            vText = Server.HTMLEncode(vXmlStr)
+            vLineNum = 1
+            
+            Set vRegEx = New RegExp
+			vRegEx.IgnoreCase = False
+		    vRegEx.Global = True
+		    vRegEx.Pattern = ".+"
+		    Set vMatches = vRegEx.Execute(vText)
+		    For Each vMatch In vMatches
+	            Response.Write(vLineNum & ": " & vMatch & "<br />")		    
+	            vLineNum = vLineNum + 1
+		    Next
+
+            Response.Write("</pre>") 
             Response.Write("</body></html>")
         Elseif vIsIE and cUseXhtmlHttpHeaders and not vIsMathPlayer Then
 			ProcessIEWithoutMathPlayer()
