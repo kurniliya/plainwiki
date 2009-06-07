@@ -206,7 +206,7 @@ Class Transformer
 
         If gAction = "xml" Or InStrRev(Request.QueryString, "&xml=1") > 0 Then
 '            If vIsIE Or gAction = "xml" Then
-                Response.ContentType = "text/xml; charset:" & OPENWIKI_ENCODING & ";"
+                Response.ContentType = "text/xml; charset=" & OPENWIKI_ENCODING & ";"
                 Response.Write(vXmlStr)
                 Response.End
 '            Else
@@ -216,8 +216,9 @@ Class Transformer
 
 ' XML error handling: shows source text of a page with lines numbered
         If Not vXmlDoc.loadXML(vXmlStr) Then
-            Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
-            Response.Write("<html><body><b>Invalid XML document</b>:<br /><br />")
+            Response.ContentType = "text/html;"	' charset=" & OPENWIKI_ENCODING & ";"
+            Response.Write("<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">")
+            Response.Write("<html xmlns=""http://www.w3.org/1999/xhtml""><body><b>Invalid XML document</b>:<br /><br />")
             Response.Write(vXmlDoc.parseError.reason & " line: " & vXmlDoc.parseError.Line & " col: " & vXmlDoc.parseError.linepos)
             Response.Write("<br /><br /><hr />")
             Response.Write("<pre>") 
@@ -251,21 +252,21 @@ Class Transformer
                 If gAction = "edit" Then
 					if cUseXhtmlHttpHeaders Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
-'						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+'						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
 					Else
-						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
+						Response.ContentType = "text/html; charset=" & OPENWIKI_ENCODING & ";"
 					End If               
                     Response.Expires = 0   ' expires in a minute
                 Elseif gAction = "rss" Then
-                    Response.ContentType = "text/xml; charset:" & OPENWIKI_ENCODING & ";"
+                    Response.ContentType = "text/xml; charset=" & OPENWIKI_ENCODING & ";"
                 Else
 					if cUseXhtmlHttpHeaders Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
-'						Response.ContentType = "application/xhtml+xml; charset:" & OPENWIKI_ENCODING & ";"
+'						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
 					Else
-						Response.ContentType = "text/html; charset:" & OPENWIKI_ENCODING & ";"
+						Response.ContentType = "text/html; charset=" & OPENWIKI_ENCODING & ";"
 					End If               
                     Response.Expires = -1  ' expires now
 '                    Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
