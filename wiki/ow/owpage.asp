@@ -218,7 +218,7 @@ Class WikiPage
             ToLinkXML = ToLinkXML & " href='" & vTemp & "' date='" & FormatDateISO8601(vLastChange.Timestamp) & "'>"
         End If
 
-        ToLinkXML = ToLinkXML & PCDATAEncode(pText) & "</ow:link>" & vbCRLF
+        ToLinkXML = ToLinkXML & PCDATAEncode(pText) & "</ow:link>"
     End Function
 
     Public Function ToXML(pIncludeText)
