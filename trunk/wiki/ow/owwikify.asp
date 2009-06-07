@@ -349,11 +349,30 @@ Function WikiLinesToHtml(pText)
             gListSet = False	' Dictionary Lists processing block when True
             vLine = s(vLine, "^(\s+)\;(.*?) \:", "&SetListValues(True, $1, ""<dt>"" & $2 & ""</dt><dd>"")", False, True)
             If gListSet Then
-                vLine = vLine & "</dd>"
-                vCode = "dl"
-                vCodeOpen = vCode
-                vCodeClose = vCode
+            	vCode = "dl"
+		        vCodeList = "dl"
+		        vCodeItem = "dd"
+		        vCodeOpen = vCodeList
+                If vDepth = Len(gDepth) / 2 Then
+                    vLine =  "</" & vCodeItem & ">" & vLine
+                End If
+                vOldDepth = vDepth
                 vDepth = Len(gDepth) / 2
+                If vDepth = 1 Then
+                	vCodeClose = vCodeItem & "></" & vCodeList
+                Else
+			        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
+			        If vOldDepth < vDepth Then
+				        Dim vTempEl1
+				        For i = vTagStack.Count() - 1 to 0 step -1
+				        	vTempEl1 = vTagStack.ElementAt(i)
+				        	if Left(vTempEl1, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+				        		vTagStack.SetElementAt i, Mid(vTempEl1, Len(vCodeItem & "></") + 1, Len(vTempEl1) - Len(vCodeItem & "></"))
+				        		Exit For					
+				        	End If
+				        Next
+				    End If
+                End If
             Else	' Indented lists processing block when True
                 vLine = s(vLine, "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt /><dd>"" & $2)", False, True)
                 If gListSet Then
