@@ -436,12 +436,12 @@
 <xsl:template match="ow:infobox">
 	<table class="infobox vcard"  style="width:22em; font-size:90%; text-align:left;">
 		<tr style="text-align:center;">
-			<th colspan="2" style="text-align:center; font-size:larger; background-color:SkyBlue; color:#000;" class="fn summary"><xsl:apply-templates select="ow:infobox_name" /></th>
+			<th colspan="2" style="text-align:center; font-size:larger; background-color:SkyBlue; color:#000;" class="fn summary"><xsl:apply-templates select="ow:infobox_name/text()" /></th>
 		</tr>
 		<xsl:for-each select="ow:infobox_row">
 			<tr>
-				<th><xsl:apply-templates select="ow:param_name" /></th>
-				<td><xsl:apply-templates select="ow:param_val" /></td>
+				<th><xsl:apply-templates select="ow:param_name/text()|ow:param_name/*" /></th>
+				<td><xsl:apply-templates select="ow:param_val/text()|ow:param_val/*" /></td>
 			</tr>
 		</xsl:for-each>
 	</table>
@@ -450,7 +450,7 @@
 <!-- ==================== inclusion of another wikipage in this wikipage ==================== -->
 <xsl:template match="ow:body/ow:page">
     <xsl:apply-templates select="ow:body"/>
-    <div align="right"><small>[goto <xsl:apply-templates select="ow:link"/>]</small></div>
+    <div style="float: right"><small>[goto <xsl:apply-templates select="ow:link"/>]</small></div>
     <p/>
 </xsl:template>
 

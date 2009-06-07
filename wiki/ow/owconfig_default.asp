@@ -87,7 +87,7 @@ cStripNTDomain        = 1        ' 1 = strip NT domainname   0 = keep NT domainn
 cMaskIPAddress        = 1        ' 1 = mask last part of IP  0 = show full IP address in RecentChanges list, etc.
 cOldSkool             = 1        ' 1 = use '' and '''        0 = don't use '' and ''' for italic and bold, and use Wiki''''''Link to escape WikiLink
 cNewSkool             = 1        ' 1 = use //, **, -- and __ 0 = don't use //, **, -- and __ for italic, bold, strikethrough and underline and use ~WikiLink to escape WikiLink
-cNumTOC               = 0        ' 1 = TOC numbered          0 = TOC just indented text
+cNumTOC               = 1        ' 1 = TOC numbered          0 = TOC just indented text
 cNTAuthentication     = 1        ' 1 = Use NT username       0 = blank username in preferences
 cDirectEdit           = 1        ' 1 = go direct to edit     0 = go to blank page first
 cAllowCharRefs        = 1        ' 1 = allow char refs       0 = no character references allowed (like &copy; or &#151;)
