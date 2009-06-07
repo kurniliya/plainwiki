@@ -216,24 +216,40 @@ Class Transformer
 
 ' XML error handling: shows source text of a page with lines numbered
         If Not vXmlDoc.loadXML(vXmlStr) Then
-            Response.ContentType = "text/html;"	' charset=" & OPENWIKI_ENCODING & ";"
-            Response.Write("<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">")
-            Response.Write("<html xmlns=""http://www.w3.org/1999/xhtml""><body><b>Invalid XML document</b>:<br /><br />")
-            Response.Write(vXmlDoc.parseError.reason & " line: " & vXmlDoc.parseError.Line & " col: " & vXmlDoc.parseError.linepos)
-            Response.Write("<br /><br /><hr />")
-            Response.Write("<pre>") 
-            
-            Dim vRegEx, vText, vLineNum, vMatches, vMatch
+            Dim vRegEx, vText, vLineNum, vMatches, vMatch, vErrorLine
             vText = Server.HTMLEncode(vXmlStr)
             vLineNum = 1
+            vErrorLine = vXmlDoc.parseError.Line
             
             Set vRegEx = New RegExp
 			vRegEx.IgnoreCase = False
 		    vRegEx.Global = True
 		    vRegEx.Pattern = ".+"
-		    Set vMatches = vRegEx.Execute(vText)
+		    Set vMatches = vRegEx.Execute(vText)        
+        
+            Response.ContentType = "text/html;"	' charset=" & OPENWIKI_ENCODING & ";"
+            Response.Write("<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">")
+            Response.Write("<html xmlns=""http://www.w3.org/1999/xhtml"">")
+            Response.Write("<head><title>Invalid XML document</title></head>")
+            Response.Write("<body><b>Invalid XML document</b>:<br /><br />")
+            Response.Write(vXmlDoc.parseError.reason & " line: " &_
+            	 "<a href=#ErrorLine>" &_
+            	 vErrorLine &_ 
+            	 "</a>" &_
+            	 " col: " & vXmlDoc.parseError.linepos)
+            Response.Write("<br /><br /><hr />")
+            Response.Write("<pre>") 
+            
 		    For Each vMatch In vMatches
-	            Response.Write(vLineNum & ": " & vMatch & "<br />")		    
+		    	Response.Write(vLineNum & ": ")
+		    	If vLineNum = vErrorLine Then
+		    		Response.Write("<a name=""ErrorLine"" />")
+		    		Response.Write("<font style=""BACKGROUND-COLOR: red"">")
+		    	End If
+	            Response.Write(vMatch & "<br />")		    
+  		    	If vLineNum = vErrorLine Then
+  		    		Response.Write("</font>")
+  		    	End If
 	            vLineNum = vLineNum + 1
 		    Next
 
