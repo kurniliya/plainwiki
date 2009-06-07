@@ -318,6 +318,7 @@ Function WikiLinesToHtml(pText)
     Dim vInInfobox
     Dim vText
     Dim i
+    Dim vOldDepth
 
     vText = ""
     vDepth = 0
@@ -362,20 +363,23 @@ Function WikiLinesToHtml(pText)
 			        vCodeOpen = vCodeList
 	                If vDepth = Len(gDepth) / 2 Then
 	                    vLine =  "</" & vCodeItem & ">" & vLine
-	                End If			        
+	                End If
+	                vOldDepth = vDepth
 	                vDepth = Len(gDepth) / 2
 	                If vDepth = 1 Then
 	                	vCodeClose = vCodeList
 	                Else
 				        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
-				        Dim vTempEl
-				        For i = vTagStack.Count() - 2 to 0 step -1
-				        	vTempEl = vTagStack.ElementAt(i)
-				        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
-				        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
-				        		Exit For					
-				        	End If
-				        Next
+				        If vOldDepth < vDepth Then
+					        Dim vTempEl
+					        For i = vTagStack.Count() - 1 to 0 step -1
+					        	vTempEl = vTagStack.ElementAt(i)
+					        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+					        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
+					        		Exit For					
+					        	End If
+					        Next
+					    End If
 	                End If
                 Else
                     vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2 & ""</li>"")", False, True)
@@ -451,12 +455,12 @@ Function WikiLinesToHtml(pText)
                 vTagStack.Push(vCodeClose)
                 vText = vText & "<" & vCodeOpen & vAttrs & ">" & vbCRLF
             Loop
-            If Not vTagStack.IsEmpty Then
-                If vTagStack.Top <> vCodeClose Then
-                    vText = vText & "</" & vTagStack.Pop() & ">" & vbCRLF & "<" & vCodeOpen & vAttrs & ">"
-                    vTagStack.Push(vCodeClose)
-                End If
-            End If
+'            If Not vTagStack.IsEmpty Then
+'                If vTagStack.Top <> vCodeClose Then
+'                    vText = vText & "</" & vTagStack.Pop() & ">" & vbCRLF & "<" & vCodeOpen & vAttrs & ">"
+'                    vTagStack.Push(vCodeClose)
+'                End If
+'            End If
         End If
 
         If Left(vLine, 2) = "||" And Right(vLine, 2) = "||" Then
