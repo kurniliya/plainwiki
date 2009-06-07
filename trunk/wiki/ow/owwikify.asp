@@ -356,11 +356,12 @@ Function WikiLinesToHtml(pText)
             Else	' Indented lists processing block when True
                 vLine = s(vLine, "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt /><dd>"" & $2)", False, True)
                 If gListSet Then
+                	vCode = "dl"
 			        vCodeList = "dl"
 			        vCodeItem = "dd"
 			        vCodeOpen = vCodeList
 	                If vDepth = Len(gDepth) / 2 Then
-	                    vLine =  "</" & vCodeItem & ">" & vbCRLF & vLine
+	                    vLine =  "</" & vCodeItem & ">" & vLine
 	                End If			        
 	                vDepth = Len(gDepth) / 2
 	                If vDepth = 1 Then
@@ -375,7 +376,6 @@ Function WikiLinesToHtml(pText)
 				        		Exit For					
 				        	End If
 				        Next
-'						vTagStack.SetElementAt vTagStack.Count - 2, "test"
 	                End If
                 Else
                     vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2 & ""</li>"")", False, True)
