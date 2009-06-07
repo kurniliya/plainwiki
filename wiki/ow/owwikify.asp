@@ -312,14 +312,18 @@ End Function
 Function WikiLinesToHtml(pText)
     Dim vTagStack, vRegEx, vMatch, vMatches, vLine
     Dim vFirstChar, vCode, vDepth, vPos, vStart, vAttrs
+    Dim vCodeOpen, vCodeClose
+    Dim vCodeList, vCodeItem
     Dim vInTable
     Dim vInInfobox
     Dim vText
+    Dim i
 
     vText = ""
     vDepth = 0
     vInTable = 0
-    vInInfobox = 0
+    vInInfobox = 0    
+    
     Set vTagStack = new Vector
     Set vRegEx = New RegExp
     vRegEx.IgnoreCase = False
@@ -346,22 +350,47 @@ Function WikiLinesToHtml(pText)
             If gListSet Then
                 vLine = vLine & "</dd>"
                 vCode = "dl"
+                vCodeOpen = vCode
+                vCodeClose = vCode
                 vDepth = Len(gDepth) / 2
-            Else
-                vLine = s(vLine , "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt> </dt><dd>"" & $2 & ""</dd>"")", False, True)
+            Else	' Indented lists processing block when True
+                vLine = s(vLine, "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt /><dd>"" & $2)", False, True)
                 If gListSet Then
-                  vCode = "dl"
-                  vDepth = Len(gDepth) / 2
+			        vCodeList = "dl"
+			        vCodeItem = "dd"
+			        vCodeOpen = vCodeList
+	                If vDepth = Len(gDepth) / 2 Then
+	                    vLine =  "</" & vCodeItem & ">" & vbCRLF & vLine
+	                End If			        
+	                vDepth = Len(gDepth) / 2
+	                If vDepth = 1 Then
+	                	vCodeClose = vCodeList
+	                Else
+				        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
+				        Dim vTempEl
+				        For i = vTagStack.Count() - 2 to 0 step -1
+				        	vTempEl = vTagStack.ElementAt(i)
+				        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+				        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
+				        		Exit For					
+				        	End If
+				        Next
+'						vTagStack.SetElementAt vTagStack.Count - 2, "test"
+	                End If
                 Else
                     vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2 & ""</li>"")", False, True)
                     If gListSet Then
                         vCode  = "ul"
+		                vCodeOpen = vCode
+        		        vCodeClose = vCode                        
                         vDepth = Len(gDepth) / 2
                     Else
                         vLine = s(vLine, "^(\s+)([0-9aAiI]\.(?:#\d+)? )", "&SetListValues(True, $1, $2)", False, True)
                         If gListSet Then
                             vPos   = InStr(vLine, " ")
                             vCode  = Left(vLine, vPos - 1)
+			                vCodeOpen = vCode
+            			    vCodeClose = vCode                            
                             vLine  = "<li>" & Mid(vLine, vPos + 1) & "</li>"
 
                             vPos   = InStr(vCode, "#")
@@ -370,6 +399,8 @@ Function WikiLinesToHtml(pText)
                                 vStart = "start=""" & Mid(vCode, vPos + 1) & """"
                             End If
                             vCode = Left(vCode, 1)
+			                vCodeOpen = vCode
+            			    vCodeClose = vCode                            
 '                            If IsNumeric(vCode) Then
 '                                vAttrs = " type=""1"""
 '                            Else
@@ -379,6 +410,8 @@ Function WikiLinesToHtml(pText)
                                 vAttrs = vAttrs & " " & vStart
                             End If
                             vCode  = "ol"
+			                vCodeOpen = vCode
+            			    vCodeClose = vCode                            
                             vDepth = Len(gDepth) / 2
                         Elseif vDepth > 0 And vCode <> "pre" Then
                             Dim vTemp
@@ -390,6 +423,8 @@ Function WikiLinesToHtml(pText)
                             End If
                         Else
                             vCode = "pre"
+			                vCodeOpen = vCode
+            			    vCodeClose = vCode                            
                             vDepth = 1
                         End If	' If gListSet Then .. Else
                     End If	' If gListSet Then .. Else
@@ -404,7 +439,7 @@ Function WikiLinesToHtml(pText)
             vDepth = 0
         End If
 
-        Do While (vTagStack.Count > vDepth)
+        Do While (vTagStack.Count > vDepth)	' vDepth has decreased
             vText = vText & "</" & vTagStack.Pop() & ">" & vbCRLF
         Loop
 
@@ -412,14 +447,14 @@ Function WikiLinesToHtml(pText)
             If vDepth > gIndentLimit Then
                 vDepth = gIndentLimit
             End If
-            Do While (vTagStack.Count < vDepth)
-                vTagStack.Push(vCode)
-                vText = vText & "<" & vCode & vAttrs & ">" & vbCRLF
+            Do While (vTagStack.Count < vDepth)	' vDepth has increased
+                vTagStack.Push(vCodeClose)
+                vText = vText & "<" & vCodeOpen & vAttrs & ">" & vbCRLF
             Loop
             If Not vTagStack.IsEmpty Then
-                If vTagStack.Top <> vCode Then
-                    vText = vText & "</" & vTagStack.Pop() & ">"  & vbCRLF & "<" & vCode & vAttrs & ">"
-                    vTagStack.Push(vCode)
+                If vTagStack.Top <> vCodeClose Then
+                    vText = vText & "</" & vTagStack.Pop() & ">" & vbCRLF & "<" & vCodeOpen & vAttrs & ">"
+                    vTagStack.Push(vCodeClose)
                 End If
             End If
         End If

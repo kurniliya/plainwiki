@@ -218,7 +218,7 @@ Class WikiPage
             ToLinkXML = ToLinkXML & " href='" & vTemp & "' date='" & FormatDateISO8601(vLastChange.Timestamp) & "'>"
         End If
 
-        ToLinkXML = ToLinkXML & PCDATAEncode(pText) & "</ow:link>"
+        ToLinkXML = ToLinkXML & PCDATAEncode(pText) & "</ow:link>" & vbCRLF
     End Function
 
     Public Function ToXML(pIncludeText)
@@ -233,7 +233,7 @@ Class WikiPage
         If vRevision > 0 Then
             ToXML = ToXML & " revision='" & vRevision & "'"
         End If
-        ToXML = ToXML & ">"
+        ToXML = ToXML & ">" & vbCRLF
         ToXML = ToXML & ToLinkXML(PrettyWikiLink(vName), "", True)
         If vChangesCollection.ElementAt(0).Revision > 0 Then
             vCount = vChangesCollection.Count - 1
@@ -246,7 +246,7 @@ Class WikiPage
                 ToXML = gNamespace.GetIndexSchemes().GetTemplates(OPENWIKI_TEMPLATES) _
                       & ToXML & "<ow:body/>"
             Else
-                ToXML = ToXML & "<ow:body>" & Wikify(vText) & "</ow:body>"
+                ToXML = ToXML & "<ow:body>" & vbCRLF & Wikify(vText) & "</ow:body>" & vbCRLF
             End If
         End If
         If pIncludeText = 2 Or pIncludeText = 3 Then
@@ -266,7 +266,7 @@ Class WikiPage
             End If
         End If
 
-        ToXML = ToXML & "</ow:page>"
+        ToXML = ToXML & "</ow:page>" & vbCRLF
     End Function
 End Class
 
@@ -375,17 +375,17 @@ Class Change
     Public Function ToXML()
         ToXML = ToXML & "<ow:change revision='" & vRevision & "' status='" & vStatus & "'"
         If vMinorEdit = 1 Then
-            ToXML = ToXML & " minor='true'>"
+            ToXML = ToXML & " minor='true'>" & vbCRLF
         Else
-            ToXML = ToXML & " minor='false'>"
+            ToXML = ToXML & " minor='false'>" & vbCRLF
         End If
         ToXML = ToXML & "<ow:by name='" & CDATAEncode(vBy) & "'"
         If vByAlias <> "" Then
-            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>"
+            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>" & vbCRLF
         Else
             ToXML = ToXML & "/>"
         End If
-        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
+        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
         gLastModified = vTimestamp
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
@@ -396,7 +396,7 @@ Class Change
                 ToXML = ToXML & vAttachmentChanges.ElementAt(i).ToXML()
             Next
         End If
-        ToXML = ToXML & "</ow:change>"
+        ToXML = ToXML & "</ow:change>" & vbCRLF
     End Function
 End Class
 
@@ -521,7 +521,7 @@ Class Attachment
         ToLinkXML = "<ow:link name='" & CDATAEncode(vName) & "'" _
                   & " href='" & pHref & "' date='" & FormatDateISO8601(vTimestamp) & "'" _
                   & " attachment='true'>" _
-                  & PCDATAEncode(pText) & "</ow:link>"
+                  & PCDATAEncode(pText) & "</ow:link>" & vbCRLF
     End Function
 
     Public Function ToXML(pPagename, pText)
@@ -548,11 +548,11 @@ Class Attachment
         ToXML = ToXML & "<ow:file icon='" & getIcon() & "' size='" & FormatSize(vFilesize) & "' href='" & CDATAEncode(vAttachmentLink) & "' image='" & vIsImage & "'>" & PCDATAEncode(vName) & "</ow:file>"
         ToXML = ToXML & "<ow:by name='" & CDATAEncode(vBy) & "'"
         If vByAlias <> "" Then
-            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>"
+            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>" & vbCRLF
         Else
             ToXML = ToXML & "/>"
         End If
-        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
+        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
         gLastModified = vTimestamp
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
@@ -628,11 +628,11 @@ Class AttachmentChange
         ToXML = ToXML & "<ow:attachmentchange name='" & CDATAEncode(vName) & "' revision='" & vRevision & "'>"
         ToXML = ToXML & "<ow:by name='" & CDATAEncode(vBy) & "'"
         If vByAlias <> "" Then
-            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>"
+            ToXML = ToXML & " alias='" & CDATAEncode(vByAlias) & "'>" & PCDATAEncode(PrettyWikiLink(vByAlias)) & "</ow:by>" & vbCRLF
         Else
             ToXML = ToXML & "/>"
         End If
-        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>"
+        ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
         gLastModified = vTimestamp        
         If vAction <> "" Then
             ToXML = ToXML & "<ow:action>" & PCDATAEncode(vAction) & "</ow:action>"
