@@ -367,7 +367,7 @@ Function WikiLinesToHtml(pText)
 	                vOldDepth = vDepth
 	                vDepth = Len(gDepth) / 2
 	                If vDepth = 1 Then
-	                	vCodeClose = vCodeList
+	                	vCodeClose = vCodeItem & "></" & vCodeList
 	                Else
 				        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
 				        If vOldDepth < vDepth Then
