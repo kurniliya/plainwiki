@@ -317,9 +317,10 @@ Function WikiLinesToHtml(pText)
     Dim vInTable
     Dim vInInfobox
     Dim vText
-    Dim i
+    Dim i, j
     Dim vOldDepth
-
+    Dim vTempEl
+    
     vText = ""
     vDepth = 0
     vInTable = 0
@@ -353,26 +354,37 @@ Function WikiLinesToHtml(pText)
 		        vCodeList = "dl"
 		        vCodeItem = "dd"
 		        vCodeOpen = vCodeList
-                If vDepth = Len(gDepth) / 2 Then
+		        
+                vOldDepth = vDepth
+                vDepth = Len(gDepth) / 2			                
+                If vDepth = vOldDepth Then
                     vLine =  "</" & vCodeItem & ">" & vLine
                 End If
-                vOldDepth = vDepth
-                vDepth = Len(gDepth) / 2
+
                 If vDepth = 1 Then
                 	vCodeClose = vCodeItem & "></" & vCodeList
                 Else
 			        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
-			        If vOldDepth < vDepth Then
-				        Dim vTempEl1
-				        For i = vTagStack.Count() - 1 to 0 step -1
-				        	vTempEl1 = vTagStack.ElementAt(i)
-				        	if Left(vTempEl1, Len(vCodeItem & "></")) = vCodeItem & "></" Then
-				        		vTagStack.SetElementAt i, Mid(vTempEl1, Len(vCodeItem & "></") + 1, Len(vTempEl1) - Len(vCodeItem & "></"))
-				        		Exit For					
-				        	End If
-				        Next
-				    End If
-                End If
+			    End If
+		        If vOldDepth < vDepth Then
+			        For i = vTagStack.Count() - 1 to 0 step -1
+			        	vTempEl = vTagStack.ElementAt(i)
+			        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+			        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
+			        		Exit For					
+			        	End If
+			        Next
+			    End If
+			    If vOldDepth = vDepth + 1 Then
+			        
+			        For i = vTagStack.Count() - 1 to 0 step -1
+			        	vTempEl = vTagStack.ElementAt(i)
+			        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
+			        		vTagStack.SetElementAt i, vCodeItem & "></" &vTempEl
+			        		Exit For					
+			        	End If
+			        Next
+			    End If
             Else	' Indented lists processing block when True
                 vLine = s(vLine, "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt /><dd>"" & $2)", False, True)
                 If gListSet Then
@@ -380,17 +392,59 @@ Function WikiLinesToHtml(pText)
 			        vCodeList = "dl"
 			        vCodeItem = "dd"
 			        vCodeOpen = vCodeList
-	                If vDepth = Len(gDepth) / 2 Then
+			        
+	                vOldDepth = vDepth
+	                vDepth = Len(gDepth) / 2			                
+	                If vDepth = vOldDepth Then
 	                    vLine =  "</" & vCodeItem & ">" & vLine
 	                End If
-	                vOldDepth = vDepth
-	                vDepth = Len(gDepth) / 2
+
 	                If vDepth = 1 Then
 	                	vCodeClose = vCodeItem & "></" & vCodeList
 	                Else
 				        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
+				    End If
+			        If vOldDepth < vDepth Then
+				        
+				        For i = vTagStack.Count() - 1 to 0 step -1
+				        	vTempEl = vTagStack.ElementAt(i)
+				        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+				        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
+				        		Exit For					
+				        	End If
+				        Next
+				    End If
+				    If vOldDepth = vDepth + 1 Then
+				        
+				        For i = vTagStack.Count() - 1 to 0 step -1
+				        	vTempEl = vTagStack.ElementAt(i)
+				        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
+				        		vTagStack.SetElementAt i, vCodeItem & "></" &vTempEl
+				        		Exit For					
+				        	End If
+				        Next
+				    End If
+                Else	' Unordered lists processing block when True
+                    vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2)", False, True)
+                    If gListSet Then
+	                	vCode = "ul"
+				        vCodeList = "ul"
+				        vCodeItem = "li"
+				        vCodeOpen = vCodeList
+				        
+		                vOldDepth = vDepth
+		                vDepth = Len(gDepth) / 2			                
+		                If vDepth = vOldDepth Then
+		                    vLine =  "</" & vCodeItem & ">" & vLine
+		                End If
+
+		                If vDepth = 1 Then
+		                	vCodeClose = vCodeItem & "></" & vCodeList
+		                Else
+					        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
+					    End If
 				        If vOldDepth < vDepth Then
-					        Dim vTempEl
+					        
 					        For i = vTagStack.Count() - 1 to 0 step -1
 					        	vTempEl = vTagStack.ElementAt(i)
 					        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
@@ -399,43 +453,77 @@ Function WikiLinesToHtml(pText)
 					        	End If
 					        Next
 					    End If
-	                End If
-                Else
-                    vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2 & ""</li>"")", False, True)
-                    If gListSet Then
-                        vCode  = "ul"
-		                vCodeOpen = vCode
-        		        vCodeClose = vCode                        
-                        vDepth = Len(gDepth) / 2
+					    If vOldDepth = vDepth + 1 Then
+					        
+					        For i = vTagStack.Count() - 1 to 0 step -1
+					        	vTempEl = vTagStack.ElementAt(i)
+					        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
+					        		vTagStack.SetElementAt i, vCodeItem & "></" &vTempEl
+					        		Exit For					
+					        	End If
+					        Next
+					    End If
                     Else
                         vLine = s(vLine, "^(\s+)([0-9aAiI]\.(?:#\d+)? )", "&SetListValues(True, $1, $2)", False, True)
                         If gListSet Then
                             vPos   = InStr(vLine, " ")
-                            vCode  = Left(vLine, vPos - 1)
-			                vCodeOpen = vCode
-            			    vCodeClose = vCode                            
-                            vLine  = "<li>" & Mid(vLine, vPos + 1) & "</li>"
+'                            vCode  = Left(vLine, vPos - 1)
+'			                vCodeOpen = vCode
+'            			    vCodeClose = vCode                            
+                            vLine  = "<li>" & Mid(vLine, vPos + 1)' & "</li>"
 
-                            vPos   = InStr(vCode, "#")
-                            vStart = ""
-                            If vPos > 0 Then
-                                vStart = "start=""" & Mid(vCode, vPos + 1) & """"
-                            End If
-                            vCode = Left(vCode, 1)
-			                vCodeOpen = vCode
-            			    vCodeClose = vCode                            
+'                            vPos   = InStr(vCode, "#")
+'                            vStart = ""
+'                            If vPos > 0 Then
+'                                vStart = "start=""" & Mid(vCode, vPos + 1) & """"
+'                            End If
+'                            vCode = Left(vCode, 1)
+'			                vCodeOpen = vCode
+'            			    vCodeClose = vCode                            
 '                            If IsNumeric(vCode) Then
 '                                vAttrs = " type=""1"""
 '                            Else
 '                                vAttrs = " type=""" & vCode & """"
 '                            End If
-                            If vStart <> "" Then
-                                vAttrs = vAttrs & " " & vStart
-                            End If
+'                            If vStart <> "" Then
+'                                vAttrs = vAttrs & " " & vStart
+'                            End If
                             vCode  = "ol"
-			                vCodeOpen = vCode
-            			    vCodeClose = vCode                            
-                            vDepth = Len(gDepth) / 2
+					        vCodeList = "ol"
+					        vCodeItem = "li"
+					        vCodeOpen = vCodeList
+
+			                vOldDepth = vDepth
+			                vDepth = Len(gDepth) / 2			                
+			                If vDepth = vOldDepth Then
+			                    vLine =  "</" & vCodeItem & ">" & vLine
+			                End If
+
+			                If vDepth = 1 Then
+			                	vCodeClose = vCodeItem & "></" & vCodeList
+			                Else
+						        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
+						    End If
+					        If vOldDepth < vDepth Then
+						        
+						        For i = vTagStack.Count() - 1 to 0 step -1
+						        	vTempEl = vTagStack.ElementAt(i)
+						        	if Left(vTempEl, Len(vCodeItem & "></")) = vCodeItem & "></" Then
+						        		vTagStack.SetElementAt i, Mid(vTempEl, Len(vCodeItem & "></") + 1, Len(vTempEl) - Len(vCodeItem & "></"))
+						        		Exit For					
+						        	End If
+						        Next
+						    End If
+						    If vOldDepth = vDepth + 1 Then
+						        
+						        For i = vTagStack.Count() - 1 to 0 step -1
+						        	vTempEl = vTagStack.ElementAt(i)
+						        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
+						        		vTagStack.SetElementAt i, vCodeItem & "></" &vTempEl
+						        		Exit For					
+						        	End If
+						        Next
+						    End If
                         Elseif vDepth > 0 And vCode <> "pre" Then
                             Dim vTemp
                             vTemp = Trim(vLine)
