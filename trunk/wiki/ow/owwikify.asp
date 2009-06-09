@@ -375,8 +375,7 @@ Function WikiLinesToHtml(pText)
 			        	End If
 			        Next
 			    End If
-			    If vOldDepth = vDepth + 1 Then
-			        
+			    If vOldDepth = vDepth + 1 Then			        
 			        For i = vTagStack.Count() - 1 to 0 step -1
 			        	vTempEl = vTagStack.ElementAt(i)
 			        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
@@ -388,6 +387,8 @@ Function WikiLinesToHtml(pText)
             Else	' Indented lists processing block when True
                 vLine = s(vLine, "^(\s+)\:\s(.*?)$", "&SetListValues(True, $1, ""<dt /><dd>"" & $2)", False, True)
                 If gListSet Then
+'                	Response.Write(vLine & "<br>")
+'			    	Response.Write(vTagStack.Trace(", ") & "<br>")
                 	vCode = "dl"
 			        vCodeList = "dl"
 			        vCodeItem = "dd"
@@ -398,12 +399,19 @@ Function WikiLinesToHtml(pText)
 	                If vDepth = vOldDepth Then
 	                    vLine =  "</" & vCodeItem & ">" & vLine
 	                End If
+	                
+'	                Response.Write("vOldDepth = " & vOldDepth & "<br>")
+'	                Response.Write("vDepth = " & vDepth & "<br>")	                
+'	                Response.Write("vTagStack.Count = " & vTagStack.Count & "<br>")
 
 	                If vDepth = 1 Then
 	                	vCodeClose = vCodeItem & "></" & vCodeList
 	                Else
 				        vCodeClose = vCodeItem & "></" & vCodeList & "></" & vCodeItem
 				    End If
+				    
+'	                Response.Write("Line Done" & "<br>" & "<br>")	                		                
+				    
 			        If vOldDepth < vDepth Then
 				        
 				        For i = vTagStack.Count() - 1 to 0 step -1
@@ -414,15 +422,20 @@ Function WikiLinesToHtml(pText)
 				        	End If
 				        Next
 				    End If
-				    If vOldDepth = vDepth + 1 Then
-				        
-				        For i = vTagStack.Count() - 1 to 0 step -1
+				    If vOldDepth > vDepth Then				        
+				    	j = 0
+				        For i = 0 to vTagStack.Count() - 1
 				        	vTempEl = vTagStack.ElementAt(i)
+'				        	Response.Write("i = " & i & ": " & vTempEl & "<br>")
 				        	if Left(vTempEl, Len(vCodeList)) = vCodeList Then
-				        		vTagStack.SetElementAt i, vCodeItem & "></" &vTempEl
-				        		Exit For					
+				        		vTagStack.SetElementAt i , vCodeItem & "></" &vTempEl
+'				        		j = j + 1
+'				        		If j = vOldDepth - vDepth Then
+					        		Exit For					
+'					        	End If
 				        	End If
 				        Next
+'   			    	Response.Write(vTagStack.Trace(", ") & "<br>")    
 				    End If
                 Else	' Unordered lists processing block when True
                     vLine = s(vLine, "^(\s+)\*\s(.*?)$", "&SetListValues(True, $1, ""<li>"" & $2)", False, True)
