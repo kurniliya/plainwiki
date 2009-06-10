@@ -830,10 +830,10 @@
         <tr>
         <xsl:choose>
             <xsl:when test='not(substring-before(./preceding-sibling::*[position()=1]/ow:change/ow:date, "T") = substring-before(ow:change/ow:date, "T"))'>
-                <td width="1%" class="rc" nowrap="nowrap"><xsl:value-of select="ow:formatShortDate(string(ow:change/ow:date))"/></td>
+                <td class="rc" style="width:1%; white-space: nowrap;"><xsl:value-of select="ow:formatShortDate(string(ow:change/ow:date))"/></td>
             </xsl:when>
             <xsl:otherwise>
-                <td width="1%" class="rc">&#x20;</td>
+                <td class="rc" style="width:1%;">&#x20;</td>
             </xsl:otherwise>
         </xsl:choose>
         <td class="rc">
@@ -863,8 +863,8 @@
                     </tr>
                 </xsl:if>
                 <tr class="rc">
-                    <td align="left" width="1%"><xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/></td>
-                    <td align="left" width="25%" nowrap="nowrap"><xsl:if test="@changes > 1">[<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=diff</xsl:attribute>diff</a>] <xsl:text> </xsl:text> [<xsl:value-of select="@changes"/>&#x20;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=changes</xsl:attribute>changes</a>]</xsl:if>&#x20;</td>
+                    <td align="left" style="width:1%;"><xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/></td>
+                    <td align="left" style="width:25%; white-space: nowrap;"><xsl:if test="@changes > 1">[<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=diff</xsl:attribute>diff</a>] <xsl:text> </xsl:text> [<xsl:value-of select="@changes"/>&#x20;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=changes</xsl:attribute>changes</a>]</xsl:if>&#x20;</td>
                     <td align="left"><a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>&#x20;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if></td>
 
                     <xsl:choose>
