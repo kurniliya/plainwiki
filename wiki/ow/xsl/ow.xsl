@@ -14,6 +14,7 @@
 <xsl:include href="owconfig.xsl"/>
 <xsl:include href="mystyle.xsl"/>
 <xsl:include href="owhead.xsl"/>
+<xsl:include href="owrecaptcha.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
 
@@ -311,7 +312,7 @@
       <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit&amp;template=<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>
       &#x20;
       (<a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute>view template</a>
-       <a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>)
+       <a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><img src="ow/images/popup.gif" width="15" height="9" alt="" /></a>)
     </li>
 </xsl:template>
 
@@ -630,39 +631,42 @@
 				
 						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
-							<input type="submit" name="save" value="Save" />
-							&#x20;
-							<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-							<!-- <input type="submit" name="preview" value="Preview" /> -->
-							&#x20;
-							<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
-							<br />
-							<br />
-							<textarea id="text" name="text" wrap="virtual" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
-							<input type="checkbox" name="rc" value="1">
-							  <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
-								<xsl:attribute name="checked">checked</xsl:attribute>
-							  </xsl:if>
-							</input>
-							Include page in
-							<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;">Recent Changes</a>
-							<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" border="0" alt="" /></a>
-							list.
-							<br />
-							<br />
-							Optional comment about this change:
-							<br />
-							<input type="text" name="comment" style="color:#333333; width:100%" maxlength="1000"><xsl:attribute name="size"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:attribute name="value"><xsl:value-of select="ow:page/ow:change/ow:comment/text()"/></xsl:attribute></input>
-							<br />
-							<input type="hidden" name="revision" value="{ow:page/@revision}" />
-							<input type="hidden" name="newrev" value="{ow:page/ow:change/@revision}" />
-							<input type="hidden" name="p" value="{$name}" />
-							<input type="submit" name="save" value="Save" />
-							&#x20;
-							<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
-							<!-- <input type="submit" name="preview" value="Preview" /> -->
-							&#x20;
-							<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							<fieldset>
+								<input type="submit" name="save" value="Save" />
+								&#x20;
+								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
+								<!-- <input type="submit" name="preview" value="Preview" /> -->
+								&#x20;
+								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+								<br />
+								<br />
+								<textarea id="text" name="text" style="overflow:auto;" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
+								<input type="checkbox" name="rc" value="1">
+								  <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								  </xsl:if>
+								</input>
+								Include page in
+								<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;">Recent Changes</a>
+								<a href="{/ow:wiki/ow:scriptname}?p=RecentChanges" onclick="javascript:openw('{/ow:wiki/ow:scriptname}?p=RecentChanges&amp;a=print'); return false;"><img src="ow/images/popup.gif" width="15" height="9" alt="" /></a>
+								list.
+								<br />
+								<br />
+								Optional comment about this change:
+								<br />
+								<input type="text" name="comment" style="color:#333333; width:100%" maxlength="1000"><xsl:attribute name="size"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:attribute name="value"><xsl:value-of select="ow:page/ow:change/ow:comment/text()"/></xsl:attribute></input>
+								<br />
+								<input type="hidden" name="revision" value="{ow:page/@revision}" />
+								<input type="hidden" name="newrev" value="{ow:page/ow:change/@revision}" />
+								<input type="hidden" name="p" value="{$name}" />
+								<xsl:call-template name="showRecapthca" />
+								<input type="submit" name="save" value="Save" />
+								&#x20;
+								<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
+								<!-- <input type="submit" name="preview" value="Preview" /> -->
+								&#x20;
+								<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
+							</fieldset>
 						</form>
 					</div>
 				</div>

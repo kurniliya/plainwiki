@@ -22,4 +22,6 @@
 <xsl:variable name="showValidatorButtons" select="'0'" />
 <xsl:variable name="showPoweredBy" select="'1'" />
 
+<xsl:variable name="useRecaptcha" select="'1'" />
+
 </xsl:stylesheet>
