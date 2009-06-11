@@ -38,10 +38,19 @@
 		</div>
 	</div>
 
-<div class="portlet" id="p-logo">
-	<a style="background-image: url(ow/images/logo.gif);" href="http://www.primat.mephi.ru" title="Visit the main page [z]" accesskey="z">
-	</a>
-</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<xsl:call-template name="menu_section_personal" />
+			</ul>
+		</div>
+	</div>
+
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(ow/images/logo.gif);" href="http://www.primat.mephi.ru" title="Visit the main page [z]" accesskey="z">
+		</a>
+	</div>
 
 	<div id="p-search" class="portlet">
 		<h5><label for="searchInput">Search</label></h5>
@@ -112,6 +121,17 @@
 			History
 		</a>
 	</li>		
+</xsl:template>
+
+<xsl:template name="menu_section_personal">
+	<li id="pt-login">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:UserPreferences</xsl:attribute>
+			<xsl:attribute name="title">You are encouraged to log in; however, it is not mandatory. [o]</xsl:attribute>
+			<xsl:attribute name="accesskey">o</xsl:attribute>
+			User preferences
+		</a>
+	</li>
 </xsl:template>
 
 <xsl:template name="menu_section_search">
