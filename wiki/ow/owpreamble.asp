@@ -21,6 +21,7 @@ Dim OPENWIKI_TIMEZONE, OPENWIKI_MAXNROFAGGR, OPENWIKI_MAXWEBGETS, OPENWIKI_SCRIP
 Dim OPENWIKI_DAYSTOKEEP
 Dim OPENWIKI_STOPWORDS
 Dim OPENWIKI_UPLOADDIR, OPENWIKI_MAXUPLOADSIZE, OPENWIKI_UPLOADTIMEOUT
+Dim OPENWIKI_RECAPTCHAPRIVATEKEY
 
 Dim MSXML_VERSION
 
@@ -33,6 +34,7 @@ Dim cAllowRSSExport, cAllowNewSyndications, cAllowAggregations, cNTAuthenticatio
 Dim cAllowAttachments
 Dim cUseXhtmlHttpHeaders
 Dim cUseSpecialPagesPrefix
+Dim cUseRecaptcha
 
 ' global variables
 Dim gLinkPattern, gSubpagePattern, gStopWords, gTimestampPattern, gUrlProtocols, gUrlPattern, gMailPattern, gInterSitePattern, gInterLinkPattern, gFreeLinkPattern, gImageExtensions, gImagePattern, gDocExtensions, gNotAcceptedExtensions, gISBNPattern, gHeaderPattern, gMacros

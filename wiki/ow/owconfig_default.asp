@@ -37,7 +37,7 @@ OPENWIKI_DAYSTOKEEP      = 30                 ' Number of days to keep old revis
 OPENWIKI_UPLOADDIR       = "attachments/"     ' The virtual directory where uploads are stored
 OPENWIKI_MAXUPLOADSIZE   = 8388608            ' Use to limit the size of uploads, in bytes (default = 8,388,608)
 OPENWIKI_UPLOADTIMEOUT   = 300                ' Timeout in seconds (upload must succeed within this time limit)
-
+OPENWIKI_RECAPTCHAPRIVATEKEY = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP "
 
 MSXML_VERSION = 3   ' use 4 if you've installed MSXML v4.0
 
@@ -69,6 +69,7 @@ cEmbeddedMode          = 0        ' 1 = embed the wiki into another app    0 = p
 cAllowAttachments      = 0        ' 1 = allow attachments     0 = do not allow attachments (WARNING: Allowing attachments poses a security risk!! See file owattach.asp)
 cUseSpecialPagesPrefix = 1 		  ' 1 = use gSpecialPagesPrefix in gLinkPattern
 gSpecialPagesPrefix    = "Special:"
+cUseRecaptcha          = 1        ' 1 = use reCAPTHCA when edit pages if no password protection defined
 
 ' Minor system options
 cSimpleLinks          = 0        ' 1 = only letters,         0 = allow _ and numbers

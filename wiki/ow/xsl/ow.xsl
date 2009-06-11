@@ -457,7 +457,7 @@
 
 <!-- ==================== shows an error message ==================== -->
 <xsl:template match="ow:error">
-    <li><font color="red"><xsl:value-of select="."/></font></li>
+    <li style="color:red;"><xsl:value-of select="."/></li>
 </xsl:template>
 
 <!-- ==================== shows footnotes ==================== -->
@@ -597,7 +597,11 @@
 						<xsl:if test="ow:page/@revision">
 							<b>Editing old revision <xsl:value-of select="ow:page/@revision"/>. Saving this page will replace the latest revision with this text.</b>
 						</xsl:if>
-						<xsl:apply-templates select="ow:error"/>
+						<xsl:if test="count(ow:error) &gt; 0">
+							<ul>
+								<xsl:apply-templates select="ow:error"/>
+							</ul>
+						</xsl:if>
 				
 						<xsl:if test="ow:textedits">
 							<p>
@@ -631,15 +635,16 @@
 				
 						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
-							<fieldset>
+							<fieldset style="border:none;">
+<!--							
 								<input type="submit" name="save" value="Save" />
 								&#x20;
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-								<!-- <input type="submit" name="preview" value="Preview" /> -->
 								&#x20;
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 								<br />
 								<br />
+-->
 								<textarea id="text" name="text" style="overflow:auto;" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
 								<input type="checkbox" name="rc" value="1">
 								  <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
@@ -1223,7 +1228,11 @@
 						<a id="top"></a>
 						<h1 id="firstHeading" class="firstHeading">Log in</h1>
 						<div id="bodyContent">
-							<xsl:apply-templates select="ow:error"/>
+							<xsl:if test="count(ow:error) &gt; 0">
+								<ul>
+									<xsl:apply-templates select="ow:error"/>
+								</ul>
+							</xsl:if>
 							<form id="f" method="post" action="{/ow:wiki/ow:scriptname}?a=login&amp;mode={ow:login/@mode}">
 								<fieldset>
 									<xsl:if test="ow:login/@mode='edit'">
