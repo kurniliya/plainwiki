@@ -216,6 +216,7 @@ End Sub
 Sub ActionEdit
     Dim vPage, vChange, vXmlStr
     Dim vNewRev, vMinorEdit, vComment, vText
+    Dim CaptchaCheck
 
     If cReadOnly Then
         ' TODO: generate <ow:error> tag into the XML output
@@ -245,6 +246,14 @@ Sub ActionEdit
         End If
         If Len(vText) > OPENWIKI_MAXTEXT Then
             vXmlStr = vXmlStr & "<ow:error code='2'>Maximum length for the text is " & OPENWIKI_MAXTEXT & " characters.</ow:error>"
+        End If
+        
+        If gEditPassword = "" and cUseRecaptcha Then
+        	CaptchaCheck = RecaptchaConfirm(Request("recaptcha_challenge_field"), Request("recaptcha_response_field"))
+        	If CaptchaCheck <> "" Then
+        		vXmlStr = vXmlStr & "<ow:captcha_error>" & CaptchaCheck & "</ow:captcha_error>"
+	            vXmlStr = vXmlStr & "<ow:error code='5'>reCAPTCHA error. See details in reCAPTCHA form.</ow:error>"        		
+        	End If
         End If
 
         If vXmlStr <> "" Then
