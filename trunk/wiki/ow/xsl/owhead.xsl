@@ -184,7 +184,8 @@
 				/*]]&gt;*/</xsl:text>
 		</script>
 
-		<script type="text/javascript" src="ow/js/recaptcha_documentwrite.js" />
+		<script type="text/javascript" src="ow/js/recaptcha_documentwrite.js">
+		</script>
 		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
 		</script>
 		<script type="text/javascript" src="ow/js/edit.js?207xx">
