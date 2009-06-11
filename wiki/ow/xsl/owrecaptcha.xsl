@@ -14,7 +14,7 @@
 	<div id="recaptcha_holder" />
 	<xsl:if test="$useRecaptcha='1'">
 		<script type="text/javascript"
-   src="http://api.recaptcha.net/challenge?k={$recaptcha_publickey}" />
+   src="http://api.recaptcha.net/challenge?k={$recaptcha_publickey}"></script>
 	</xsl:if>
 </xsl:template>
 
