@@ -18,7 +18,7 @@ Dim OPENWIKI_ICONPATH, OPENWIKI_IMAGEPATH, OPENWIKI_ENCODING, OPENWIKI_TITLE, OP
 Dim OPENWIKI_SCRIPTNAME, OPENWIKI_STYLESHEETS, OPENWIKI_MAXTEXT, OPENWIKI_MAXINCLUDELEVEL
 Dim OPENWIKI_RCNAME, OPENWIKI_RCDAYS, OPENWIKI_MAXTRAIL, OPENWIKI_TEMPLATES
 Dim OPENWIKI_TIMEZONE, OPENWIKI_MAXNROFAGGR, OPENWIKI_MAXWEBGETS, OPENWIKI_SCRIPTTIMEOUT
-Dim OPENWIKI_DAYSTOKEEP
+Dim OPENWIKI_DAYSTOKEEP, OPENWIKI_DAYSTOKEEP_DEPRECATED
 Dim OPENWIKI_STOPWORDS
 Dim OPENWIKI_UPLOADDIR, OPENWIKI_MAXUPLOADSIZE, OPENWIKI_UPLOADTIMEOUT
 Dim OPENWIKI_RECAPTCHAPRIVATEKEY
@@ -26,7 +26,7 @@ Dim OPENWIKI_RECAPTCHAPRIVATEKEY
 Dim MSXML_VERSION
 
 ' declare options
-Dim gReadPassword, gEditPassword, gDefaultBookmarks
+Dim gReadPassword, gEditPassword, gDefaultBookmarks, gAdminPassword
 Dim cReadOnly, cNakedView, cUseSubpage, cFreeLinks, cWikiLinks, cAcronymLinks, cTemplateLinking, cRawHtml, cMathML, cHtmlTags, cCacheXSL, cCacheXML, cDirectEdit, cEmbeddedMode
 Dim cSimpleLinks, cNonEnglish, cNetworkFile, cBracketText, cBracketIndex, cHtmlLinks, cBracketWiki, cFreeUpper, cLinkImages, cUseHeadings, cUseLookup, cStripNTDomain, cMaskIPAddress, cOldSkool, cNewSkool, cNumTOC, cAllowCharRefs, cWikifyHeaders
 Dim cEmoticons, cUseLinkIcons, cPrettyLinks, cExternalOut

@@ -34,6 +34,7 @@ OPENWIKI_MAXNROFAGGR     = 150                ' Maximum number of rows to show i
 OPENWIKI_MAXWEBGETS      = 3                  ' Maximum number of RSS feeds that may be refreshed from a remote server for one user request.
 OPENWIKI_SCRIPTTIMEOUT   = 120                ' Maximum amount of seconds to wait for RSS feeds to be syndicated, if set to 0 the default timeout value of ASP is used.
 OPENWIKI_DAYSTOKEEP      = 30                 ' Number of days to keep old revisions
+OPENWIKI_DAYSTOKEEP_DEPRECATED = 30           ' Number of days to keep deprecated pages and attachments
 OPENWIKI_UPLOADDIR       = "attachments/"     ' The virtual directory where uploads are stored
 OPENWIKI_MAXUPLOADSIZE   = 8388608            ' Use to limit the size of uploads, in bytes (default = 8,388,608)
 OPENWIKI_UPLOADTIMEOUT   = 300                ' Timeout in seconds (upload must succeed within this time limit)
@@ -43,6 +44,7 @@ MSXML_VERSION = 3   ' use 4 if you've installed MSXML v4.0
 
 gReadPassword = ""    ' use empty string "" if anyone may read
 gEditPassword = ""    ' use empty string "" if anyone may edit
+gAdminPassword = "adminpw"   ' use empty string "" if anyone may administer this Wiki
 ' In case you want more sophisticated security, then you should
 ' rely on the Integrated Windows authentication feature of IIS.
 

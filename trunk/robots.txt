@@ -37,6 +37,10 @@ Disallow: /wiki/*RecentChanges
 Disallow: /wiki/*DeprecatedPages
 Disallow: /wiki/*Special:
 #
+# >>> Exclude admin part
+#
+Disallow: /wiki/owadmin
+#
 # </wiki>
 #
 # End of robots.txt
