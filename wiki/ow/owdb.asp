@@ -791,6 +791,62 @@ Class OpenWikiNamespace
         Set FullSearch = vList
     End Function
 
+    Function EquationSearch(pPattern, pIncludeTitles)
+        Dim vTitle, vRegEx, vRegEx2, vList, vPage, vChange, vFound, vText
+        pPattern = EscapePattern(pPattern)
+        Set vList = New Vector
+        Set vRegEx = New RegExp
+        vRegEx.IgnoreCase = True
+        vRegEx.Global = True
+        If Request("fromtitle") = "true" Then
+            vRegEx.Pattern = Replace(pPattern, "_", " ")
+        Else
+            vRegEx.Pattern = pPattern
+        End If
+        If pIncludeTitles Then
+            Set vRegEx2 = New RegExp
+            vRegEx2.IgnoreCase = True
+            vRegEx2.Global = True
+            vRegEx2.Pattern = pPattern
+        End If
+        vQuery = "SELECT * FROM openwiki_pages, openwiki_revisions WHERE wrv_name = wpg_name AND wrv_current = 1 AND wrv_text IS NOT NULL ORDER BY wpg_name"
+        vRS.Open vQuery, vConn, adOpenForwardOnly
+        Do While Not vRS.EOF
+            vText = vRS("wrv_text")        
+            vFound = False
+            If pIncludeTitles Then
+                If vRegEx2.Test(vRS("wpg_name")) Then
+                    vFound = True
+                End If
+            End If
+            If Not vFound Then
+                If vRegEx.Test(vText) Then
+                    vFound = True
+                End If
+            End If
+            If vFound Then
+                Set vPage = New WikiPage
+                vPage.Name = vRS("wpg_name")
+                Call s(vText, "<math>([\s\S]*?)<\/math>", "&CutEquation($1)", False, False)
+                vPage.Text = gEquation
+                vPage.Changes = CInt(vRS("wpg_changes"))
+                Set vChange = vPage.AddChange
+                vChange.Revision  = CInt(vRS("wrv_revision"))
+                vChange.Status    = CInt(vRS("wrv_status"))
+                vChange.MinorEdit = CInt(vRS("wrv_minoredit"))
+                vChange.Timestamp = vRS("wrv_timestamp")
+                vChange.By        = vRS("wrv_by")
+                vChange.ByAlias   = vRS("wrv_byalias")
+                vChange.Comment   = vRS("wrv_comment")
+                vList.Push(vPage)
+            End If
+            vRS.MoveNext
+        Loop
+        vRS.Close
+        Set vRegEx = Nothing
+        Set vRegEx2 = Nothing
+        Set EquationSearch = vList
+    End Function
 
     Function GetPreviousRevision(pDiffType, pDiffTo)
         Dim vBy, vHost, vAgent
@@ -1247,5 +1303,11 @@ Function EscapePattern(pPattern)
     'Response.Write("Pattern : " & pPattern & "<br />")
     EscapePattern = pPattern
 End Function
+
+Dim gEquation
+Sub CutEquation(pText)
+	sReturn = "<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>"
+	gEquation = "<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>"
+End Sub
 
 %>
