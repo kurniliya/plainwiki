@@ -43,7 +43,7 @@ Sub ExecMacro(pMacro, pParams)
     ' then it should nicely return.
     ' The side effect of having this option on is that if a programming error occurs in the
     ' processing of a macro, the programmer won't notice it.
-    On Error Resume Next
+'    On Error Resume Next
     Dim vMacro, vParams, vPos, vTemp1, vTemp2, vCmd
     vMacro  = pMacro
     vParams = pParams
@@ -125,6 +125,10 @@ End Sub
 
 Sub MacroFullSearchP(pParam)
     gMacroReturn = gNamespace.GetIndexSchemes.GetFullSearch(pParam, True)
+End Sub
+
+Sub MacroEquationSearchP(pParam)
+	gMacroReturn = gNamespace.GetIndexSchemes.GetEquationSearch(pParam, True)
 End Sub
 
 Sub MacroTextSearch

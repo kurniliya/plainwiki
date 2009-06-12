@@ -252,6 +252,9 @@ Class WikiPage
         If pIncludeText = 2 Or pIncludeText = 3 Then
             ToXML = ToXML & "<ow:raw>" & PCDATAEncode(vText) & "</ow:raw>"
         End If
+        If pIncludeText = 4 Then
+            ToXML = ToXML & "<ow:equation>" & vbCRLF & vText & "</ow:equation>" & vbCRLF
+        End If        
 
         If cAllowAttachments Then
             If IsObject(vAttachmentCollection) Then

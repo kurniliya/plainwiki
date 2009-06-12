@@ -1122,6 +1122,22 @@
     </xsl:if>
 </xsl:template>
 
+<xsl:template match="ow:equationsearch">
+	<xsl:if test="count(ow:page)>0">
+		<ul>
+			<xsl:for-each select="ow:page">
+			  <li>
+				<xsl:if test="contains(@name, '/')">
+					....
+				</xsl:if>
+				<xsl:apply-templates select="ow:link"/>
+				<xsl:apply-templates select="ow:equation"/>
+			  </li>
+			</xsl:for-each>
+		</ul>
+    </xsl:if>
+</xsl:template>
+
 <xsl:template match="/ow:wiki" mode="fullsearch">
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">

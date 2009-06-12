@@ -102,6 +102,16 @@ Class IndexSchemes
         GetFullSearch = "<ow:fullsearch value='" & CDATAEncode(pPattern) & "' pagecount='" & gNamespace.GetPageCount() & "'>" & vResult & "</ow:fullsearch>"
     End Function
 
+    Public Function GetEquationSearch(pPattern, pIncludeTitles)
+        Dim vList, i, vCount, vResult
+        Set vList = gNamespace.EquationSearch(pPattern, pIncludeTitles)
+        vCount = vList.Count - 1
+        For i = 0 To vCount
+            vResult = vResult & vList.ElementAt(i).ToXML(4)
+        Next
+        GetEquationSearch = "<ow:equationsearch value='" & CDATAEncode(pPattern) & "' pagecount='" & gNamespace.GetPageCount() & "'>" & vResult & "</ow:equationsearch>"
+    End Function
+
     Public Function GetRandomPage(pNrOfPages)
         Dim vList, i, vCount, vIndex, vResult
         Set vList = gNamespace.TitleSearch(".*", 0, 0, 0, 0)
