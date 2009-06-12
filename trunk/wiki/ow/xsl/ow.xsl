@@ -639,12 +639,13 @@
 <!--							
 								<input type="submit" name="save" value="Save" />
 								&#x20;
+-->
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
 								&#x20;
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 								<br />
 								<br />
--->
+
 								<textarea id="text" name="text" style="overflow:auto;" onfocus="saveText(this.value)" onkeydown="saveDocumentCheck(event);"><xsl:attribute name="rows"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:rows"/></xsl:attribute><xsl:attribute name="cols"><xsl:value-of select="/ow:wiki/ow:userpreferences/ow:cols"/></xsl:attribute><xsl:value-of select="ow:page/ow:raw/text()"/></textarea><br />
 								<input type="checkbox" name="rc" value="1">
 								  <xsl:if test="ow:page/ow:change/@minor='false' and not(starts-with(ow:page/ow:raw/text(), '#MINOREDIT'))">
