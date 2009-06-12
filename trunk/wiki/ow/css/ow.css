@@ -1116,6 +1116,12 @@ div#p-editorial ul li {
 	background: transparent url(../images/icons/Crystal_Clear_action_bookmark.png) no-repeat left center;
 }
 
+/* Equation index menu icon */
+#column-one ul li#n-equationindex {
+	background: transparent url(../images/icons/Greek_uc_sigma.png) no-repeat left center;
+}
+
+
 /* Changes style for User preferences link (that's one in upper rigth corner)
 */
 #pt-login {
