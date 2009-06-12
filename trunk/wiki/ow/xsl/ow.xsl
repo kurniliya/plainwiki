@@ -1131,7 +1131,7 @@
 					....
 				</xsl:if>
 				<xsl:apply-templates select="ow:link"/>
-				<xsl:apply-templates select="ow:equation"/>
+				<xsl:apply-templates select="ow:equation/*"/>
 			  </li>
 			</xsl:for-each>
 		</ul>
