@@ -636,10 +636,10 @@
 						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
 							<fieldset style="border:none;">
-<!--							
-								<input type="submit" name="save" value="Save" />
-								&#x20;
--->
+								<xsl:if test="not(/ow:wiki/ow:protection='captcha')">
+									<input type="submit" name="save" value="Save" />
+									&#x20;
+								</xsl:if>
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
 								&#x20;
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />

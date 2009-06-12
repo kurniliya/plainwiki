@@ -233,6 +233,16 @@ Class OpenWikiNamespace
     End Function
 
     Function ToXML(pXmlStr)
+    	Dim vProtection
+    	If cReadOnly Then
+    		vProtection = "readonly"
+    	ElseIf gEditPassword <> "" Then
+    		vProtection = "password"
+    	ElseIf cUseRecaptcha Then
+    		vProtection = "captcha"
+    	Else
+    		vProtection = "none"
+    	End If
         ToXML = "<ow:wiki version='" & OPENWIKI_XMLVERSION & "' xmlns:ow='" & OPENWIKI_NAMESPACE & "' encoding='" & OPENWIKI_ENCODING & "' mode='" & gAction & "'>" _
               & "<ow:useragent>" & PCDATAEncode(Request.ServerVariables("HTTP_USER_AGENT")) & "</ow:useragent>" _
               & "<ow:location>" & PCDATAEncode(gServerRoot) & "</ow:location>" _
@@ -240,6 +250,7 @@ Class OpenWikiNamespace
               & "<ow:imagepath>" & PCDATAEncode(OPENWIKI_IMAGEPATH) & "</ow:imagepath>" _
               & "<ow:iconpath>" & PCDATAEncode(OPENWIKI_ICONPATH) & "</ow:iconpath>" _
               & "<ow:about>" & PCDATAEncode(gServerRoot & gScriptName & "?" & Request.ServerVariables("QUERY_STRING")) & "</ow:about>" _
+              & "<ow:protection>" & vProtection & "</ow:protection>" _
               & "<ow:title>" & PCDATAEncode(OPENWIKI_TITLE) & "</ow:title>" _
               & "<ow:frontpage name='" & CDATAEncode(OPENWIKI_FRONTPAGE) & "' href='" & gScriptName & "?" & Server.URLEncode(OPENWIKI_FRONTPAGE) & "'>" & PCDATAEncode(PrettyWikiLink(OPENWIKI_FRONTPAGE)) & "</ow:frontpage>"
         If cEmbeddedMode = 0 Then
