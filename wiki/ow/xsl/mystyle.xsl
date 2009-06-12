@@ -156,13 +156,19 @@
 	</li>
 	<li id="n-titleindex">
 		<a>
-			<xsl:attribute name="href">ow.asp?TitleIndex</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?TitleIndex</xsl:attribute>
 			Title index
 		</a>
 	</li>	
+	<li id="n-equationindex">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?EquationsList</xsl:attribute>
+			Equation index
+		</a>
+	</li>		
 	<li id="n-randompage">
 		<a>
-			<xsl:attribute name="href">ow.asp?Special:RandomPage</xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:RandomPage</xsl:attribute>
 			Random article
 		</a>
 	</li>	
