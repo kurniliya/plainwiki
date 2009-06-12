@@ -824,6 +824,9 @@ Class OpenWikiNamespace
                     vFound = True
                 End If
             End If
+      	    If vFound and pIncludeTitles and cUseSpecialPagesPrefix and m(vRS("wpg_name"), "^" & gSpecialPagesPrefix, False, False) Then
+                vFound = False
+    		End If            
             If vFound Then
                 Set vPage = New WikiPage
                 vPage.Name = vRS("wpg_name")
