@@ -12,7 +12,7 @@
 
 <xsl:template name="showRecapthca">
 	<div id="recaptcha_holder" />
-	<xsl:if test="$useRecaptcha='1'">
+	<xsl:if test="/ow:wiki/ow:protection='captcha'">
 		<script type="text/javascript"
    src="http://api.recaptcha.net/challenge?k={$recaptcha_publickey}&amp;error={ow:captcha_error}"></script>
 	</xsl:if>
