@@ -61,7 +61,7 @@ cAcronymLinks          = 1        ' 1 = link acronyms         0 = do not link 3 
 cTemplateLinking       = 1        ' 1 = allow TemplateName->WikiLink   0 = don't do template linking
 cRawHtml               = 1        ' 1 = allow <html> tag      0 = no raw HTML in pages
 cMathML                = 1        ' 1 = allow <math> tag      0 = no raw math in pages
-cHtmlTags              = 0        ' 1 = "unsafe" HTML tags    0 = only minimal tags
+cHtmlTags              = 1        ' 1 = "unsafe" HTML tags    0 = only minimal tags
 cCacheXSL              = 0        ' 1 = cache stylesheet      0 = don't cache stylesheet
 cCacheXML              = 0        ' 1 = cache partial results 0 = do not cache partial results
 cAllowRSSExport        = 1        ' 1 = allow RSS feed        0 = do not export your pages to RSS
