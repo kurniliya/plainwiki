@@ -982,6 +982,27 @@ Function FreeToNormal(pID)
     FreeToNormal = vID
 End Function
 
+Function FreeToNormal_X(pID, pUseUCase)
+    Dim vID
+    vID = Replace(pID, " ", "_")
+    If pUseUCase Then
+	    vID = UCase(Left(vID, 1)) & Mid(vID, 2)
+	End If
+    If InStr(vID, "_") > 0 Then
+        vID = s(vID, "__+", "_",  False, True)
+        vID = s(vID, "^_", "", False, True)
+        vID = s(vID, "_$", "", False, True)
+        If cUseSubpage Then
+            vID = s(vID, "_\/", "/", False, True)
+            vID = s(vID, "\/_", "/", False, True)
+        End If
+    End If
+    If cFreeUpper Then
+        vID = s(vID, "([-_\.,\(\)\/])([a-z])", "&Capitalize($1, $2)", False, True)
+    End If
+    FreeToNormal_X = vID
+End Function
+
 Sub Capitalize(pChars, pWord)
     sReturn = pChars & UCase(Left(pWord, 1)) & Mid(pWord, 2)
 End Sub

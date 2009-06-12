@@ -403,7 +403,7 @@ End Sub
 Sub ActionUserPreferences
     If Request("save") <> "" Then
         Response.Cookies(gCookieHash & "?up").Expires  = Date + 60
-        Response.Cookies(gCookieHash & "?up")("un")   = FreeToNormal(Request("username"))
+        Response.Cookies(gCookieHash & "?up")("un")   = FreeToNormal_X(Request("username"), false)
         Response.Cookies(gCookieHash & "?up")("bm")   = Request("bookmarks")
         Response.Cookies(gCookieHash & "?up")("cols") = Request("cols")
         Response.Cookies(gCookieHash & "?up")("rows") = Request("rows")
