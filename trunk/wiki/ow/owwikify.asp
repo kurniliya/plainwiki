@@ -48,6 +48,7 @@ Function Wikify(pText)
         Set gRaw            = New Vector
         Set gBracketIndices = New Vector
         Set gTOC            = New TableOfContents
+        Set gCategories     = New Vector
 
         If gAction <> "edit" And Not cEmbeddedMode Then
             If Left(vText, 1) = "#" Then
@@ -83,7 +84,7 @@ Function Wikify(pText)
             End If
         End If
     End If
-
+    
     vText = MultiLineMarkup(vText)  ' Multi-line markup
     vText = WikiLinesToHtml(vText)  ' Line-oriented markup
 
@@ -97,6 +98,15 @@ Function Wikify(pText)
              vText = Replace(vText, gFS & "TOC" & gFS, "<ow:toc_root>" & gTOC.GetTOC & "</ow:toc_root>")
              vText = Replace(vText, gFS & "TOCRight" & gFS, "<ow:toc_root align=""right"">" & gTOC.GetTOC & "</ow:toc_root>")             
         End If
+        
+	    Dim i
+	    If gCategories.Count > 0 Then
+	    	vText = vText & "<ow:categories>"
+		    For i = 0 to gCategories.Count - 1
+		    	vText = vText & gCategories.ElementAt(i)
+		    Next
+		    vText = vText & "</ow:categories>"
+		End If        
 
         If InStr(gMacros, "Footnote") > 0 Then
             vText = InsertFootnotes(vText)
@@ -106,6 +116,7 @@ Function Wikify(pText)
         Set gRaw            = Nothing
         Set gBracketIndices = Nothing
         Set gTOC            = Nothing
+        Set gCategories     = Nothing
     End If
 
     Wikify = vText
@@ -175,6 +186,9 @@ Function MultiLineMarkup(pText)
 
     ' process macro's
     pText = s(pText, "\&lt;(" & gMacros & ")(\(.*?\))?(?:\s*\/)?\&gt;", "&ExecMacro($1, $2)", True, True)
+
+	' Category marks on wikipage
+    pText = s(pText, gCategoryMarkPattern, "&StoreCategoryMark($1)", False, True)
 
     If cFreeLinks Then
         pText = s(pText, "\[\[" & gFreeLinkPattern & "(?:\|([^\]]+))*\]\]", "&StoreFreeLink($1, $2)", False, True)
@@ -872,6 +886,7 @@ End Function
 
 
 Function GetWikiLink(pPrefix, pID, pText)
+'	Response.Write("GetWikiLink entered pPrefix=" & pPrefix & " pID=" & pID & " pText=" & pText & "<br>")
     Dim vID, vPage, vAnchor, vTemplate, vTemp
 
     If pPrefix = "~" Then
@@ -1268,4 +1283,12 @@ Sub AddFootnote(pParam)
     gFootnotes.Push(pParam)
     sReturn = "<sup><a href='#footnote" & gFootnotes.Count & "' class='footnote'>" & gFootnotes.Count & "</a></sup>"
 End sub
+
+Sub StoreCategoryMark(pParam)
+	Dim vID
+	
+	vID = "Category" & pParam
+	gCategories.Push("<ow:category>" & "<name>" & pParam & "</name>" & GetWikiLink("", vID, "") & "</ow:category>")
+	sReturn = ""
+End Sub
 %>

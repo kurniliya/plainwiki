@@ -330,6 +330,17 @@
   </math> 
 </xsl:template>
 
+<!-- ==================== handles the openwiki-category element ==================== -->
+<xsl:template match="ow:category">
+	<span dir="ltr">
+		<a title="{name}">
+			<xsl:attribute name="title"><xsl:value-of select="./name" /></xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="./ow:link/@href" /></xsl:attribute>
+			<xsl:value-of select="./name" />
+		</a>
+	</span>
+</xsl:template>
+
 <!-- ==================== handles the openwiki-toc element ==================== -->
 <xsl:template match="ow:toc_root">
 	<xsl:choose>

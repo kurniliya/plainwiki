@@ -39,6 +39,7 @@ Dim cUseRecaptcha
 ' global variables
 Dim gLinkPattern, gSubpagePattern, gStopWords, gTimestampPattern, gUrlProtocols, gUrlPattern, gMailPattern, gInterSitePattern, gInterLinkPattern, gFreeLinkPattern, gImageExtensions, gImagePattern, gDocExtensions, gNotAcceptedExtensions, gISBNPattern, gHeaderPattern, gMacros
 Dim gSpecialPagesPrefix
+Dim gCategoryMarkPattern
 Dim gFS, gIndentLimit
 gFS = Chr(179)           ' The FS character is a superscript "3"
 gIndentLimit = 20        ' maximum indent level for bulleted/numbered items
@@ -57,6 +58,7 @@ Dim gNamespace           ' namespace data
 Dim gRaw                 ' vector or raw data used by Wikify function
 Dim gBracketIndices      ' keep track of the bracketed indices
 Dim gTOC                 ' table of contents
+Dim gCategories          ' categories of page
 Dim gIncludeLevel        ' recursive level of included pages
 Dim gCurrentWorkingPages ' stack of pages currently working on when including pages
 Dim gIncludingAsTemplate ' including subpages as template
