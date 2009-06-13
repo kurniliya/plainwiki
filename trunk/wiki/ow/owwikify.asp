@@ -166,7 +166,7 @@ Function MultiLineMarkup(pText)
             pText = s(pText, "\&lt;" & vTag & "(\s[^<>]+?)?\&gt;([\s\S]*?)\&lt;\/" & vTag & "\&gt;", "<" & vTag & "$1>$2</" & vTag & ">", True, True)
         Next
         For Each vTag In Split("br,p,hr,li,dt,dd,tr,td,th", ",")
-            pText = s(pText, "\&lt;" & vTag & "(\s[^<>]+?)?\&gt;", "<" & vTag & "$1 />", True, True)
+            pText = s(pText, "\&lt;" & vTag & "(\s[^<>/]+?)?\&gt;", "<" & vTag & "$1 />", True, True)
         Next
     End If
 
