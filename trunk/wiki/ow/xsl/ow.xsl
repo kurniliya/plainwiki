@@ -352,6 +352,7 @@
 			<xsl:value-of select="./name" />
 		</a>
 	</span>
+	<xsl:text> | </xsl:text>
 </xsl:template>
 
 <!-- ==================== handles the openwiki-toc element ==================== -->
