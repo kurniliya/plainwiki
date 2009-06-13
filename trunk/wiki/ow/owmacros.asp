@@ -112,7 +112,7 @@ Sub MacroBR
 End Sub
 
 Sub MacroTitleSearch
-    gMacroReturn = "<form name=""TitleSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><input type=""hidden"" name=""a"" value=""titlesearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mts"" type=""submit"" value=""Go""/></form>"
+    gMacroReturn = "<form id=""TitleSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><div><input type=""hidden"" name=""a"" value=""titlesearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mts"" type=""submit"" value=""Go""/></div></form>"
 End Sub
 
 Sub MacroTitleSearchP(pParam)
@@ -120,7 +120,7 @@ Sub MacroTitleSearchP(pParam)
 End Sub
 
 Sub MacroFullSearch
-    gMacroReturn = "<form name=""FullSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><input type=""hidden"" name=""a"" value=""fullsearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mfs"" type=""submit"" value=""Go""/></form>"
+    gMacroReturn = "<form id=""FullSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><div><input type=""hidden"" name=""a"" value=""fullsearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mfs"" type=""submit"" value=""Go""/></div></form>"
 End Sub
 
 Sub MacroFullSearchP(pParam)
@@ -132,7 +132,7 @@ Sub MacroEquationSearchP(pParam)
 End Sub
 
 Sub MacroTextSearch
-    gMacroReturn = "<form name=""TextSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><input type=""hidden"" name=""a"" value=""textsearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mfs"" type=""submit"" value=""Go""/></form>"
+    gMacroReturn = "<form id=""TextSearch"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><div><input type=""hidden"" name=""a"" value=""textsearch""/><input type=""text"" name=""txt"" value=""" & CDATAEncode(gTxt) & """ ondblclick='event.cancelBubble=true;' /><input id=""mfs"" type=""submit"" value=""Go""/></div></form>"
 End Sub
 
 Sub MacroTextSearchP(pParam)
@@ -140,7 +140,7 @@ Sub MacroTextSearchP(pParam)
 End Sub
 
 Sub MacroGoTo
-    gMacroReturn = "<form name=""GoTo"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><input type=""text"" name=""p"" value="""" ondblclick='event.cancelBubble=true;' /><input id=""goto"" type=""submit"" value=""Go""/></form>"
+    gMacroReturn = "<form id=""GoTo"" action=""" & CDATAEncode(gScriptName) & """ method=""get""><div><input type=""text"" name=""p"" value="""" ondblclick='event.cancelBubble=true;' /><input id=""goto"" type=""submit"" value=""Go""/></div></form>"
 End Sub
 
 Sub MacroSystemInfo
