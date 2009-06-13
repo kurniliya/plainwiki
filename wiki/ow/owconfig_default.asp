@@ -43,7 +43,7 @@ OPENWIKI_RECAPTCHAPRIVATEKEY = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP "
 MSXML_VERSION = 3   ' use 4 if you've installed MSXML v4.0
 
 gReadPassword = ""    ' use empty string "" if anyone may read
-gEditPassword = ""    ' use empty string "" if anyone may edit
+gEditPassword = "1111"    ' use empty string "" if anyone may edit
 gAdminPassword = "adminpw"   ' use empty string "" if anyone may administer this Wiki
 ' In case you want more sophisticated security, then you should
 ' rely on the Integrated Windows authentication feature of IIS.
@@ -72,6 +72,7 @@ cAllowAttachments      = 0        ' 1 = allow attachments     0 = do not allow a
 cUseSpecialPagesPrefix = 1 		  ' 1 = use gSpecialPagesPrefix in gLinkPattern
 gSpecialPagesPrefix    = "Special:"
 cUseRecaptcha          = 1        ' 1 = use reCAPTHCA when edit pages if no password protection defined
+gCategoryMarkPattern   = "\[\[:Category([\w]*)\]\]"       ' Pattern used to find category marks on wikipages
 
 ' Minor system options
 cSimpleLinks          = 0        ' 1 = only letters,         0 = allow _ and numbers
