@@ -43,7 +43,7 @@ Sub ExecMacro(pMacro, pParams)
     ' then it should nicely return.
     ' The side effect of having this option on is that if a programming error occurs in the
     ' processing of a macro, the programmer won't notice it.
-'    On Error Resume Next
+    On Error Resume Next
     Dim vMacro, vParams, vPos, vTemp1, vTemp2, vCmd
     vMacro  = pMacro
     vParams = pParams
