@@ -331,6 +331,19 @@
 </xsl:template>
 
 <!-- ==================== handles the openwiki-category element ==================== -->
+<xsl:template match="ow:categories">
+	<div id="catlinks" class="catlinks">
+		<div id="mw-normal-catlinks">
+			<a> 
+				<xsl:attribute name="title">CategoryCategory</xsl:attribute>
+				<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname" />?CategoryCategory</xsl:attribute>
+				Categories</a>			
+			<xsl:text>: </xsl:text>
+			<xsl:apply-templates select="./ow:category"/>
+		</div>
+	</div>
+</xsl:template>
+
 <xsl:template match="ow:category">
 	<span dir="ltr">
 		<a title="{name}">
