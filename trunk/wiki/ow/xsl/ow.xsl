@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:msxsl="urn:schemas-microsoft-com:xslt"
                 xmlns:ow="http://openwiki.com/2001/OW/Wiki"               
@@ -6,7 +6,7 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
+<xsl:output method="xml" indent="no" omit-xml-declaration="yes" encoding="UTF-8" />
 
 <xsl:include href="owpi.xsl"/>
 <xsl:include href="owinc.xsl"/>
@@ -328,6 +328,33 @@
       <xsl:value-of select="." disable-output-escaping="yes" />    
     </mstyle>  
   </math> 
+</xsl:template>
+
+<!-- ==================== handles the openwiki-redirectlinks element ==================== -->
+<xsl:template match="ow:redirectlinks">
+	<div class="mw-spcontent">
+		<ol class="special" start="1">
+			<xsl:apply-templates select="./ow:redirect"/>
+		</ol>
+	</div>
+</xsl:template>
+
+<xsl:template match="ow:redirect">
+	<li>
+		<a>
+			<xsl:attribute name="class">mw-redirect</xsl:attribute>
+			<xsl:attribute name="title"><xsl:value-of select="./ow:from/ow:link/@name" /></xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="./ow:from/ow:link/@href" /></xsl:attribute>
+			<xsl:value-of select="./ow:from/ow:link/text()" />
+		</a>
+		<xsl:text> →‎ </xsl:text>
+		<a>
+			<xsl:attribute name="class">mw-redirect</xsl:attribute>
+			<xsl:attribute name="title"><xsl:value-of select="./ow:to/ow:link/@name" /></xsl:attribute>
+			<xsl:attribute name="href"><xsl:value-of select="./ow:to/ow:link/@href" /></xsl:attribute>
+			<xsl:value-of select="./ow:to/ow:link/text()" />
+		</a>		
+	</li>
 </xsl:template>
 
 <!-- ==================== handles the openwiki-category element ==================== -->

@@ -911,7 +911,6 @@ Class OpenWikiNamespace
         vQuery = "SELECT wik_name, wik_url FROM openwiki_interwikis ORDER BY wik_name"
         vRS.Open vQuery, vConn, adOpenForwardOnly
         Do While Not vRS.EOF
-            Dim val
             vTemp = vTemp & "<ow:interlink>" _
             	& "<ow:name>" & PCDATAEncode(vRS("wik_name")) & "</ow:name>" _            
             	& "<ow:href>" & CDATAEncode(vRS("wik_url")) & "</ow:href>" _
@@ -923,6 +922,55 @@ Class OpenWikiNamespace
         InterWiki = "<ow:interlinks>" & vTemp & "</ow:interlinks>"
     End Function
 
+    Function ListRedirects()
+        Dim vTemp, vTempPage, vText, vPageFrom, vPageTo, vPos
+        Dim vBuffFrom, vBuffTo, i
+        
+        Set vBuffFrom = new Vector
+        Set vBuffTo = new Vector
+        
+        If OPENWIKI_DB_SYNTAX = DB_ACCESS Then
+	        vQuery = "SELECT * FROM openwiki_pages, openwiki_revisions "_ 
+	        	& "WHERE wrv_name = wpg_name AND wrv_current = 1 AND wrv_text LIKE '[#]REDIRECT %' "_
+	        	& "ORDER BY wpg_name"
+	    Else
+	        vQuery = "SELECT * FROM openwiki_pages, openwiki_revisions "_ 
+	        	& "WHERE wrv_name = wpg_name AND wrv_current = 1 AND wrv_text LIKE '\#REDIRECT %' ESCAPE '\' "_
+	        	& "ORDER BY wpg_name"
+		End If	    
+        vRS.Open vQuery, vConn, adOpenForwardOnly
+        Do While Not vRS.EOF
+        	vText = vRS("wrv_text")
+        	vPageFrom = vRS("wpg_name")
+            If m(vText, "^#REDIRECT\s+", False, False) Then
+                vPos = InStr(Len("#REDIRECT "), vText, vbCR)
+                If vPos > 0 Then
+                    vPageTo = Trim(Mid(vText, Len("#REDIRECT "), vPos - Len("#REDIRECT ")))
+                Else
+                    vPageTo = Trim(Mid(vText, Len("#REDIRECT ")))
+                End If
+				vBuffFrom.Push(vPageFrom)
+				vBuffTo.Push(vPageTo)
+	        End If
+            vRS.MoveNext
+        Loop
+        vRS.Close
+       
+        If not vBuffFrom.IsEmpty() Then
+        	For i = 0 to vBuffFrom.Count - 1
+        		vPageFrom = vBuffFrom.ElementAt(i)
+        		vPageTo = vBuffTo.ElementAt(i)
+	            vTemp = vTemp & "<ow:redirect>" _
+	            	& "<ow:from>" & GetWikiLink("", vPageFrom, "") & "</ow:from>" _            
+	            	& "<ow:to>" & GetWikiLink("", vPageTo, "") & "</ow:to>" _
+	            	& "</ow:redirect>"
+        	Next
+   	        ListRedirects = "<ow:redirectlinks>" & vTemp & "</ow:redirectlinks>" 
+        End If
+        
+        Set vBuffFrom = Nothing
+        Set vBuffTo = Nothing       
+    End Function
 
     Function GetInterWiki(pName)
         If OPENWIKI_DB <> "" Then
