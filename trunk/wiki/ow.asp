@@ -1,4 +1,4 @@
-<%@ Language=VBScript EnableSessionState=False %>
+<%@ CODEPAGE = 65001 Language=VBScript EnableSessionState=False %>
 <%
 '
 ' ---------------------------------------------------------------------------
