@@ -394,4 +394,17 @@ Sub MacroSyndicatePP(pURL, pRefreshRate)
         gMacroReturn = gNamespace.GetRSSFromCache(vURL, pRefreshRate, True, False)
     End If
 End Sub
+
+Sub MacroRecentNewPagesPP(pDays, pNrOfChanges)
+    If Not IsNumeric(pDays) Or Not IsNumeric(pNrOfChanges) Then
+        Exit Sub
+    End If
+    If pDays <= 0 Then
+        pDays = OPENWIKI_RCDAYS
+    End If
+    If pNrOfChanges <= 0 Then
+        pNrOfChanges = 0
+    End If
+    gMacroReturn = gNamespace.GetIndexSchemes.GetRecentNewPages(pDays, pNrOfChanges, 1, TRUE)
+End Sub
 %>
