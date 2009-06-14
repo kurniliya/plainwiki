@@ -407,4 +407,22 @@ Sub MacroRecentNewPagesPP(pDays, pNrOfChanges)
     End If
     gMacroReturn = gNamespace.GetIndexSchemes.GetRecentNewPages(pDays, pNrOfChanges, 1, TRUE)
 End Sub
+
+
+Sub MacroRecentEquationsPP(pPattern, pDays, pNrOfChanges)
+	Call WriteDebug("MacroRecentNewEquationsPP entered", "", 100)
+	Call WriteDebug("pPattern", pPattern, 100)
+	Call WriteDebug("pDays", pDays, 100)
+	Call WriteDebug("pNrOfChanges", pNrOfChanges, 100)	
+    If Not IsNumeric(pDays) Or Not IsNumeric(pNrOfChanges) Then
+        Exit Sub
+    End If
+    If pDays <= 0 Then
+        pDays = OPENWIKI_RCDAYS
+    End If
+    If pNrOfChanges <= 0 Then
+        pNrOfChanges = 0
+    End If
+    gMacroReturn = gNamespace.GetIndexSchemes.GetRecentEquations(pPattern, TRUE, pDays, pNrOfChanges)
+End Sub
 %>
