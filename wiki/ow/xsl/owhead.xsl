@@ -52,8 +52,11 @@
 		</xsl:text>
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
-			<script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
-			<meta http-equiv="imagetoolbar" content="no" />
+		<xsl:text disable-output-escaping="yes">
+			&lt;script type="text/javascript" src="ow/js/common/IEFixes.js?207xx">
+			&lt;/script>
+		</xsl:text>
+		<meta http-equiv="imagetoolbar" content="no" />
 		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
 		</xsl:text>
 
@@ -93,10 +96,12 @@
 				/*]]&gt;*/</xsl:text>
 		</script>
 
-		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
-		</script>
-		<script type="text/javascript" src="ow/js/edit.js?207xx">
-		</script>
+		<xsl:text disable-output-escaping="yes">
+			&lt;script type="text/javascript" src="ow/js/wikibits.js?207xx">
+			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
+			&lt;/script>
+		</xsl:text>
 
 	</head>
 </xsl:template>
@@ -143,8 +148,11 @@
 		</xsl:text>
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
-			<script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
-			<meta http-equiv="imagetoolbar" content="no" />
+		<xsl:text disable-output-escaping="yes">
+			&lt;script type="text/javascript" src="ow/js/common/IEFixes.js?207xx">
+			&lt;/script>
+		</xsl:text>
+		<meta http-equiv="imagetoolbar" content="no" />
 		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
 		</xsl:text>
 
@@ -184,12 +192,14 @@
 				/*]]&gt;*/</xsl:text>
 		</script>
 
-		<script type="text/javascript" src="ow/js/recaptcha_documentwrite.js">
-		</script>
-		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
-		</script>
-		<script type="text/javascript" src="ow/js/edit.js?207xx">
-		</script>
+		<xsl:text disable-output-escaping="yes">
+			&lt;script type="text/javascript" src="ow/js/recaptcha_documentwrite.js">
+			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/wikibits.js?207xx">
+			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
+			&lt;/script>
+		</xsl:text>
 	</head>
 </xsl:template>
 
@@ -210,8 +220,11 @@
 		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
-			<script type="text/javascript" src="ow/js/common/IEFixes.js?207xx"></script>
-			<meta http-equiv="imagetoolbar" content="no" />
+		<xsl:text disable-output-escaping="yes">		
+			&lt;script type="text/javascript" src="ow/js/common/IEFixes.js?207xx">
+			&lt;/script>
+		</xsl:text>
+		<meta http-equiv="imagetoolbar" content="no" />
 		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
 		</xsl:text>
 
@@ -251,10 +264,12 @@
 				/*]]&gt;*/</xsl:text>
 		</script>
 
-		<script type="text/javascript" src="ow/js/wikibits.js?207xx">
-		</script>
-		<script type="text/javascript" src="ow/js/edit.js?207xx">
-		</script>	
+		<xsl:text disable-output-escaping="yes">
+			&lt;script type="text/javascript" src="ow/js/wikibits.js?207xx">
+			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
+			&lt;/script>	
+		</xsl:text>
 	</head>
 </xsl:template>
 
