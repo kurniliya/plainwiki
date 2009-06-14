@@ -804,7 +804,7 @@ Class OpenWikiNamespace
         Set FullSearch = vList
     End Function
 
-    Function EquationSearch(pPattern, pIncludeTitles)
+    Function EquationSearch(pPattern, pIncludeTitles, pOrderBy)
         Dim vTitle, vRegEx, vRegEx2, vList, vPage, vChange, vFound, vText
         pPattern = EscapePattern(pPattern)
         Set vList = New Vector
@@ -822,7 +822,14 @@ Class OpenWikiNamespace
             vRegEx2.Global = True
             vRegEx2.Pattern = pPattern
         End If
-        vQuery = "SELECT * FROM openwiki_pages, openwiki_revisions WHERE wrv_name = wpg_name AND wrv_current = 1 AND wrv_text IS NOT NULL ORDER BY wpg_name"
+        vQuery = "SELECT * FROM openwiki_pages, openwiki_revisions WHERE wrv_name = wpg_name AND wrv_current = 1 AND wrv_text IS NOT NULL" 
+        If pOrderBy = 1 Then
+            vQuery = vQuery & " ORDER BY wrv_timestamp DESC"
+        Elseif pOrderBy = 2 Then
+            vQuery = vQuery & " ORDER BY wrv_timestamp"
+        Else
+            vQuery = vQuery & " ORDER BY wpg_name"
+        End If
         vRS.Open vQuery, vConn, adOpenForwardOnly
         Do While Not vRS.EOF
             vText = vRS("wrv_text")        

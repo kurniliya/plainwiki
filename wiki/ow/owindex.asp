@@ -141,12 +141,35 @@ Class IndexSchemes
 
     Public Function GetEquationSearch(pPattern, pIncludeTitles)
         Dim vList, i, vCount, vResult
-        Set vList = gNamespace.EquationSearch(pPattern, pIncludeTitles)
+        Set vList = gNamespace.EquationSearch(pPattern, pIncludeTitles, 0)
         vCount = vList.Count - 1
         For i = 0 To vCount
             vResult = vResult & vList.ElementAt(i).ToXML(4)
         Next
         GetEquationSearch = "<ow:equationsearch value='" & CDATAEncode(pPattern) & "' pagecount='" & gNamespace.GetPageCount() & "'>" & vResult & "</ow:equationsearch>"
+    End Function
+
+    Public Function GetRecentEquations(pPattern, pIncludeTitles, pDays, pMaxNrOfChanges)
+        Dim vList, i, j, vCount, vResult, vElem, vChange, vTimestamp
+        If pMaxNrOfChanges > 0 Then
+            vTimestamp = Now() - pDays
+	        Set vList = gNamespace.EquationSearch(pPattern, pIncludeTitles, 1)
+	        vCount = vList.Count - 1
+
+            For i = 0 To vCount
+                Set vElem = vList.ElementAt(i)
+                Set vChange = vElem.GetLastChange()
+                If vChange.Timestamp > vTimestamp and vChange.Status <> "deleted" Then
+                    vResult = vResult & vElem.ToXML(4)
+                    j = j + 1
+                    If j >= pMaxNrOfChanges Then
+                        Exit For
+                    End If
+                End If
+            Next	        
+	        
+	    End If
+        GetRecentEquations = "<ow:equationsearch value='" & CDATAEncode(pPattern) & "' pagecount='" & gNamespace.GetPageCount() & "'>" & vResult & "</ow:equationsearch>"
     End Function
 
     Public Function GetRandomPage(pNrOfPages)
