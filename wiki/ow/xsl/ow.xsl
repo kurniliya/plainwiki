@@ -310,7 +310,7 @@
 <xsl:template match="ow:templates/ow:page">
     <li>
       <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit&amp;template=<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>
-      &#x20;
+      &#160;
       (<a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute>view template</a>
        <a onclick="return !window.open(this.href)"><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><img src="ow/images/popup.gif" width="15" height="9" alt="" /></a>)
     </li>
@@ -520,7 +520,7 @@
 </xsl:template>
 
 <xsl:template match="ow:footnote">
-    <br /><a name="#footnote{@index}"></a><sup>&#x20;&#x20;&#x20;<xsl:value-of select="@index"/>&#x20;</sup><xsl:apply-templates />
+    <br /><a name="#footnote{@index}"></a><sup>&#160;&#160;&#160;<xsl:value-of select="@index"/>&#160;</sup><xsl:apply-templates />
 </xsl:template>
 
 <!-- ==================== show an RSS feed ==================== -->
@@ -690,10 +690,10 @@
 							<fieldset style="border:none;">
 								<xsl:if test="not(/ow:wiki/ow:protection='captcha')">
 									<input type="submit" name="save" value="Save" />
-									&#x20;
+									&#160;
 								</xsl:if>
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-								&#x20;
+								&#160;
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 								<br />
 								<br />
@@ -719,10 +719,10 @@
 								<input type="hidden" name="p" value="{$name}" />
 								<xsl:call-template name="showRecapthca" />
 								<input type="submit" name="save" value="Save" />
-								&#x20;
+								&#160;
 								<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
 								<!-- <input type="submit" name="preview" value="Preview" /> -->
-								&#x20;
+								&#160;
 								<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 							</fieldset>
 						</form>
@@ -895,13 +895,13 @@
                 <td class="rc" style="width:1%; white-space: nowrap;"><xsl:value-of select="ow:formatShortDate(string(ow:change/ow:date))"/></td>
             </xsl:when>
             <xsl:otherwise>
-                <td class="rc" style="width:1%;">&#x20;</td>
+                <td class="rc" style="width:1%;">&#160;</td>
             </xsl:otherwise>
         </xsl:choose>
         <td class="rc">
         <xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/>
         -
-        <xsl:apply-templates select="ow:link"/>&#x20;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if>
+        <xsl:apply-templates select="ow:link"/>&#160;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if>
         </td>
         </tr>
     </xsl:for-each>
@@ -918,7 +918,7 @@
             <xsl:for-each select="ow:page">
                 <xsl:if test='not(substring-before(./preceding-sibling::*[position()=1]/ow:change/ow:date, "T") = substring-before(ow:change/ow:date, "T"))'>
                     <tr class="rc">
-                        <td colspan="4">&#x20;</td>
+                        <td colspan="4">&#160;</td>
                     </tr>
                     <tr class="rc">
                         <td colspan="4"><b><xsl:value-of select="ow:formatLongDate(string(ow:change/ow:date))"/></b></td>
@@ -926,8 +926,8 @@
                 </xsl:if>
                 <tr class="rc">
                     <td align="left" style="width:1%;"><xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/></td>
-                    <td align="left" style="width:25%; white-space: nowrap;"><xsl:if test="@changes > 1">[<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=diff</xsl:attribute>diff</a>] <xsl:text> </xsl:text> [<xsl:value-of select="@changes"/>&#x20;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=changes</xsl:attribute>changes</a>]</xsl:if>&#x20;</td>
-                    <td align="left"><a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>&#x20;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if></td>
+                    <td align="left" style="width:25%; white-space: nowrap;"><xsl:if test="@changes > 1">[<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=diff</xsl:attribute>diff</a>] <xsl:text> </xsl:text> [<xsl:value-of select="@changes"/>&#160;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=changes</xsl:attribute>changes</a>]</xsl:if>&#160;</td>
+                    <td align="left"><a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>&#160;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if></td>
 
                     <xsl:choose>
                       <xsl:when test="ow:change/ow:by/@alias">
@@ -941,7 +941,7 @@
                 </tr>
                 <xsl:if test="ow:change/ow:comment">
                     <tr class="rc">
-                        <td align="left" colspan="2">&#x20;</td>
+                        <td align="left" colspan="2">&#160;</td>
                         <td align="left" colspan="2" class="comment"><xsl:value-of select="ow:change/ow:comment"/></td>
                     </tr>
                 </xsl:if>
@@ -978,7 +978,7 @@
             <xsl:text> </xsl:text>
             <xsl:if test="@changes > 1">
                 (<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="@name"/>&amp;a=diff</xsl:attribute>diff</a>)
-                (<xsl:value-of select="@changes"/>&#x20;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="@name"/>&amp;a=changes</xsl:attribute>changes</a>)
+                (<xsl:value-of select="@changes"/>&#160;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="@name"/>&amp;a=changes</xsl:attribute>changes</a>)
             </xsl:if>
             <xsl:if test="ow:change/ow:comment">
                 <xsl:text> </xsl:text>
@@ -1277,7 +1277,7 @@
 			Show emoticons in text <small>(goto <a href="?HelpOnEmoticons">HelpOnEmoticons</a>)</small>
 			<br />
 			<input type="submit" name="save" value="Save Preferences"/>
-			&#x20;&#x20;
+			&#160;&#160;
 			<input type="submit" name="clear" value="Clear Preferences"/>
 			<br />
 			<input type="hidden" name="p"><xsl:attribute name="value"><xsl:value-of select="/ow:wiki/ow:page/@name"/></xsl:attribute></input>
