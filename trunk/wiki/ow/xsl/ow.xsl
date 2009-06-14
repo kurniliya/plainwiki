@@ -6,7 +6,7 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes" encoding="UTF-8" />
+<xsl:output method="xml" indent="no" omit-xml-declaration="yes" />
 
 <xsl:include href="owpi.xsl"/>
 <xsl:include href="owinc.xsl"/>
