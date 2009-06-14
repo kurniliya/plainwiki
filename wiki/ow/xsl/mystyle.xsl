@@ -229,6 +229,13 @@
 			Recent changes
 		</a>
 	</li>
+	<li id="n-newpages">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:NewPages</xsl:attribute>
+			<xsl:attribute name="title">The list of recently created pages</xsl:attribute>
+			New pages
+		</a>
+	</li>	
 	<li id="n-recentchangesrss">
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=rss</xsl:attribute>

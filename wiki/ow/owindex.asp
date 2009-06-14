@@ -82,6 +82,43 @@ Class IndexSchemes
         GetRecentChanges = GetRecentChanges & ">" & vResult & "</ow:recentchanges>"
     End Function
 
+    Public Function GetRecentNewPages(pDays, pMaxNrOfChanges, pFilter, pShortVersion)
+        Dim vList, vCount, i, j, vResult, vElem, vChange, vTimestamp
+        If pMaxNrOfChanges > 0 Then
+            vTimestamp = Now() - pDays
+            Set vList = gNamespace.TitleSearch(".*", pDays, pFilter, 1, 0)
+            vCount = vList.Count - 1
+            For i = 0 To vCount
+                Set vElem = vList.ElementAt(i)
+                Set vChange = vElem.GetLastChange()
+                If vChange.Timestamp > vTimestamp and vChange.Status = "new" Then
+                    vResult = vResult & vElem.ToXML(False)
+                    j = j + 1
+                    If j >= pMaxNrOfChanges Then
+                        Exit For
+                    End If
+                End If
+            Next
+        End If
+        GetRecentNewPages = "<ow:recentchanges"
+        If pFilter = 0 Or pFilter = 1 Then
+            GetRecentNewPages = GetRecentNewPages & " majoredits='true'"
+        Else
+            GetRecentNewPages = GetRecentNewPages & " majoredits='false'"
+        End If
+        If pFilter = 0 Or pFilter = 2 Then
+            GetRecentNewPages = GetRecentNewPages & " minoredits='true'"
+        Else
+            GetRecentNewPages = GetRecentNewPages & " minoredits='false'"
+        End If
+        If pShortVersion Then
+            GetRecentNewPages = GetRecentNewPages & " short='true'"
+        Else
+            GetRecentNewPages = GetRecentNewPages & " short='false'"
+        End If
+        GetRecentNewPages = GetRecentNewPages & ">" & vResult & "</ow:recentchanges>"
+    End Function
+
     Public Function GetTitleSearch(pPattern)
         Dim vList, i, vCount, vResult
         Set vList = gNamespace.TitleSearch(pPattern, 0, 0, 0, 0)
