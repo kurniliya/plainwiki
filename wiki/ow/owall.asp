@@ -17,6 +17,7 @@
 <!-- #include file="owhttpdate.asp"       //-->
 <!-- #include file="owtagstack.asp"       //-->
 <!-- #include file="owrecaptcha.asp"       //-->
+<!-- #include file="owdebug.asp"       //-->
 
 
 <%' scripts that each can be used on their own %>

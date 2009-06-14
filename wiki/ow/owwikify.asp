@@ -535,6 +535,8 @@ Function WikiLinesToHtml(pText)
             vResult = ""
 
             gListSet = False
+'            Response.Write("vLine..." & "<br>")
+'            Response.Write(vLine & "<br>")
             vInfoboxRow = s(vLine, "^\|(.*?)=(.*)$", "&WikifyInfoboxContent($1, $2)", False, True)
             If Trim(sReturn) = "" Then
                 sReturn = "&#160;"
@@ -663,7 +665,11 @@ Sub StoreMathML(pText)
 End Sub
 
 Sub StoreCode(pText)
+	Call WriteDebug("StoreCode entered with", "", 100)
+    Call WriteDebug("pText", pText, 100)
+    	
     StoreRaw("<pre class=""code"">" & s(pText, "'''(.*?)'''", "<b>$1</b>", False, True) & "</pre>")
+	Call WriteDebug("StoreCode finished", "", 100)    
 End Sub
 
 Sub StoreMail(pText)

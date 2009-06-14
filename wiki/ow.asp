@@ -1,4 +1,4 @@
-<%@ CODEPAGE = 65001 Language=VBScript EnableSessionState=False %>
+<%@ Language=VBScript EnableSessionState=False %>
 <%
 '
 ' ---------------------------------------------------------------------------
@@ -45,7 +45,8 @@ Option Explicit
 <!-- #include file="ow/owall.asp" //-->
 
 <%
+Response.CodePage = 65001
+Response.CharSet = "utf-8"
 
 OwProcessRequest()
-
 %>
