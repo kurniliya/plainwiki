@@ -264,10 +264,10 @@
             <xsl:for-each select="ow:link">
                 <xsl:choose>
                     <xsl:when test="../../ow:page/ow:link/@href=@href">
-                        >><xsl:value-of select="text()"/>
+                        »<xsl:value-of select="text()"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        >><a href="{@href}"><xsl:value-of select="text()"/></a>
+                        »<a href="{@href}"><xsl:value-of select="text()"/></a>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>
