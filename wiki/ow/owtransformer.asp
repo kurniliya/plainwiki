@@ -276,7 +276,7 @@ Class Transformer
 
             If cEmbeddedMode = 0 Then
                 If gAction = "edit" Then
-					if cUseXhtmlHttpHeaders Then
+					If cUseXhtmlHttpHeaders Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
 '						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
