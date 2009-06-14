@@ -31,3 +31,8 @@
 	background: transparent url(http://www.scholarpedia.org/favicon.ico) no-repeat scroll right center;
 	padding:0 18px;
 }
+
+#bodyContent a[class ~="dictionary"] {
+	background: transparent url(http://dictionary1.classic.reference.com/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
