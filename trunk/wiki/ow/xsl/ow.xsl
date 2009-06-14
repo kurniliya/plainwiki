@@ -244,7 +244,12 @@
             <a href="{@href}{@anchor}" title="Last changed: {ow:formatLongDate(string(@date))}"><xsl:value-of select="text()"/></a>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:value-of select="text()"/><a class="nonexistent" href="{@href}" title="Describe this page">?</a>
+			<a>
+				<xsl:attribute name="class">new</xsl:attribute>
+				<xsl:attribute name="href"><xsl:value-of select="@href"/></xsl:attribute>
+				<xsl:attribute name="title">Describe this page</xsl:attribute>
+				<xsl:value-of select="text()"/>
+			</a>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -901,7 +906,7 @@
         <td class="rc">
         <xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/>
         -
-        <xsl:apply-templates select="ow:link"/>&#160;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if>
+        <xsl:apply-templates select="ow:link"/>&#160;<xsl:if test="ow:change/@status='new'"><span class="rcnew">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if>
         </td>
         </tr>
     </xsl:for-each>
@@ -927,7 +932,7 @@
                 <tr class="rc">
                     <td align="left" style="width:1%;"><xsl:value-of select="ow:formatTime(string(ow:change/ow:date))"/></td>
                     <td align="left" style="width:25%; white-space: nowrap;"><xsl:if test="@changes > 1">[<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=diff</xsl:attribute>diff</a>] <xsl:text> </xsl:text> [<xsl:value-of select="@changes"/>&#160;<a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="ow:urlencode(string(@name))"/>&amp;a=changes</xsl:attribute>changes</a>]</xsl:if>&#160;</td>
-                    <td align="left"><a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>&#160;<xsl:if test="ow:change/@status='new'"><span class="new">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if></td>
+                    <td align="left"><a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="ow:urlencode(string(@name))"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>&#160;<xsl:if test="ow:change/@status='new'"><span class="rcnew">new</span></xsl:if><xsl:if test="ow:change/@status='deleted'"><span class="deprecated">deprecated</span></xsl:if></td>
 
                     <xsl:choose>
                       <xsl:when test="ow:change/ow:by/@alias">
@@ -973,7 +978,7 @@
             <a><xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?<xsl:value-of select="@name"/></xsl:attribute><xsl:value-of select="ow:link/text()"/></a>
             <xsl:if test="ow:change/@status='new'">
               <xsl:text> </xsl:text>
-              <span class="new">new</span>
+              <span class="rcnew">new</span>
             </xsl:if>
             <xsl:text> </xsl:text>
             <xsl:if test="@changes > 1">
