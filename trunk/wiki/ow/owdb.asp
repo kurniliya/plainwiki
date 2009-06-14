@@ -269,8 +269,10 @@ Class OpenWikiNamespace
         On Error Resume Next
         Dim vXmlStr, vXmlDoc
         vXmlStr = "<ow:wiki xmlns:ow='x'>" & Wikify(pText) & "</ow:wiki>"
-        If MSXML_VERSION = 4 Then
-            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+        If MSXML_VERSION <> 3 Then
+            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+            vXslDoc.ResolveExternals = true
+            vXslDoc.setProperty "AllowXsltScript", true            
         Else
             Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
         End If

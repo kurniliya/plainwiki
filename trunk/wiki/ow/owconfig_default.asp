@@ -40,7 +40,7 @@ OPENWIKI_MAXUPLOADSIZE   = 8388608            ' Use to limit the size of uploads
 OPENWIKI_UPLOADTIMEOUT   = 300                ' Timeout in seconds (upload must succeed within this time limit)
 OPENWIKI_RECAPTCHAPRIVATEKEY = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP "
 
-MSXML_VERSION = 3   ' use 4 if you've installed MSXML v4.0
+MSXML_VERSION = 6   ' specify version of MSXML installed. Version 3 should be supported everywhere
 
 gReadPassword = ""    ' use empty string "" if anyone may read
 gEditPassword = "1111"    ' use empty string "" if anyone may edit

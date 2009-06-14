@@ -63,8 +63,10 @@ Class Transformer
 
     Private Sub Class_Initialize()
         On Error Resume Next
-        If MSXML_VERSION = 4 Then
-            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+        If MSXML_VERSION <> 3 Then
+            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+            vXslDoc.ResolveExternals = true
+            vXslDoc.setProperty "AllowXsltScript", true            
         Else
             Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
         End If
@@ -74,13 +76,19 @@ Class Transformer
             ' As this is the first time we try to instantiate the XML Doc object
             ' let's assume the user hasn't configured his/her owconfig file
             ' correctly yet. Switch MS XML Version to try again.
-            If MSXML_VERSION = 4 Then
+            Dim MSXML_VERSION_OLD
+            
+            MSXML_VERSION_OLD = MSXML_VERSION
+            
+            If MSXML_VERSION <> 3 Then
                 MSXML_VERSION = 3
             Else
-                MSXML_VERSION = 4
+            	MSXML_VERSION = 6
             End If
-            If MSXML_VERSION = 4 Then
-                Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+            If MSXML_VERSION <> 3 Then
+                Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+	            vXslDoc.ResolveExternals = true
+	            vXslDoc.setProperty "AllowXsltScript", true                
             Else
                 Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
             End If
@@ -89,10 +97,10 @@ Class Transformer
             If Not IsObject(vXmlDoc) Then
                 EndWithErrorMessage()
             Elseif MSXML_VERSION = 3 Then
-                Response.Write("<b>WARNING:</b>You have configured your OpenWiki to use the MSXML v4 component, but you don't appear to have this installed. The application now falls back to use the MSXML v3 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v4.<br />")
+                Response.Write("<b>WARNING:</b>You have configured your OpenWiki to use the MSXML v" & MSXML_VERSION_OLD & " component, but you don't appear to have this installed. The application now falls back to use the MSXML v3 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v" & MSXML_VERSION_OLD & ".<br />")
                 Response.End
             Else
-                Response.Write("<b>WARNING:</b>You've configured your OpenWiki to use the MSXML v3 component, but you don't appear to have this installed. The application now falls back to use the MSXML v4 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v3.<br />")
+                Response.Write("<b>WARNING:</b>You've configured your OpenWiki to use the MSXML v3 component, but you don't appear to have this installed. The application now falls back to use the MSXML v6 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v6.<br />")
                 Response.End
             End If
         End If
@@ -149,8 +157,10 @@ Class Transformer
             End If
         End If
         If Not IsObject(vXslTemplate) Then
-            If MSXML_VERSION = 4 Then
-                Set vXslDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+            If MSXML_VERSION <> 3 Then
+                Set vXslDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+                vXslDoc.ResolveExternals = true
+                vXslDoc.setProperty "AllowXsltScript", true                
             Else
                 Set vXslDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
             End If
@@ -159,8 +169,8 @@ Class Transformer
                 Response.Write("<p><b>Error in " & pFilename & ":</b> " & vXslDoc.parseError.reason & " line: " & vXslDoc.parseError.Line & " col: " & vXslDoc.parseError.linepos & "</p>")
                 Response.End
             End If
-            If MSXML_VERSION = 4 Then
-                Set vXslTemplate = Server.CreateObject("Msxml2.XSLTemplate.4.0")
+            If MSXML_VERSION <> 3 Then
+                Set vXslTemplate = Server.CreateObject("Msxml2.XSLTemplate." & MSXML_VERSION & ".0")
             Else
                 Set vXslTemplate = Server.CreateObject("Msxml2.XSLTemplate")
             End If

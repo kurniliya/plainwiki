@@ -82,8 +82,8 @@ End Function
 Function RetrieveXML(pURL)
     Dim vXmlDoc, vXmlHttp, vXmlStr, vPos, vPosEnd
 
-    If MSXML_VERSION = 4 Then
-        Set vXmlHttp = Server.CreateObject("Msxml2.ServerXMLHTTP.4.0")
+    If MSXML_VERSION <> 3 Then
+        Set vXmlHttp = Server.CreateObject("Msxml2.ServerXMLHTTP." & MSXML_VERSION & ".0")
     Else
         Set vXmlHttp = Server.CreateObject("Msxml2.ServerXMLHTTP")
     End If
@@ -127,8 +127,10 @@ Function RetrieveXML(pURL)
         'Response.Write("<b><a href='" & pURL & "' target='_blank'>" & pURL & "</a></b><br />" & Server.HTMLEncode(vXmlStr) & "<br /><br />")
 
         ' and finally we can, hopefully, get it loaded as an xml document object
-        If MSXML_VERSION = 4 Then
-            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+        If MSXML_VERSION <> 3 Then
+            Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+            vXslDoc.ResolveExternals = true
+            vXslDoc.setProperty "AllowXsltScript", true            
         Else
             Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
         End If
@@ -159,8 +161,10 @@ Function GetAggregation(pPage)
 
     vXmlStr = gNamespace.GetAggregation(gAggregateURLs)
 
-    If MSXML_VERSION = 4 Then
-        Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument.4.0")
+    If MSXML_VERSION <> 3 Then
+        Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument." & MSXML_VERSION & ".0")
+        vXslDoc.ResolveExternals = true
+        vXslDoc.setProperty "AllowXsltScript", true        
     Else
         Set vXmlDoc = Server.CreateObject("Msxml2.FreeThreadedDOMDocument")
     End If
