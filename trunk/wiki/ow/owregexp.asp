@@ -96,9 +96,13 @@ End Function
 
 
 Function s(pText, pSearchPattern, pReplacePattern, pIgnoreCase, pGlobal)
-    'Response.Write("<br /><br />Text: " & Server.HTMLEncode(pText))
-    'Response.Write("<br />Patterns: " & Server.HTMLEncode(pSearchPattern) & " --> " & Server.HTMLEncode(pReplacePattern))
-
+	Call WriteDebug("s entered with", "", 100)
+    Call WriteDebug("pText", pText, 100)
+    Call WriteDebug("pSearchPattern", pSearchPattern, 100)
+    Call WriteDebug("pReplacePattern", pReplacePattern, 100)
+    Call WriteDebug("pIgnoreCase", pIgnoreCase, 100)
+    Call WriteDebug("pGlobal", pGlobal, 100)
+    
     If IsNull(pText) Then
         s = ""
         Exit Function
@@ -108,6 +112,7 @@ Function s(pText, pSearchPattern, pReplacePattern, pIgnoreCase, pGlobal)
     gRegEx.Global     = pGlobal
     gRegEx.Pattern    = pSearchPattern
     If (Left(pReplacePattern, 1) <> "&") Then
+	    Call WriteDebug("Replacement is not procedural", "", 100)    	
         s = gRegEx.Replace(pText, pReplacePattern)
     Else
         Dim vText, vPrevLastIndex, vPrevNewPos
@@ -118,22 +123,25 @@ Function s(pText, pSearchPattern, pReplacePattern, pIgnoreCase, pGlobal)
         vPrevNewPos    = 0
 
         pReplacePattern = Mid(pReplacePattern, 2)
-
+        Call WriteDebug("pText before Execute", pText, 100)                 
         Set vMatches = gRegEx.Execute(pText)
         For Each vMatch In vMatches
+            Call WriteDebug("vMatch", vMatch.Value, 100)                    
             vCmd = pReplacePattern
+            Call WriteDebug("REGEXP CMD before For Each", vCmd, 100)            
 
             i = 0
             For Each vSubMatch in vMatch.SubMatches
-                'Response.Write("<br />SubMatch: " & Server.HTMLEncode(vSubMatch))
+                Call WriteDebug("SubMatch", vSubMatch, 100)
                 vCmd = Replace(vCmd, "$" & (i + 1), """" & Replace(vSubMatch, """", """""") & """")
                 i = i+ 1
             Next
 
-            'Response.Write("<br />REGEXP CMD: " & Server.HTMLEncode(vCmd))
+            Call WriteDebug("REGEXP CMD after For Each", vCmd, 100)
 
             sReturn = ""
             vCmd = Replace(vCmd, vbCRLF, """ & vbCRLF & """)
+            Call WriteDebug("REGEXP CMD after replace", vCmd, 100)            
             Execute("Call " & vCmd)
             vReplacement = sReturn
 
