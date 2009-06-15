@@ -39,7 +39,7 @@ Disallow: /wiki/*Special:
 #
 # >>> Exclude admin part
 #
-Disallow: /wiki/owadmin
+Disallow: /wiki/owadmin/
 #
 # </wiki>
 #
