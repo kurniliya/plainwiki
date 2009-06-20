@@ -162,7 +162,7 @@ Function MultiLineMarkup(pText)
     If cHtmlTags Then
         ' Scripting is currently possible with these tags, so they are *not* particularly "safe".
         Dim vTag
-        For Each vTag In Split("b,i,u,font,big,small,sub,sup,h1,h2,h3,h4,h5,h6,cite,code,em,s,strike,strong,tt,var,div,center,blockquote,ol,ul,dl,table,caption,br,p,hr,li,dt,dd,tr,td,th", ",")
+        For Each vTag In Split("b,i,u,font,big,small,sub,sup,h1,h2,h3,h4,h5,h6,cite,code,em,s,strike,strong,tt,var,div,span,center,blockquote,ol,ul,dl,table,caption,br,p,hr,li,dt,dd,tr,td,th", ",")
             pText = s(pText, "\&lt;" & vTag & "(\s[^<>]+?)?\&gt;([\s\S]*?)\&lt;\/" & vTag & "\&gt;", "<" & vTag & "$1>$2</" & vTag & ">", True, True)
         Next
         For Each vTag In Split("br,p,hr,li,dt,dd,tr,td,th", ",")
