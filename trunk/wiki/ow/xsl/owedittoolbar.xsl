@@ -13,8 +13,8 @@
 		<script type='text/javascript'>
 			<xsl:text disable-output-escaping="yes">
 				&lt;![CDATA[</xsl:text>
-			addButton("ow/skins/common/images/button_bold.png","Bold text","\'\'\'","\'\'\'","Bold text","mw-editbutton-bold");
-			addButton("ow/skins/common/images/button_italic.png","Italic text","\'\'","\'\'","Italic text","mw-editbutton-italic");
+			addButton("ow/skins/common/images/button_bold.png","Bold text","**","**","Bold text","mw-editbutton-bold");
+			addButton("ow/skins/common/images/button_italic.png","Italic text","//","//","Italic text","mw-editbutton-italic");
 			addButton("ow/skins/common/images/button_underline.png","Underlined text","__","__","Underlined text","mw-editbutton-underline");
 			addButton("ow/skins/common/images/button_strike.png","Strike through text","--","--","Struck out text","mw-editbutton-strike");
 			addButton("ow/skins/common/images/button_small.png","Small text","\x3csmall\x3e","\x3c/small\x3e","Small text","mw-editbutton-small");
