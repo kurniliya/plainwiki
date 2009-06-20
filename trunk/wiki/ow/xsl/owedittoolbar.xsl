@@ -43,6 +43,7 @@
 			addButton("ow/skins/common/images/button_font_color.png","Coloured text","\x3cspan style=\"color: some-colour;\"\x3e","\x3c/span\x3e","Coloured text","mw-editbutton-fontcolor");
 			addButton("ow/skins/common/images/button_comment.png","Comment","\x3c!--","--\x3e","Comment", "mw-editbutton-comment");
 			addButton("ow/skins/common/images/button_code.png","Insert code","\x3ccode\x3e\n","\n\x3c/code\x3e\n","Code", "mw-editbutton-code");
+			addButton("ow/skins/common/images/button_pre.png","Pre formatted text","{{{","}}}","Pre formatted text", "mw-editbutton-pre");			
 			addButton("ow/skins/common/images/button_redirect.png","Redirect","#REDIRECT ","","WikiName","mw-editbutton-redirect");
 			addButton("ow/skins/common/images/button_table_row.png","Table row","|| "," ||","Table row", "mw-editbutton-table-row");
 			addButton("ow/skins/common/images/button_nbsp.png","Non breaking space","&#160;","","","mw-editbutton-nbsp");
