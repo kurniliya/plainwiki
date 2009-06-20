@@ -379,13 +379,44 @@
 
 <xsl:template match="ow:category">
 	<span dir="ltr">
-		<a title="{name}">
-			<xsl:attribute name="title"><xsl:value-of select="./name" /></xsl:attribute>
-			<xsl:attribute name="href"><xsl:value-of select="./ow:link/@href" /></xsl:attribute>
-			<xsl:value-of select="./name" />
-		</a>
+		<xsl:choose>
+			<xsl:when test="./ow:link/@date">
+				<a>
+					<xsl:attribute name="title">Last changed: <xsl:value-of select="ow:formatLongDate(string(./ow:link/@date))" /></xsl:attribute>
+					<xsl:attribute name="href">
+						<xsl:value-of select="./ow:link/@href" /><xsl:value-of select="./ow:link/@anchor" />
+					</xsl:attribute>
+					<xsl:value-of select="./name" />
+				</a>
+			</xsl:when>
+			<xsl:otherwise>
+				<a>
+					<xsl:attribute name="class">new</xsl:attribute>
+					<xsl:attribute name="href"><xsl:value-of select="./ow:link/@href"/></xsl:attribute>
+					<xsl:attribute name="title">Describe this page</xsl:attribute>
+					<xsl:value-of select="./name" />
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>				
 	</span>
-	<xsl:text> | </xsl:text>
+<!--	
+    <xsl:choose>
+        <xsl:when test="@date">
+            <a href="{@href}{@anchor}" title="Last changed: {ow:formatLongDate(string(@date))}"><xsl:value-of select="text()"/></a>
+        </xsl:when>
+        <xsl:otherwise>
+			<a>
+				<xsl:attribute name="class">new</xsl:attribute>
+				<xsl:attribute name="href"><xsl:value-of select="@href"/></xsl:attribute>
+				<xsl:attribute name="title">Describe this page</xsl:attribute>
+				<xsl:value-of select="text()"/>
+			</a>
+        </xsl:otherwise>
+    </xsl:choose>	
+-->	
+	<xsl:if test="not(position()=last())">
+		<xsl:text> | </xsl:text>
+	</xsl:if>
 </xsl:template>
 
 <!-- ==================== handles the openwiki-toc element ==================== -->
