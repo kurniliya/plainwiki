@@ -19,7 +19,15 @@
 					</a>
 				</td>
 				<td class="mbox-text" style="">
-					You have not provided your username. Saving revision now will cause your IP address to be recorded publicly in this page's edit history. 
+					You have not provided your <a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:UserPreferences</xsl:attribute>
+			<xsl:attribute name="title">You are encouraged to log in; however, it is not mandatory. [o]</xsl:attribute>
+			<xsl:attribute name="accesskey">o</xsl:attribute>
+			username</a>. Saving revision now will cause your IP address to be recorded publicly in <a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=changes</xsl:attribute>
+			<xsl:attribute name="title">Past versions of this page [h]</xsl:attribute>
+			<xsl:attribute name="accesskey">h</xsl:attribute>
+			this page's edit history</a>. 
 				</td>
 			</tr>
 			</tbody>
