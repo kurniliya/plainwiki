@@ -1063,7 +1063,7 @@ Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
     vLinkedImage = False
     If pText <> "" Then
         If m(pText, gImagePattern, False, True) Then
-            pText = "<img src=""" & pText & """ alt=""""/>"
+            pText = "<span><img src=""" & pText & """ alt=""""/></span>"
             vLinkedImage = True
         End If
     End If
@@ -1127,7 +1127,7 @@ Function GetExternalLink_x(pURL, pText, pTitle, pUseBrackets, pClass)
     vLinkedImage = False
     If pText <> "" Then
         If m(pText, gImagePattern, False, True) Then
-            pText = "<img src=""" & pText & """ alt=""""/>"
+            pText = "<span><img src=""" & pText & """ alt=""""/></span>"
             vLinkedImage = True
         End If
     End If
@@ -1188,7 +1188,7 @@ Sub UrlLink(pURL)
     ' restricted image URLs so that mailto:foo@bar.gif is not an image
     If cLinkImages Then
         If m(gTempLink, gImagePattern, False, True) Then
-            vLink = "<img src=""" & gTempLink & """ alt=""""/>"
+            vLink = "<span><img src=""" & gTempLink & """ alt=""""/></span>"
         End If
     End If
     If vLink = "" Then
