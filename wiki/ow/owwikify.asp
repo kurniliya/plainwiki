@@ -1063,7 +1063,7 @@ Function GetExternalLink(pURL, pText, pTitle, pUseBrackets)
     vLinkedImage = False
     If pText <> "" Then
         If m(pText, gImagePattern, False, True) Then
-            pText = "<img src=""" & pText & """ border=""0"" alt=""""/>"
+            pText = "<img src=""" & pText & """ alt=""""/>"
             vLinkedImage = True
         End If
     End If
@@ -1127,7 +1127,7 @@ Function GetExternalLink_x(pURL, pText, pTitle, pUseBrackets, pClass)
     vLinkedImage = False
     If pText <> "" Then
         If m(pText, gImagePattern, False, True) Then
-            pText = "<img src=""" & pText & """ border=""0"" alt=""""/>"
+            pText = "<img src=""" & pText & """ alt=""""/>"
             vLinkedImage = True
         End If
     End If
