@@ -154,7 +154,8 @@ Sub MacroSystemInfo
             & "<tr><td>OpenWiki Version:</td><td>" & OPENWIKI_VERSION & " rev." & vRev & "</td></tr>" _
             & "<tr><td>XML Schema Version:</td><td>" & OPENWIKI_XMLVERSION & "</td></tr>" _
             & "<tr><td>Namespace:</td><td>" & OPENWIKI_NAMESPACE & "</td></tr>" _
-            & "<tr><td>" & ScriptEngine & " Version:</td><td>" & ScriptEngineMajorVersion & "." & ScriptEngineMinorVersion & "." & ScriptEngineBuildVersion & "</td></tr>"
+            & "<tr><td>" & ScriptEngine & " Version:</td><td>" & ScriptEngineMajorVersion & "." & ScriptEngineMinorVersion & "." & ScriptEngineBuildVersion & "</td></tr>"_
+            & "<tr><td>MSXML Version:</td><td>" & MSXML_VERSION & "</td></tr>"
     Dim vConn
     Set vConn = Server.CreateObject("ADODB.Connection")
     gMacroReturn = gMacroReturn & "<tr><td>ADO Version:</td><td>" & vConn.Version & "</td></tr>"
