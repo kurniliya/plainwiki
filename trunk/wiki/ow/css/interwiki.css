@@ -36,3 +36,13 @@
 	background: transparent url(http://dictionary1.classic.reference.com/favicon.ico) no-repeat scroll right center;
 	padding:0 18px;
 }
+
+#bodyContent a[class ~="googlegroups"] {
+	background: transparent url(http://groups.google.com/groups/img/3/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="rfc"] {
+	background: transparent url(http://www.faqs.org/faqs/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
