@@ -39,7 +39,8 @@ OPENWIKI_UPLOADDIR       = "attachments/"     ' The virtual directory where uplo
 OPENWIKI_MAXUPLOADSIZE   = 8388608            ' Use to limit the size of uploads, in bytes (default = 8,388,608)
 OPENWIKI_UPLOADTIMEOUT   = 300                ' Timeout in seconds (upload must succeed within this time limit)
 OPENWIKI_RECAPTCHAPRIVATEKEY = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP"
-OPENWIKI_DEBUGLEVEL      = 0                ' Set positive value to enable debug messages. Normal work will be impossible
+OPENWIKI_DEBUGLEVEL      = 0                  ' Set positive value to enable debug logging
+OPENWIKI_DEBUGPATH       = Server.MapPath("/cgi-bin/owdebug.xml")	' Path for storing logs
 
 MSXML_VERSION = 6   ' specify version of MSXML installed. Version 3 should be supported everywhere
 
