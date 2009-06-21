@@ -66,7 +66,7 @@ Sub InitLinkPatterns
         gLinkPattern = gLinkPattern & "|" & vUpperLetter & "{3,}\b"
     End If
     
-    if cUseSpecialPagesPrefix Then
+    If cUseSpecialPagesPrefix Then
     	gLinkPattern = gLinkPattern & "|" & gSpecialPagesPrefix & vAnyLetter & "*"
     End If
 
@@ -105,8 +105,22 @@ Sub InitLinkPatterns
 
         If cUseSubpage Then
             gFreeLinkPattern = "((?:" & vAnyLetter & "+)(?:\/" & vAnyLetter & "+)*)"
+            If cUseSpecialPagesPrefix Then
+	            gFreeLinkPattern = "("_ 
+	            	& "(?:(?:" & vAnyLetter & "+)(?:\/" & vAnyLetter & "+)*)"_
+	            	& "|"_ 
+	            	& "(?:" & gSpecialPagesPrefix & "(?:" & vAnyLetter & "+)(?:\/" & vAnyLetter & "+)*)"_
+	            	& ")"
+	        End If
         Else
             gFreeLinkPattern = "(" & vAnyLetter & "+)"
+            If cUseSpecialPagesPrefix Then
+	            gFreeLinkPattern = "("_
+	            	& "(?:" & vAnyLetter & "+)"_
+	            	& "|"_
+	            	& "(?:" & gSpecialPagesPrefix & vAnyLetter & "+)"_
+	            	& ")"
+	        End If
         End If
         'gFreeLinkPattern = gFreeLinkPattern & vQDelim
     End If
