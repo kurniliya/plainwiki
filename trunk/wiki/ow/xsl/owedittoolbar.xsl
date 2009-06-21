@@ -44,7 +44,7 @@
 			addButton("ow/skins/common/images/button_comment.png","Comment","\x3c!--","--\x3e","Comment", "mw-editbutton-comment");
 			addButton("ow/skins/common/images/button_code.png","Insert code","\x3ccode\x3e\n","\n\x3c/code\x3e\n","Code", "mw-editbutton-code");
 			addButton("ow/skins/common/images/button_pre.png","Pre formatted text","\x3cpre\x3e","\x3c/pre\x3e","Pre formatted text", "mw-editbutton-pre");
-			addButton("ow/skins/common/images/button_blockquote.png","Block quote text","\x3cblockquote style=\"margin: 1em 8em 1em 2em;\"\x3e\n\x3cp\x3e","\x3c/p\x3e\n\x3cp style=\"margin-left: 2em;\"\x3e\x3ccite style=\"font-style: normal;\"\x3e—Author\x3c/cite\x3e\x3c/p\x3e\n\x3c/blockquote\x3e", "Citation", "mw-editbutton-blockquote");
+			addButton("ow/skins/common/images/button_blockquote.png","Block quote text","\n\x3cblockquote style=\"margin: 1em 8em 1em 2em;\"\x3e\n\x3cp\x3e","\x3c/p\x3e\n\x3cp style=\"margin-left: 2em;\"\x3e\x3ccite style=\"font-style: normal;\"\x3e—Author\x3c/cite\x3e\x3c/p\x3e\n\x3c/blockquote\x3e\n", "Citation", "mw-editbutton-blockquote");
 			addButton("ow/skins/common/images/button_redirect.png","Redirect","#REDIRECT ","","WikiName","mw-editbutton-redirect");
 			addButton("ow/skins/common/images/button_table_row.png","Table row","|| "," ||","Table row", "mw-editbutton-table-row");
 			addButton("ow/skins/common/images/button_nbsp.png","Non breaking space","&#160;","","","mw-editbutton-nbsp");
