@@ -82,7 +82,7 @@ cNonEnglish           = 1        ' 1 = extra link chars,     0 = only A-Za-z cha
 cNetworkFile          = 1        ' 1 = allow remote file:    0 = no file:// links
 cBracketText          = 1        ' 1 = allow [URL text]      0 = no link descriptions
 cBracketIndex         = 1        ' 1 = [URL] -> [<index>]    0 = [URL] -> [URL]
-cHtmlLinks            = 0        ' 1 = allow A HREF links    0 = no raw HTML links
+cHtmlLinks            = 1        ' 1 = allow A HREF links    0 = no raw HTML links
 cBracketWiki          = 1        ' 1 = [WikiLnk txt] link    0 = no local descriptions
 cShowBrackets         = 0        ' 1 = keep brackets         0 = remove brackets when it's an external link
 cFreeUpper            = 1        ' 1 = force upper case      0 = do not force case for free links
