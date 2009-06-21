@@ -16,6 +16,7 @@
 <xsl:include href="owhead.xsl"/>
 <xsl:include href="owrecaptcha.xsl"/>
 <xsl:include href="owedittoolbar.xsl"/>
+<xsl:include href="oweditwarning.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
 
@@ -702,6 +703,10 @@
 							<hr />
 						</xsl:if>
 
+						<xsl:if test="not(/ow:wiki/ow:userpreferences/ow:username/text())">
+							<xsl:call-template name="edit_warning" />
+						</xsl:if>
+						
 						<xsl:call-template name="edit_buttons_toolbar"/>
 				
 						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
