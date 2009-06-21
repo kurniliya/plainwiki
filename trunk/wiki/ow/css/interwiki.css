@@ -46,3 +46,8 @@
 	background: transparent url(http://www.faqs.org/faqs/favicon.ico) no-repeat scroll right center;
 	padding:0 18px;
 }
+
+#bodyContent a[class ~="groups"] {
+	background: transparent url(http://groups.google.com/groups/img/3/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
