@@ -132,7 +132,7 @@ Function MultiLineMarkup(pText)
         pText = s(pText, "<html>([\s\S]*?)<\/html>", "&StoreHtml($1)", True, True)
     End If
     If cMathML Then
-        pText = s(pText, "<math>([\s\S]*?)<\/math>", "&StoreMathML($1)", True, True)
+        pText = s(pText, "<math(\s[^<>/]+?)?>([\s\S]*?)<\/math>", "&StoreMathML($1, $2)", True, True)
     End If
 
     pText = MyMultiLineMarkupStart(pText)
@@ -660,8 +660,12 @@ Sub StoreHtml(pText)
     StoreRaw("<ow:html><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:html>")
 End Sub
 
-Sub StoreMathML(pText)
-    StoreRaw("<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+Sub StoreMathML(pDisplay, pText)
+	If Trim(pDisplay) = "display=""inline""" Then
+	    StoreRaw("<ow:math><ow:display>inline</ow:display><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")	
+	Else
+	    StoreRaw("<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+	End If
 End Sub
 
 Sub StoreCode(pText)
