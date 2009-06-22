@@ -330,11 +330,22 @@
 
 <!-- ==================== handles the openwiki-math element ==================== -->
 <xsl:template match="ow:math">
-  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-    <mstyle mathsize="200%"> 
-      <xsl:value-of select="." disable-output-escaping="yes" />    
-    </mstyle>  
-  </math> 
+	<xsl:choose>
+		<xsl:when test="./ow:display='inline'">
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+				<mstyle mathsize="150%">
+					<xsl:value-of select="text()" disable-output-escaping="yes" />
+				</mstyle>
+			</math>
+		</xsl:when>	
+		<xsl:otherwise>
+			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+				<mstyle mathsize="200%">
+					<xsl:value-of select="." disable-output-escaping="yes" />
+				</mstyle>
+			</math>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <!-- ==================== handles the openwiki-redirectlinks element ==================== -->
