@@ -229,8 +229,10 @@ Sub ActionEdit
     If gEditPassword <> "" Then
         If gEditPassword <> gReadPassword Then
             If Request.Cookies(gCookieHash & "?pe") <> gEditPassword Then
-                Call ActionLogin()
-                Exit Sub
+            	If  (cUseRecaptcha <> "1") or (m(gPage, OPENWIKI_PROTECTEDPAGES, False, False)) Then
+	                Call ActionLogin()
+	                Exit Sub
+	            End If
             End If
         End If
     End If
@@ -248,7 +250,7 @@ Sub ActionEdit
             vXmlStr = vXmlStr & "<ow:error code='2'>Maximum length for the text is " & OPENWIKI_MAXTEXT & " characters.</ow:error>"
         End If
         
-        If gEditPassword = "" and cUseRecaptcha Then
+        If  (Not m(gPage, OPENWIKI_PROTECTEDPAGES, False, False)) and cUseRecaptcha Then
         	CaptchaCheck = RecaptchaConfirm(Request("recaptcha_challenge_field"), Request("recaptcha_response_field"))
         	If CaptchaCheck <> "" Then
         		vXmlStr = vXmlStr & "<ow:captcha_error>" & CaptchaCheck & "</ow:captcha_error>"
