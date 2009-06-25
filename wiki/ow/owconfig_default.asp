@@ -41,6 +41,7 @@ OPENWIKI_UPLOADTIMEOUT   = 300                ' Timeout in seconds (upload must 
 OPENWIKI_RECAPTCHAPRIVATEKEY = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP"
 OPENWIKI_DEBUGLEVEL      = 0                  ' Set positive value to enable debug logging
 OPENWIKI_DEBUGPATH       = Server.MapPath("/cgi-bin/owdebug.xml")	' Path for storing logs
+OPENWIKI_PROTECTEDPAGES  = "FrontPage"                 ' Pattern of wiki pages password protected from editing
 
 MSXML_VERSION = 6   ' specify version of MSXML installed. Version 3 should be supported everywhere
 

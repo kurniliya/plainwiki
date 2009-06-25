@@ -236,7 +236,7 @@ Class OpenWikiNamespace
     	Dim vProtection
     	If cReadOnly Then
     		vProtection = "readonly"
-    	ElseIf gEditPassword <> "" Then
+    	ElseIf gEditPassword <> "" and m(gPage, OPENWIKI_PROTECTEDPAGES, False, False) Then
     		vProtection = "password"
     	ElseIf cUseRecaptcha Then
     		vProtection = "captcha"
