@@ -8,6 +8,8 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
+<xsl:include href="googlecustomsearch.xsl" /> 
+
 <xsl:variable name="brandingText">NEQwiki - the ecnyclopedia of nonlinear differential equations.</xsl:variable>
 
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
@@ -56,7 +58,8 @@
 		<h5><label for="searchInput">Search</label></h5>
 		<div id="searchBody" class="pBody">
 			<xsl:call-template name="menu_section_search" />
-		</div>
+			<xsl:call-template name="GoogleCustomSearch" />
+		</div>		
 	</div>
 
 	<div class='generated-sidebar portlet' id='p-navigation'>
