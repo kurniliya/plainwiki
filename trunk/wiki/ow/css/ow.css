@@ -1134,4 +1134,12 @@ div#p-editorial ul li {
 	font-weight: bold;
 }
 
+/* Google Custom Search input field styling
+*/
+#q {
+	font-size:95%;
+	margin:0;
+	width:10.9em;
+}
+
 /* </source> */
