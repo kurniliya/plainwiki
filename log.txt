@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<Log>
+  <Settings>
+    <Setting Name="LogFile" Value="c:\migr\log.txt" />
+    <Setting Name="ProjectName" Value="plainwiki" />
+    <Setting Name="OutputDir" Value="c:\migr" />
+    <Setting Name="ProjectPath" Value="C:\Sources\plainwiki\trunk\wiki" />
+  </Settings>
+  <File OldPath="C:\Sources\plainwiki\trunk\wiki\owadmin\importinterwiki.asp" NewPath="c:\migr\owadmin\importinterwiki.aspx">
+    <Section Name="Static Block">
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'ow.asp' was changed to 'ow.aspx'. </Issue>
+    </Section>
+  </File>
+  <Globals>
+    <Issue Type="Global Warning" Number="1024" Level="2" Source="ASP">Method of COM object can return an instance of type Object. Then, the upgrade tool cannot infer the right type.</Issue>
+    <Issue Type="Global Warning" Number="1015" Level="1" Source="ASP">The values returned by some ASP.NET methods are different from those in ASP and in some cases must be coded differently.</Issue>
+    <Issue Type="Global Note" Number="1007" Level="4" Source="ASP">All function, subroutine and variable declarations were moved into a script tag global. </Issue>
+    <Issue Type="Global Warning" Number="1014" Level="1" Source="ASP">The file 'C:\Sources\plainwiki\trunk\wiki\ow.asp' was non generated, it probably has some errors.</Issue>
+    <Issue Type="Global Warning" Number="1014" Level="1" Source="ASP">The file 'C:\Sources\plainwiki\trunk\wiki\ow\owall.asp' was non generated, it probably has some errors.</Issue>
+    <Issue Type="Global Warning" Number="1014" Level="1" Source="ASP">The file 'C:\Sources\plainwiki\trunk\wiki\ow\my\myactions.asp' was non generated, it probably has some errors.</Issue>
+    <Issue Type="Global Warning" Number="1019" Level="2" Source="ASP">Unable to create virtual directory. Default web server is stopped.</Issue>
+  </Globals>
+  <File OldPath="C:\Sources\plainwiki\trunk\wiki\default.asp" NewPath="c:\migr\default.aspx">
+    <Section Name="FormatSize">
+      <Issue Type="Runtime" Number="1041" Level="1" Source="VBU">Mod has a new behavior.</Issue>
+    </Section>
+    <Section Name="GetPageAndAttachments">
+      <Issue Type="Runtime" Number="1041" Level="1" Source="VBU">TypeName has a new behavior.</Issue>
+    </Section>
+    <Section Name="GetPage">
+      <Issue Type="Runtime" Number="1041" Level="1" Source="VBU">TypeName has a new behavior.</Issue>
+    </Section>
+    <Section Name="SaveAttachmentMetaData">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="GetAttachments">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="Aggregate">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="(Layout)">
+      <Issue Type="Design" Number="1010" Level="1" Source="VBU">The preceding line couldn't be parsed.</Issue>
+    </Section>
+    <Section Name="MacroPagechangedP">
+      <Issue Type="Compile" Number="105" Level="1" Source="VBU">Unexpected error typing file default_asp_vbscript</Issue>
+    </Section>
+    <Section Name="ActionUserPreferences">
+      <Issue Type="Runtime" Number="1041" Level="1" Source="VBU">Date was upgraded to Today and has a new behavior.</Issue>
+    </Section>
+    <Section Name="ActionLogin">
+      <Issue Type="Runtime" Number="1041" Level="1" Source="VBU">Date was upgraded to Today and has a new behavior.</Issue>
+    </Section>
+    <Section Name="m">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="s">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="Static Block">
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'mymacros.asp' was changed to 'mymacros.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owpreamble.asp' was changed to 'owpreamble.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owconfig_default.asp' was changed to 'owconfig_default.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owprocessor.asp' was changed to 'owprocessor.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owpatterns.asp' was changed to 'owpatterns.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owwikify.asp' was changed to 'owwikify.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owmacros.asp' was changed to 'owmacros.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owactions.asp' was changed to 'owactions.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owtoc.asp' was changed to 'owtoc.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owattach.asp' was changed to 'owattach.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owpage.asp' was changed to 'owpage.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owindex.asp' was changed to 'owindex.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owdb.asp' was changed to 'owdb.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owrss.asp' was changed to 'owrss.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owauth.asp' was changed to 'owauth.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owtransformer.asp' was changed to 'owtransformer.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owhttpdate.asp' was changed to 'owhttpdate.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owtagstack.asp' was changed to 'owtagstack.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owrecaptcha.asp' was changed to 'owrecaptcha.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owdebug.asp' was changed to 'owdebug.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owregexp.asp' was changed to 'owregexp.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owvector.asp' was changed to 'owvector.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owdiff.asp' was changed to 'owdiff.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'owado.asp' was changed to 'owado.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'mywikify.asp' was changed to 'mywikify.aspx'. </Issue>
+      <Issue Type="Todo" Number="1018" Level="2" Source="ASP">Reference to unknown file 'myactions.asp' was changed to 'myactions.aspx'. </Issue>
+    </Section>
+  </File>
+  <File OldPath="C:\Sources\plainwiki\trunk\wiki\owadmin\deprecate.asp" NewPath="c:\migr\owadmin\deprecate.aspx">
+    <Section Name="m">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+    <Section Name="s">
+      <Issue Type="Runtime" Number="1049" Level="1" Source="VBU">Use of Null/IsNull() detected.</Issue>
+    </Section>
+  </File>
+</Log>

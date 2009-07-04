@@ -1,0 +1,137 @@
+<%@ Page Language="VB" EnableSessionState=False %>
+<%@ Import namespace="ADODB" %>
+<script language="VB" runat="Server">
+Dim ScriptEngineMinorVersion As Byte
+Dim ScriptEngineMajorVersion As Byte
+
+'        // DECLARES AND INITS //
+Dim oConn As ADODB.Connection
+Dim tConn As ADODB.Connection
+Dim oRs As ADODB.Recordset
+Dim tRs As ADODB.Recordset
+Dim FSO As Scripting.FileSystemObject
+Dim csvFile As Object
+Dim interwiki_Path As String
+Dim oSQL As String
+Dim tSQL As String
+Dim interwiki_Folder As String
+Dim aURL As String
+Dim interwiki_Filename As String
+Dim ct As Short
+Dim aName As String
+Dim Success As Boolean
+'	Jet uses '.' internally as an identifier for table names,
+'	such as database.table. Jet eliminates ambiguity by mapping '#'
+'	as the delimiter for external files.
+Dim interwiki_JetFilename As String
+
+
+</script>
+<%Response.BUFFER = True%>
+
+<!-- #INCLUDE FILE="../ow/owpreamble.aspx" -->
+<!--   // -->
+<!-- #INCLUDE FILE="../ow/owconfig_default.aspx" -->
+<!--   // -->
+<!-- #INCLUDE FILE="../ow/owado.aspx" -->
+<!--   // -->
+
+<%
+FSO = New Scripting.FileSystemObject
+oConn = New ADODB.Connection
+oRs = New ADODB.Recordset
+oConn.Open(OPENWIKI_DB)
+tConn = New ADODB.Connection
+tRs = New ADODB.Recordset
+interwiki_Folder = Server.MapPath("/cgi-bin") & "\"
+interwiki_Filename = "interwiki.csv"
+interwiki_JetFilename = "interwiki#csv"
+interwiki_Path = interwiki_Folder & interwiki_Filename
+ct = 0
+'        // Open the textfile driver
+tConn.Open("Driver={Microsoft Text Driver (*.txt; *.csv)};" & "Dbq=" & interwiki_Folder & ";" & "Extensions=asc,csv,tab,txt;" & "Format=CSVDelimited;" & "ColNameHeader = true;")
+
+%>
+<html>
+<head>
+ <title>Import InterWiki from csv Page</title>
+ <link rel="stylesheet" type="text/css" href="../ow/css/ow.css" />
+</head>
+<body>
+<p>
+<%
+'        // Initial report
+Response.Write("<h2>InterWiki Import from CSV File</h2><hr />")
+If (Request.Form("submitted") = "yes") And (Request.Form("password") = gAdminPassword) Then
+	Response.Write("Importing from " & interwiki_Path & "...<br />Please wait. working..")
+	Response.Flush()
+	
+	Success = False
+	'On Error Resume Next
+	If FSO.FileExists(interwiki_Path) Then
+		'        // Open a recordset of the InterWikis
+		tSQL = "SELECT DISTINCT * FROM [" & interwiki_JetFilename & "];"
+		tRs.Open(tSQL, tConn, adOpenForwardOnly)
+		oConn.BeginTrans()
+		If OPENWIKI_DB_SYNTAX = DB_SQLSERVER And OPENWIKI_DB_SYNTAX <> DB_ACCESS Then
+			oConn.Execute("DELETE openwiki_interwikis;")
+		Else
+			oConn.Execute("DELETE * FROM [openwiki_interwikis];")
+		End If
+		'        // Loop through, and write to interwiki_Filename
+		Do While Not tRs.EOF
+			aName = IIF(IsDBNull(tRs.Fields.Item("wik_name").Value), Nothing, tRs.Fields.Item("wik_name").Value)
+			aURL = IIF(IsDBNull(tRs.Fields.Item("wik_url").Value), Nothing, tRs.Fields.Item("wik_url").Value)
+			oSQL = "INSERT INTO [openwiki_interwikis] ([wik_name], [wik_url]) VALUES ('" & aName & "','" & aURL & "');"
+			oConn.Execute(oSQL)
+			Response.Write(".")
+			Response.Flush()
+			ct = ct + 1
+			tRs.MoveNext()
+		Loop 
+		tRs.Close()
+		If oConn.Errors.Count = 0 Then
+			oConn.CommitTrans()
+			Success = True
+		Else
+			Response.Write(oConn.Errors.Item(0))
+			oConn.RollbackTrans()
+		End If
+	End If
+	If Success = True Then
+		'        // Final report
+		Response.Write("<br />Success! " & ct & " entries successfully read.")
+		Response.Write("<hr /><small>Import Facility by <a href='mailto:openwiking@gmail.com'>OpenWikiNG team</a> &copy;2004 GPL license</small>")
+	Else
+		Response.Write("<br />Sorry - there was an error!  Quitting.")
+		Response.Write("<hr /><small>Import Facility by <a href='mailto:openwiking@gmail.com'>OpenWikiNG team</a> &copy;2004 GPL license</small>")
+	End If
+Else
+	%>
+<p>
+Click the button to export the InterWiki links from database to csv file
+</p>
+<form name="theform" method="POST">
+ <input type="hidden" name="submitted" value="yes">
+ Admin password (required): <input type="password" name="password">
+ <br /><input type="submit" name="doit" value="Import">
+</form>
+<%	
+End If
+%>
+</p>
+</body>
+</html>
+<%
+'        // TIDY UP
+'UPGRADE_NOTE: Object tConn may not be destroyed until it is garbage collected. Copy this link in your browser for more: 'http://msdn.microsoft.com/library/en-us/vbcon/html/vbup1029.asp'
+tConn = Nothing
+'UPGRADE_NOTE: Object oConn may not be destroyed until it is garbage collected. Copy this link in your browser for more: 'http://msdn.microsoft.com/library/en-us/vbcon/html/vbup1029.asp'
+oConn = Nothing
+'UPGRADE_NOTE: Object FSO may not be destroyed until it is garbage collected. Copy this link in your browser for more: 'http://msdn.microsoft.com/library/en-us/vbcon/html/vbup1029.asp'
+FSO = Nothing
+'UPGRADE_NOTE: Object tRs may not be destroyed until it is garbage collected. Copy this link in your browser for more: 'http://msdn.microsoft.com/library/en-us/vbcon/html/vbup1029.asp'
+tRs = Nothing
+'UPGRADE_NOTE: Object oRs may not be destroyed until it is garbage collected. Copy this link in your browser for more: 'http://msdn.microsoft.com/library/en-us/vbcon/html/vbup1029.asp'
+oRs = Nothing
+%>
