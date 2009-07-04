@@ -1,0 +1,757 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BEDDB28-E51B-44DE-8680-D1254A06817F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>plainwiki</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>None</AssemblyOriginatorKeyMode>
+    <DefaultClientScript>VBScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionStrict>Off</OptionStrict>
+    <RootNamespace>plainwiki</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <MyType>Windows</MyType>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>plainwiki.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>plainwiki.xml</DocumentationFile>
+    <BaseAddress>285212672</BaseAddress>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>1</WarningLevel>
+    <NoWarn>42016,42017,42018,42019,42032</NoWarn>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ADODB">
+      <Name>ADODB</Name>
+      <HintPath>bin\ADODB.dll</HintPath>
+    </Reference>
+    <Reference Include="MSXML2">
+      <Name>MSXML2</Name>
+      <HintPath>bin\MSXML2.dll</HintPath>
+    </Reference>
+    <Reference Include="Scripting">
+      <Name>Scripting</Name>
+      <HintPath>bin\Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.HtmlControls" />
+    <Import Include="System.Web.UI.WebControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".svn\all-wcprops" />
+    <Content Include=".svn\entries" />
+    <Content Include=".svn\text-base\default.asp.svn-base" />
+    <Content Include=".svn\text-base\ow.asp.svn-base" />
+    <Content Include="default.aspx" />
+    <Content Include="ow.aspx" />
+    <Content Include="owadmin\.svn\all-wcprops" />
+    <Content Include="owadmin\.svn\entries" />
+    <Content Include="owadmin\.svn\text-base\clearcache.asp.svn-base" />
+    <Content Include="owadmin\.svn\text-base\default.htm.svn-base" />
+    <Content Include="owadmin\.svn\text-base\deprecate.asp.svn-base" />
+    <Content Include="owadmin\.svn\text-base\exportinterwiki.asp.svn-base" />
+    <Content Include="owadmin\.svn\text-base\importinterwiki.asp.svn-base" />
+    <Content Include="owadmin\.svn\text-base\interwiki.csv.svn-base" />
+    <Content Include="owadmin\.svn\text-base\schema.ini.svn-base" />
+    <Content Include="owadmin\clearcache.aspx" />
+    <Content Include="owadmin\default.htm" />
+    <Content Include="owadmin\deprecate.aspx" />
+    <Content Include="owadmin\exportinterwiki.aspx" />
+    <Content Include="owadmin\importinterwiki.aspx" />
+    <Content Include="owadmin\interwiki.csv" />
+    <Content Include="owadmin\schema.ini" />
+    <Content Include="ow\.svn\all-wcprops" />
+    <Content Include="ow\.svn\entries" />
+    <Content Include="ow\.svn\text-base\owactions.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owado.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owall.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owattach.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owauth.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owconfig_default.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owdb.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owdebug.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owdiff.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owhttpdate.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owindex.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owmacros.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owpage.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owpatterns.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owpreamble.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owprocessor.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owrecaptcha.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owregexp.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owrss.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owtagstack.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owtoc.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owtransformer.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owvector.asp.svn-base" />
+    <Content Include="ow\.svn\text-base\owwikify.asp.svn-base" />
+    <Content Include="ow\css\.svn\all-wcprops" />
+    <Content Include="ow\css\.svn\entries" />
+    <Content Include="ow\css\.svn\text-base\interwiki.css.svn-base" />
+    <Content Include="ow\css\.svn\text-base\ow.css.svn-base" />
+    <Content Include="ow\css\chick\.svn\all-wcprops" />
+    <Content Include="ow\css\chick\.svn\entries" />
+    <Content Include="ow\css\chick\.svn\text-base\main.css.svn-base" />
+    <Content Include="ow\css\chick\main.css" />
+    <Content Include="ow\css\common\.svn\all-wcprops" />
+    <Content Include="ow\css\common\.svn\entries" />
+    <Content Include="ow\css\common\.svn\text-base\commonprint.css.svn-base" />
+    <Content Include="ow\css\common\.svn\text-base\shared.css.svn-base" />
+    <Content Include="ow\css\common\commonprint.css" />
+    <Content Include="ow\css\common\shared.css" />
+    <Content Include="ow\css\interwiki.css" />
+    <Content Include="ow\css\monobook\.svn\all-wcprops" />
+    <Content Include="ow\css\monobook\.svn\entries" />
+    <Content Include="ow\css\monobook\.svn\prop-base\acrobat.gif.svn-base" />
+    <Content Include="ow\css\monobook\.svn\prop-base\bullet.gif.svn-base" />
+    <Content Include="ow\css\monobook\.svn\prop-base\document.png.svn-base" />
+    <Content Include="ow\css\monobook\.svn\prop-base\external.png.svn-base" />
+    <Content Include="ow\css\monobook\.svn\prop-base\headbg.jpg.svn-base" />
+    <Content Include="ow\css\monobook\.svn\prop-base\user.gif.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\acrobat.gif.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\bullet.gif.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\document.png.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\external.png.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\headbg.jpg.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\ie50fixes.css.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\ie55fixes.css.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\ie60fixes.css.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\ie70fixes.css.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\main.css.svn-base" />
+    <Content Include="ow\css\monobook\.svn\text-base\user.gif.svn-base" />
+    <Content Include="ow\css\monobook\acrobat.gif" />
+    <Content Include="ow\css\monobook\bullet.gif" />
+    <Content Include="ow\css\monobook\document.png" />
+    <Content Include="ow\css\monobook\external.png" />
+    <Content Include="ow\css\monobook\headbg.jpg" />
+    <Content Include="ow\css\monobook\ie50fixes.css" />
+    <Content Include="ow\css\monobook\ie55fixes.css" />
+    <Content Include="ow\css\monobook\ie60fixes.css" />
+    <Content Include="ow\css\monobook\ie70fixes.css" />
+    <Content Include="ow\css\monobook\main.css" />
+    <Content Include="ow\css\monobook\user.gif" />
+    <Content Include="ow\css\ow.css" />
+    <Content Include="ow\images\.svn\all-wcprops" />
+    <Content Include="ow\images\.svn\entries" />
+    <Content Include="ow\images\.svn\prop-base\delico.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\favicon.ico.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\hidden_off.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\hidden_on.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\logo.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\logo_aggregator.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\logo_tiny.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\mephi.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\popup.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\poweredby.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\revs.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\undo.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\valid-css.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\valid-xhtml10.gif.svn-base" />
+    <Content Include="ow\images\.svn\prop-base\xml.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\delico.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\favicon.ico.svn-base" />
+    <Content Include="ow\images\.svn\text-base\hidden_off.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\hidden_on.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\logo.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\logo_aggregator.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\logo_tiny.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\mephi.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\popup.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\poweredby.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\revs.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\undo.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\valid-css.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\valid-xhtml10.gif.svn-base" />
+    <Content Include="ow\images\.svn\text-base\xml.gif.svn-base" />
+    <Content Include="ow\images\delico.gif" />
+    <Content Include="ow\images\favicon.ico" />
+    <Content Include="ow\images\hidden_off.gif" />
+    <Content Include="ow\images\hidden_on.gif" />
+    <Content Include="ow\images\icons\.svn\all-wcprops" />
+    <Content Include="ow\images\icons\.svn\entries" />
+    <Content Include="ow\images\icons\.svn\prop-base\alphaomega.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\applications-development_current.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\crystal_clear_action_bookmark.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\dice.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\edit-delete-not_encyclopedic.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-8.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-ambivalent.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-b.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-c.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-cat.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-d.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-e.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-f.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-g.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-h.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-i.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-k.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-l.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-laugh.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-m.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-n.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-p.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-s.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-sad.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-smile.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-star.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-surprised.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-t.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-tongue-in-cheek.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-u.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-unsure.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-wink.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\emoticon-y.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\gnome-dev-printer.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\gnome-document-open-recent.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\gnome-insert-link.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\greek_uc_sigma.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\help-icon.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\icon-error.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\icon-info.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\icon-warning.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\im-nov.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\imbox_notice.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\new_text_document.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\recycle-symbol.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\rss_small.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\sndbx.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\superman_shield.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-ftp.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-http.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-mailto.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-news.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-telnet.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\wiki-wiki.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\prop-base\xml-logo.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\alphaomega.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\applications-development_current.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\crystal_clear_action_bookmark.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\dice.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\edit-delete-not_encyclopedic.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-8.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-ambivalent.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-b.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-c.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-cat.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-d.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-e.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-f.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-g.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-h.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-i.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-k.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-l.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-laugh.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-m.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-n.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-p.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-s.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-sad.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-smile.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-star.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-surprised.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-t.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-tongue-in-cheek.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-u.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-unsure.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-wink.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\emoticon-y.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\gnome-dev-printer.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\gnome-document-open-recent.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\gnome-insert-link.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\greek_uc_sigma.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\help-icon.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\icon-error.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\icon-info.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\icon-warning.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\im-nov.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\imbox_notice.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\new_text_document.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\recycle-symbol.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\rss_small.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\sndbx.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\superman_shield.png.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-ftp.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-http.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-mailto.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-news.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-telnet.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\wiki-wiki.gif.svn-base" />
+    <Content Include="ow\images\icons\.svn\text-base\xml-logo.png.svn-base" />
+    <Content Include="ow\images\icons\alphaomega.png" />
+    <Content Include="ow\images\icons\applications-development_current.png" />
+    <Content Include="ow\images\icons\crystal_clear_action_bookmark.png" />
+    <Content Include="ow\images\icons\dice.png" />
+    <Content Include="ow\images\icons\doc\.svn\all-wcprops" />
+    <Content Include="ow\images\icons\doc\.svn\entries" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\asp.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\avi.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\bmp.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\chm.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\doc.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\empty.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\gif.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\gz.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\htm.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\html.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\jpeg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\jpg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\mov.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\mp3.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\mpeg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\mpg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\pdf.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\png.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\ppt.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\txt.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\wav.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\xls.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\xml.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\xsl.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\prop-base\zip.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\asp.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\avi.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\bmp.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\chm.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\doc.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\empty.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\gif.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\gz.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\htm.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\html.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\jpeg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\jpg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\mov.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\mp3.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\mpeg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\mpg.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\pdf.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\png.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\ppt.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\txt.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\wav.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\xls.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\xml.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\xsl.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\.svn\text-base\zip.gif.svn-base" />
+    <Content Include="ow\images\icons\doc\asp.gif" />
+    <Content Include="ow\images\icons\doc\avi.gif" />
+    <Content Include="ow\images\icons\doc\bmp.gif" />
+    <Content Include="ow\images\icons\doc\chm.gif" />
+    <Content Include="ow\images\icons\doc\doc.gif" />
+    <Content Include="ow\images\icons\doc\empty.gif" />
+    <Content Include="ow\images\icons\doc\gif.gif" />
+    <Content Include="ow\images\icons\doc\gz.gif" />
+    <Content Include="ow\images\icons\doc\htm.gif" />
+    <Content Include="ow\images\icons\doc\html.gif" />
+    <Content Include="ow\images\icons\doc\jpeg.gif" />
+    <Content Include="ow\images\icons\doc\jpg.gif" />
+    <Content Include="ow\images\icons\doc\mov.gif" />
+    <Content Include="ow\images\icons\doc\mp3.gif" />
+    <Content Include="ow\images\icons\doc\mpeg.gif" />
+    <Content Include="ow\images\icons\doc\mpg.gif" />
+    <Content Include="ow\images\icons\doc\pdf.gif" />
+    <Content Include="ow\images\icons\doc\png.gif" />
+    <Content Include="ow\images\icons\doc\ppt.gif" />
+    <Content Include="ow\images\icons\doc\txt.gif" />
+    <Content Include="ow\images\icons\doc\wav.gif" />
+    <Content Include="ow\images\icons\doc\xls.gif" />
+    <Content Include="ow\images\icons\doc\xml.gif" />
+    <Content Include="ow\images\icons\doc\xsl.gif" />
+    <Content Include="ow\images\icons\doc\zip.gif" />
+    <Content Include="ow\images\icons\edit-delete-not_encyclopedic.png" />
+    <Content Include="ow\images\icons\emoticon-8.gif" />
+    <Content Include="ow\images\icons\emoticon-ambivalent.gif" />
+    <Content Include="ow\images\icons\emoticon-b.gif" />
+    <Content Include="ow\images\icons\emoticon-c.gif" />
+    <Content Include="ow\images\icons\emoticon-cat.gif" />
+    <Content Include="ow\images\icons\emoticon-d.gif" />
+    <Content Include="ow\images\icons\emoticon-e.gif" />
+    <Content Include="ow\images\icons\emoticon-f.gif" />
+    <Content Include="ow\images\icons\emoticon-g.gif" />
+    <Content Include="ow\images\icons\emoticon-h.gif" />
+    <Content Include="ow\images\icons\emoticon-i.gif" />
+    <Content Include="ow\images\icons\emoticon-k.gif" />
+    <Content Include="ow\images\icons\emoticon-l.gif" />
+    <Content Include="ow\images\icons\emoticon-laugh.gif" />
+    <Content Include="ow\images\icons\emoticon-m.gif" />
+    <Content Include="ow\images\icons\emoticon-n.gif" />
+    <Content Include="ow\images\icons\emoticon-p.gif" />
+    <Content Include="ow\images\icons\emoticon-s.gif" />
+    <Content Include="ow\images\icons\emoticon-sad.gif" />
+    <Content Include="ow\images\icons\emoticon-smile.gif" />
+    <Content Include="ow\images\icons\emoticon-star.gif" />
+    <Content Include="ow\images\icons\emoticon-surprised.gif" />
+    <Content Include="ow\images\icons\emoticon-t.gif" />
+    <Content Include="ow\images\icons\emoticon-tongue-in-cheek.gif" />
+    <Content Include="ow\images\icons\emoticon-u.gif" />
+    <Content Include="ow\images\icons\emoticon-unsure.gif" />
+    <Content Include="ow\images\icons\emoticon-wink.gif" />
+    <Content Include="ow\images\icons\emoticon-y.gif" />
+    <Content Include="ow\images\icons\gnome-dev-printer.png" />
+    <Content Include="ow\images\icons\gnome-document-open-recent.png" />
+    <Content Include="ow\images\icons\gnome-insert-link.png" />
+    <Content Include="ow\images\icons\greek_uc_sigma.png" />
+    <Content Include="ow\images\icons\help-icon.gif" />
+    <Content Include="ow\images\icons\icon-error.gif" />
+    <Content Include="ow\images\icons\icon-info.gif" />
+    <Content Include="ow\images\icons\icon-warning.gif" />
+    <Content Include="ow\images\icons\im-nov.png" />
+    <Content Include="ow\images\icons\imbox_notice.png" />
+    <Content Include="ow\images\icons\new_text_document.png" />
+    <Content Include="ow\images\icons\recycle-symbol.png" />
+    <Content Include="ow\images\icons\rss_small.gif" />
+    <Content Include="ow\images\icons\sndbx.png" />
+    <Content Include="ow\images\icons\superman_shield.png" />
+    <Content Include="ow\images\icons\wiki-ftp.gif" />
+    <Content Include="ow\images\icons\wiki-http.gif" />
+    <Content Include="ow\images\icons\wiki-mailto.gif" />
+    <Content Include="ow\images\icons\wiki-news.gif" />
+    <Content Include="ow\images\icons\wiki-telnet.gif" />
+    <Content Include="ow\images\icons\wiki-wiki.gif" />
+    <Content Include="ow\images\icons\xml-logo.png" />
+    <Content Include="ow\images\logo.gif" />
+    <Content Include="ow\images\logo_aggregator.gif" />
+    <Content Include="ow\images\logo_tiny.gif" />
+    <Content Include="ow\images\mephi.gif" />
+    <Content Include="ow\images\popup.gif" />
+    <Content Include="ow\images\poweredby.gif" />
+    <Content Include="ow\images\revs.gif" />
+    <Content Include="ow\images\undo.gif" />
+    <Content Include="ow\images\valid-css.gif" />
+    <Content Include="ow\images\valid-xhtml10.gif" />
+    <Content Include="ow\images\xml.gif" />
+    <Content Include="ow\js\.svn\all-wcprops" />
+    <Content Include="ow\js\.svn\entries" />
+    <Content Include="ow\js\.svn\text-base\edit.js.svn-base" />
+    <Content Include="ow\js\.svn\text-base\recaptcha_documentwrite.js.svn-base" />
+    <Content Include="ow\js\.svn\text-base\wikibits.js.svn-base" />
+    <Content Include="ow\js\common\.svn\all-wcprops" />
+    <Content Include="ow\js\common\.svn\entries" />
+    <Content Include="ow\js\common\.svn\text-base\iefixes.js.svn-base" />
+    <Content Include="ow\js\common\iefixes.js" />
+    <Content Include="ow\js\edit.js" />
+    <Content Include="ow\js\recaptcha_documentwrite.js" />
+    <Content Include="ow\js\wikibits.js" />
+    <Content Include="ow\my\.svn\all-wcprops" />
+    <Content Include="ow\my\.svn\entries" />
+    <Content Include="ow\my\.svn\text-base\myactions.asp.svn-base" />
+    <Content Include="ow\my\.svn\text-base\mymacros.asp.svn-base" />
+    <Content Include="ow\my\.svn\text-base\mywikify.asp.svn-base" />
+    <Content Include="ow\my\myactions.aspx" />
+    <Content Include="ow\my\mymacros.aspx" />
+    <Content Include="ow\my\mywikify.aspx" />
+    <Content Include="ow\owactions.aspx" />
+    <Content Include="ow\owado.aspx" />
+    <Content Include="ow\owall.aspx" />
+    <Content Include="ow\owattach.aspx" />
+    <Content Include="ow\owauth.aspx" />
+    <Content Include="ow\owconfig_default.aspx" />
+    <Content Include="ow\owdb.aspx" />
+    <Content Include="ow\owdebug.aspx" />
+    <Content Include="ow\owdiff.aspx" />
+    <Content Include="ow\owhttpdate.aspx" />
+    <Content Include="ow\owindex.aspx" />
+    <Content Include="ow\owmacros.aspx" />
+    <Content Include="ow\owpage.aspx" />
+    <Content Include="ow\owpatterns.aspx" />
+    <Content Include="ow\owpreamble.aspx" />
+    <Content Include="ow\owprocessor.aspx" />
+    <Content Include="ow\owrecaptcha.aspx" />
+    <Content Include="ow\owregexp.aspx" />
+    <Content Include="ow\owrss.aspx" />
+    <Content Include="ow\owtagstack.aspx" />
+    <Content Include="ow\owtoc.aspx" />
+    <Content Include="ow\owtransformer.aspx" />
+    <Content Include="ow\owvector.aspx" />
+    <Content Include="ow\owwikify.aspx" />
+    <Content Include="ow\skins\.svn\all-wcprops" />
+    <Content Include="ow\skins\.svn\entries" />
+    <Content Include="ow\skins\common\.svn\all-wcprops" />
+    <Content Include="ow\skins\common\.svn\entries" />
+    <Content Include="ow\skins\common\images\.svn\all-wcprops" />
+    <Content Include="ow\skins\common\images\.svn\entries" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_align_left.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_align_right.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_big.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_blockquote.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_bold.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_bulleted_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_category03.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_center.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_code.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_comment.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_definition_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_enter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_extlink.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_font_color.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_headline.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_headline2.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_hr.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_image.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_italic.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_link.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_math.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_media.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_nbsp.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_nowiki.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_numbered_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_pre.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_redirect.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_shifting.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_sig.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_small.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_strike.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_sub_letter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_sup_letter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_table_row.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_tt.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\prop-base\button_underline.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_align_left.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_align_right.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_big.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_blockquote.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_bold.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_bulleted_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_category03.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_center.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_code.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_comment.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_definition_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_enter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_extlink.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_font_color.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_headline.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_headline2.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_hr.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_image.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_italic.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_link.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_math.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_media.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_nbsp.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_nowiki.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_numbered_list.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_pre.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_redirect.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_shifting.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_sig.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_small.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_strike.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_sub_letter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_sup_letter.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_table_row.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_tt.png.svn-base" />
+    <Content Include="ow\skins\common\images\.svn\text-base\button_underline.png.svn-base" />
+    <Content Include="ow\skins\common\images\button_align_left.png" />
+    <Content Include="ow\skins\common\images\button_align_right.png" />
+    <Content Include="ow\skins\common\images\button_big.png" />
+    <Content Include="ow\skins\common\images\button_blockquote.png" />
+    <Content Include="ow\skins\common\images\button_bold.png" />
+    <Content Include="ow\skins\common\images\button_bulleted_list.png" />
+    <Content Include="ow\skins\common\images\button_category03.png" />
+    <Content Include="ow\skins\common\images\button_center.png" />
+    <Content Include="ow\skins\common\images\button_code.png" />
+    <Content Include="ow\skins\common\images\button_comment.png" />
+    <Content Include="ow\skins\common\images\button_definition_list.png" />
+    <Content Include="ow\skins\common\images\button_enter.png" />
+    <Content Include="ow\skins\common\images\button_extlink.png" />
+    <Content Include="ow\skins\common\images\button_font_color.png" />
+    <Content Include="ow\skins\common\images\button_headline.png" />
+    <Content Include="ow\skins\common\images\button_headline2.png" />
+    <Content Include="ow\skins\common\images\button_hr.png" />
+    <Content Include="ow\skins\common\images\button_image.png" />
+    <Content Include="ow\skins\common\images\button_italic.png" />
+    <Content Include="ow\skins\common\images\button_link.png" />
+    <Content Include="ow\skins\common\images\button_math.png" />
+    <Content Include="ow\skins\common\images\button_media.png" />
+    <Content Include="ow\skins\common\images\button_nbsp.png" />
+    <Content Include="ow\skins\common\images\button_nowiki.png" />
+    <Content Include="ow\skins\common\images\button_numbered_list.png" />
+    <Content Include="ow\skins\common\images\button_pre.png" />
+    <Content Include="ow\skins\common\images\button_redirect.png" />
+    <Content Include="ow\skins\common\images\button_shifting.png" />
+    <Content Include="ow\skins\common\images\button_sig.png" />
+    <Content Include="ow\skins\common\images\button_small.png" />
+    <Content Include="ow\skins\common\images\button_strike.png" />
+    <Content Include="ow\skins\common\images\button_sub_letter.png" />
+    <Content Include="ow\skins\common\images\button_sup_letter.png" />
+    <Content Include="ow\skins\common\images\button_table_row.png" />
+    <Content Include="ow\skins\common\images\button_tt.png" />
+    <Content Include="ow\skins\common\images\button_underline.png" />
+    <Content Include="ow\xsl\.svn\all-wcprops" />
+    <Content Include="ow\xsl\.svn\entries" />
+    <Content Include="ow\xsl\.svn\text-base\googlecustomsearch.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\mystyle.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\ow.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owattach.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owconfig.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owedittoolbar.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\oweditwarning.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owhead.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owinc.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owpi.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrecaptcha.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrss09.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrss091.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrss10.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrss10aggr.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owrss10export.xsl.svn-base" />
+    <Content Include="ow\xsl\.svn\text-base\owscriptingnews.xsl.svn-base" />
+    <Content Include="ow\xsl\googlecustomsearch.xsl" />
+    <Content Include="ow\xsl\mystyle.xsl" />
+    <Content Include="ow\xsl\ow.xsl" />
+    <Content Include="ow\xsl\owattach.xsl" />
+    <Content Include="ow\xsl\owconfig.xsl" />
+    <Content Include="ow\xsl\owedittoolbar.xsl" />
+    <Content Include="ow\xsl\oweditwarning.xsl" />
+    <Content Include="ow\xsl\owhead.xsl" />
+    <Content Include="ow\xsl\owinc.xsl" />
+    <Content Include="ow\xsl\owpi.xsl" />
+    <Content Include="ow\xsl\owrecaptcha.xsl" />
+    <Content Include="ow\xsl\owrss09.xsl" />
+    <Content Include="ow\xsl\owrss091.xsl" />
+    <Content Include="ow\xsl\owrss10.xsl" />
+    <Content Include="ow\xsl\owrss10aggr.xsl" />
+    <Content Include="ow\xsl\owrss10export.xsl" />
+    <Content Include="ow\xsl\owscriptingnews.xsl" />
+    <Content Include="static\.svn\all-wcprops" />
+    <Content Include="static\.svn\entries" />
+    <Content Include="static\processie\.svn\all-wcprops" />
+    <Content Include="static\processie\.svn\entries" />
+    <Content Include="static\processie\.svn\text-base\processie.css.svn-base" />
+    <Content Include="static\processie\.svn\text-base\processie.html.svn-base" />
+    <Content Include="static\processie\processie.css" />
+    <Content Include="static\processie\processie.html" />
+    <Content Include="Styles.css" />
+    <Content Include="Web.config" />
+    <Content Include="_ConversionReport.htm" />
+    <Content Include="_ConversionReport_Files\ConversionReport.css" />
+    <EmbeddedResource Include="_ConversionReport_Files\ConversionReport_Minus.gif" />
+    <EmbeddedResource Include="_ConversionReport_Files\ConversionReport_Plus.gif" />
+    <Compile Include="AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51635</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
