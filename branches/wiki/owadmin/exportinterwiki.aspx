@@ -42,7 +42,7 @@ oRs = New ADODB.Recordset
 oConn.Open(OPENWIKI_DB)
 tConn = New ADODB.Connection
 tRs = New ADODB.Recordset
-interwiki_Folder = Server.MapPath("/cgi-bin") & "\"
+interwiki_Folder = HttpContext.Current.Server.MapPath("/cgi-bin") & "\"
 interwiki_Filename = "interwiki.csv"
 interwiki_JetFilename = "interwiki#csv"
 interwiki_Path = interwiki_Folder & interwiki_Filename
