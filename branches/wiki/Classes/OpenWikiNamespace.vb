@@ -25,7 +25,7 @@ Namespace Openwiki
         End Sub
 
         Protected Overrides Sub Finalize()
-            On Error Resume Next
+            '            On Error Resume Next
             vConn.Close()
             vConn = Nothing
             vRS = Nothing
@@ -140,7 +140,7 @@ Namespace Openwiki
                     vQuery = vQuery & " AND wrv_current = 1"
                 End If
 
-                On Error Resume Next
+                '                On Error Resume Next
                 vRS.Open(vQuery, vConn, ADODB.CursorTypeEnum.adOpenForwardOnly)
                 If Err.Number <> 0 Then
                     If Err.Number = -2147467259 Then
@@ -152,7 +152,7 @@ Namespace Openwiki
                     End If
                     HttpContext.Current.Response.End()
                 End If
-                On Error GoTo 0
+                '                On Error GoTo 0
 
                 If vRS.EOF Then
                     If pRevision = 0 Then
@@ -181,13 +181,35 @@ Namespace Openwiki
                     End If
                     Do While Not vRS.EOF
                         vChange = vPage.AddChange
-                        vChange.Revision = CInt(vRS("wrv_revision").Value)
-                        vChange.Status = CStr(vRS("wrv_status").Value)
-                        vChange.MinorEdit = CInt(vRS("wrv_minoredit").Value)
-                        vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
-                        vChange.By = CStr(vRS("wrv_by").Value)
-                        vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
-                        vChange.Comment = CStr(vRS("wrv_comment").Value)
+
+                        If Not IsDBNull(vRS("wrv_revision").Value) Then
+                            vChange.Revision = CInt(vRS("wrv_revision").Value)
+                        End If
+
+                        If Not IsDBNull(vRS("wrv_status").Value) Then
+                            vChange.Status = CStr(vRS("wrv_status").Value)
+                        End If
+
+                        If Not IsDBNull(vRS("wrv_minoredit").Value) Then
+                            vChange.MinorEdit = CInt(vRS("wrv_minoredit").Value)
+                        End If
+
+                        If Not IsDBNull(vRS("wrv_timestamp").Value) Then
+                            vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
+                        End If
+
+                        If Not IsDBNull(vRS("wrv_by").Value) Then
+                            vChange.By = CStr(vRS("wrv_by").Value)
+                        End If
+
+                        If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                            vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+                        End If
+
+                        If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
+                            vChange.Comment = CStr(vRS("wrv_comment").Value)
+                        End If
+
                         vRS.MoveNext()
                     Loop
                 End If
@@ -258,7 +280,7 @@ Namespace Openwiki
         End Function
 
         Private Function isValidDocument(ByVal pText As String) As Boolean
-            On Error Resume Next
+            'On Error Resume Next
             Dim vXmlStr As String
             Dim vXmlDoc As MSXML2.FreeThreadedDOMDocument60
 
@@ -777,7 +799,11 @@ Namespace Openwiki
                         vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
                         vChange.By = CStr(vRS("wrv_by").Value)
                         vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
-                        vChange.Comment = CStr(vRS("wrv_comment").Value)
+
+                        If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
+                            vChange.Comment = CStr(vRS("wrv_comment").Value)
+                        End If
+
                         vList.Push(vPage)
                     End If
                     If (cAllowAttachments = 1) And (pIncludeAttachmentChanges = 1) Then
@@ -838,7 +864,7 @@ Namespace Openwiki
                     End If
                 End If
                 If Not vFound Then
-                    If Regex.IsMatch(CStr(vRS("wrv_text")), vPattern, RegexOptions.IgnoreCase) Then
+                    If Regex.IsMatch(CStr(vRS("wrv_text").Value), vPattern, RegexOptions.IgnoreCase) Then
                         vFound = True
                     End If
                 End If
@@ -852,8 +878,15 @@ Namespace Openwiki
                     vChange.MinorEdit = CInt(vRS("wrv_minoredit").Value)
                     vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
                     vChange.By = CStr(vRS("wrv_by").Value)
-                    vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
-                    vChange.Comment = CStr(vRS("wrv_comment").Value)
+
+                    If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                        vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+                    End If
+
+                    If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
+                        vChange.Comment = CStr(vRS("wrv_comment").Value)
+                    End If
+
                     vList.Push(vPage)
                 End If
                 vRS.MoveNext()
@@ -930,7 +963,11 @@ Namespace Openwiki
                     vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
                     vChange.By = CStr(vRS("wrv_by").Value)
                     vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
-                    vChange.Comment = CStr(vRS("wrv_comment").Value)
+
+                    If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
+                        vChange.Comment = CStr(vRS("wrv_comment").Value)
+                    End If
+
                     vList.Push(vPage)
                 End If
                 vRS.MoveNext()
@@ -1178,7 +1215,7 @@ Namespace Openwiki
             Dim vRdfTimestamp As String
             Dim vDcDate As String
 
-            On Error Resume Next
+            '            On Error Resume Next
             'Response.Write("<p />Aggregating " & pURL & "<br />")
 
             vRoot = pXmlDoc.documentElement

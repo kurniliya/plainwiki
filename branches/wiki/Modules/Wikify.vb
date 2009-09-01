@@ -88,8 +88,6 @@ Namespace Openwiki
             Wikify = vText
         End Function
 
-
-        '______________________________________________________________________________________________________________
         Function MultiLineMarkup(ByVal pText As String) As String
             '            Dim vAttachmentPattern As String
 
@@ -289,8 +287,6 @@ Namespace Openwiki
             MultiLineMarkup = pText
         End Function
 
-
-        '______________________________________________________________________________________________________________
         Function WikiLinesToHtml(ByVal pText As String) As String
             Dim vTagStack As TagStack
             'vRegEx()
@@ -579,7 +575,6 @@ Namespace Openwiki
             End If
         End Sub
 
-        '______________________________________________________________________________________________________________
         Function QuoteXml(ByRef pText As String) As String
             QuoteXml = Replace(pText, "&", "&amp;")
             QuoteXml = Replace(QuoteXml, "<", "&lt;")
