@@ -122,7 +122,7 @@ Namespace Openwiki
         End Sub
 
         Public Sub LoadXSL(ByVal pFilename As String)
-            On Error Resume Next
+            '            On Error Resume Next
             vXslTemplate = Nothing
             'vXslTemplate = ""
             If cCacheXSL = 1 Then

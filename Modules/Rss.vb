@@ -5,7 +5,7 @@
             Dim vRoot As MSXML2.IXMLDOMElement
             Dim vXslFilename As String
 
-            On Error Resume Next
+            '            On Error Resume Next
             'Response.Write("Retrieving " & pURL & "<br />")
 
             vXmlDoc = RetrieveXML(pURL)
@@ -123,7 +123,7 @@
             Dim vXmlStr As String
             Dim vXmlDoc As MSXML2.FreeThreadedDOMDocument60
 
-            On Error Resume Next
+            '            On Error Resume Next
 
             If Not IsReference(gAggregateURLs) Then
                 Exit Function

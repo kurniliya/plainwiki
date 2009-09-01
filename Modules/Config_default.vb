@@ -20,7 +20,7 @@
         Public Const OPENWIKI_ENCODING As String = "utf-8"            ' character encoding to use
         Public Const OPENWIKI_TITLE As String = "NEQwiki, the nonlinear equations encyclopedia"          ' title of your wiki
         Public Const OPENWIKI_FRONTPAGE As String = "FrontPage"        ' name of your front page.
-        Public Const OPENWIKI_SCRIPTNAME As String = "ow.asp"           ' "mydir/ow.asp" : in case the auto-detected scriptname isn't correct
+        Public Const OPENWIKI_SCRIPTNAME As String = ""           ' "mydir/ow.asp" : in case the auto-detected scriptname isn't correct
         Public Const OPENWIKI_STYLESHEETS As String = "ow/xsl/"          ' the subdirectory where the stylesheet files (*.xsl) are located
         Public Const OPENWIKI_MAXTEXT As Integer = 204800             ' Maximum 200K texts
         Public Const OPENWIKI_MAXINCLUDELEVEL As Integer = 5                  ' Maximum depth of Include's

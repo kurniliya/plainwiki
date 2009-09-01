@@ -3,9 +3,13 @@
 Namespace Openwiki
     Module Processor
         Sub OwProcessRequest()
-            Dim SCRIPT_NAME As String, SERVER_NAME As String, SERVER_PORT As Integer, SERVER_PORT_SECURE As Integer
+            Dim SCRIPT_NAME As String
+            Dim SERVER_NAME As String
+            Dim SERVER_PORT As Integer
+            Dim SERVER_PORT_SECURE As Integer
             Dim SlashPos As Integer
             Dim CookieReadPassword As String
+
             SCRIPT_NAME = HttpContext.Current.Request.ServerVariables("SCRIPT_NAME")
             SERVER_NAME = HttpContext.Current.Request.ServerVariables("SERVER_NAME")
             SERVER_PORT = CInt(HttpContext.Current.Request.ServerVariables("SERVER_PORT"))

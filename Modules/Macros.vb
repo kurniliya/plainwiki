@@ -106,7 +106,7 @@
         End Sub
 
         Sub MacroSystemInfo()
-            On Error Resume Next
+            '            On Error Resume Next
             Dim vFSO As Scripting.FileSystemObject
             Dim vFile As Scripting.File
             Dim vRev As String

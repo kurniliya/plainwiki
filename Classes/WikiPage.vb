@@ -200,7 +200,9 @@
         End Function
 
         Public Function ToXML(ByVal pIncludeText As Integer) As String
-            Dim i As Integer, vCount As Integer
+            Dim i As Integer
+            Dim vCount As Integer
+
             ToXML = "<ow:page name='" & CDATAEncode(vName) & "' changes='" & vChanges & "'"
             If vLastMinor > 0 Then
                 ToXML = ToXML & " lastminor='" & vLastMinor & "'"
