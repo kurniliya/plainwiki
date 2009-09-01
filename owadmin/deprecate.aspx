@@ -59,14 +59,14 @@ End Sub
 <p>
 <%
 
-' Response.Write("<p>Look in the script!</p>")
+' HttpContext.Current.Response.Write("<p>Look in the script!</p>")
 
 ' RUN AT YOUR OWN RISK !!!
 ' ALSO DELETES DEPRECATED ATTACHMENTS
 ' MAKE SURE YOU'VE SET THE VARIABLE OPENWIKI_DB CORRECTLY IN YOUR CONFIG FILE
 '
 ' COMMENT THE NEXT LINE AND REFRESH THE PAGE
-' Response.End
+' HttpContext.Current.Response.End
 
 ' If a page is marked as deprecated, but was last modified less than
 ' <gDaysToKeep> days, then keep the page and/or attachment. Otherwise
@@ -123,7 +123,7 @@ If (Request.Form("submitted") = "yes") And (Request.Form("password") = gAdminPas
 	Do While Not rs.EOF
 		'UPGRADE_NOTE: Date operands have a different behavior in arithmetical operations. Copy this link in your browser for more: ms-its:C:\Soft\Dev\ASP to ASP.NET Migration Assistant\AspToAspNet.chm::/1023.htm
 		If IIF(IsDBNull(rs.Fields.Item("att_timestamp").Value), Nothing, rs.Fields.Item("att_timestamp").Value) < (System.Date.FromOADate(Now().ToOADate - gDaysToKeep)) Then
-			vPath = Server.MapPath(OPENWIKI_UPLOADDIR & IIF(IsDBNull(rs.Fields.Item("att_wrv_name").Value), Nothing, rs.Fields.Item("att_wrv_name").Value) & "/" & IIF(IsDBNull(rs.Fields.Item("att_filename").Value), Nothing, rs.Fields.Item("att_filename").Value))
+			vPath = HttpContext.Current.Server.MapPath(OPENWIKI_UPLOADDIR & IIF(IsDBNull(rs.Fields.Item("att_wrv_name").Value), Nothing, rs.Fields.Item("att_wrv_name").Value) & "/" & IIF(IsDBNull(rs.Fields.Item("att_filename").Value), Nothing, rs.Fields.Item("att_filename").Value))
 			If vFSO.FileExists(vPath) Then
 				Response.Write(vPath & "<br />")
 				vFSO.DeleteFile((vPath))
@@ -153,4 +153,3 @@ End If
 </p>
 </body>
 </html>
-
