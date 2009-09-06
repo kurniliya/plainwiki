@@ -189,7 +189,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As OneStrArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -202,7 +202,7 @@ Namespace Openwiki
             Dim vParam1 As String = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(0) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -219,15 +219,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             vParam1 = vParsedParam
@@ -254,7 +256,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As OneIntArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -267,7 +269,7 @@ Namespace Openwiki
             Dim vParam1 As Integer = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(0) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -284,15 +286,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             vParam1 = CInt(vParsedParam)
@@ -319,7 +323,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As TwoStrArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -333,7 +337,7 @@ Namespace Openwiki
             Dim vParam2 As String = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(1) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -350,15 +354,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             vParam1 = CStr(vParsedParam)
@@ -387,7 +393,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As ThreeStrArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -402,7 +408,7 @@ Namespace Openwiki
             Dim vParam3 As String = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(2) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -419,15 +425,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             vParam1 = CStr(vParsedParam)
@@ -458,7 +466,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As TwoStrOneBoolArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -473,7 +481,7 @@ Namespace Openwiki
             Dim vParam3 As Boolean = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(2) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -490,15 +498,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             vParam1 = CStr(vParsedParam)
@@ -533,7 +543,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As OneBoolTwoStrArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -548,7 +558,7 @@ Namespace Openwiki
             Dim vParam3 As String = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(2) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -565,15 +575,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             If vParsedParam = "True" Then
@@ -608,7 +620,7 @@ Namespace Openwiki
             , ByVal pReplaceFunc As OneBoolOneIntOneStrArgSub _
             , ByVal pIgnoreCase As Boolean _
             , ByVal pGlobal As Boolean _
-            , ByVal pParamStr As String _
+            , ByVal pParamStr() As String _
         ) As String
             Dim vRegexOptions As RegexOptions
             Dim vText As String
@@ -623,7 +635,7 @@ Namespace Openwiki
             Dim vParam3 As String = Nothing
             Dim i As Integer
             Dim vParsedParam As String
-            Dim vParamStr As String = pParamStr
+            Dim vParamStr(2) As String
 
             If IsNothing(pText) Then
                 Return Nothing
@@ -640,15 +652,17 @@ Namespace Openwiki
             vMatches = Regex.Matches(pText, pSearchPattern)
             For Each vMatch In vMatches
 
-                vParamStr = pParamStr
+                For j As Integer = 0 To vParamStr.Length - 1
+                    vParamStr(j) = pParamStr(j)
 
-                For i = 1 To vMatch.Groups.Count - 1
-                    vSubMatch = vMatch.Groups(i)
-                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                    For i = 1 To vMatch.Groups.Count - 1
+                        vSubMatch = vMatch.Groups(i)
+                        vParamStr(j) = Replace(vParamStr(j), "$" & i, vSubMatch.Value)
+                    Next
                 Next
 
                 i = 1
-                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                For Each vParsedParam In vParamStr
                     Select Case i
                         Case 1
                             If vParsedParam = "True" Then

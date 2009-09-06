@@ -54,12 +54,12 @@ Namespace Openwiki
             vText = MultiLineMarkup(vText)  ' Multi-line markup
             vText = WikiLinesToHtml(vText)  ' Line-oriented markup
 
-            vText = s(vText, gFS & "(\d+)" & gFS, AddressOf GetRaw, False, True, "$1")  ' Restore saved text
-            vText = s(vText, gFS & "(\d+)" & gFS, AddressOf GetRaw, False, True, "$1")  ' Restore nested saved text
+            vText = s(vText, gFS & "(\d+)" & gFS, AddressOf GetRaw, False, True, New [String]() {"$1"})  ' Restore saved text
+            vText = s(vText, gFS & "(\d+)" & gFS, AddressOf GetRaw, False, True, New [String]() {"$1"})  ' Restore nested saved text
 
             If gIncludeLevel = 0 Then
                 If cUseHeadings = 1 Then
-                    vText = s(vText, gFS & "(\=+)[ \t]+(.*?)[ \t]+\=+ " & gFS, AddressOf GetWikiHeading, False, True, "$1, $2")
+                    vText = s(vText, gFS & "(\=+)[ \t]+(.*?)[ \t]+\=+ " & gFS, AddressOf GetWikiHeading, False, True, New [String]() {"$1", "$2"})
                     '            vText = Replace(vText, gFS & "TOC" & gFS, gTOC.GetTOC)
                     vText = Replace(vText, gFS & "TOC" & gFS, "<ow:toc_root>" & gTOC.GetTOC & "</ow:toc_root>")
                     vText = Replace(vText, gFS & "TOCRight" & gFS, "<ow:toc_root align=""right"">" & gTOC.GetTOC & "</ow:toc_root>")
@@ -95,10 +95,10 @@ Namespace Openwiki
             'pText = Replace(pText, gFS, "")    ' remove separators
 
             If cRawHtml = 1 Then
-                pText = s(pText, "<html>([\s\S]*?)<\/html>", AddressOf StoreHtml, True, True, "$1")
+                pText = s(pText, "<html>([\s\S]*?)<\/html>", AddressOf StoreHtml, True, True, New [String]() {"$1"})
             End If
             If cMathML = 1 Then
-                pText = s(pText, "<math(\s[^<>/]+?)?>([\s\S]*?)<\/math>", AddressOf StoreMathML, True, True, "$1, $2")
+                pText = s(pText, "<math(\s[^<>/]+?)?>([\s\S]*?)<\/math>", AddressOf StoreMathML, True, True, New [String]() {"$1", "$2"})
             End If
 
             '            pText = MyMultiLineMarkupStart(pText)
@@ -113,16 +113,16 @@ Namespace Openwiki
 
 
             ' The <nowiki> tag stores text with no markup (except quoting HTML)
-            pText = s(pText, "\&lt;nowiki\&gt;([\s\S]*?)\&lt;\/nowiki\&gt;", AddressOf StoreRaw, True, True, "$1")
+            pText = s(pText, "\&lt;nowiki\&gt;([\s\S]*?)\&lt;\/nowiki\&gt;", AddressOf StoreRaw, True, True, New [String]() {"$1"})
 
             ' <!-- and --> mark commented block
             pText = s(pText, "\&lt;!--([\s\S]*?)--\&gt;", "", True, True)
 
             ' <code></code> and {{{ }}} do the same thing.
-            pText = s(pText, "\{\{\{(.*?)\}\}\}", AddressOf StoreRaw, True, True, "<tt>$1</tt>")
-            pText = s(pText, "\&lt;code\&gt;(.*?)\&lt;\/code\&gt;", AddressOf StoreRaw, True, True, "<tt>$1</tt>")
-            pText = s(pText, "\{\{\{([\s\S]*?)\}\}\}", AddressOf StoreCode, True, True, "$1")
-            pText = s(pText, "\&lt;code\&gt;([\s\S]*?)\&lt;\/code\&gt;", AddressOf StoreCode, True, True, "$1")
+            pText = s(pText, "\{\{\{(.*?)\}\}\}", AddressOf StoreRaw, True, True, New [String]() {"<tt>$1</tt>"})
+            pText = s(pText, "\&lt;code\&gt;(.*?)\&lt;\/code\&gt;", AddressOf StoreRaw, True, True, New [String]() {"<tt>$1</tt>"})
+            pText = s(pText, "\{\{\{([\s\S]*?)\}\}\}", AddressOf StoreCode, True, True, New [String]() {"$1"})
+            pText = s(pText, "\&lt;code\&gt;([\s\S]*?)\&lt;\/code\&gt;", AddressOf StoreCode, True, True, New [String]() {"$1"})
             pText = s(pText, "\&lt;pre\&gt;([\s\S]*?)\&lt;\/pre\&gt;", "<pre>$1</pre>", True, True)
 
             If cHtmlTags = 1 Then
@@ -137,33 +137,33 @@ Namespace Openwiki
             End If
 
             If cHtmlLinks = 1 Then
-                pText = s(pText, "\&lt;a\s([^<>]+?)\&gt;([\s\S]*?)\&lt;\/a\&gt;", AddressOf StoreHref, True, True, "$1, $2")
+                pText = s(pText, "\&lt;a\s([^<>]+?)\&gt;([\s\S]*?)\&lt;\/a\&gt;", AddressOf StoreHref, True, True, New [String]() {"$1", "$2"})
             End If
 
             If Not IsNothing(gAggregateURLs) Then
                 ' we are in the process of refreshing RSS feeds
                 If m(gMacros, "Include", True, True) Then
-                    pText = s(pText, "\&lt;(Include)(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, "$1, $2")
+                    pText = s(pText, "\&lt;(Include)(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, New [String]() {"$1", "$2"})
                 End If
-                pText = s(pText, "\&lt;(Syndicate)(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, "$1, $2")
+                pText = s(pText, "\&lt;(Syndicate)(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, New [String]() {"$1", "$2"})
                 MultiLineMarkup = pText
                 Exit Function
             End If
 
             ' process macro's
-            pText = s(pText, "\&lt;(" & gMacros & ")(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, "$1, $2")
+            pText = s(pText, "\&lt;(" & gMacros & ")(\(.*?\))?(?:\s*\/)?\&gt;", AddressOf ExecMacro, True, True, New [String]() {"$1", "$2"})
 
             ' Category marks on wikipage
-            pText = s(pText, gCategoryMarkPattern, AddressOf StoreCategoryMark, False, True, "$1")
+            pText = s(pText, gCategoryMarkPattern, AddressOf StoreCategoryMark, False, True, New [String]() {"$1"})
 
             If cFreeLinks = 1 Then
-                pText = s(pText, "\[\[" & gFreeLinkPattern & "(?:\|([^\]]+))*\]\]", AddressOf StoreFreeLink, False, True, "$1, $2")
+                pText = s(pText, "\[\[" & gFreeLinkPattern & "(?:\|([^\]]+))*\]\]", AddressOf StoreFreeLink, False, True, New [String]() {"$1", "$2"})
             End If
 
             ' Links like [URL] and [URL text of link]
-            pText = s(pText, "\[" & gUrlPattern & "(\s+[^\]]+)*\]", AddressOf StoreBracketUrl, False, True, "$1, $2")
-            pText = s(pText, "\[" & gInterLinkPattern & "(\s+[^\]]+)*\]", AddressOf StoreInterPage, False, True, "$1, $2, True")
-            pText = s(pText, "\[" & gISBNPattern & "([^\]]+)*\]", AddressOf StoreISBN, False, True, "$1, $2, True")
+            pText = s(pText, "\[" & gUrlPattern & "(\s+[^\]]+)*\]", AddressOf StoreBracketUrl, False, True, New [String]() {"$1", "$2"})
+            pText = s(pText, "\[" & gInterLinkPattern & "(\s+[^\]]+)*\]", AddressOf StoreInterPage, False, True, New [String]() {"$1", "$2", "True"})
+            pText = s(pText, "\[" & gISBNPattern & "([^\]]+)*\]", AddressOf StoreISBN, False, True, New [String]() {"$1", "$2", "True"})
 
             If cAllowAttachments = 1 Then
                 ''Dim vAttachmentPattern
@@ -181,13 +181,13 @@ Namespace Openwiki
 
             If cWikiLinks = 1 And cBracketText = 1 And cBracketWiki = 1 Then
                 ' Local bracket-links
-                pText = s(pText, "\[" & "(#?)" & gLinkPattern & "(\s+[^\]]+?)\]", AddressOf StoreBracketWikiLink, False, True, "$1, $2, $3")
+                pText = s(pText, "\[" & "(#?)" & gLinkPattern & "(\s+[^\]]+?)\]", AddressOf StoreBracketWikiLink, False, True, New [String]() {"$1", "$2", "$3"})
             End If
 
-            pText = s(pText, gUrlPattern, AddressOf StoreUrl, False, True, "$1")
-            pText = s(pText, gInterLinkPattern, AddressOf StoreInterPage, False, True, "$1,, False")
-            pText = s(pText, gMailPattern, AddressOf StoreMail, False, True, "$1")
-            pText = s(pText, gISBNPattern, AddressOf StoreISBN, False, True, "$1,, False")
+            pText = s(pText, gUrlPattern, AddressOf StoreUrl, False, True, New [String]() {"$1"})
+            pText = s(pText, gInterLinkPattern, AddressOf StoreInterPage, False, True, New [String]() {"$1", "", "False"})
+            pText = s(pText, gMailPattern, AddressOf StoreMail, False, True, New [String]() {"$1"})
+            pText = s(pText, gISBNPattern, AddressOf StoreISBN, False, True, New [String]() {"$1", "", "False"})
 
             If cAllowAttachments = 1 Then
                 'If Not IsNothing(gCurrentWorkingPages) Then
@@ -217,7 +217,7 @@ Namespace Openwiki
             End If
 
             If cUseHeadings = 1 And cWikifyHeaders = 0 Then
-                pText = s(pText, gHeaderPattern, AddressOf StoreWikiHeading, False, True, "$1, $2, $3")
+                pText = s(pText, gHeaderPattern, AddressOf StoreWikiHeading, False, True, New [String]() {"$1", "$2", "$3"})
             End If
 
             If cWikiLinks = 1 Then
@@ -232,13 +232,13 @@ Namespace Openwiki
                 End If
 
                 If gStopWords <> "" Then
-                    pText = s(pText, "\b(" & gStopWords & ")\b", AddressOf StoreRaw, True, True, "$1")
+                    pText = s(pText, "\b(" & gStopWords & ")\b", AddressOf StoreRaw, True, True, New [String]() {"$1"})
                 End If
 
                 If cNewSkool = 1 Then
-                    pText = s(pText, "(~?)" & gLinkPattern, AddressOf GetWikiLink, False, True, "$1, $2,")
+                    pText = s(pText, "(~?)" & gLinkPattern, AddressOf GetWikiLink, False, True, New [String]() {"$1", "$2", ""})
                 Else
-                    pText = s(pText, gLinkPattern, AddressOf GetWikiLink, False, True, ", $1,")
+                    pText = s(pText, gLinkPattern, AddressOf GetWikiLink, False, True, New [String]() {"", "$1", ""})
                 End If
             End If
 
@@ -279,7 +279,7 @@ Namespace Openwiki
             End If
 
             If cUseHeadings = 1 And cWikifyHeaders = 1 Then
-                pText = s(pText, gHeaderPattern, AddressOf StoreWikiHeading, False, True, "$1, $2, $3")
+                pText = s(pText, gHeaderPattern, AddressOf StoreWikiHeading, False, True, New [String]() {"$1", "$2", "$3"})
             End If
 
             '            pText = MyMultiLineMarkupEnd(pText)
@@ -338,7 +338,7 @@ Namespace Openwiki
 
                     vAttrs = ""
                     gListSet = False    ' Dictionary Lists processing block when True
-                    vLine = s(vLine, "^(\s+)\;(.*?) \:", AddressOf SetListValues, False, True, "True, $1, <dt>$2</dt><dd>")
+                    vLine = s(vLine, "^(\s+)\;(.*?) \:", AddressOf SetListValues, False, True, New [String]() {"True", "$1", "<dt>$2</dt><dd>"})
                     If gListSet Then
                         vCode = "dl"
                         vCodeList = "dl"
@@ -350,7 +350,7 @@ Namespace Openwiki
                         vCodeClose = vTagStack.ProcessCodeClose(vDepth, vCodeItem, vCodeList)
                         Call vTagStack.NestList(vDepth, vCodeItem, vCodeList)
                     Else    ' Indented lists processing block when True
-                        vLine = s(vLine, "^(\s+)\:\s(.*?)$", AddressOf SetListValues, False, True, "True, $1, <dt /><dd>$2")
+                        vLine = s(vLine, "^(\s+)\:\s(.*?)$", AddressOf SetListValues, False, True, New [String]() {"True", "$1", "<dt /><dd>$2"})
                         If gListSet Then
                             vCode = "dl"
                             vCodeList = "dl"
@@ -362,7 +362,7 @@ Namespace Openwiki
                             vCodeClose = vTagStack.ProcessCodeClose(vDepth, vCodeItem, vCodeList)
                             Call vTagStack.NestList(vDepth, vCodeItem, vCodeList)
                         Else ' Unordered lists processing block when True
-                            vLine = s(vLine, "^(\s+)\*\s(.*?)$", AddressOf SetListValues, False, True, "True, $1, <li>$2")
+                            vLine = s(vLine, "^(\s+)\*\s(.*?)$", AddressOf SetListValues, False, True, New [String]() {"True", "$1", "<li>$2"})
                             If gListSet Then
                                 vCode = "ul"
                                 vCodeList = "ul"
@@ -374,7 +374,7 @@ Namespace Openwiki
                                 vCodeClose = vTagStack.ProcessCodeClose(vDepth, vCodeItem, vCodeList)
                                 Call vTagStack.NestList(vDepth, vCodeItem, vCodeList)
                             Else
-                                vLine = s(vLine, "^(\s+)([0-9aAiI]\.(?:#\d+)? )", AddressOf SetListValues, False, True, "True, $1, $2")
+                                vLine = s(vLine, "^(\s+)([0-9aAiI]\.(?:#\d+)? )", AddressOf SetListValues, False, True, New [String]() {"True", "$1", "$2"})
                                 If gListSet Then
                                     vPos = InStr(vLine, " ")
                                     '                            vCode  = Left(vLine, vPos - 1)
@@ -470,7 +470,7 @@ Namespace Openwiki
 
                     Do While vTR <> ""
                         gListSet = False
-                        vTD = s(vTR, "^(\|{2,})(.*?)\|\|", AddressOf SetListValues, False, True, "True, $1, $2")
+                        vTD = s(vTR, "^(\|{2,})(.*?)\|\|", AddressOf SetListValues, False, True, New [String]() {"True", "$1", "$2"})
                         If gListSet Then
                             vColSpanPos = Len(gDepth) \ 2
                             vNrOfTDs = vNrOfTDs + vColSpanPos
@@ -521,7 +521,7 @@ Namespace Openwiki
                     gListSet = False
                     '            HttpContext.Current.Response.Write("vLine..." & "<br>")
                     '            HttpContext.Current.Response.Write(vLine & "<br>")
-                    vInfoboxRow = s(vLine, "^\|(.*?)=(.*)$", AddressOf WikifyInfoboxContent, False, True, "$1, $2")
+                    vInfoboxRow = s(vLine, "^\|(.*?)=(.*)$", AddressOf WikifyInfoboxContent, False, True, New [String]() {"$1", "$2"})
                     If Trim(sReturn) = "" Then
                         sReturn = "&#160;"
                     End If
@@ -592,7 +592,7 @@ Namespace Openwiki
             ' OPENWIKI_ENCODING correct though in owconfig.asp and also the encoding
             ' attribute at the first line of the stylesheets.
             If cAllowCharRefs = 1 Then
-                QuoteXml = s(QuoteXml, "\&amp;([#a-zA-Z0-9]+);", AddressOf StoreCharRef, False, True, "$1")
+                QuoteXml = s(QuoteXml, "\&amp;([#a-zA-Z0-9]+);", AddressOf StoreCharRef, False, True, New [String]() {"$1"})
             End If
         End Function
 
@@ -1006,7 +1006,7 @@ Namespace Openwiki
                 End If
             End If
             If cFreeUpper = 1 Then
-                vID = s(vID, "([-_\.,\(\)\/])([a-z])", AddressOf Capitalize, False, True, "$1, $2")
+                vID = s(vID, "([-_\.,\(\)\/])([a-z])", AddressOf Capitalize, False, True, New [String]() {"$1", "$2"})
             End If
             FreeToNormal = vID
         End Function
@@ -1027,7 +1027,7 @@ Namespace Openwiki
                 End If
             End If
             If cFreeUpper = 1 Then
-                vID = s(vID, "([-_\.,\(\)\/])([a-z])", AddressOf Capitalize, False, True, "$1, $2")
+                vID = s(vID, "([-_\.,\(\)\/])([a-z])", AddressOf Capitalize, False, True, New [String]() {"$1", "$2"})
             End If
             FreeToNormal_X = vID
         End Function
@@ -1297,7 +1297,7 @@ Namespace Openwiki
         End Function
 
         Function InsertFootnotes(ByVal pText As String) As String
-            pText = s(pText, gFS & gFS & "(.*?)" & gFS & gFS, AddressOf AddFootnote, False, True, "$1")
+            pText = s(pText, gFS & gFS & "(.*?)" & gFS & gFS, AddressOf AddFootnote, False, True, New [String]() {"$1"})
             If Not gFootnotes Is Nothing Then
                 Dim i As Integer ', vCount
                 pText = pText & "<ow:footnotes>"
