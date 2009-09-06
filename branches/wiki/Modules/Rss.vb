@@ -125,10 +125,12 @@
 
             '            On Error Resume Next
 
-            If Not IsReference(gAggregateURLs) Then
+            If IsNothing(gAggregateURLs) Then
+                GetAggregation = Nothing
                 Exit Function
             End If
             If gAggregateURLs.Count = 0 Then
+                GetAggregation = Nothing
                 Exit Function
             End If
 

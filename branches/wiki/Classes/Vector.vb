@@ -28,44 +28,32 @@
             If (UBound(myStack) < myCount) Then
                 ReDim Preserve myStack(UBound(myStack) * 2)
             End If
-            Call SetElementAt(myCount, pElem)
+            SetElementAt(myCount, pElem)
         End Sub
 
         Public Function Pop() As Object
             If myCount >= LBound(myStack) And myCount <= UBound(myStack) Then
-                If IsReference(myStack(myCount)) Then
-                    Pop = myStack(myCount)
-                Else
-                    Pop = myStack(myCount)
-                End If
+                Pop = myStack(myCount)
                 myCount = myCount - 1
+            Else
+                Pop = Nothing
             End If
         End Function
 
         Public Function Top() As Object
             If myCount >= LBound(myStack) And myCount <= UBound(myStack) Then
-                If IsReference(myStack(myCount)) Then
-                    Top = myStack(myCount)
-                Else
-                    Top = myStack(myCount)
-                End If
+                Top = myStack(myCount)
+            Else
+                Top = Nothing
             End If
         End Function
 
         Public Function ElementAt(ByVal pIndex As Integer) As Object
-            If IsReference(myStack(pIndex)) Then
-                ElementAt = myStack(pIndex)
-            Else
-                ElementAt = myStack(pIndex)
-            End If
+            ElementAt = myStack(pIndex)
         End Function
 
         Public Sub SetElementAt(ByVal pIndex As Integer, ByVal pValue As Object)
-            If IsReference(pValue) Then
-                myStack(pIndex) = pValue
-            Else
-                myStack(pIndex) = pValue
-            End If
+            myStack(pIndex) = pValue
         End Sub
 
         Public Sub RemoveElementAt(ByVal pIndex As Integer)

@@ -66,16 +66,7 @@ Namespace Openwiki
         End Sub
 
         Function EscapePattern(ByVal pPattern As String) As String
-            '            Dim vRegEx
             pPattern = Replace(pPattern, "''''''", "")
-            'vRegEx = New Regex
-            'vRegEx.IgnoreCase = True
-            'vRegEx.Global = True
-            'vRegEx.Pattern = pPattern
-            ''    On Error Resume Next
-            'Err.Number = 0
-            'vRegEx.Test("x")
-            'If Err.Number <> 0 Then
             pPattern = Replace(pPattern, "\", "\\")
             pPattern = Replace(pPattern, "(", "\(")
             pPattern = Replace(pPattern, ")", "\)")
@@ -83,9 +74,6 @@ Namespace Openwiki
             pPattern = Replace(pPattern, "+", "\+")
             pPattern = Replace(pPattern, "*", "\*")
             pPattern = Replace(pPattern, "?", "\?")
-            'End If
-
-            'Response.Write("Pattern : " & pPattern & "<br />")
             EscapePattern = pPattern
         End Function
 

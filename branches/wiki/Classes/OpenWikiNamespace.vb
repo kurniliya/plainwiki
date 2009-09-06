@@ -720,9 +720,13 @@ Namespace Openwiki
                 vAttachment.Timestamp = CDate(vRS("att_timestamp").Value)
                 vAttachment.Filesize = CLng(vRS("att_filesize").Value)
                 vAttachment.By = CStr(vRS("att_by").Value)
-                vAttachment.ByAlias = CStr(vRS("att_byalias").Value)
+
+                If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                    vAttachment.ByAlias = CStr(vRS("att_byalias").Value)
+                End If
+
                 vAttachment.Comment = CStr(vRS("att_comment").Value)
-                Call pPage.AddAttachment(vAttachment, Not pIncludeAllChangeRecords)
+                pPage.AddAttachment(vAttachment, Not pIncludeAllChangeRecords)
                 vRS.MoveNext()
             Loop
             vRS.Close()
@@ -743,6 +747,8 @@ Namespace Openwiki
             Dim vChange As Change = New Change
             Dim vCurPage As String = ""
             Dim vAttachmentChange As AttachmentChange
+            Dim sTemp As String
+
             vList = New Vector
             'vRegEx = New Regexp
             'vRegEx.IgnoreCase = True
@@ -786,7 +792,7 @@ Namespace Openwiki
             End If
             vRS.Open(vQuery, vConn, ADODB.CursorTypeEnum.adOpenForwardOnly)
             Do While Not vRS.EOF
-                If Regex.IsMatch(CStr(vRS("wpg_name").Value), EscapePattern(pPattern), RegexOptions.IgnoreCase) Then
+                If Regex.IsMatch(CStr(vRS("wpg_name").Value), pPattern, RegexOptions.IgnoreCase) Then
                     If vCurPage <> CStr(vRS("wpg_name").Value) Then
                         vCurPage = CStr(vRS("wpg_name").Value)
                         vPage = New WikiPage
@@ -798,7 +804,10 @@ Namespace Openwiki
                         vChange.MinorEdit = CInt(vRS("wrv_minoredit").Value)
                         vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
                         vChange.By = CStr(vRS("wrv_by").Value)
-                        vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+
+                        If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                            vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+                        End If
 
                         If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
                             vChange.Comment = CStr(vRS("wrv_comment").Value)
@@ -813,7 +822,11 @@ Namespace Openwiki
                             vAttachmentChange.Revision = CInt(vRS("ath_revision").Value)
                             vAttachmentChange.Timestamp = CDate(vRS("ath_timestamp").Value)
                             vAttachmentChange.By = CStr(vRS("ath_by").Value)
-                            vAttachmentChange.ByAlias = CStr(vRS("ath_byalias").Value)
+
+                            If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                                vAttachmentChange.ByAlias = CStr(vRS("ath_byalias").Value)
+                            End If
+
                             vAttachmentChange.Action = CStr(vRS("ath_action").Value)
                             vChange.AddAttachmentChange(vAttachmentChange)
                         End If
@@ -962,7 +975,10 @@ Namespace Openwiki
                     vChange.MinorEdit = CInt(vRS("wrv_minoredit").Value)
                     vChange.Timestamp = CDate(vRS("wrv_timestamp").Value)
                     vChange.By = CStr(vRS("wrv_by").Value)
-                    vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+
+                    If Not IsDBNull(vRS("wrv_byalias").Value) Then
+                        vChange.ByAlias = CStr(vRS("wrv_byalias").Value)
+                    End If
 
                     If Not Convert.ToString(vRS("wrv_comment").Value) = Convert.ToString(DBNull.Value) Then
                         vChange.Comment = CStr(vRS("wrv_comment").Value)

@@ -3,6 +3,14 @@
 Namespace Openwiki
 
     Module Regexp
+        Public Delegate Sub OneStrArgSub(ByVal p1 As String)
+        Public Delegate Sub OneIntArgSub(ByVal p1 As Integer)
+        Public Delegate Sub TwoStrArgSub(ByVal p1 As String, ByVal p2 As String)
+        Public Delegate Sub ThreeStrArgSub(ByVal p1 As String, ByVal p2 As String, ByVal p3 As String)
+        Public Delegate Sub TwoStrOneBoolArgSub(ByVal p1 As String, ByVal p2 As String, ByVal p3 As Boolean)
+        Public Delegate Sub OneBoolTwoStrArgSub(ByVal p1 As Boolean, ByVal p2 As String, ByVal p3 As String)
+        Public Delegate Sub OneBoolOneIntOneStrArgSub(ByVal p1 As Boolean, ByVal p2 As Integer, ByVal p3 As String)
+
         '
         ' ---------------------------------------------------------------------------
         ' Copyright(c) 2000-2002, Laurens Pit
@@ -80,7 +88,7 @@ Namespace Openwiki
 
         Sub TestRegex()
             'gRegEx = New Regex
-            'If Not IsReference(gRegEx) Then
+            'If Not Not IsNothing(gRegEx) Then
             '    HttpContext.Current.Response.Write("<h2>Error:</h2><p>Probable cause: Registry permission problem.</p>")
             '    HttpContext.Current.Response.Write("This is a known problem with Microsoft.<br />" _
             '                 & "You can find more information about this problem in the following  " _
@@ -125,7 +133,6 @@ Namespace Openwiki
             End If
 
             If (Left(pReplacePattern, 1) <> "&") Then
-                '    '                Call WriteDebug("Replacement is not procedural", "", 100)
                 s = Regex.Replace(pText, pSearchPattern, pReplacePattern, vRegexOptions)
             Else
                 Return Nothing
@@ -175,5 +182,500 @@ Namespace Openwiki
                 '    Return vText
             End If
         End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As OneStrArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As String = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            vParam1 = vParsedParam
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As OneIntArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As Integer = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            vParam1 = CInt(vParsedParam)
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As TwoStrArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As String = Nothing
+            Dim vParam2 As String = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            vParam1 = CStr(vParsedParam)
+                        Case 2
+                            vParam2 = CStr(vParsedParam)
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1, vParam2)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As ThreeStrArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As String = Nothing
+            Dim vParam2 As String = Nothing
+            Dim vParam3 As String = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            vParam1 = CStr(vParsedParam)
+                        Case 2
+                            vParam2 = CStr(vParsedParam)
+                        Case 3
+                            vParam3 = CStr(vParsedParam)
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1, vParam2, vParam3)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As TwoStrOneBoolArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As String = Nothing
+            Dim vParam2 As String = Nothing
+            Dim vParam3 As Boolean = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            vParam1 = CStr(vParsedParam)
+                        Case 2
+                            vParam2 = CStr(vParsedParam)
+                        Case 3
+                            If vParsedParam = "True" Then
+                                vParam3 = True
+                            Else
+                                vParam3 = False
+                            End If
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1, vParam2, vParam3)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As OneBoolTwoStrArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As Boolean = Nothing
+            Dim vParam2 As String = Nothing
+            Dim vParam3 As String = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            If vParsedParam = "True" Then
+                                vParam1 = True
+                            Else
+                                vParam1 = False
+                            End If
+                        Case 2
+                            vParam2 = CStr(vParsedParam)
+                        Case 3
+                            vParam3 = CStr(vParsedParam)
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1, vParam2, vParam3)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
+        Function s( _
+            ByVal pText As String _
+            , ByVal pSearchPattern As String _
+            , ByVal pReplaceFunc As OneBoolOneIntOneStrArgSub _
+            , ByVal pIgnoreCase As Boolean _
+            , ByVal pGlobal As Boolean _
+            , ByVal pParamStr As String _
+        ) As String
+            Dim vRegexOptions As RegexOptions
+            Dim vText As String
+            Dim vPrevLastIndex As Integer
+            Dim vPrevNewPos As Integer
+            Dim vMatch As Match
+            Dim vMatches As MatchCollection
+            Dim vSubMatch As Group
+            Dim vReplacement As String
+            Dim vParam1 As Boolean = Nothing
+            Dim vParam2 As Integer = Nothing
+            Dim vParam3 As String = Nothing
+            Dim i As Integer
+            Dim vParsedParam As String
+            Dim vParamStr As String = pParamStr
+
+            If IsNothing(pText) Then
+                Return Nothing
+            End If
+
+            If pIgnoreCase Then
+                vRegexOptions = RegexOptions.IgnoreCase
+            End If
+
+            vText = pText
+            vPrevLastIndex = 0
+            vPrevNewPos = 0
+
+            vMatches = Regex.Matches(pText, pSearchPattern)
+            For Each vMatch In vMatches
+
+                vParamStr = pParamStr
+
+                For i = 1 To vMatch.Groups.Count - 1
+                    vSubMatch = vMatch.Groups(i)
+                    vParamStr = Replace(vParamStr, "$" & i, vSubMatch.Value)
+                Next
+
+                i = 1
+                For Each vParsedParam In vParamStr.Split(New [Char]() {","c})
+                    Select Case i
+                        Case 1
+                            If vParsedParam = "True" Then
+                                vParam1 = True
+                            Else
+                                vParam1 = False
+                            End If
+                        Case 2
+                            vParam2 = CInt(vParsedParam)
+                        Case 3
+                            vParam3 = CStr(vParsedParam)
+                    End Select
+                    i = i + 1
+                Next
+
+                sReturn = ""
+                pReplaceFunc(vParam1, vParam2, vParam3)
+                vReplacement = sReturn
+
+                ' replace vMatch.Value in vText by vReplacement
+                vPrevNewPos = vPrevNewPos + (vMatch.Index - vPrevLastIndex)
+                vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
+                vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
+                vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+            Next
+            Return vText
+        End Function
+
     End Module
 End Namespace

@@ -235,7 +235,7 @@
             '            Dim vCount As Integer
             Dim vID As String
 
-            If Not IsReference(gCurrentWorkingPages) Then
+            If IsNothing(gCurrentWorkingPages) Then
                 gCurrentWorkingPages = New Vector
                 gCurrentWorkingPages.Push(gPage)
             End If
@@ -331,7 +331,7 @@
                 pRefreshRate = 0
             End If
 
-            If IsReference(gAggregateURLs) And cAllowAggregations = 1 Then
+            If Not IsNothing(gAggregateURLs) And cAllowAggregations = 1 Then
                 gAggregateURLs.Push(vURL)
             End If
 
