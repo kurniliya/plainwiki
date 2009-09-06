@@ -46,7 +46,7 @@ Namespace Openwiki
             vXmlDoc.async = False
             vXmlDoc.preserveWhiteSpace = True
 
-            'If Not IsReference(vXmlDoc) Then
+            'If Not Not IsNothing(vXmlDoc) Then
             '    ' As this is the first time we try to instantiate the XML Doc object
             '    ' let's assume the user hasn't configured his/her owconfig file
             '    ' correctly yet. Switch MS XML Version to try again.
@@ -68,7 +68,7 @@ Namespace Openwiki
             '    End If
             '    vXmlDoc.async = False
             '    vXmlDoc.preserveWhiteSpace = True
-            '    If Not IsReference(vXmlDoc) Then
+            '    If Not Not IsNothing(vXmlDoc) Then
             '        EndWithErrorMessage()
             '    ElseIf MSXML_VERSION = 3 Then
             '        HttpContext.Current.Response.Write("<b>WARNING:</b>You have configured your OpenWiki to use the MSXML v" & MSXML_VERSION_OLD & " component, but you don't appear to have this installed. The application now falls back to use the MSXML v3 component. Please update your config file (usually file owconfig_default.asp) or install MSXML v" & MSXML_VERSION_OLD & ".<br />")

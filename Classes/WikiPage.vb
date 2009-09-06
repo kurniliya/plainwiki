@@ -94,7 +94,7 @@
         End Function
 
         Public Function Exists() As Boolean
-            If Not IsReference(CType(vChangesCollection.ElementAt(0), Change).Timestamp) Then
+            If IsNothing(CType(vChangesCollection.ElementAt(0), Change).Timestamp) Then
                 Exists = False
             Else
                 Exists = True
@@ -115,7 +115,7 @@
             'Dim vCount As Integer
             Dim vAttachment As Attachment
 
-            If Not IsReference(vAttachmentCollection) Then
+            If IsNothing(vAttachmentCollection) Then
                 vAttachmentCollection = New Vector
             End If
             If pStoreMaxRevOnly Then
@@ -138,7 +138,7 @@
             '            Dim vCount As Integer
             Dim vAttachment As Attachment
 
-            If IsReference(vAttachmentCollection) Then
+            If Not IsNothing(vAttachmentCollection) Then
                 For i = 0 To vAttachmentCollection.Count - 1
                     vAttachment = CType(vAttachmentCollection.ElementAt(i), Attachment)
                     If vAttachment.Name = pName Then
@@ -156,7 +156,7 @@
             Dim vAttachment As Attachment
 
             GetAttachmentPattern = ""
-            If IsReference(vAttachmentCollection) Then
+            If Not IsNothing(vAttachmentCollection) Then
                 For i = 0 To vAttachmentCollection.Count - 1
                     vAttachment = CType(vAttachmentCollection.ElementAt(i), Attachment)
                     If i > 0 Then
@@ -170,7 +170,7 @@
         Public Function ToLinkXML(ByVal pText As String, ByVal pTemplate As String, ByVal pAddPath As Boolean) As String
             Dim vLastChange As Change, vTemp As String
             vLastChange = CType(vChangesCollection.ElementAt(0), Change)
-            If Not IsReference(vLastChange.Timestamp) Then
+            If IsNothing(vLastChange.Timestamp) Then
                 ToLinkXML = "<ow:link name='" & CDATAEncode(vName) & "' "
                 If vAnchor <> "" Then
                     ToLinkXML = ToLinkXML & " anchor='" & CDATAEncode(vAnchor) & "'"
@@ -237,7 +237,7 @@
             End If
 
             If (cAllowAttachments = 1) Then
-                If IsReference(vAttachmentCollection) Then
+                If Not IsNothing(vAttachmentCollection) Then
                     vCount = vAttachmentCollection.Count - 1
                     If vCount >= 0 Then
                         ToXML = ToXML & "<ow:attachments>"
