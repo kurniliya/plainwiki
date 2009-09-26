@@ -171,29 +171,29 @@
             Dim vLastChange As Change, vTemp As String
             vLastChange = CType(vChangesCollection.ElementAt(0), Change)
             If IsNothing(vLastChange.Timestamp) Then
-                ToLinkXML = "<ow:link name='" & CDATAEncode(vName) & "' "
+                ToLinkXML = "<ow:link name=""" & CDATAEncode(vName) & """ "
                 If vAnchor <> "" Then
-                    ToLinkXML = ToLinkXML & " anchor='" & CDATAEncode(vAnchor) & "'"
+                    ToLinkXML = ToLinkXML & " anchor=""" & CDATAEncode(vAnchor) & """"
                 End If
-                ToLinkXML = ToLinkXML & " href='" & gScriptName & "?p=" & HttpContext.Current.Server.UrlEncode(vName)
+                ToLinkXML = ToLinkXML & " href=""" & gScriptName & "?p=" & HttpContext.Current.Server.UrlEncode(vName)
                 If cDirectEdit = 1 Or (cTemplateLinking = 1 And pTemplate <> "") Then
                     ToLinkXML = ToLinkXML & "&amp;a=edit"
                 End If
                 If cTemplateLinking = 1 And pTemplate <> "" Then
                     ToLinkXML = ToLinkXML & "&amp;template=" & pTemplate
                 End If
-                ToLinkXML = ToLinkXML & "'>"
+                ToLinkXML = ToLinkXML & """>"
             Else
                 If gAction = "print" Then
                     vTemp = gScriptName & "?p=" & HttpContext.Current.Server.UrlEncode(vName) & "&amp;a=print"
                 Else
                     vTemp = gScriptName & "?" & HttpContext.Current.Server.UrlEncode(vName)
                 End If
-                ToLinkXML = "<ow:link name='" & CDATAEncode(vName) & "'"
+                ToLinkXML = "<ow:link name=""" & CDATAEncode(vName) & """"
                 If vAnchor <> "" Then
-                    ToLinkXML = ToLinkXML & " anchor='" & CDATAEncode(vAnchor) & "'"
+                    ToLinkXML = ToLinkXML & " anchor=""" & CDATAEncode(vAnchor) & """"
                 End If
-                ToLinkXML = ToLinkXML & " href='" & vTemp & "' date='" & FormatDateISO8601(vLastChange.Timestamp) & "'>"
+                ToLinkXML = ToLinkXML & " href=""" & vTemp & """ date=""" & FormatDateISO8601(vLastChange.Timestamp) & """>"
             End If
 
             ToLinkXML = ToLinkXML & PCDATAEncode(pText) & "</ow:link>"

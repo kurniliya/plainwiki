@@ -966,7 +966,7 @@ Namespace Openwiki
                 If vFound Then
                     vPage = New WikiPage
                     vPage.Name = CStr(vRS("wpg_name").Value)
-                    s(vText, "<math>([\s\S]*?)<\/math>", "&CutEquation($1)", False, False)
+                    s(vText, "<math>([\s\S]*?)<\/math>", AddressOf CutEquation, False, False, New String() {"$1"})
                     vPage.Text = gEquation
                     vPage.Changes = CInt(vRS("wpg_changes").Value)
                     vChange = vPage.AddChange

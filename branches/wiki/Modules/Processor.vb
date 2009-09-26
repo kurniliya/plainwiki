@@ -379,7 +379,7 @@ Namespace Openwiki
             Else
                 vTemp = gScriptName & "?" & HttpContext.Current.Server.UrlEncode(pID)
             End If
-            ToLinkXML = "<ow:link name='" & CDATAEncode(pID) & "' href='" & vTemp & "'>" & PCDATAEncode(PrettyWikiLink(pID)) & "</ow:link>"
+            ToLinkXML = "<ow:link name=""" & CDATAEncode(pID) & """ href=""" & vTemp & """>" & PCDATAEncode(PrettyWikiLink(pID)) & "</ow:link>"
         End Function
 
 
