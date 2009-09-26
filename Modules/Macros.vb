@@ -6,51 +6,100 @@
             ' The side effect of having this option on is that if a programming error occurs in the
             ' processing of a macro, the programmer won't notice it.
             '    On Error Resume Next
-            'Dim vMacro, vParams, vPos, vTemp1, vTemp2, vCmd
-            'vMacro = pMacro
-            'vParams = pParams
-            'If vParams <> "" Then
-            '    If IsNumeric(vParams) Then
-            '        If InStr(vParams, ",") > 0 Then
-            '            vMacro = vMacro & "P"
-            '        End If
-            '    Else
-            '        If Mid(vParams, 2, 1) = """" Then
-            '            vPos = InStr(3, vParams, """")
-            '            If InStr(vPos, vParams, ",") > 0 Then
-            '                vMacro = vMacro & "P"
-            '            End If
-            '        Else
-            '            vPos = InStr(vParams, ",")
-            '            If vPos > 0 Then
-            '                vTemp1 = Mid(vParams, 2, vPos - 2)
-            '                If Not IsNumeric(vTemp1) Then
-            '                    vTemp1 = """" & vTemp1 & """"
-            '                End If
-            '                vTemp2 = Mid(vParams, vPos + 1, Len(vParams) - vPos - 1)
-            '                If Not IsNumeric(vTemp2) Then
-            '                    vTemp2 = """" & vTemp2 & """"
-            '                End If
-            '                vParams = "(" & vTemp1 & "," & vTemp2 & ")"
-            '                vMacro = vMacro & "P"
-            '            Else
-            '                vParams = "(""" & Mid(vParams, 2, Len(vParams) - 2) & """)"
-            '            End If
-            '        End If
-            '    End If
-            '    vMacro = vMacro & "P"
-            'End If
+            Dim vMacro As String = Nothing
+            Dim vParams As String = Nothing
+            Dim vPos As Integer
+            Dim vTemp1 As String
+            Dim vTemp2 As String
 
-            'gMacroReturn = ""
+            vMacro = pMacro
+            vParams = pParams
+            If vParams <> "" Then
+                If IsNumeric(vParams) Then
+                    If InStr(vParams, ",") > 0 Then
+                        vMacro = vMacro & "P"
+                    End If
+                Else
+                    If Mid(vParams, 2, 1) = """" Then
+                        vPos = InStr(3, vParams, """")
+                        If InStr(vPos, vParams, ",") > 0 Then
+                            vMacro = vMacro & "P"
+                        End If
+                    Else
+                        vPos = InStr(vParams, ",")
+                        If vPos > 0 Then
+                            vTemp1 = Mid(vParams, 2, vPos - 2)
+                            If Not IsNumeric(vTemp1) Then
+                                vTemp1 = """" & vTemp1 & """"
+                            End If
+                            vTemp2 = Mid(vParams, vPos + 1, Len(vParams) - vPos - 1)
+                            If Not IsNumeric(vTemp2) Then
+                                vTemp2 = """" & vTemp2 & """"
+                            End If
+                            vParams = "(" & vTemp1 & "," & vTemp2 & ")"
+                            vMacro = vMacro & "P"
+                        Else
+                            vParams = "(""" & Mid(vParams, 2, Len(vParams) - 2) & """)"
+                        End If
+                    End If
+                End If
+                vMacro = vMacro & "P"
+            End If
+
+            gMacroReturn = ""
             'vCmd = "Macro" & vMacro & vParams
             'vCmd = Replace(vCmd, vbCrLf, """ & vbCRLF & """)
             ''Response.Write("<br />MACRO CMD: " & HttpContext.Current.Server.HTMLEncode(vCmd))
             ''Execute("Call " & vCmd)
-            'If gMacroReturn = "" Then
-            '    sReturn = "&lt;" & pMacro & pParams & "&gt;"
-            'Else
-            '    StoreRaw(gMacroReturn)
-            'End If
+
+            Select vMacro
+                Case "TableOfContents"
+                    MacroTableOfContents()
+                Case "TableOfContentsRight"
+                    MacroTableOfContentsRight()
+                Case "BR"
+                    MacroBR()
+                Case "TitleSearch"
+                    MacroTitleSearch()
+                Case "FullSearch"
+                    MacroFullSearch()
+                Case "TextSearch"
+                    MacroTextSearch()
+                Case "GoTo"
+                    MacroGoTo()
+                Case "SystemInfo"
+                    MacroSystemInfo()
+                Case "Date"
+                    MacroDate()
+                Case "Time"
+                    MacroTime()
+                Case "DateTime"
+                    MacroDateTime()
+                Case "PageCount"
+                    MacroPageCount()
+                Case "RecentChanges"
+                    MacroRecentChanges()
+                Case "RecentChangesLong"
+                    MacroRecentChangesLong()
+                Case "TitleIndex"
+                    MacroTitleIndex()
+                Case "WordIndex"
+                    MacroWordIndex()
+                Case "ListRedirects"
+                    MacroListRedirects()
+                Case "RandomPage"
+                    MacroRandomPage()
+                Case "InterWiki"
+                    MacroInterWiki()
+                Case "UserPreferences"
+                    MacroUserPreferences()
+            End Select
+
+            If gMacroReturn = "" Then
+                sReturn = "&lt;" & pMacro & pParams & "&gt;"
+            Else
+                StoreRaw(gMacroReturn)
+            End If
         End Sub
 
         Sub MacroTableOfContents()

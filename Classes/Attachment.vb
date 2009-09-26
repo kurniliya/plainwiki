@@ -129,9 +129,9 @@
         End Function
 
         Public Function ToLinkXML(ByVal pHref As String, ByVal pText As String) As String
-            ToLinkXML = "<ow:link name='" & CDATAEncode(vName) & "'" _
-                      & " href='" & pHref & "' date='" & FormatDateISO8601(vTimestamp) & "'" _
-                      & " attachment='true'>" _
+            ToLinkXML = "<ow:link name=""" & CDATAEncode(vName) & """" _
+                      & " href=""" & pHref & " "" date=""" & FormatDateISO8601(vTimestamp) & """" _
+                      & " attachment=""true"">" _
                       & PCDATAEncode(pText) & "</ow:link>" & vbCrLf
         End Function
 

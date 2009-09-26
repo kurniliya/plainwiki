@@ -782,7 +782,7 @@ Namespace Openwiki
                 vURL = Replace(vURL, "&", "&amp;")
                 vURL = Replace(vURL, "&amp;amp;", "&amp;")  ' correction back
                 If vSite = "This" Then
-                    StoreRaw("<ow:link name='" & pText & "' href='" & vURL & "' date='" & FormatDateISO8601(Now()) & "'>" & pText & "</ow:link>" & gTempJunk)
+                    StoreRaw("<ow:link name=""" & pText & """ href=""" & vURL & """ date=""" & FormatDateISO8601(Now()) & """>" & pText & "</ow:link>" & gTempJunk)
                 Else
                     StoreRaw(GetExternalLink_x(vURL, pText, vSite, pUseBrackets, vClass) & gTempJunk)
                 End If
@@ -846,7 +846,7 @@ Namespace Openwiki
             If vLevel > 6 Then
                 vLevel = 6
             End If
-            vTemp = s(pText, "<ow:link name='(.*?)' href=.*?</ow:link>", "$1", False, False)
+            vTemp = s(pText, "<ow:link name=""(.*?)"" href=.*?</ow:link>", "$1", False, False)
             '    Call gTOC.AddTOC(vLevel, "<li><a href=""#h" & gTOC.Count & """>" & vTemp & "</a></li>")
             '    Call gTOC.AddTOC(vLevel, "<ow:toctext>" _
             '    	& "<number>" & gTOC.Count & "</number>" _
