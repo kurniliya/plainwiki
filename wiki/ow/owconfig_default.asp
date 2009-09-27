@@ -5,7 +5,8 @@
 
 ' "The Truth about MS Access" : http://www.15seconds.com/Issue/010514.htm
 ' OPENWIKI_DB = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" & Server.MapPath("OpenWikiDist.mdb")
- OPENWIKI_DB = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" & Server.MapPath("/cgi-bin/OpenWikiDist.mdb")
+' OPENWIKI_DB = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" & Server.MapPath("/cgi-bin/OpenWikiDist.mdb")
+ OPENWIKI_DB = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath("/cgi-bin/OpenWikiDist.mdb")
 ' OPENWIKI_DB = "Driver={SQL Server};server=mymachine;uid=openwiki;pwd=openwiki;database=OpenWiki"
 ' OPENWIKI_DB = "Driver={Microsoft ODBC for Oracle};Server=OW;Uid=laurens;Pwd=aphex2twin;"
 ' OPENWIKI_DB = "MySystemDSName"
