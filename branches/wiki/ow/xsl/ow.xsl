@@ -340,7 +340,7 @@
 		</xsl:when>	
 		<xsl:otherwise>
 			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				<mstyle mathsize="200%">
+				<mstyle mathsize="150%">
 					<xsl:value-of select="." disable-output-escaping="yes" />
 				</mstyle>
 			</math>
