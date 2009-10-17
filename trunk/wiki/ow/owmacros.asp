@@ -257,6 +257,17 @@ Sub MacroIconP(pParam)
     gMacroReturn = "<img src=""" & OPENWIKI_ICONPATH & "/" & pParam & ".gif"" border=""0"" alt=""" & pParam & """/>"
 End Sub
 
+Sub MacroImagePP(pImage, pCaption)
+    gMacroReturn = "<div class=""thumb tright"">" _
+        & "<div class=""thumbinner"">" _
+        & "<img class=""thumbimage"" src=""" & pImage & """/>" _
+        & "<div class=""thumbcaption"">" _
+        & pCaption _
+        & "</div>" _
+        & "</div>" _
+        & "</div>"
+End Sub
+
 Sub MacroAnchorP(pParam)
     gMacroReturn = "<a id='" & CDATAEncode(pParam) & "'></a>"
 End Sub
