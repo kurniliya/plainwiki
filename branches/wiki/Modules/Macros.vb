@@ -115,6 +115,8 @@
                     MacroIconP(vParams)
                 Case "IncludeP"
                     MacroIncludeP(vParams)
+                Case "ImageP"
+                    MacroImageP(vParams)
             End Select
 
             If gMacroReturn = "" Then
@@ -291,6 +293,17 @@
             If IsNumeric(pParam) Then
                 gMacroReturn = gNamespace.GetIndexSchemes.GetRandomPage(pParam)
             End If
+        End Sub
+
+        Sub MacroImageP(ByVal pParam As String)
+            gMacroReturn = "<div class=""thumb tright"">" _
+                & "<div class=""thumbinner"">" _
+                & "<img class=""thumbimage"" src=""" & pParam & """/>" _
+                & "<div class=""thumbcaption"">" _
+                & "Some caption" _
+                & "</div>" _
+                & "</div>" _
+                & "</div>"
         End Sub
 
         Sub MacroIconP(ByVal pParam As String)
