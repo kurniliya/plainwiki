@@ -258,7 +258,7 @@ Sub MacroIconP(pParam)
 End Sub
 
 Sub MacroImagePP(pImage, pCaption)
-    gMacroReturn = "<div class=""thumb tright"">" _
+    gMacroReturn = "<div class=""thumb tnone"">" _
         & "<div class=""thumbinner"">" _
         & "<img class=""thumbimage"" src=""" & pImage & """/>" _
         & "<div class=""thumbcaption"">" _
