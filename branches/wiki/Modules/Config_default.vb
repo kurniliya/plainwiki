@@ -5,7 +5,7 @@
 
         ' "The Truth about MS Access" : http://www.15seconds.com/Issue/010514.htm
         ' OPENWIKI_DB = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" & HttpContext.Current.Server.MapPath("OpenWikiDist.mdb")
-        Public OPENWIKI_DB As String = "Driver={Microsoft Access Driver (*.mdb)};DBQ=" & HttpContext.Current.Server.MapPath("OpenWikiDist.mdb")
+        Public OPENWIKI_DB As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & HttpContext.Current.Server.MapPath("OpenWikiDist.mdb")
         ' OPENWIKI_DB = "Driver={SQL Server};server=mymachine;uid=openwiki;pwd=openwiki;database=OpenWiki"
         ' OPENWIKI_DB = "Driver={Microsoft ODBC for Oracle};Server=OW;Uid=laurens;Pwd=aphex2twin;"
         ' OPENWIKI_DB = "MySystemDSName"
@@ -46,7 +46,7 @@
         Public MSXML_VERSION As Integer = 6   ' specify version of MSXML installed. Version 3 should be supported everywhere
 
         Public Const gReadPassword As String = ""    ' use empty string "" if anyone may read
-        Public gEditPassword As String = "1111"    ' use empty string "" if anyone may edit
+        Public gEditPassword As String = ""    ' use empty string "" if anyone may edit
         Public Const gAdminPassword As String = "adminpw"   ' use empty string "" if anyone may administer this Wiki
         ' In case you want more sophisticated security, then you should
         ' rely on the Integrated Windows authentication feature of IIS.
@@ -74,7 +74,7 @@
         Public cAllowAttachments As Integer = 0        ' 1 = allow attachments     0 = do not allow attachments (WARNING: Allowing attachments poses a security risk!! See file owattach.asp)
         Public Const cUseSpecialPagesPrefix As Integer = 1           ' 1 = use gSpecialPagesPrefix in gLinkPattern
         Public Const gSpecialPagesPrefix As String = "Special:"
-        Public Const cUseRecaptcha As Integer = 1        ' 1 = use reCAPTHCA when edit pages if no password protection defined
+        Public Const cUseRecaptcha As Integer = 0        ' 1 = use reCAPTHCA when edit pages if no password protection defined
         Public Const gCategoryMarkPattern As String = "\[\[:Category([\w]*)\]\]"       ' Pattern used to find category marks on wikipages
 
         ' Minor system options

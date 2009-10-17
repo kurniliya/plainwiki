@@ -36,10 +36,12 @@
                             If Not IsNumeric(vTemp2) Then
                                 vTemp2 = """" & vTemp2 & """"
                             End If
-                            vParams = "(" & vTemp1 & "," & vTemp2 & ")"
+                            'vParams = "(" & vTemp1 & "," & vTemp2 & ")"
+                            vParams = vTemp1 & "," & vTemp2
                             vMacro = vMacro & "P"
                         Else
-                            vParams = "(""" & Mid(vParams, 2, Len(vParams) - 2) & """)"
+                            'vParams = "(""" & Mid(vParams, 2, Len(vParams) - 2) & """)"
+                            vParams = Mid(vParams, 2, Len(vParams) - 2)
                         End If
                     End If
                 End If
@@ -52,7 +54,8 @@
             ''Response.Write("<br />MACRO CMD: " & HttpContext.Current.Server.HTMLEncode(vCmd))
             ''Execute("Call " & vCmd)
 
-            Select vMacro
+            Select Case vMacro
+                ' Macros without parameters
                 Case "TableOfContents"
                     MacroTableOfContents()
                 Case "TableOfContentsRight"
@@ -93,6 +96,25 @@
                     MacroInterWiki()
                 Case "UserPreferences"
                     MacroUserPreferences()
+                    ' Macros with one parameter
+                Case "TitleSearchP"
+                    MacroTitleSearchP(vParams)
+                Case "AnchorP"
+                    MacroAnchorP(vParams)
+                Case "FullSearchP"
+                    MacroFullSearchP(vParams)
+                Case "EquationSearchP"
+                    MacroEquationSearchP(vParams)
+                Case "TextSearchP"
+                    MacroTextSearchP(vParams)
+                Case "RecentChangesP"
+                    MacroRecentChangesP(CInt(vParams))
+                Case "RandomPageP"
+                    MacroRandomPageP(CInt(vParams))
+                Case "IconP"
+                    MacroIconP(vParams)
+                Case "IncludeP"
+                    MacroIncludeP(vParams)
             End Select
 
             If gMacroReturn = "" Then
