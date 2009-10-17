@@ -646,9 +646,9 @@ Namespace Openwiki
 
         Sub StoreMathML(ByVal pDisplay As String, ByVal pText As String)
             If Trim(pDisplay) = "display=""inline""" Then
-                StoreRaw("<ow:math><ow:display>inline</ow:display><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+                StoreRaw("<ow:math" & pDisplay & "><ow:display>inline</ow:display><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
             Else
-                StoreRaw("<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+                StoreRaw("<ow:math" & pDisplay & "><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
             End If
         End Sub
 
