@@ -339,11 +339,26 @@
 			</math>
 		</xsl:when>	
 		<xsl:otherwise>
-			<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-				<mstyle mathsize="150%">
-					<xsl:value-of select="." disable-output-escaping="yes" />
-				</mstyle>
-			</math>
+			<p style="text-align: center; padding: 1em;">
+				<xsl:if test="@id">
+					<a>
+						<xsl:attribute name="id">
+							<xsl:value-of select="string(@id)"/>
+						</xsl:attribute>
+					</a>
+				</xsl:if>
+				
+				<xsl:if test="@number">
+					<span style="float: right;">
+						(<xsl:value-of select="string(@number)"/>)
+					</span>
+				</xsl:if>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					<mstyle mathsize="150%">
+						<xsl:value-of select="." disable-output-escaping="yes" />
+					</mstyle>
+				</math>
+			</p>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>

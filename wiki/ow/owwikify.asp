@@ -660,12 +660,12 @@ Sub StoreHtml(pText)
     StoreRaw("<ow:html><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:html>")
 End Sub
 
-Sub StoreMathML(pDisplay, pText)
-	If Trim(pDisplay) = "display=""inline""" Then
-	    StoreRaw("<ow:math><ow:display>inline</ow:display><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")	
-	Else
-	    StoreRaw("<ow:math><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
-	End If
+Sub StoreMathML(ByVal pDisplay, ByVal pText)
+    If Trim(pDisplay) = "display=""inline""" Then
+        StoreRaw("<ow:math" & pDisplay & "><ow:display>inline</ow:display><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+    Else
+        StoreRaw("<ow:math" & pDisplay & "><![CDATA[" & Replace(pText, "]]>", "]]&gt;") & "]]></ow:math>")
+    End If
 End Sub
 
 Sub StoreCode(pText)
