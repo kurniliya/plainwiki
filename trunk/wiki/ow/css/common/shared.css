@@ -83,7 +83,7 @@ td.mw-submit { white-space: nowrap; }
 body.rtl .thumbcaption { text-align:right; }
 body.rtl .magnify { float:left; }
 
-body.ltr .thumbcaption { text-align:left; }
+body.ltr .thumbcaption { text-align:center; }
 body.ltr .magnify { float:right; }
 
 /**
