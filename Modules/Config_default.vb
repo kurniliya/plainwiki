@@ -39,8 +39,8 @@
         Public Const OPENWIKI_MAXUPLOADSIZE As Integer = 8388608            ' Use to limit the size of uploads, in bytes (default = 8,388,608)
         Public Const OPENWIKI_UPLOADTIMEOUT As Integer = 300                ' Timeout in seconds (upload must succeed within this time limit)
         Public Const OPENWIKI_RECAPTCHAPRIVATEKEY As String = "6Lea0wYAAAAAANFrNX75pLVzS95BJXuJrGIIALeP"
-        Public Const OPENWIKI_DEBUGLEVEL As Integer = 0                  ' Set positive value to enable debug logging
-        Public OPENWIKI_DEBUGPATH As String = HttpContext.Current.Server.MapPath("/cgi-bin/owdebug.xml")  ' Path for storing logs
+        'Public Const OPENWIKI_DEBUGLEVEL As Integer = 0                  ' Set positive value to enable debug logging
+        'Public OPENWIKI_DEBUGPATH As String = HttpContext.Current.Server.MapPath("/cgi-bin/owdebug.xml")  ' Path for storing logs
         Public Const OPENWIKI_PROTECTEDPAGES As String = "FrontPage"                 ' Pattern of wiki pages password protected from editing
 
         Public MSXML_VERSION As Integer = 6   ' specify version of MSXML installed. Version 3 should be supported everywhere
