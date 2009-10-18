@@ -246,6 +246,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -313,6 +317,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -383,6 +391,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -456,6 +468,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -533,6 +549,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -610,6 +630,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function
@@ -687,6 +711,10 @@ Namespace Openwiki
                 vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
                 vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
                 vPrevLastIndex = vMatch.Index + vMatch.Length + 1
+
+                If Not pGlobal Then
+                    Exit For
+                End If
             Next
             Return vText
         End Function

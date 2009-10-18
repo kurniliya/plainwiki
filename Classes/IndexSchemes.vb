@@ -161,7 +161,7 @@ Namespace Openwiki
             Dim i As Integer
             Dim j As Integer
             Dim vCount As Integer
-            Dim vResult As String = ""
+            Dim vResult As String = Nothing
             Dim vElem As WikiPage
             Dim vChange As Change
             Dim vTimestamp As Date
