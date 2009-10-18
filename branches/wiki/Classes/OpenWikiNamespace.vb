@@ -747,7 +747,7 @@ Namespace Openwiki
             Dim vChange As Change = New Change
             Dim vCurPage As String = ""
             Dim vAttachmentChange As AttachmentChange
-            Dim sTemp As String
+            'Dim sTemp As String
 
             vList = New Vector
             'vRegEx = New Regexp
@@ -921,7 +921,7 @@ Namespace Openwiki
             Dim vPattern As String
             Dim vPattern2 As String = ""
 
-            pPattern = EscapePattern(pPattern)
+            'pPattern = EscapePattern(pPattern)
             vList = New Vector
             'vRegEx = New Regexp
             'vRegEx.IgnoreCase = True

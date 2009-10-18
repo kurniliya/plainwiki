@@ -9,11 +9,12 @@
             Dim vMacro As String = Nothing
             Dim vParams As String = Nothing
             Dim vPos As Integer
-            Dim vTemp1 As String
-            Dim vTemp2 As String
+            'Dim vTemp1 As String
+            'Dim vTemp2 As String
+            Dim vParamArray() As String
 
             vMacro = pMacro
-            vParams = pParams
+            vParams = pParams.Trim("()".ToCharArray)
             If vParams <> "" Then
                 If IsNumeric(vParams) Then
                     If InStr(vParams, ",") > 0 Then
@@ -28,20 +29,20 @@
                     Else
                         vPos = InStr(vParams, ",")
                         If vPos > 0 Then
-                            vTemp1 = Mid(vParams, 2, vPos - 2)
-                            If Not IsNumeric(vTemp1) Then
-                                vTemp1 = """" & vTemp1 & """"
-                            End If
-                            vTemp2 = Mid(vParams, vPos + 1, Len(vParams) - vPos - 1)
-                            If Not IsNumeric(vTemp2) Then
-                                vTemp2 = """" & vTemp2 & """"
-                            End If
-                            'vParams = "(" & vTemp1 & "," & vTemp2 & ")"
-                            vParams = vTemp1 & "," & vTemp2
+                            'vTemp1 = Mid(vParams, 2, vPos - 2)
+                            'If Not IsNumeric(vTemp1) Then
+                            '    vTemp1 = """" & vTemp1 & """"
+                            'End If
+                            'vTemp2 = Mid(vParams, vPos + 1, Len(vParams) - vPos - 1)
+                            'If Not IsNumeric(vTemp2) Then
+                            '    vTemp2 = """" & vTemp2 & """"
+                            'End If
+                            ''vParams = "(" & vTemp1 & "," & vTemp2 & ")"
+                            'vParams = vTemp1 & "," & vTemp2
                             vMacro = vMacro & "P"
-                        Else
+                            'Else
                             'vParams = "(""" & Mid(vParams, 2, Len(vParams) - 2) & """)"
-                            vParams = Mid(vParams, 2, Len(vParams) - 2)
+                            'vParams = Mid(vParams, 2, Len(vParams) - 2)
                         End If
                     End If
                 End If
@@ -117,6 +118,10 @@
                     MacroIncludeP(vParams)
                 Case "ImageP"
                     MacroImageP(vParams)
+                    ' Macros with several parameters
+                Case "RecentEquationsPP"
+                    vParamArray = vParams.Split(CChar(","))
+                    MacroRecentEquationsPP(vParamArray(0), CInt(vParamArray(1)), CInt(vParamArray(2)))
             End Select
 
             If gMacroReturn = "" Then
