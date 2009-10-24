@@ -122,6 +122,9 @@
                 Case "RecentEquationsPP"
                     vParamArray = vParams.Split(CChar(","))
                     MacroRecentEquationsPP(vParamArray(0), CInt(vParamArray(1)), CInt(vParamArray(2)))
+                Case "ImagePP"
+                    vParamArray = vParams.Split(CChar(","))
+                    MacroImagePP(vParamArray(0), vParamArray(1))
             End Select
 
             If gMacroReturn = "" Then
@@ -304,8 +307,16 @@
             gMacroReturn = "<div class=""thumb tright"">" _
                 & "<div class=""thumbinner"">" _
                 & "<img class=""thumbimage"" src=""" & pParam & """/>" _
+                & "</div>" _
+                & "</div>"
+        End Sub
+
+        Sub MacroImagePP(ByVal pImage As String, ByVal pCaption As String)
+            gMacroReturn = "<div class=""thumb tnone"">" _
+                & "<div class=""thumbinner"">" _
+                & "<img class=""thumbimage"" src=""" & pImage & """/>" _
                 & "<div class=""thumbcaption"">" _
-                & "Some caption" _
+                & pCaption _
                 & "</div>" _
                 & "</div>" _
                 & "</div>"

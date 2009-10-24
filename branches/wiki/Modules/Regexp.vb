@@ -136,50 +136,6 @@ Namespace Openwiki
                 s = Regex.Replace(pText, pSearchPattern, pReplacePattern, vRegexOptions)
             Else
                 Return Nothing
-                '    Dim vText As String
-                '    Dim vPrevLastIndex As Integer
-                '    Dim vPrevNewPos As Integer
-                '    Dim vMatch As Match
-                '    Dim vMatches As MatchCollection
-                '    Dim vSubMatch
-                '    Dim i As Integer
-                '    Dim vCmd As String
-                '    Dim vReplacement As String
-
-                '    vText = pText
-                '    vPrevLastIndex = 0
-                '    vPrevNewPos = 0
-
-                '    pReplacePattern = Mid(pReplacePattern, 2)
-                '    '                Call WriteDebug("pText before Execute", pText, 100)
-                '    vMatches = Regex.Matches(pText, pSearchPattern)
-                '    For Each vMatch In vMatches
-                '        '                    Call WriteDebug("vMatch", vMatch.Value, 100)
-                '        vCmd = pReplacePattern
-                '        '                   Call WriteDebug("REGEXP CMD before For Each", vCmd, 100)
-
-                '        i = 0
-                '        For Each vSubMatch In vMatch.SubMatches
-                '            '                      Call WriteDebug("SubMatch", vSubMatch, 100)
-                '            vCmd = Replace(vCmd, "$" & (i + 1), """" & Replace(vSubMatch, """", """""") & """")
-                '            i = i + 1
-                '        Next
-
-                '        '                 Call WriteDebug("REGEXP CMD after For Each", vCmd, 100)
-
-                '        sReturn = ""
-                '        vCmd = Replace(vCmd, vbCrLf, """ & vbCRLF & """)
-                '        '                   Call WriteDebug("REGEXP CMD after replace", vCmd, 100)
-                '        '                    Execute("Call " & vCmd)
-                '        vReplacement = sReturn
-
-                '        ' replace vMatch.Value in vText by vReplacement
-                '        vPrevNewPos = vPrevNewPos + (vMatch.FirstIndex - vPrevLastIndex)
-                '        vText = Mid(vText, 1, vPrevNewPos) & vReplacement & Mid(vText, vPrevNewPos + vMatch.Length + 1)
-                '        vPrevNewPos = vPrevNewPos + Len(vReplacement) + 1
-                '        vPrevLastIndex = vMatch.FirstIndex + vMatch.Length + 1
-                '    Next
-                '    Return vText
             End If
         End Function
 
