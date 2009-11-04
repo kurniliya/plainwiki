@@ -164,7 +164,7 @@ Sub InitLinkPatterns
                 & "PageCount|UserPreferences|Icon|Anchor|" _
                 & "Date|Time|DateTime|Syndicate|Aggregate|Footnote|" _
                 & "TableOfContentsRight|EquationSearch|ListRedirects|RecentNewPages|RecentEquations|" _
-                & "Image"
+                & "Image|CollapseOpen|CollapseClose"
     End If
     vTemp = MyMacroPatterns()
     gMacros = gMacros & "|" & vTemp
