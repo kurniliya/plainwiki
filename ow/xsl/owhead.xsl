@@ -101,6 +101,8 @@
 			&lt;/script>
 			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
 			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/common.js">
+			&lt;/script>			
 		</xsl:text>
 
 	</head>
@@ -199,6 +201,8 @@
 			&lt;/script>
 			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
 			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/common.js">
+			&lt;/script>			
 		</xsl:text>
 	</head>
 </xsl:template>
@@ -268,7 +272,9 @@
 			&lt;script type="text/javascript" src="ow/js/wikibits.js?207xx">
 			&lt;/script>
 			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
-			&lt;/script>	
+			&lt;/script>
+			&lt;script type="text/javascript" src="ow/js/common.js">
+			&lt;/script>				
 		</xsl:text>
 	</head>
 </xsl:template>
