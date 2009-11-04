@@ -853,11 +853,12 @@ div.NavEnd {
     clear: both;
 }
 a.NavToggle {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
-    right: 3px;
+    /* right: 3px; */
     font-weight: normal;
     font-size: 90%;
+    margin-left: 1em;
 }
  
 /* Coloured watchlist numbers */
