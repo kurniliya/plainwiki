@@ -817,7 +817,7 @@ div.NavFrame {
     margin: 0;
     padding: 4px;
     border: 1px solid #aaa;
-    text-align: center;
+ /*   text-align: center; */
     border-collapse: collapse;
     font-size: 95%;
 }

@@ -437,4 +437,18 @@ Sub MacroRecentEquationsPP(pPattern, pDays, pNrOfChanges)
     End If
     gMacroReturn = gNamespace.GetIndexSchemes.GetRecentEquations(pPattern, TRUE, pDays, pNrOfChanges)
 End Sub
+
+
+Sub MacroCollapseOpenP(pCaption)
+    gMacroReturn = "<div class=""NavFrame collapsed"">" _
+        & "<div class=""NavHead"">" _
+        & pCaption _
+        & "</div>" _
+        & "<div class=""NavContent"">"
+End Sub
+
+Sub MacroCollapseClose
+    gMacroReturn = "</div>" _
+        & "</div>"
+End Sub
 %>

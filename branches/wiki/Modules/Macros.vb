@@ -97,6 +97,8 @@
                     MacroInterWiki()
                 Case "UserPreferences"
                     MacroUserPreferences()
+                Case "CollapseClose"
+                    MacroCollapseClose()
                     ' Macros with one parameter
                 Case "TitleSearchP"
                     MacroTitleSearchP(vParams)
@@ -118,6 +120,8 @@
                     MacroIncludeP(vParams)
                 Case "ImageP"
                     MacroImageP(vParams)
+                Case "CollapseOpenP"
+                    MacroCollapseOpenP(vParams)
                     ' Macros with several parameters
                 Case "RecentEquationsPP"
                     vParamArray = vParams.Split(CChar(","))
@@ -301,6 +305,19 @@
             If IsNumeric(pParam) Then
                 gMacroReturn = gNamespace.GetIndexSchemes.GetRandomPage(pParam)
             End If
+        End Sub
+
+        Sub MacroCollapseOpenP(ByVal pCaption As String)
+            gMacroReturn = "<div class=""NavFrame collapsed"">" _
+                & "<div class=""NavHead"">" _
+                & pCaption _
+                & "</div>" _
+                & "<div class=""NavContent"">"
+        End Sub
+
+        Sub MacroCollapseClose()
+            gMacroReturn = "</div>" _
+                & "</div>"
         End Sub
 
         Sub MacroImageP(ByVal pParam As String)
