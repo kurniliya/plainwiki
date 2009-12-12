@@ -136,6 +136,12 @@ Function MultiLineMarkup(pText)
     End If
 
     pText = MyMultiLineMarkupStart(pText)
+    
+    pText = s(pText, "~(@\S+)", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+    pText = s(pText, "\{\{\{(.*?@\S+.*?)\}\}\}", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+    pText = s(pText, "\<code\>(.*?@\S+.*?)\<\/code\>", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+    
+    pText = ReplacePageTokens(pText, gPage)
 
     pText = QuoteXml(pText)
     If cRawHtml Then
@@ -1301,4 +1307,15 @@ Sub StoreCategoryMark(pParam)
 	gCategories.Push("<ow:category>" & "<name>" & pParam & "</name>" & GetWikiLink("", vID, "") & "</ow:category>")
 	sReturn = ""
 End Sub
+
+Function ReplacePageTokens(ByVal pPagename, ByVal pRootpage)
+    Dim aResult
+
+    If (pRootpage = "") Then pRootpage = gPage '        // Default if blank 2nd parameter
+    '// Replace the fixed var tokens
+    aResult = pPagename
+    aResult = Replace(aResult, "@this", pRootpage, 1, -1, 1)
+    
+    ReplacePageTokens = aResult
+End Function
 %>
