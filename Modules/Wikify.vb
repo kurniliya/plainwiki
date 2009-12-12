@@ -103,6 +103,41 @@ Namespace Openwiki
 
             '            pText = MyMultiLineMarkupStart(pText)
 
+            '       //*** THE @this DIRECTIVES START ***//
+            '       // Inline tokens: @this,@username,@serverroot,@date,@time,@parent
+            '       // Inline directives: @editthis,@printthis,@historythis,@attachmentthis,@xmlthis,@printthis
+            '       // Gordon Bamber 20041007
+            '       // precede a token with ~ to avoid autolinking: ~@this, ~@parent, ~@parent/~@parent for example
+            '       // Also {{{also @this is not autolinked}}} <code>also @this is not autolinked</code>
+            'pText = s(pText, "~(@\S+)", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+            pText = s(pText, "~(@\S+)", AddressOf StoreRaw, True, True, New [String]() {"<tt>$1</tt>"})
+
+            'pText = s(pText, "\{\{\{(.*?@\S+.*?)\}\}\}", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+            pText = s(pText, "\{\{\{(.*?@\S+.*?)\}\}\}", AddressOf StoreRaw, True, True, New [String]() {"<tt>$1</tt>"})
+
+            'pText = s(pText, "\<code\>(.*?@\S+.*?)\<\/code\>", "&StoreRaw(""<tt>"" & $1 & ""</tt>"")", True, True)
+            pText = s(pText, "\<code\>(.*?@\S+.*?)\<\/code\>", AddressOf StoreRaw, True, True, New [String]() {"<tt>$1</tt>"})
+
+            '       // First do the formatted versions //
+            'pText = Replace(pText, "@editlink", "[" & gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=edit edit]", 1, -1, 1)
+            'pText = Replace(pText, "@historylink", "[" & gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=changes history]", 1, -1, 1)
+            'pText = Replace(pText, "@attachmentlink", "[" & gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=attach attachment]", 1, -1, 1)
+            'pText = Replace(pText, "@xmllink", "[" & gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=xml&revision=" & gRevision & " xml]", 1, -1, 1)
+            'pText = Replace(pText, "@printlink", "[" & gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=print&revision=" & gRevision & " print]", 1, -1, 1)
+            ''       // (the global gServerRoot is initialised in owprocessor.asp)
+            ''       // Then the unformatted versions //
+            'pText = Replace(pText, "@editthis", gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=edit", 1, -1, 1)
+            'pText = Replace(pText, "@historythis", gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=changes", 1, -1, 1)
+            'pText = Replace(pText, "@attachmentthis", gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=attach", 1, -1, 1)
+            'pText = Replace(pText, "@xmlthis", gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=xml&revision=" & gRevision & "", 1, -1, 1)
+            'pText = Replace(pText, "@printthis", gServerRoot & OPENWIKI_SCRIPTNAME & "?p=" & gPage & "&a=print&revision=" & gRevision & "", 1, -1, 1)
+
+            '       // Gordon Bamber 20041007
+            '       // all the rest of the @tokens are done here
+            pText = ReplacePageTokens(pText, gPage) '        // This function is also used by macro code
+            '        // *** THE @this DIRECTIVES END ***//
+
+
             pText = QuoteXml(pText)
             If cRawHtml = 1 Then
                 ' transform our field separator back
@@ -1326,5 +1361,77 @@ Namespace Openwiki
             gCategories.Push("<ow:category>" & "<name>" & pParam & "</name>" & GetWikiLink("", vID, "") & "</ow:category>")
             sReturn = ""
         End Sub
+
+        Function ReplacePageTokens(ByVal pPagename As String, ByVal pRootpage As String) As String
+            '        // Called in MultiLineMarkup and in many macros
+            '        // When called in MultilineMarkup, the token cannot be escaped
+            '        // inside a <code>block </code>
+            '        // If a Page Name contains the tokens
+            '        // @this,@parent,@grandparent or @greatgrandparent
+            '        // Then the tokens are replaced by relations of pRootpage
+            '
+            '        // Example1: pPagename=@this/ChildPage   pRootPage=AnyPage/SubPage
+            '        // Result would be: AnyPage/SubPage/ChildPage
+            '
+            '        // Example2: pPagename=@parent/ChildPage   pRootPage=AnyPage/SubPage
+            '        // Result would be: AnyPage/ChildPage
+            Dim aResult As String
+            'Dim tPage As String
+            'Dim p As Integer
+            If (pRootpage = "") Then pRootpage = gPage '        // Default if blank 2nd parameter
+            '        If (Instr(pPagename,"@")= -1) then
+            '                // Getoutofjail
+            '                ReplacePageTokens=pPageName
+            '                Exit Function
+            '        End If
+            '        // Replace the fixed var tokens
+            aResult = pPagename
+            aResult = Replace(aResult, "@this", pRootpage, 1, -1, CompareMethod.Text)
+            'aResult = Replace(aResult, "@username", gNamespace.FetchUserName(), 1, -1, 1)
+            'aResult = Replace(aResult, "@serverroot", gServerRoot, 1, -1, 1)
+            'aResult = Replace(aResult, "@date", FormatDateTime(Now(), 1), 1, -1, 1)
+            'aResult = Replace(aResult, "@time", FormatDateTime(Now(), 3), 1, -1, 1)
+            'If cUseMultipleParents Then
+            '    aResult = Replace(aResult, "@greatgreatgreatgreatgrandparent", "@parent/@parent/@parent/@parent/@parent/@parent")
+            '    aResult = Replace(aResult, "@greatgreatgreatgrandparent", "@parent/@parent/@parent/@parent/@parent")
+            '    aResult = Replace(aResult, "@greatgreatgrandparent", "@parent/@parent/@parent/@parent")
+            '    aResult = Replace(aResult, "@greatgrandparent", "@parent/@parent/@parent")
+            '    aResult = Replace(aResult, "@grandparent", "@parent/@parent")
+            '    If InStr(aResult, "@parent") > 0 Then
+            '        ReplacePageTokens = ReplaceParents(aResult, pRootpage)
+            '    Else
+            '        ReplacePageTokens = aResult
+            '    End If
+            '    Exit Function
+            'End If
+
+            'aResult = s(aResult, "@parent/", "This syntax is not allowed!", True, True)
+            'If InStrRev(pRootpage, "/") Then
+            '    tPage = gPage
+            '    p = InStrRev(tPage, "/")
+            '    If (p > 1) Then
+            '        tPage = Left(pRootpage, p - 1)
+            '        aResult = Replace(aResult, "@parent", tPage)
+            '        p = InStrRev(tPage, "/")
+            '        If (p > 1) Then
+            '            tPage = Left(pRootpage, p - 1)
+            '            aResult = Replace(aResult, "@grandparent", tPage)
+            '            p = InStrRev(tPage, "/")
+            '            If (p > 1) Then
+            '                tPage = Left(pRootpage, p - 1)
+            '                aResult = Replace(aResult, "@greatgrandparent", tPage)
+            '                p = InStrRev(tPage, "/")
+            '                If (p > 1) Then
+            '                    tPage = Left(pRootpage, p - 1)
+            '                    aResult = Replace(aResult, "@greatgreatgrandparent", tPage)
+            '                    p = InStrRev(tPage, "/")
+            '                End If
+            '            End If
+            '        End If
+            '    End If
+            'End If
+            ReplacePageTokens = aResult
+        End Function
+
     End Module
 End Namespace
