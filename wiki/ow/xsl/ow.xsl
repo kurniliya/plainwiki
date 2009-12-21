@@ -343,11 +343,9 @@
 		<xsl:otherwise>
 			<p style="text-align: center; padding: 1em;">
 				<xsl:if test="@id">
-					<a>
-						<xsl:attribute name="id">
-							<xsl:value-of select="string(@id)"/>
-						</xsl:attribute>
-					</a>
+					<xsl:text disable-output-escaping="yes">&lt;a id="</xsl:text>
+					<xsl:value-of select="string(@id)"/>
+					<xsl:text disable-output-escaping="yes">"&gt;&lt;/a&gt;</xsl:text>
 				</xsl:if>
 				
 				<xsl:if test="@number">
