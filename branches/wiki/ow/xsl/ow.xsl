@@ -94,7 +94,8 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="head"/>
-		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'; invokeinfobar()">
+			<div id="infobarholder" />
 			<div id="globalWrapper">
 				<xsl:if test="$editOnDblCklick='1'">
 					<xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
