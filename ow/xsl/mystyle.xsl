@@ -77,6 +77,18 @@
 			<ul>	
 				<xsl:call-template name="menu_section_interaction" />
 			</ul>
+			<!-- AddThis Button BEGIN -->
+			<a>
+				<xsl:attribute name="class">addthis_button</xsl:attribute> 
+				<xsl:attribute name="href">http://addthis.com/bookmark.php?v=250&amp;username=kurniliya</xsl:attribute>
+				<img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0; padding-top: 0.1em;"/>
+			</a>
+			
+			<xsl:text disable-output-escaping="yes">
+				&lt;script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=kurniliya">
+				&lt;/script>
+			</xsl:text>
+			<!-- AddThis Button END -->			
 		</div>
 	</div>
 
