@@ -281,6 +281,7 @@
 <xsl:template name="footer_list">
 	<ul id="f-list">
 		<xsl:call-template name="footer_list_lastmod" />
+		<xsl:call-template name="footer_list_contact_us" />
 	</ul>
 </xsl:template>
 
@@ -297,6 +298,16 @@
 				  This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>, at <xsl:value-of select="ow:formatTime(string(ow:page/ow:change/ow:date))"/>
 			</xsl:if>
 		</xsl:if>
+	</li>
+</xsl:template>
+
+<xsl:template name="footer_list_contact_us">
+	<li>
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:Contact_us</xsl:attribute>
+			<xsl:attribute name="class">internal</xsl:attribute>
+			<xsl:text>Contact us</xsl:text>
+		</a>
 	</li>
 </xsl:template>
 
