@@ -739,10 +739,10 @@
 							<fieldset style="border:none;">
 								<xsl:if test="not(/ow:wiki/ow:protection='captcha')">
 									<input type="submit" name="save" value="Save" />
-									&#160;
+									<!--&#160;-->
 								</xsl:if>
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-								&#160;
+								<!--&#160;-->
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 								<br />
 								<br />
@@ -768,10 +768,10 @@
 								<input type="hidden" name="p" value="{$name}" />
 								<xsl:call-template name="showRecapthca" />
 								<input type="submit" name="save" value="Save" />
-								&#160;
+								<!--&#160;-->
 								<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
 								<!-- <input type="submit" name="preview" value="Preview" /> -->
-								&#160;
+								<!--&#160;-->
 								<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 							</fieldset>
 						</form>
