@@ -8,11 +8,11 @@
 
 function informationbar(){
 	this.displayfreq = "always"
-	this.content = '<a href="javascript:informationbar.close()"><img src="./ow/images/close.gif" style="width: 14px; height: 14px; float: right; border: 0; margin-right: 5px" /></a>'
+	this.content = '<a href="javascript:infobar.close()"><img src="./ow/images/close.gif" style="width: 14px; height: 14px; float: right; border: 0; margin-right: 5px" /></a>'
 }
 
 informationbar.prototype.setContent = function(data){
-	this.content = this.content+data
+	this.content = this.content + data
 	var pos = document.getElementById('infobarholder');
         var div 
         if (typeof document.createElementNS != 'undefined') {
@@ -40,10 +40,10 @@ informationbar.prototype.animatetoview = function(){
 	}
 }
 
-informationbar.close = function(){
+informationbar.prototype.close = function(){
 	document.getElementById("informationbar").style.display = "none"
 	if (this.displayfreq == "session")
-		document.cookie = "infobarshown=1;path=/"
+		document.cookie = "infobarshown=1; path=/"
 }
 
 informationbar.prototype.setfrequency = function(type){
@@ -95,9 +95,10 @@ function isIE(){
 	}		
 }
 
+var infobar = new informationbar()
+
 function invokeinfobar(){
 	if(isChrome() || isSafari()|| isOpera()){
-		var infobar = new informationbar()
 		infobar.setContent('For proper formulae rendering it\'s recommended to use <a href="http://www.mozilla.com/">Firefox browser</a>.')
 		infobar.setfrequency('session') //Uncomment this line to set information bar to only display once per browser session!
 		infobar.initialize()
