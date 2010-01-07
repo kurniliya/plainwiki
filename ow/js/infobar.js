@@ -96,7 +96,7 @@ function isIE(){
 }
 
 function invokeinfobar(){
-	if(isChrome() || isSafari()|| isOpera() || isIE()){
+	if(isChrome() || isSafari()|| isOpera()){
 		var infobar = new informationbar()
 		infobar.setContent('For proper formulae rendering it\'s recommended to use <a href="http://www.mozilla.com/">Firefox browser</a>.')
 		infobar.setfrequency('session') //Uncomment this line to set information bar to only display once per browser session!
