@@ -644,7 +644,7 @@
         <xsl:attribute name="onload">document.getElementById('editform').text.focus();</xsl:attribute>
 
         <script type="text/javascript" charset="{@encoding}">
-          <xsl:text disable-output-escaping="yes">&lt;![CDATA[
+          <xsl:text disable-output-escaping="yes">/*&lt;![CDATA[*/
             function openw(pURL)
             {
                 var w = window.open(pURL, "openw", "width=680,height=560,resizable=1,statusbar=1,scrollbars=1");
@@ -700,7 +700,7 @@
                     savedValue = v;
             }
 
-          ]]&gt;</xsl:text>
+          /*]]&gt;*/</xsl:text>
         </script>
 		<div id="globalWrapper">
 		<div id="column-content">
@@ -739,10 +739,10 @@
 							<fieldset style="border:none;">
 								<xsl:if test="not(/ow:wiki/ow:protection='captcha')">
 									<input type="submit" name="save" value="Save" />
-									<!--&#160;-->
+									&#160;
 								</xsl:if>
 								<input type="button" name="prev1" value="Preview" onclick="javascript:preview();" />
-								<!--&#160;-->
+								&#160;
 								<input type="button" name="cancel1" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 								<br />
 								<br />
@@ -768,10 +768,10 @@
 								<input type="hidden" name="p" value="{$name}" />
 								<xsl:call-template name="showRecapthca" />
 								<input type="submit" name="save" value="Save" />
-								<!--&#160;-->
+								&#160;
 								<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
 								<!-- <input type="submit" name="preview" value="Preview" /> -->
-								<!--&#160;-->
+								&#160;
 								<input type="button" name="cancel2" value="Cancel" onclick="javascript:window.location='{/ow:wiki/ow:scriptname}?p={$name}';" />
 							</fieldset>
 						</form>
