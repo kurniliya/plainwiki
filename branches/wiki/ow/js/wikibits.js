@@ -119,13 +119,25 @@ function showTocToggle() {
 
 		if (!document.getElementById("togglelink")){
 
-			var toggleLink = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+			var toggleLink;
+		        if (typeof document.createElementNS != 'undefined') {
+		        	toggleLink = document.createElementNS("http://www.w3.org/1999/xhtml","a");
+		        } else {
+		        	toggleLink = document.createElement("a");
+		        }
+			
 			toggleLink.id = "togglelink";
 			toggleLink.className = "internal";
 			toggleLink.href = "javascript:toggleToc()";
 			toggleLink.appendChild(document.createTextNode(tocHideText));
 			
-			var outerSpan = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
+			var outerSpan;
+		        if (typeof document.createElementNS != 'undefined') {
+		        	outerSpan = document.createElementNS("http://www.w3.org/1999/xhtml","span");
+		        } else {
+		        	outerSpan = document.createElement("span");
+		        }			
+			
 			outerSpan.className = "toctoggle";
 	
 			outerSpan.appendChild(document.createTextNode("["));
