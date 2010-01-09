@@ -465,7 +465,7 @@
 						<script type="text/javascript" charset="{/ow:wiki/@encoding}">
 							<xsl:text disable-output-escaping="yes">
 								/*&lt;![CDATA[*/
-								if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+								if (window.toggleToc) { var tocShowText = "[show]"; var tocHideText = "[hide]"; showTocToggle(); } 
 								/*]]&gt;*/ 
 							</xsl:text>
 						</script>	
