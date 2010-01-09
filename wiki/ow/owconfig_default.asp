@@ -61,7 +61,7 @@ cNakedView             = 0        ' 1 = run in naked mode     0 = show headers/f
 cUseSubpage            = 1        ' 1 = use /subpages         0 = do not use /subpages
 cFreeLinks             = 1        ' 1 = use [[word]] links    0 = LinkPattern only
 cWikiLinks             = 1        ' 1 = use LinkPattern       0 = possibly allow [[word]] only
-cAcronymLinks          = 1        ' 1 = link acronyms         0 = do not link 3 or more capitalized characters
+cAcronymLinks          = 0        ' 1 = link acronyms         0 = do not link 3 or more capitalized characters
 cTemplateLinking       = 1        ' 1 = allow TemplateName->WikiLink   0 = don't do template linking
 cRawHtml               = 1        ' 1 = allow <html> tag      0 = no raw HTML in pages
 cMathML                = 1        ' 1 = allow <math> tag      0 = no raw math in pages
