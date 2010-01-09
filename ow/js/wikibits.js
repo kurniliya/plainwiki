@@ -140,9 +140,9 @@ function showTocToggle() {
 			
 			outerSpan.className = "toctoggle";
 	
-			outerSpan.appendChild(document.createTextNode("["));
+			//outerSpan.appendChild(document.createTextNode("["));
 			outerSpan.appendChild(toggleLink);
-			outerSpan.appendChild(document.createTextNode("]"));
+			//outerSpan.appendChild(document.createTextNode("]"));
 	
 			linkHolder.appendChild(document.createTextNode(" "));
 			linkHolder.appendChild(outerSpan);
