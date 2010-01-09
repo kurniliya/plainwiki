@@ -66,7 +66,7 @@ Sub ExecMacro(pMacro, pParams)
                         vTemp1 = """" & vTemp1 & """"
                     End If
                     vTemp2 = Mid(vParams, vPos + 1, Len(vParams) - vPos - 1)
-                    If Not IsNumeric(vTemp2) Then
+                    If Not IsNumeric(vTemp2) And Not (InStr(vTemp2, ",") > 0) Then
                         vTemp2 = """" & vTemp2 & """"
                     End If
                     vParams = "(" & vTemp1 & "," & vTemp2 & ")"
