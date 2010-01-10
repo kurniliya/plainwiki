@@ -283,6 +283,7 @@
     <Content Include="ow\skins\common\images\button_table_row.png" />
     <Content Include="ow\skins\common\images\button_tt.png" />
     <Content Include="ow\skins\common\images\button_underline.png" />
+    <Content Include="ow\xsl\googleanalytics.xsl" />
     <Content Include="ow\xsl\googlecustomsearch.xsl" />
     <Content Include="ow\xsl\mystyle.xsl" />
     <Content Include="ow\xsl\ow.xsl" />
@@ -300,6 +301,7 @@
     <Content Include="ow\xsl\owrss10aggr.xsl" />
     <Content Include="ow\xsl\owrss10export.xsl" />
     <Content Include="ow\xsl\owscriptingnews.xsl" />
+    <Content Include="ow\xsl\statcounter.xsl" />
     <Content Include="static\processie\processie.css" />
     <Content Include="static\processie\processie.html" />
     <Content Include="Styles.css" />
