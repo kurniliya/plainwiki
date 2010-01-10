@@ -96,7 +96,8 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="head"/>
-		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'; invokeinfobar()">
+			<div id="infobarholder" />
 			<div id="globalWrapper">
 				<xsl:if test="$editOnDblCklick='1'">
 					<xsl:attribute name="ondblclick">location.href='<xsl:value-of select="ow:scriptname"/>?p=<xsl:value-of select="$name"/>&amp;a=edit<xsl:if test='ow:page/@revision'>&amp;revision=<xsl:value-of select="ow:page/@revision"/></xsl:if>'</xsl:attribute>
@@ -468,7 +469,7 @@
 						<script type="text/javascript" charset="{/ow:wiki/@encoding}">
 							<xsl:text disable-output-escaping="yes">
 								/*&lt;![CDATA[*/
-								if (window.toggleToc) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+								if (window.toggleToc) { var tocShowText = "[show]"; var tocHideText = "[hide]"; showTocToggle(); } 
 								/*]]&gt;*/ 
 							</xsl:text>
 						</script>	
@@ -647,7 +648,7 @@
         <xsl:attribute name="onload">document.getElementById('editform').text.focus();</xsl:attribute>
 
         <script type="text/javascript" charset="{@encoding}">
-          <xsl:text disable-output-escaping="yes">&lt;![CDATA[
+          <xsl:text disable-output-escaping="yes">/*&lt;![CDATA[*/
             function openw(pURL)
             {
                 var w = window.open(pURL, "openw", "width=680,height=560,resizable=1,statusbar=1,scrollbars=1");
@@ -703,7 +704,7 @@
                     savedValue = v;
             }
 
-          ]]&gt;</xsl:text>
+          /*]]&gt;*/</xsl:text>
         </script>
 		<div id="globalWrapper">
 		<div id="column-content">

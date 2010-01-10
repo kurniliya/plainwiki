@@ -77,6 +77,18 @@
 			<ul>	
 				<xsl:call-template name="menu_section_interaction" />
 			</ul>
+			<!-- AddThis Button BEGIN -->
+			<a>
+				<xsl:attribute name="class">addthis_button</xsl:attribute> 
+				<xsl:attribute name="href">http://addthis.com/bookmark.php?v=250&amp;username=kurniliya</xsl:attribute>
+				<img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0; padding-top: 0.1em;"/>
+			</a>
+			
+			<xsl:text disable-output-escaping="yes">
+				&lt;script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=kurniliya">
+				&lt;/script>
+			</xsl:text>
+			<!-- AddThis Button END -->			
 		</div>
 	</div>
 
@@ -281,6 +293,7 @@
 <xsl:template name="footer_list">
 	<ul id="f-list">
 		<xsl:call-template name="footer_list_lastmod" />
+		<xsl:call-template name="footer_list_contact_us" />
 	</ul>
 </xsl:template>
 
@@ -297,6 +310,16 @@
 				  This page was last modified on  <xsl:value-of select="ow:formatLongDate(string(ow:page/ow:change/ow:date))"/>, at <xsl:value-of select="ow:formatTime(string(ow:page/ow:change/ow:date))"/>
 			</xsl:if>
 		</xsl:if>
+	</li>
+</xsl:template>
+
+<xsl:template name="footer_list_contact_us">
+	<li>
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?Special:Contact_us</xsl:attribute>
+			<xsl:attribute name="class">internal</xsl:attribute>
+			<xsl:text>Contact us</xsl:text>
+		</a>
 	</li>
 </xsl:template>
 

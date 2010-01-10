@@ -401,6 +401,7 @@ table.small {
 #toc .toctoggle,
 .toc .toctoggle {
 	font-size: 94%;
+	margin-left: 1em;
 }
 
 .mw-warning {

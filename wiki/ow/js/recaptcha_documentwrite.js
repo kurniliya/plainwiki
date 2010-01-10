@@ -31,7 +31,14 @@ document.write = function(str){
         str = str.replace(/(<[a-z]+)/g, "$1 xmlns='http://www.w3.org/1999/xhtml'");
        
     // The HTML needs to be within a XHTML element
-    var div = document.createElementNS("http://www.w3.org/1999/xhtml","div");
+    var div;
+    if (typeof document.createElementNS != 'undefined') {
+    	div = document.createElementNS("http://www.w3.org/1999/xhtml","div");
+    } else {
+	div = document.createElement("div");
+    }
+    
+    
     div.innerHTML = str;
        
     // Find the element in the document where to "write"
