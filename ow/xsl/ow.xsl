@@ -17,6 +17,8 @@
 <xsl:include href="owrecaptcha.xsl"/>
 <xsl:include href="owedittoolbar.xsl"/>
 <xsl:include href="oweditwarning.xsl"/>
+<xsl:include href="googleanalytics.xsl"/>
+<xsl:include href="statcounter.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
 
@@ -120,7 +122,9 @@
 					<xsl:call-template name="copyright_ico" />					
 					<xsl:call-template name="footer_list" />
 				</div>
-			 </div>
+			</div>
+			<xsl:call-template name="StatCounter" />
+			<xsl:call-template name="GoogleAnalytics" /> 
 		 </body>
 	 </html>
 </xsl:template>
