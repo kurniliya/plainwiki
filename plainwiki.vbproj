@@ -243,8 +243,10 @@
     <Content Include="ow\images\valid-css.gif" />
     <Content Include="ow\images\valid-xhtml10.gif" />
     <Content Include="ow\images\xml.gif" />
+    <Content Include="ow\js\common.js" />
     <Content Include="ow\js\common\iefixes.js" />
     <Content Include="ow\js\edit.js" />
+    <Content Include="ow\js\infobar.js" />
     <Content Include="ow\js\recaptcha_documentwrite.js" />
     <Content Include="ow\js\wikibits.js" />
     <Content Include="ow\skins\common\images\button_align_left.png" />
