@@ -12,7 +12,7 @@
 	<div id='toolbar'>
 		<script type='text/javascript'>
 			<xsl:text disable-output-escaping="yes">
-				&lt;![CDATA[</xsl:text>
+				/*&lt;![CDATA[*/</xsl:text>
 			addButton("ow/skins/common/images/button_bold.png","Bold text","**","**","Bold text","mw-editbutton-bold");
 			addButton("ow/skins/common/images/button_italic.png","Italic text","//","//","Italic text","mw-editbutton-italic");
 			addButton("ow/skins/common/images/button_underline.png","Underlined text","__","__","Underlined text","mw-editbutton-underline");
@@ -50,7 +50,7 @@
 			addButton("ow/skins/common/images/button_nbsp.png","Non breaking space","&#160;","","","mw-editbutton-nbsp");
 			addButton("ow/skins/common/images/button_category03.png","Category","[[:Category","]]", "SampleName", "mw-editbutton-category03");
 			<xsl:text disable-output-escaping="yes">
-				]]&gt;</xsl:text>
+				/*]]&gt;*/</xsl:text>
 		</script>
 	</div>
 </xsl:template>	
