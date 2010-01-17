@@ -104,7 +104,7 @@ Class Transformer
                 Response.End
             End If
         End If
-
+        
         Dim vTemp
         vTemp = Request.ServerVariables("HTTP_USER_AGENT")
         If (InStr(vTemp, "MSIE ") > 0) Then
@@ -145,6 +145,51 @@ Class Transformer
     
     Private Sub ProcessIEWithoutMathPlayer()
     	Response.Redirect "static/processie/processie.html"
+    End Sub
+    
+    Private Sub ProcessXMLError(pXmlStr)
+    ' XML error handling: shows source text of a page with lines numbered
+	    Dim vRegEx, vText, vLineNum, vMatches, vMatch, vErrorLine, vXmlStr
+
+		vXmlStr = pXmlStr
+	    vText = Server.HTMLEncode(vXmlStr)
+	    vLineNum = 1
+	    vErrorLine = vXmlDoc.parseError.Line
+	    
+	    Set vRegEx = New RegExp
+		vRegEx.IgnoreCase = False
+		vRegEx.Global = True
+		vRegEx.Pattern = ".+"
+		Set vMatches = vRegEx.Execute(vText)        
+	
+	    Response.ContentType = "text/html;"	' charset=" & OPENWIKI_ENCODING & ";"
+	    Response.Write("<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">")
+	    Response.Write("<html xmlns=""http://www.w3.org/1999/xhtml"">")
+	    Response.Write("<head><title>Invalid XML document</title></head>")
+	    Response.Write("<body><b>Invalid XML document</b>:<br /><br />")
+	    Response.Write(vXmlDoc.parseError.reason & " line: " &_
+	    	 "<a href=#ErrorLine>" &_
+	    	 vErrorLine &_ 
+	    	 "</a>" &_
+	    	 " col: " & vXmlDoc.parseError.linepos)
+	    Response.Write("<br /><br /><hr />")
+	    Response.Write("<pre>") 
+	    
+		For Each vMatch In vMatches
+			Response.Write(vLineNum & ": ")
+			If vLineNum = vErrorLine Then
+				Response.Write("<a name=""ErrorLine"" />")
+				Response.Write("<font style=""BACKGROUND-COLOR: red"">")
+			End If
+			Response.Write(vMatch & "<br />")		    
+			If vLineNum = vErrorLine Then
+				Response.Write("</font>")
+			End If
+		    vLineNum = vLineNum + 1
+		Next
+		
+		    Response.Write("</pre>") 
+		    Response.Write("</body></html>")   
     End Sub
 
     Public Sub LoadXSL(pFilename)
@@ -224,47 +269,8 @@ Class Transformer
 '            End If
         End If
 
-' XML error handling: shows source text of a page with lines numbered
         If Not vXmlDoc.loadXML(vXmlStr) Then
-            Dim vRegEx, vText, vLineNum, vMatches, vMatch, vErrorLine
-            vText = Server.HTMLEncode(vXmlStr)
-            vLineNum = 1
-            vErrorLine = vXmlDoc.parseError.Line
-            
-            Set vRegEx = New RegExp
-			vRegEx.IgnoreCase = False
-		    vRegEx.Global = True
-		    vRegEx.Pattern = ".+"
-		    Set vMatches = vRegEx.Execute(vText)        
-        
-            Response.ContentType = "text/html;"	' charset=" & OPENWIKI_ENCODING & ";"
-            Response.Write("<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">")
-            Response.Write("<html xmlns=""http://www.w3.org/1999/xhtml"">")
-            Response.Write("<head><title>Invalid XML document</title></head>")
-            Response.Write("<body><b>Invalid XML document</b>:<br /><br />")
-            Response.Write(vXmlDoc.parseError.reason & " line: " &_
-            	 "<a href=#ErrorLine>" &_
-            	 vErrorLine &_ 
-            	 "</a>" &_
-            	 " col: " & vXmlDoc.parseError.linepos)
-            Response.Write("<br /><br /><hr />")
-            Response.Write("<pre>") 
-            
-		    For Each vMatch In vMatches
-		    	Response.Write(vLineNum & ": ")
-		    	If vLineNum = vErrorLine Then
-		    		Response.Write("<a name=""ErrorLine"" />")
-		    		Response.Write("<font style=""BACKGROUND-COLOR: red"">")
-		    	End If
-	            Response.Write(vMatch & "<br />")		    
-  		    	If vLineNum = vErrorLine Then
-  		    		Response.Write("</font>")
-  		    	End If
-	            vLineNum = vLineNum + 1
-		    Next
-
-            Response.Write("</pre>") 
-            Response.Write("</body></html>")
+        	ProcessXMLError(vXmlStr)
         Elseif vIsIE and cUseXhtmlHttpHeaders and not vIsMathPlayer Then
 			ProcessIEWithoutMathPlayer()
         Else
