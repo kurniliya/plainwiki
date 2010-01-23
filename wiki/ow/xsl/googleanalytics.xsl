@@ -14,10 +14,14 @@
 	<script src="http://www.google-analytics.com/ga.js" type="text/javascript">
 	</script>
 	<script type="text/javascript">
+		<xsl:text disable-output-escaping="yes">
+				/*&lt;![CDATA[*/</xsl:text>
 		try {
 			var pageTracker = _gat._getTracker("UA-12156025-1");
 			pageTracker._trackPageview();
 		} catch(err) {}
+		<xsl:text disable-output-escaping="yes">
+			/*]]&gt;*/</xsl:text>		
 	</script>	
 	
 	<xsl:comment>End Of Google Analytics Code</xsl:comment>
