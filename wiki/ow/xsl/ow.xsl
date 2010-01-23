@@ -125,16 +125,12 @@
 				</div>
 			</div>
 			<xsl:call-template name="StatCounter" />
-			<xsl:call-template name="GoogleAnalytics" /> 
-			<!--
-			<script type="text/javascript">
-				<xsl:text disable-output-escaping="yes">
-					/*&lt;![CDATA[*/</xsl:text>
-				invokeinfobar();
-				<xsl:text disable-output-escaping="yes">
-			/*]]&gt;*/</xsl:text>
-			</script>
-			-->
+			<xsl:call-template name="GoogleAnalytics" />
+			
+			<xsl:text disable-output-escaping="yes"> 
+				&lt;script type="text/javascript" src="ow/js/infobar.js">
+				&lt;/script>
+			</xsl:text>
 		 </body>
 	 </html>
 </xsl:template>
