@@ -271,8 +271,8 @@ Class Transformer
 
         If Not vXmlDoc.loadXML(vXmlStr) Then
         	ProcessXMLError(vXmlStr)
-        Elseif vIsIE and cUseXhtmlHttpHeaders and not vIsMathPlayer Then
-			ProcessIEWithoutMathPlayer()
+'        Elseif vIsIE and cUseXhtmlHttpHeaders and not vIsMathPlayer Then
+'			ProcessIEWithoutMathPlayer()
         Else
             LoadXSL(pXslFilename)
             vXslProc.input = vXmlDoc
@@ -281,8 +281,10 @@ Class Transformer
             TransformXmlStr = vXslProc.output
 
             If cEmbeddedMode = 0 Then
+            	Response.AddHeader "X-UA-Compatible", "IE=edge"
+            
                 If gAction = "edit" Then
-					If cUseXhtmlHttpHeaders Then
+					If cUseXhtmlHttpHeaders And (vIsMathPlayer Or Not vIsIE) Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
 '						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
@@ -293,7 +295,7 @@ Class Transformer
                 Elseif gAction = "rss" Then
                     Response.ContentType = "text/xml; charset=" & OPENWIKI_ENCODING & ";"
                 Else
-					if cUseXhtmlHttpHeaders Then
+					if cUseXhtmlHttpHeaders And (vIsMathPlayer Or Not vIsIE) Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
 '						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
