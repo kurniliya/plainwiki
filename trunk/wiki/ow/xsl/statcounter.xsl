@@ -6,10 +6,11 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
+<xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:template name="StatCounter">
-	<!-- Start of StatCounter Code -->
+	<xsl:comment>Start of StatCounter Code</xsl:comment>
+	
 	<script type="text/javascript">
 		var sc_project=5410615; 
 		var sc_invisible=1; 
@@ -28,7 +29,8 @@
 			</a>
 		</div>
 	</noscript>
-	<!-- End of StatCounter Code -->
+	
+	<xsl:comment>End of StatCounter Code</xsl:comment>
 </xsl:template>
 
 </xsl:stylesheet>

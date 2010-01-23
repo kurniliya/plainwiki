@@ -6,9 +6,11 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
+<xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:template name="GoogleAnalytics">
+	<xsl:comment>Google Analytics Code</xsl:comment>
+
 	<script src="http://www.google-analytics.com/ga.js" type="text/javascript">
 	</script>
 	<script type="text/javascript">
@@ -17,6 +19,8 @@
 			pageTracker._trackPageview();
 		} catch(err) {}
 	</script>	
+	
+	<xsl:comment>End Of Google Analytics Code</xsl:comment>
 </xsl:template>
 
 </xsl:stylesheet>
