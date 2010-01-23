@@ -12,15 +12,18 @@
 	<xsl:comment>Start of StatCounter Code</xsl:comment>
 	
 	<script type="text/javascript">
-		var sc_project=5410615; 
-		var sc_invisible=1; 
-		var sc_partition=47; 
-		var sc_click_stat=1; 
-		var sc_security="ba59c5fd"; 
+		<xsl:text disable-output-escaping="yes">
+			/*&lt;![CDATA[*/</xsl:text>
+			var sc_project=5410615; 
+			var sc_invisible=1; 
+			var sc_partition=47; 
+			var sc_click_stat=1; 
+			var sc_security="ba59c5fd"; 
+		<xsl:text disable-output-escaping="yes">
+			/*]]&gt;*/</xsl:text>
 	</script>
 	
-	<script type="text/javascript"
-		src="http://www.statcounter.com/counter/counter_xhtml.js">
+	<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js">
 	</script>
 	<noscript>
 		<div	class="statcounter">

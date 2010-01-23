@@ -7,7 +7,7 @@
                 exclude-result-prefixes=""
                 version="1.0">
 
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
+<xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
 
 <xsl:template name="head">
 	<head>

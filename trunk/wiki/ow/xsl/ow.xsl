@@ -6,7 +6,7 @@
                 extension-element-prefixes="msxsl ow"
                 exclude-result-prefixes=""
                 version="1.0">
-<xsl:output method="xml" indent="no" omit-xml-declaration="yes" />
+<xsl:output method="xml" indent="yes" omit-xml-declaration="yes" />
 
 <xsl:include href="owpi.xsl"/>
 <xsl:include href="owinc.xsl"/>
@@ -97,7 +97,7 @@
 	<xsl:call-template name="pi"/>
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
 		<xsl:call-template name="head"/>
-		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'; invokeinfobar()">
+		<body class="mediawiki ltr ns-0 ns-subject skin-monobook" onload="window.defaultStatus='{$brandingText}'">
 			<div id="infobarholder" />
 			<div id="globalWrapper">
 				<xsl:if test="$editOnDblCklick='1'">
@@ -126,6 +126,15 @@
 			</div>
 			<xsl:call-template name="StatCounter" />
 			<xsl:call-template name="GoogleAnalytics" /> 
+			<!--
+			<script type="text/javascript">
+				<xsl:text disable-output-escaping="yes">
+					/*&lt;![CDATA[*/</xsl:text>
+				invokeinfobar();
+				<xsl:text disable-output-escaping="yes">
+			/*]]&gt;*/</xsl:text>
+			</script>
+			-->
 		 </body>
 	 </html>
 </xsl:template>
