@@ -197,17 +197,18 @@ Class Transformer
 		Dim vLastChangeDate
 '		Response.Write(gLastModified)
 
-		If DateDiff("s", gLastModified, OPENWIKI_ENGINEUPGRADEDATE) > 0 Then
-			vLastChangeDate = OPENWIKI_ENGINEUPGRADEDATE
-		Else
-			vLastChangeDate = gLastModified
-		End If
+		vLastChangeDate = GetLatestDate(gLastModified, OPENWIKI_ENGINEUPGRADEDATE)
 
 		Response.AddHeader "Last-modified", DateToHTTPDate(vLastChangeDate)
 
 	    If (Len(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))) Then
 			vLastModifiedSince = DateFromHTTPDate(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))
-            If DateDiff("s", vLastModifiedSince, vLastChangeDate) >= 0  Then
+			
+'			Response.Write(vLastModifiedSince)
+'			Response.Write(vLastChangeDate)
+'			Response.Write(DateDiff("s", vLastModifiedSince, vLastChangeDate))
+			
+            If SecondDateIsLater(vLastModifiedSince, vLastChangeDate)  Then
             	Response.Clear
 				Response.Status = "304 Not Modified"
 				Response.End

@@ -81,4 +81,20 @@ Function mFromSm(Sm)
   End Select
   mFromSm = Out
 End Function
+
+Function GetLatestDate(Date1, Date2)
+	If DateDiff("s", gLastModified, Date2) > 0 Then
+		GetLatestDate = Date2
+	Else
+		GetLatestDate = Date1
+	End If
+End Function
+
+Function SecondDateIsLater(Date1, Date2)
+	If DateDiff("s", Date1, Date2) >= 0  Then
+		SecondDateIsLater = True
+	Else
+		SecondDateIsLater = False
+	End If	
+End Function
 %>
