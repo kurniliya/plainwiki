@@ -192,6 +192,32 @@ Class Transformer
 		    Response.Write("</body></html>")   
     End Sub
 
+	Private Sub AnalyseIfModifiedSinceHeader()
+		Dim vLastModifiedSince
+		Dim vLastChangeDate
+'		Response.Write(gLastModified)
+
+		If DateDiff("s", gLastModified, OPENWIKI_ENGINEUPGRADEDATE) > 0 Then
+			vLastChangeDate = OPENWIKI_ENGINEUPGRADEDATE
+		Else
+			vLastChangeDate = gLastModified
+		End If
+
+		Response.AddHeader "Last-modified", DateToHTTPDate(vLastChangeDate)
+
+	    If (Len(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))) Then
+			vLastModifiedSince = DateFromHTTPDate(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))
+            If DateDiff("s", vLastModifiedSince, vLastChangeDate) >= 0  Then
+            	Response.Clear
+				Response.Status = "304 Not Modified"
+				Response.End
+            End If
+        End If
+
+        'Response.ExpiresAbsolute = Now() - 1
+        'Response.AddHeader "Cache-Control", "must-revalidate"
+	End Sub
+
     Public Sub LoadXSL(pFilename)
         On Error Resume Next
         Set vXslTemplate = Nothing
@@ -303,11 +329,10 @@ Class Transformer
 						Response.ContentType = "text/html; charset=" & OPENWIKI_ENCODING & ";"
 					End If               
                     Response.Expires = -1  ' expires now
-'                    Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
-                    Response.AddHeader "Last-modified", DateToHTTPDate(Now)
-                    'Response.ExpiresAbsolute = Now() - 1
-                    'Response.AddHeader "Cache-Control", "must-revalidate"
+					'Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
                     Response.AddHeader "Cache-Control", "no-cache"
+                    
+                    AnalyseIfModifiedSinceHeader()
                 End If
                 Response.Write(TransformXmlStr)
             End If
