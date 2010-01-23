@@ -51,14 +51,15 @@ addOnloadHook( sysopFunctions );
   *               See [[Meta:WikiMiniAtlas]] for more information. 
   *  Maintainers: [[User:Dschwen]]
   */
- 
+
+/* 
 if (wgServer == "https://secure.wikimedia.org") {
     var metaBase = "https://secure.wikimedia.org/wikipedia/meta";
 } else {
     var metaBase = "http://meta.wikimedia.org";
 }
 importScriptURI(metaBase+"/w/index.php?title=MediaWiki:Wikiminiatlas.js&action=raw&ctype=text/javascript&smaxage=21600&maxage=86400")
- 
+*/ 
  
 /** Mobile Redirect Helper ************************************************
  *
