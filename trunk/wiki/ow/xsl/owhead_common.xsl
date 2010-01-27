@@ -61,6 +61,7 @@
 		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
 		</xsl:text>
 
+<!--
 		<script type= "text/javascript">
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/</xsl:text>
@@ -96,6 +97,7 @@
 			<xsl:text disable-output-escaping="yes">
 				/*]]&gt;*/</xsl:text>
 		</script>
+-->
 
 		<xsl:text disable-output-escaping="yes">
 			&lt;script type="text/javascript" src="ow/js/wikibits.js?207xx">
