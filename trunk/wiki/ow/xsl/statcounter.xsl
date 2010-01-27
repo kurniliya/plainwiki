@@ -25,6 +25,7 @@
 	
 	<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js">
 	</script>
+<!--	
 	<noscript>
 		<div	class="statcounter">
 			<a title="hits counter" class="statcounter" href="http://www.statcounter.com/">
@@ -32,7 +33,7 @@
 			</a>
 		</div>
 	</noscript>
-	
+-->	
 	<xsl:comment>End of StatCounter Code</xsl:comment>
 </xsl:template>
 
