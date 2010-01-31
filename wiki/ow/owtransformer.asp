@@ -333,8 +333,10 @@ Class Transformer
                     Response.Expires = -1  ' expires now
 					'Response.AddHeader "Last-modified", DateToHTTPDate(gLastModified)
                     Response.AddHeader "Cache-Control", "no-cache"
-                    
-                    AnalyseIfModifiedSinceHeader()
+					
+					If gAction = "view" Then
+	                    AnalyseIfModifiedSinceHeader()
+	                End If
                 End If
                 Response.Write(TransformXmlStr)
             End If
