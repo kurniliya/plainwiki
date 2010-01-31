@@ -83,7 +83,7 @@ Function mFromSm(Sm)
 End Function
 
 Function GetLatestDate(Date1, Date2)
-	If DateDiff("s", gLastModified, Date2) > 0 Then
+	If DateDiff("s", Date1, Date2) > 0 Then
 		GetLatestDate = Date2
 	Else
 		GetLatestDate = Date1
