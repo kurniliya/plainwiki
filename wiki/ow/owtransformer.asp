@@ -204,11 +204,12 @@ Class Transformer
 	    If (Len(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))) Then
 			vLastModifiedSince = DateFromHTTPDate(Request.ServerVariables("HTTP_IF_MODIFIED_SINCE"))
 			
-'			Response.Write(vLastModifiedSince)
-'			Response.Write(vLastChangeDate)
-'			Response.Write(DateDiff("s", vLastModifiedSince, vLastChangeDate))
+'			Response.Write("vLastModifiedSince = " & vLastModifiedSince & " ")
+'			Response.Write("vLastChangeDate = " & vLastChangeDate & " ")
+
+'			Response.Write("SecondDateIsLater(vLastModifiedSince, vLastChangeDate) = " & SecondDateIsLater(vLastModifiedSince, vLastChangeDate) & " ")
 			
-            If SecondDateIsLater(vLastModifiedSince, vLastChangeDate)  Then
+            If SecondDateIsLater(vLastChangeDate, vLastModifiedSince)  Then
             	Response.Clear
 				Response.Status = "304 Not Modified"
 				Response.End
