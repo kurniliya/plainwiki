@@ -50,7 +50,11 @@
 	</div>
 
 	<div class="portlet" id="p-logo">
-		<a style="background-image: url(ow/images/logo.gif);" href="http://www.primat.mephi.ru" title="Visit the main page [z]" accesskey="z">
+		<a>
+			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:frontpage/@href"/></xsl:attribute>
+			<xsl:attribute name="style">background-image: url(ow/images/logo.gif);</xsl:attribute>
+			<xsl:attribute name="title">Visit the main page [z]</xsl:attribute>
+			<xsl:attribute name="title">z</xsl:attribute>
 		</a>
 	</div>
 
