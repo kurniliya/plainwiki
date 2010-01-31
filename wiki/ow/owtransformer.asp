@@ -323,7 +323,7 @@ Class Transformer
                 Elseif gAction = "rss" Then
                     Response.ContentType = "text/xml; charset=" & OPENWIKI_ENCODING & ";"
                 Else
-					if cUseXhtmlHttpHeaders And (vIsMathPlayer Or Not vIsIE) Then
+					If cUseXhtmlHttpHeaders And (vIsMathPlayer Or Not vIsIE) Then
 ' 						IE+MathPlayer workaround: in ContentType must be specified just "content type"
 '						Response.ContentType = "application/xhtml+xml; charset=" & OPENWIKI_ENCODING & ";"
 						Response.ContentType = "application/xhtml+xml"
