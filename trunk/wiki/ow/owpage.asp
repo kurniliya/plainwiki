@@ -236,9 +236,13 @@ Class WikiPage
         ToXML = ToXML & ">" & vbCRLF
         ToXML = ToXML & ToLinkXML(PrettyWikiLink(vName), "", True)
         If vChangesCollection.ElementAt(0).Revision > 0 Then
-            vCount = vChangesCollection.Count - 1
-            For i = 0 To vCount
+            'vCount = vChangesCollection.Count - 1
+            For i = 0 To vChangesCollection.Count - 1
                 ToXML = ToXML & vChangesCollection.ElementAt(i).ToXML()
+                ' if processing the current page and not a page from included list
+                If vName = gPage Then
+	                gLastModified = vChangesCollection.ElementAt(i).Timestamp()
+	            End If
             Next
         End If
         If pIncludeText = 1 Or pIncludeText = 3 Then
@@ -389,7 +393,7 @@ Class Change
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
-        gLastModified = vTimestamp
+
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
         End If
@@ -556,7 +560,7 @@ Class Attachment
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
-        gLastModified = vTimestamp
+
         If vComment <> "" Then
             ToXML = ToXML & "<ow:comment>" & PCDATAEncode(vComment) & "</ow:comment>"
         End If
@@ -636,7 +640,7 @@ Class AttachmentChange
             ToXML = ToXML & "/>"
         End If
         ToXML = ToXML & "<ow:date>" & FormatDateISO8601(vTimestamp) & "</ow:date>" & vbCRLF
-        gLastModified = vTimestamp        
+
         If vAction <> "" Then
             ToXML = ToXML & "<ow:action>" & PCDATAEncode(vAction) & "</ow:action>"
         End If
