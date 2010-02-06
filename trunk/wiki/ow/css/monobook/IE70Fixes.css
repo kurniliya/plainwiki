@@ -19,7 +19,7 @@
 }
 
 .rtl #bodyContent a.external {
-	background-image: url(external-rtl.png);
+	/*background-image: url(external-rtl.png);*/
 	padding: 0 13px 0 0;
 }
 

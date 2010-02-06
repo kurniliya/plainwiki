@@ -532,11 +532,11 @@ table.rimage {
 }
 .rtl #bodyContent a.external,
 .rtl #bodyContent a[href ^="gopher://"] {
-	background-image: url(external-rtl.png);
+	/*background-image: url(external-rtl.png);*/
 }
 #bodyContent a[href ^="https://"],
 .link-https {
-	background: url(lock_icon.gif) center right no-repeat;
+	/*background: url(lock_icon.gif) center right no-repeat;*/
 	padding: 0 16px;
 }
 #bodyContent a[href ^="mailto:"],
@@ -545,18 +545,18 @@ table.rimage {
 	padding: 0 18px;
 }
 #bodyContent a[href ^="news://"] {
-	background: url(news_icon.png) center right no-repeat;
+	/*background: url(news_icon.png) center right no-repeat;*/
 	padding: 0 18px;
 }
 #bodyContent a[href ^="ftp://"],
 .link-ftp {
-	background: url(file_icon.gif) center right no-repeat;
+	/*background: url(file_icon.gif) center right no-repeat;*/
 	padding: 0 18px;
 }
 #bodyContent a[href ^="irc://"],
 #bodyContent a.extiw[href ^="irc://"],
 .link-irc {
-	background: url(discussionitem_icon.gif) center right no-repeat;
+	/*background: url(discussionitem_icon.gif) center right no-repeat;*/
 	padding: 0 18px;
 }
 #bodyContent a.external[href $=".ogg"], #bodyContent a.external[href $=".OGG"],
@@ -566,7 +566,7 @@ table.rimage {
 #bodyContent a.external[href $=".wav"], #bodyContent a.external[href $=".WAV"],
 #bodyContent a.external[href $=".wma"], #bodyContent a.external[href $=".WMA"],
 .link-audio {
-	background: url("audio.png") center right no-repeat;
+	/*background: url("audio.png") center right no-repeat;*/
 	padding: 0 13px;
 }
 #bodyContent a.external[href $=".ogm"], #bodyContent a.external[href $=".OGM"],
@@ -574,7 +574,7 @@ table.rimage {
 #bodyContent a.external[href $=".mpeg"], #bodyContent a.external[href $=".MPEG"],
 #bodyContent a.external[href $=".mpg"], #bodyContent a.external[href $=".MPG"],
 .link-video {
-	background: url("video.png") center right no-repeat;
+	/*background: url("video.png") center right no-repeat;*/
 	padding: 0 13px;
 }
 #bodyContent a.external[href $=".pdf"], #bodyContent a.external[href $=".PDF"],
