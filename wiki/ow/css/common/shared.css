@@ -337,6 +337,6 @@ strong.mw-revdelundel-link {
 
 /* feed links */
 a.feedlink {
-	background: url("images/feed-icon.png") center left no-repeat;
+	/*background: url("images/feed-icon.png") center left no-repeat;*/
 	padding-left: 16px;
 }
