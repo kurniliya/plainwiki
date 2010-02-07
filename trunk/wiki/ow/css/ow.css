@@ -304,18 +304,18 @@ div.medialist ul li li {
 #mw_content  a[href$=".PDF"].external, 
 #mw_content  a[href*=".PDF?"].external, 
 #mw_content  a[href*=".PDF#"].external {
-    background: 
+    /*background: 
         url("http://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif")
-        center right no-repeat;
+        center right no-repeat;*/
     padding-right: 16px;
 }
  
 /* Change the external link icon to an Adobe icon anywhere the PDFlink class
    is used (notably Template:PDFlink). This works in IE, unlike the above. */
 span.PDFlink a {
-    background: 
+    /*background: 
         url("http://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif")
-        center right no-repeat;
+        center right no-repeat;*/
     padding-right: 17px !important;
 }
  
