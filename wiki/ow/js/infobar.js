@@ -13,7 +13,7 @@ function informationbar(){
 
 informationbar.prototype.setContent = function(data){
 	this.content = this.content + data
-	var pos = document.getElementById('infobarholder');
+	var pos = document.getElementById('globalWrapper');
         var div 
         if (typeof document.createElementNS != 'undefined') {
         	div = document.createElementNS("http://www.w3.org/1999/xhtml","div");
