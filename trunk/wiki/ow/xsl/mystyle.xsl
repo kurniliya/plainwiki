@@ -10,7 +10,7 @@
 
 <xsl:include href="googlecustomsearch.xsl" /> 
 
-<xsl:variable name="brandingText">NEQwiki - the ecnyclopedia of nonlinear differential equations.</xsl:variable>
+<xsl:variable name="brandingText">NEQwiki, the nonlinear equations encyclopedia</xsl:variable>
 
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
