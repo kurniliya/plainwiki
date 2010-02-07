@@ -320,9 +320,9 @@ span.PDFlink a {
 }
  
 span.geolink a {
-    background:
+    /*background:
         url("http://upload.wikimedia.org/wikipedia/en/a/a7/Monobook-globe.png")
-        center right no-repeat !important;
+        center right no-repeat !important;*/
     padding-right: 11px !important;
 }
  
@@ -997,7 +997,7 @@ sup, sub {
 /* Put a chequered background behind images, only visible if they have transparency */
 .gallerybox .thumb img,
 #file img {
-    background: white url("http://upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png") repeat;
+    background: white /*url("http://upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png")*/ repeat;
 }
 /* But no chequered background on articles, user pages or portals. */
 .ns-0 .gallerybox .thumb img,
@@ -1064,34 +1064,34 @@ div#p-editorial ul li {
 #column-one ul li#n-recentchangesrss {
 	background: transparent url(../images/icons/rss_small.gif) no-repeat left center;
 }
-/* Sandbox menu icon */
+/* Sandbox menu icon
 #column-one ul li#t-sandbox {
 	background: transparent url(../images/icons/sndbx.png) no-repeat left center;
-}
-/* Help menu icon */
+} */
+/* Help menu icon
 #column-one ul li#n-help {
 	background: transparent url(../images/icons/help-icon.gif) no-repeat left center;
-}
-/* Random page menu icon */
+} */
+/* Random page menu icon
 #column-one ul li#n-randompage {
 	background: transparent url(../images/icons/dice.png) no-repeat left center;
-}
-/* Deprecated pages menu icon */
+} */
+/* Deprecated pages menu icon
 #column-one ul li#n-deprecatedpages {
 	background: transparent url(../images/icons/Edit-delete-not_encyclopedic.png) no-repeat left center;
-}
-/* To-do menu icon */
+} */
+/* To-do menu icon
 #column-one ul li#n-todolist {
 	background: transparent url(../images/icons/Applications-development_current.png) no-repeat left center;
-}
-/* Create new page menu icon */
+} */
+/* Create new page menu icon
 #column-one ul li#t-createpage {
 	background: transparent url(../images/icons/New_text_document.png) no-repeat left center;
-}
-/* Special pages menu icon */
+} */
+/* Special pages menu icon
 #column-one ul li#t-specialpages {
 	background: transparent url(../images/icons/Superman_shield.png) no-repeat left center;
-}
+} */
 /* Printable version menu icon */
 #column-one ul li#t-print {
 	background: transparent url(../images/icons/Gnome-dev-printer.png) no-repeat left center;
@@ -1100,32 +1100,32 @@ div#p-editorial ul li {
 #column-one ul li#n-titleindex {
 	background: transparent url(../images/icons/Alphaomega.png) no-repeat left center;
 }
-/* Recent changes menu icon */
+/* Recent changes menu icon
 #column-one ul li#n-recentchanges {
 	background: transparent url(../images/icons/Gnome-document-open-recent.png) no-repeat left center;
-}
-/* What links here menu icon */
+} */
+/* What links here menu icon
 #column-one ul li#t-whatlinkshere {
 	background: transparent url(../images/icons/Gnome-insert-link.png) no-repeat left center;
-}
-/* View XML menu icon */
+} */
+/* View XML menu icon
 #column-one ul li#t-viewxml {
 	background: transparent url(../images/icons/xml-logo.png) no-repeat left center;
-}
-/* Main page menu icon */
+} */
+/* Main page menu icon
 #column-one ul li#n-mainpage-description {
 	background: transparent url(../images/icons/Crystal_Clear_action_bookmark.png) no-repeat left center;
-}
+} */
 
 /* Equation index menu icon */
 #column-one ul li#n-equationindex {
 	background: transparent url(../images/icons/Greek_uc_sigma.png) no-repeat left center;
 }
 
-/* New pages menu icon */
+/* New pages menu icon
 #column-one ul li#n-newpages {
 	background: transparent url(../images/icons/Im-nov.png) no-repeat left center;
-}
+} */
 
 
 /* Changes style for User preferences link (that's one in upper rigth corner)

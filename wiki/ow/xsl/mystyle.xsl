@@ -303,8 +303,8 @@
 
 <xsl:template name="copyright_ico">
 	<div id="f-copyrightico">
-		<a onclick="return !window.open(this.href)" href="http://www.mephi.ru/"><img src="{/ow:wiki/ow:imagepath}/mephi.gif"  width="100" height="100" alt="Moscow Engineering Physics Institute"/></a>
-	</div>
+<!--		<a onclick="return !window.open(this.href)" href="http://www.mephi.ru/"><img src="{/ow:wiki/ow:imagepath}/mephi.gif"  width="100" height="100" alt="Moscow Engineering Physics Institute"/></a>
+-->	</div>
 </xsl:template>
 
 <xsl:template name="footer_list_lastmod">
