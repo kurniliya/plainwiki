@@ -18,7 +18,7 @@
 <xsl:include href="owrecaptcha.xsl"/>
 <xsl:include href="owedittoolbar.xsl"/>
 <xsl:include href="oweditwarning.xsl"/>
-<xsl:include href="googleanalytics.xsl"/>
+<!--<xsl:include href="googleanalytics.xsl"/>-->
 <xsl:include href="statcounter.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
@@ -124,7 +124,7 @@
 				</div>
 			</div>
 			<xsl:call-template name="StatCounter" />
-			<xsl:call-template name="GoogleAnalytics" />
+			<!--<xsl:call-template name="GoogleAnalytics" />-->
 			
 			<xsl:text disable-output-escaping="yes"> 
 				&lt;script type="text/javascript" src="ow/js/infobar.js">
