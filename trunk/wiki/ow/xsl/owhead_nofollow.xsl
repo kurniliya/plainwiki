@@ -25,10 +25,9 @@
 		<link rel="alternate" type="application/rss+xml" href="{/ow:wiki/ow:scriptname}?a=rss" title="Recent changes" />		
 		
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
-		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
-		<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
-		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
+		<!--<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />-->
+		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 5.5000]&gt;</xsl:text>
 		<link rel="stylesheet" href="ow/css/monobook/IE50Fixes.css?207xx" type="text/css" media="screen" />			

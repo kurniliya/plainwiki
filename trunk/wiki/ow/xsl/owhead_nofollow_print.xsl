@@ -23,7 +23,6 @@
 		</title>
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" />
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" />		
-		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
 		
 		<xsl:text disable-output-escaping="yes">&lt;!--[if lt IE 7]&gt;</xsl:text>
 		<xsl:text disable-output-escaping="yes">		
