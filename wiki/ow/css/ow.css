@@ -1163,4 +1163,56 @@ z-index: 1000;
 position: absolute;
 width: expression(document.compatMode=="CSS1Compat"? document.documentElement.clientWidth+"px" : body.clientWidth+"px");
 }
-/* End of nformation bar styles */
+/* End of information bar styles */
+
+/* Interwiki styles */
+#bodyContent a[class ~="wikipedia"] {
+	background: transparent url(http://en.wikipedia.org/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="openwiki"] {
+	/*background: transparent url(http://openwiki.com/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="google"] {
+	/*background: transparent url(http://www.google.com/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="mathworld"] {
+	background: transparent url(http://mathworld.wolfram.com/favicon_mathworld.png) no-repeat scroll right center;
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="eqworld"] {
+	background: transparent url(http://eqworld.ipmnet.ru/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="scholarpedia"] {
+	background: transparent url(http://www.scholarpedia.org/favicon.ico) no-repeat scroll right center;
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="dictionary"] {
+	/*background: transparent url(http://dictionary1.classic.reference.com/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="googlegroups"] {
+	/*background: transparent url(http://groups.google.com/groups/img/3/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="rfc"] {
+	/*background: transparent url(http://www.faqs.org/faqs/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+
+#bodyContent a[class ~="groups"] {
+	/*background: transparent url(http://groups.google.com/groups/img/3/favicon.ico) no-repeat scroll right center;*/
+	padding:0 18px;
+}
+/* End of interwiki styles */
