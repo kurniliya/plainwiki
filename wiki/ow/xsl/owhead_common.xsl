@@ -26,8 +26,7 @@
 				
 		<link rel="stylesheet" href="ow/css/common/shared.css?207xx" type="text/css" media="screen" />
 		<link rel="stylesheet" href="ow/css/common/commonPrint.css?207xx" type="text/css" media="print" />
-		<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />
-		<link rel="stylesheet" href="ow/css/chick/main.css?207xx" type="text/css" media="handheld" />
+		<!--<link rel="stylesheet" href="ow/css/monobook/main.css?207xx" type="text/css" media="screen" />-->
 		<link rel="stylesheet" href="ow/css/ow.css" type="text/css" media="screen" />		
 		<!--<link rel="stylesheet" href="ow/css/interwiki.css" type="text/css" media="screen" />-->
 		<!--<link rel="stylesheet" href="ow/css/infobar.css" type="text/css" media="screen" />		-->
