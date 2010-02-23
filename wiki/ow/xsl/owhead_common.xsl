@@ -101,8 +101,9 @@
 			&lt;/script>
 <!--			&lt;script type="text/javascript" src="ow/js/edit.js?207xx">
 			&lt;/script>
--->			&lt;script type="text/javascript" src="ow/js/common.js">
-			&lt;/script>			
+-->			
+			<!--&lt;script type="text/javascript" src="ow/js/common.js">
+			&lt;/script>-->			
 			<!--
 			&lt;script type="text/javascript" src="ow/js/infobar.js">
 			&lt;/script>						
