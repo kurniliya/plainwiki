@@ -24,6 +24,7 @@
 	</script>
 	
 	<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js">
+		<xsl:comment>Comment to prevent this block being blank</xsl:comment>
 	</script>
 <!--	
 	<noscript>
