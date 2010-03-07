@@ -1058,7 +1058,8 @@ special external link styling */
 	height: 155px;
 	width: 12.2em;
 	background-repeat: no-repeat;
-	background-position: 35% 50% !important;
+	background-image: url(images-view.png);
+	background-position: 0 -715px !important;
 	text-decoration: none;
 }
 
