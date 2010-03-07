@@ -876,7 +876,8 @@ table.rimage {
 */
 #bodyContent a.external,
 #bodyContent a[href ^="gopher://"] {
-	background: url(external.png) center right no-repeat;
+	background: url(images-view.png) center right no-repeat;
+	background-position: right -325px;
 	padding: 0 13px;
 }
 .rtl #bodyContent a.external,
@@ -930,7 +931,8 @@ table.rimage {
 #bodyContent a.external[href *=".pdf#"], #bodyContent a.external[href *=".PDF#"],
 #bodyContent a.external[href *=".pdf?"], #bodyContent a.external[href *=".PDF?"],
 .link-document {
-	background: url("acrobat.gif") center right no-repeat;
+	background: url("images-view.png") center right no-repeat;
+	background-position: right -260px;
 	padding: 0 16px;
 }
 
@@ -1162,7 +1164,8 @@ in bg url to hide it from iemac */
 li#pt-userpage,
 li#pt-anonuserpage,
 li#pt-login {
-	background: url(user.gif) top left no-repeat;
+	background: url(images-view.png) top left no-repeat;
+	background-position: 0 -385px;
 	padding-left: 20px;
 	text-transform: none;
 }
@@ -2977,7 +2980,8 @@ div#p-editorial ul li {
 
 /* RSS menu icon */
 #column-one ul li#n-recentchangesrss {
-	background: transparent url(../images/icons/rss_small.gif) no-repeat left center;
+	background: transparent url(images-view.png) no-repeat left center;
+	background-position: 0 -583px;
 }
 /* Sandbox menu icon
 #column-one ul li#t-sandbox {
@@ -3009,11 +3013,13 @@ div#p-editorial ul li {
 } */
 /* Printable version menu icon */
 #column-one ul li#t-print {
-	background: transparent url(../images/icons/Gnome-dev-printer.png) no-repeat left center;
+	background: transparent url(images-view.png) no-repeat left center;
+	background-position: 0 -649px;
 }
 /* Title index menu icon */
 #column-one ul li#n-titleindex {
-	background: transparent url(../images/icons/Alphaomega.png) no-repeat left center;
+	background: transparent url(images-view.png) no-repeat left center;
+	background-position: 0 -451px;
 }
 /* Recent changes menu icon
 #column-one ul li#n-recentchanges {
@@ -3034,7 +3040,8 @@ div#p-editorial ul li {
 
 /* Equation index menu icon */
 #column-one ul li#n-equationindex {
-	background: transparent url(../images/icons/Greek_uc_sigma.png) no-repeat left center;
+	background: transparent url(images-view.png) no-repeat left center;
+	background-position: 0 -517px;
 }
 
 /* New pages menu icon
@@ -3082,7 +3089,8 @@ width: expression(document.compatMode=="CSS1Compat"? document.documentElement.cl
 
 /* Interwiki styles */
 #bodyContent a[class ~="wikipedia"] {
-	background: transparent url(http://en.wikipedia.org/favicon.ico) no-repeat scroll right center;
+	background: transparent url(images-view.png) no-repeat scroll right center;
+	background-position: right -194px;
 	padding:0 18px;
 }
 
@@ -3097,17 +3105,19 @@ width: expression(document.compatMode=="CSS1Compat"? document.documentElement.cl
 }
 
 #bodyContent a[class ~="mathworld"] {
-	background: transparent url(http://mathworld.wolfram.com/favicon_mathworld.png) no-repeat scroll right center;
+	background: transparent url(images-view.png) no-repeat scroll right center;
+	background-position: right -63px;
 	padding:0 18px;
 }
 
 #bodyContent a[class ~="eqworld"] {
-	background: transparent url(http://eqworld.ipmnet.ru/favicon.ico) no-repeat scroll right center;
+	/*background: transparent url(http://eqworld.ipmnet.ru/favicon.ico) no-repeat scroll right center;*/
 	padding:0 18px;
 }
 
 #bodyContent a[class ~="scholarpedia"] {
-	background: transparent url(http://www.scholarpedia.org/favicon.ico) no-repeat scroll right center;
+	background: transparent url(images-view.png) no-repeat scroll right center;
+	background-position: right -128px;
 	padding:0 18px;
 }
 
