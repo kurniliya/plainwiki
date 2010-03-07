@@ -15,7 +15,7 @@
 <xsl:variable name="mainPageHeading">NEQwiki</xsl:variable>
 
 <xsl:template name="brandingImage">
-    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.gif" align="right" alt="NEQwiki" /></a>
+    <a href="{/ow:wiki/ow:frontpage/@href}"><img src="{/ow:wiki/ow:imagepath}/logo.png" align="right" alt="NEQwiki" /></a>
 </xsl:template>
 
 <xsl:template name="poweredBy">
@@ -52,7 +52,7 @@
 	<div class="portlet" id="p-logo">
 		<a>
 			<xsl:attribute name="href"><xsl:value-of select="/ow:wiki/ow:frontpage/@href"/></xsl:attribute>
-			<xsl:attribute name="style">background-image: url(ow/images/logo.gif);</xsl:attribute>
+			<xsl:attribute name="style">background-image: url(ow/images/logo.png);</xsl:attribute>
 			<xsl:attribute name="title">Visit the main page [z]</xsl:attribute>
 			<xsl:attribute name="title">z</xsl:attribute>
 		</a>
