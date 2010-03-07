@@ -15,11 +15,12 @@
 <xsl:include href="mystyle.xsl"/>
 <xsl:include href="owhead.xsl"/>
 <xsl:include href="owtoc.xsl"/>
-<xsl:include href="owrecaptcha.xsl"/>
-<xsl:include href="owedittoolbar.xsl"/>
+<!--<xsl:include href="owrecaptcha.xsl"/>-->
+<!--<xsl:include href="owedittoolbar.xsl"/>-->
 <xsl:include href="oweditwarning.xsl"/>
 <!--<xsl:include href="googleanalytics.xsl"/>-->
 <xsl:include href="statcounter.xsl"/>
+<xsl:include href="owjs.xsl"/>
 
 <xsl:variable name="name" select="ow:urlencode(string(/ow:wiki/ow:page/@name))" />
 
@@ -123,13 +124,14 @@
 					<xsl:call-template name="footer_list" />
 				</div>
 			</div>
-			<xsl:call-template name="StatCounter" />
-			<!--<xsl:call-template name="GoogleAnalytics" />-->
 			
+			<xsl:call-template name="ExternalJS" />
 			<xsl:text disable-output-escaping="yes"> 
 				&lt;script type="text/javascript" src="ow/js/infobar.js">
 				&lt;/script>
 			</xsl:text>
+			
+			<xsl:call-template name="StatCounter" />			
 		 </body>
 	 </html>
 </xsl:template>
@@ -639,7 +641,10 @@
 							<xsl:call-template name="edit_warning" />
 						</xsl:if>
 						
-						<xsl:call-template name="edit_buttons_toolbar"/>
+						<!--<xsl:call-template name="edit_buttons_toolbar"/>-->
+						<div id='toolbar'>
+							<xsl:comment>Edit toolbar</xsl:comment>
+						</div>
 				
 						<form id="editform" method="post" onsubmit="setText(theTextAreaValue()); return true;">
 							<xsl:attribute name="action"><xsl:value-of select="/ow:wiki/ow:scriptname"/>?a=edit#preview</xsl:attribute>
@@ -673,7 +678,8 @@
 								<input type="hidden" name="revision" value="{ow:page/@revision}" />
 								<input type="hidden" name="newrev" value="{ow:page/ow:change/@revision}" />
 								<input type="hidden" name="p" value="{$name}" />
-								<xsl:call-template name="showRecapthca" />
+								<!--<xsl:call-template name="showRecapthca" />-->
+								<div id="recaptcha_holder" />
 								<input type="submit" name="save" value="Save" />
 								&#160;
 								<input type="button" name="prev2" value="Preview" onclick="javascript:preview();" />
@@ -694,6 +700,8 @@
 				<xsl:call-template name="footer_list" />
 			</div>
 		</div>
+		<xsl:call-template name="ExternalJS" />
+		<xsl:call-template name="EditJS" />		
     </body>
   </html>
 </xsl:template>
@@ -722,6 +730,7 @@
 				<xsl:call-template name="footer_list" />
 			</div>
 		</div>
+		<xsl:call-template name="ExternalJS" />
     </body>
   </html>
 </xsl:template>
@@ -734,6 +743,7 @@
 			<div id="globalWrapper">
 				<xsl:apply-templates select="ow:page/ow:body"/>
 			</div>
+			<xsl:call-template name="ExternalJS" />
 		</body>
 	</html>
 </xsl:template>
@@ -837,7 +847,8 @@
 					<xsl:call-template name="poweredBy" />
 					<xsl:call-template name="footer_list" />
 				</div>
-			 </div>				
+			 </div>
+			 <xsl:call-template name="ExternalJS" />
 		</body>
 	</html>
 </xsl:template>
@@ -1009,6 +1020,7 @@
 				<xsl:call-template name="footer_list" />
 			</div>					
 		</div>
+		<xsl:call-template name="ExternalJS" />
       </body>
   </html>
 </xsl:template>
@@ -1112,6 +1124,7 @@
         <input type="hidden" name="a" value="fullsearch"/>
         <input type="text" name="txt" size="30"><xsl:attribute name="value"><xsl:value-of select="ow:titlesearch/@value"/></xsl:attribute></input> <input type="submit" value="Search"/>
         </form>
+        <xsl:call-template name="ExternalJS" />
     </body>
   </html>
 </xsl:template>
@@ -1181,6 +1194,7 @@
 					<xsl:call-template name="footer_list" />
 				</div>
 			</div>
+			<xsl:call-template name="ExternalJS" />
 		</body>
 	</html>
 </xsl:template>
@@ -1291,6 +1305,7 @@
 					<xsl:call-template name="footer_list" />
 				</div>
 			</div>
+			<xsl:call-template name="ExternalJS" />
 		</body>
 	</html>
 </xsl:template>

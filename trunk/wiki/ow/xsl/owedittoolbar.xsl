@@ -9,7 +9,6 @@
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes" />
 
 <xsl:template name="edit_buttons_toolbar">
-	<div id='toolbar'>
 		<script type='text/javascript'>
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/</xsl:text>
@@ -52,7 +51,6 @@
 			<xsl:text disable-output-escaping="yes">
 				/*]]&gt;*/</xsl:text>
 		</script>
-	</div>
-</xsl:template>	
+</xsl:template>
 
 </xsl:stylesheet>

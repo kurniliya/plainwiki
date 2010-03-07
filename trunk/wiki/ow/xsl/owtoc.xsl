@@ -25,7 +25,6 @@
 								</td>
 							</tr>
 						</table>
-						<xsl:call-template name="tocToggleInlineJavaScript" />
 					</td>
 				</tr>
 			</table>
@@ -41,7 +40,6 @@
 					</td>
 				</tr>
 			</table>
-			<xsl:call-template name="tocToggleInlineJavaScript" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -98,15 +96,5 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>   
-
-<xsl:template name="tocToggleInlineJavaScript">
-	<script type="text/javascript" charset="{/ow:wiki/@encoding}">
-		<xsl:text disable-output-escaping="yes">
-			/*&lt;![CDATA[*/
-			if (window.toggleToc) { var tocShowText = "[show]"; var tocHideText = "[hide]"; showTocToggle(); } 
-			/*]]&gt;*/ 
-		</xsl:text>
-	</script>
-</xsl:template>            
 
 </xsl:stylesheet>

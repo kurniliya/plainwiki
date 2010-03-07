@@ -10,8 +10,13 @@
 
 <xsl:variable name="recaptcha_publickey" select="'6Lea0wYAAAAAADggQdYAgmRdguWVCRWeqYbvumWG'" />
 
-<xsl:template name="showRecapthca">
-	<div id="recaptcha_holder" />
+<!--<xsl:template name="showRecapthca">
+	<xsl:if test="/ow:wiki/ow:protection='captcha'">
+		<div id="recaptcha_holder" />
+	</xsl:if>		
+</xsl:template>-->
+
+<xsl:template name="recaptchaJS">
 	<xsl:if test="/ow:wiki/ow:protection='captcha'">
 		<script type="text/javascript"
    src="http://api.recaptcha.net/challenge?k={$recaptcha_publickey}&amp;error={ow:captcha_error}"></script>
