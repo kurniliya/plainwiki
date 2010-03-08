@@ -967,7 +967,7 @@ function runOnloadHook() {
 
 	//updateTooltipAccessKeys( null );
 	akeytt( null );
-	setupCheckboxShiftClick();
+	//setupCheckboxShiftClick();
 	sortables_init();
 
 	// Run any added-on functions
