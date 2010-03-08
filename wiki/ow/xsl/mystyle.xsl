@@ -8,7 +8,7 @@
                 version="1.0">
 <xsl:output method="xml" indent="no" omit-xml-declaration="yes"/>
 
-<xsl:include href="googlecustomsearch.xsl" /> 
+<!--<xsl:include href="googlecustomsearch.xsl" /> -->
 
 <xsl:variable name="brandingText">NEQwiki, the nonlinear equations encyclopedia</xsl:variable>
 
@@ -61,7 +61,7 @@
 		<h5><label for="searchInput">Search</label></h5>
 		<div id="searchBody" class="pBody">
 			<xsl:call-template name="menu_section_search" />
-			<xsl:call-template name="GoogleCustomSearch" />
+			<!--<xsl:call-template name="GoogleCustomSearch" />-->
 		</div>		
 	</div>
 
