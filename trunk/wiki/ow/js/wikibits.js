@@ -965,7 +965,7 @@ function runOnloadHook() {
 	// might cause the function to terminate prematurely
 	doneOnloadHook = true;
 
-	updateTooltipAccessKeys( null );
+	//updateTooltipAccessKeys( null );
 	akeytt( null );
 	setupCheckboxShiftClick();
 	sortables_init();
