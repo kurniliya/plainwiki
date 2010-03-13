@@ -1459,18 +1459,20 @@ function uploadwizard_newusers() {
  
  
 /** IPv6 AAAA connectivity testing **/
- 
+
+/* 
 var __ipv6wwwtest_factor = 100;
 var __ipv6wwwtest_done = 0;
 if ((wgServer != "https://secure.wikimedia.org") && (Math.floor(Math.random()*__ipv6wwwtest_factor)==42)) {
     importScript("MediaWiki:Common.js/IPv6.js");
 }
+*/
  
 /** Magic editintros ****************************************************
  *
  *  Description: Adds editintros on disambiguation pages and BLP pages.
  *  Maintainers: [[User:RockMFR]]
- */
+
  
 function addEditIntro(name)
 {
@@ -1502,5 +1504,5 @@ if (wgNamespaceNumber == 0) {
     }
   });
 }
- 
+ */
 //</source>
