@@ -1434,7 +1434,7 @@ ts_alternate_row_colors = false;
  * Switches in a message for non-autoconfirmed users at [[Wikipedia:Upload]]
  *
  *  Maintainers: [[User:Krimpet]]
- ****/
+
 function uploadwizard_newusers() {
   if (wgNamespaceNumber == 4 && wgTitle == "Upload" && wgAction == "view") {
     var oldDiv = document.getElementById("autoconfirmedusers"),
@@ -1456,7 +1456,7 @@ function uploadwizard_newusers() {
   }
 }
 //addOnloadHook(uploadwizard_newusers);
- 
+ ****/
  
 /** IPv6 AAAA connectivity testing **/
 
