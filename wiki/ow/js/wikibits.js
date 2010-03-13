@@ -1406,7 +1406,7 @@ addOnloadHook( createNavigationBarToggleButton );
  *
  *  Description: Adds an additional link to the complete list of languages available.
  *  Maintainers: [[User:AzaToth]], [[User:R. Koot]], [[User:Alex Smotrov]]
- */
+
  
 if (wgPageName == 'Main_Page' || wgPageName == 'Talk:Main_Page') 
     addOnloadHook(function () {
@@ -1419,7 +1419,7 @@ if (wgPageName == 'Main_Page' || wgPageName == 'Talk:Main_Page')
         }
     }
 )
- 
+ */ 
  
 /** Table sorting fixes ************************************************
   *
