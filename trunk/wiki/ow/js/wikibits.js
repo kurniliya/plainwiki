@@ -1220,10 +1220,11 @@ function LinkFA()
  *  Maintainers: [[User:R. Koot]]
  */
  
-var autoCollapse = 2;
+//var autoCollapse = 2;
 var collapseCaption = "hide";
 var expandCaption = "show";
  
+/*
 function collapseTable( tableIndex )
 {
     var Button = document.getElementById( "collapseButton" + tableIndex );
@@ -1247,7 +1248,7 @@ function collapseTable( tableIndex )
         Button.firstChild.data = collapseCaption;
     }
 }
- 
+
 function createCollapseButtons()
 {
     var tableIndex = 0;
@@ -1257,7 +1258,7 @@ function createCollapseButtons()
     for ( var i = 0; i < Tables.length; i++ ) {
         if ( hasClass( Tables[i], "collapsible" ) ) {
  
-            /* only add button and increment count if there is a header row to work with */
+            // only add button and increment count if there is a header row to work with
             var HeaderRow = Tables[i].getElementsByTagName( "tr" )[0];
             if (!HeaderRow) continue;
             var Header = HeaderRow.getElementsByTagName( "th" )[0];
@@ -1303,6 +1304,7 @@ function createCollapseButtons()
 }
  
 addOnloadHook( createCollapseButtons );
+ */
  
  
 /** Dynamic Navigation Bars (experimental) *************************************
