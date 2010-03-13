@@ -1064,7 +1064,7 @@ function sysopFunctions() {
     }
 }
  
-addOnloadHook( sysopFunctions );
+//addOnloadHook( sysopFunctions );
  
  
 /** WikiMiniAtlas *******************************************************
