@@ -184,27 +184,6 @@ function toggleToc() {
 var mwEditButtons = [];
 var mwCustomEditButtons = []; // eg to add in MediaWiki:Common.js
 
-function escapeQuotes(text) {
-	var re = new RegExp("'","g");
-	text = text.replace(re,"\\'");
-	re = new RegExp("\\n","g");
-	text = text.replace(re,"\\n");
-	return escapeQuotesHTML(text);
-}
-
-function escapeQuotesHTML(text) {
-	var re = new RegExp('&',"g");
-	text = text.replace(re,"&amp;");
-	re = new RegExp('"',"g");
-	text = text.replace(re,"&quot;");
-	re = new RegExp('<',"g");
-	text = text.replace(re,"&lt;");
-	re = new RegExp('>',"g");
-	text = text.replace(re,"&gt;");
-	return text;
-}
-
-
 /**
  * Set the accesskey prefix based on browser detection.
  */
