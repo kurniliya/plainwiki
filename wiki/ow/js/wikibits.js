@@ -966,7 +966,7 @@ function runOnloadHook() {
 	doneOnloadHook = true;
 
 	//updateTooltipAccessKeys( null );
-	akeytt( null );
+	//akeytt( null );
 	//setupCheckboxShiftClick();
 	//sortables_init();
 
