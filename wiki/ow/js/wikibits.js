@@ -1049,80 +1049,6 @@ else if (wgPageName == "Special:Watchlist") //watchlist scripts
 }
  
  
-/** Sysop Javascript *******************************************************
-  *
-  *  Description: Allows for sysop-specific Javascript at [[MediaWiki:Sysop.js]].
-  */
-function sysopFunctions() {
-    if ( wgUserGroups && !window.disableSysopJS ) {
-        for ( var g = 0; g < wgUserGroups.length; ++g ) {
-            if ( wgUserGroups[g] == "sysop" ) {
-                importScript( "MediaWiki:Sysop.js" );
-                break;
-            }
-        }
-    }
-}
- 
-//addOnloadHook( sysopFunctions );
- 
- 
-/** WikiMiniAtlas *******************************************************
-  *
-  *  Description: WikiMiniAtlas is a popup click and drag world map.
-  *               This script causes all of our coordinate links to display the WikiMiniAtlas popup button.
-  *               The script itself is located on meta because it is used by many projects.
-  *               See [[Meta:WikiMiniAtlas]] for more information. 
-  *  Maintainers: [[User:Dschwen]]
-  */
-
-/* 
-if (wgServer == "https://secure.wikimedia.org") {
-    var metaBase = "https://secure.wikimedia.org/wikipedia/meta";
-} else {
-    var metaBase = "http://meta.wikimedia.org";
-}
-importScriptURI(metaBase+"/w/index.php?title=MediaWiki:Wikiminiatlas.js&action=raw&ctype=text/javascript&smaxage=21600&maxage=86400")
-*/ 
- 
-/** Mobile Redirect Helper ************************************************
- *
- *  Redirects to the mobile-optimized gateway at en.m.wikimedia.org
- *  for viewers on iPhone, iPod Touch, Palm Pre, and Android devices.
- *
- *  You can turn off the redirect by setting the cookie "stopMobileRedirect=true"
- *
- *  This code cannot be imported, because the JS only loads after all other files
- *  and this was causing major issues for users with mobile devices. Must be loaded
- *  *before* the images and etc of the page on all mobile devices.
- *
- *  Maintainer: [[User:Brion VIBBER]], [[User:hcatlin]]
-
-if (/(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii)/.test(navigator.userAgent)) {
- 
-  var wgMainPageName = 'Main_Page';
- 
-  var stopMobileRedirectCookieExists = function() {
-    return (document.cookie.indexOf("stopMobileRedirect=true") >= 0);
-  }
- 
-  var mobileSiteLink = function() {
-    if (wgCanonicalNamespace == 'Special' && wgCanonicalSpecialPageName == 'Search') {
-        var pageLink = '?search=' + encodeURIComponent(document.getElementById('searchText').value);
-    } else if (wgPageName == wgMainPageName) {
-        var pageLink = '::Home'; // Special case
-    } else {
-        var pageLink = encodeURIComponent(wgPageName).replace('%2F','/').replace('%3A',':');
-    }
-    return 'http://' + wgContentLanguage + '.m.wikipedia.org/wiki/' + pageLink + "?wasRedirected=true"
-  }
- 
-  if (!stopMobileRedirectCookieExists()) {
-    document.location = mobileSiteLink();
-  }
-}
- */ 
- 
 /* Scripts specific to Internet Explorer */
  
 if (navigator.appName == "Microsoft Internet Explorer")
@@ -1188,125 +1114,6 @@ var hasClass = (function () {
 })();
  
  
-/** Interwiki links to featured articles ***************************************
- *
- *  Description: Highlights interwiki links to featured articles (or
- *               equivalents) by changing the bullet before the interwiki link
- *               into a star.
- *  Maintainers: [[User:R. Koot]]
- */
- 
-function LinkFA() 
-{
-    if ( document.getElementById( "p-lang" ) ) {
-        var InterwikiLinks = document.getElementById( "p-lang" ).getElementsByTagName( "li" );
- 
-        for ( var i = 0; i < InterwikiLinks.length; i++ ) {
-            if ( document.getElementById( InterwikiLinks[i].className + "-fa" ) ) {
-                InterwikiLinks[i].className += " FA"
-                InterwikiLinks[i].title = "This is a featured article in another language.";
-            }
-        }
-    }
-}
- 
-//addOnloadHook( LinkFA );
- 
- 
-/** Collapsible tables *********************************************************
- *
- *  Description: Allows tables to be collapsed, showing only the header. See
- *               [[Wikipedia:NavFrame]].
- *  Maintainers: [[User:R. Koot]]
- */
- 
-//var autoCollapse = 2;
-var collapseCaption = "hide";
-var expandCaption = "show";
- 
-/*
-function collapseTable( tableIndex )
-{
-    var Button = document.getElementById( "collapseButton" + tableIndex );
-    var Table = document.getElementById( "collapsibleTable" + tableIndex );
- 
-    if ( !Table || !Button ) {
-        return false;
-    }
- 
-    var Rows = Table.rows;
- 
-    if ( Button.firstChild.data == collapseCaption ) {
-        for ( var i = 1; i < Rows.length; i++ ) {
-            Rows[i].style.display = "none";
-        }
-        Button.firstChild.data = expandCaption;
-    } else {
-        for ( var i = 1; i < Rows.length; i++ ) {
-            Rows[i].style.display = Rows[0].style.display;
-        }
-        Button.firstChild.data = collapseCaption;
-    }
-}
-
-function createCollapseButtons()
-{
-    var tableIndex = 0;
-    var NavigationBoxes = new Object();
-    var Tables = document.getElementsByTagName( "table" );
- 
-    for ( var i = 0; i < Tables.length; i++ ) {
-        if ( hasClass( Tables[i], "collapsible" ) ) {
- 
-            // only add button and increment count if there is a header row to work with
-            var HeaderRow = Tables[i].getElementsByTagName( "tr" )[0];
-            if (!HeaderRow) continue;
-            var Header = HeaderRow.getElementsByTagName( "th" )[0];
-            if (!Header) continue;
- 
-            NavigationBoxes[ tableIndex ] = Tables[i];
-            Tables[i].setAttribute( "id", "collapsibleTable" + tableIndex );
- 
-            var Button     = document.createElement( "span" );
-            var ButtonLink = document.createElement( "a" );
-            var ButtonText = document.createTextNode( collapseCaption );
- 
-            Button.className = "collapseButton";  //Styles are declared in Common.css
- 
-            ButtonLink.style.color = Header.style.color;
-            ButtonLink.setAttribute( "id", "collapseButton" + tableIndex );
-            ButtonLink.setAttribute( "href", "javascript:collapseTable(" + tableIndex + ");" );
-            ButtonLink.appendChild( ButtonText );
- 
-            Button.appendChild( document.createTextNode( "[" ) );
-            Button.appendChild( ButtonLink );
-            Button.appendChild( document.createTextNode( "]" ) );
- 
-            Header.insertBefore( Button, Header.childNodes[0] );
-            tableIndex++;
-        }
-    }
- 
-    for ( var i = 0;  i < tableIndex; i++ ) {
-        if ( hasClass( NavigationBoxes[i], "collapsed" ) || ( tableIndex >= autoCollapse && hasClass( NavigationBoxes[i], "autocollapse" ) ) ) {
-            collapseTable( i );
-        } 
-        else if ( hasClass( NavigationBoxes[i], "innercollapse" ) ) {
-            var element = NavigationBoxes[i];
-            while (element = element.parentNode) {
-                if ( hasClass( element, "outercollapse" ) ) {
-                    collapseTable ( i );
-                    break;
-                }
-            }
-        }
-    }
-}
- 
-addOnloadHook( createCollapseButtons );
- */
- 
- 
 /** Dynamic Navigation Bars (experimental) *************************************
  *
  *  Description: See [[Wikipedia:NavFrame]].
@@ -1314,8 +1121,8 @@ addOnloadHook( createCollapseButtons );
  */
  
 // set up the words in your language
-var NavigationBarHide = '[' + collapseCaption + ']';
-var NavigationBarShow = '[' + expandCaption + ']';
+var NavigationBarHide = '[hide]';
+var NavigationBarShow = '[show]';
  
 // shows and hides content and picture (if available) of navigation bars
 // Parameters:
@@ -1404,25 +1211,6 @@ function createNavigationBarToggleButton()
 addOnloadHook( createNavigationBarToggleButton );
  
  
-/** Main Page layout fixes *********************************************************
- *
- *  Description: Adds an additional link to the complete list of languages available.
- *  Maintainers: [[User:AzaToth]], [[User:R. Koot]], [[User:Alex Smotrov]]
-
- 
-if (wgPageName == 'Main_Page' || wgPageName == 'Talk:Main_Page') 
-    addOnloadHook(function () {
-        addPortletLink('p-lang', 'http://meta.wikimedia.org/wiki/List_of_Wikipedias',
-                 'Complete list', 'interwiki-completelist', 'Complete list of Wikipedias')
-        var nstab = document.getElementById('ca-nstab-main')
-        if (nstab && wgUserLanguage=='en') {
-            while (nstab.firstChild) nstab = nstab.firstChild
-            nstab.nodeValue = 'Main Page'
-        }
-    }
-)
- */ 
- 
 /** Table sorting fixes ************************************************
   *
   *  Description: Disables code in table sorting routine to set classes on even/odd rows
@@ -1431,80 +1219,4 @@ if (wgPageName == 'Main_Page' || wgPageName == 'Talk:Main_Page')
  
 ts_alternate_row_colors = false;
  
- 
-/***** uploadwizard_newusers ********
- * Switches in a message for non-autoconfirmed users at [[Wikipedia:Upload]]
- *
- *  Maintainers: [[User:Krimpet]]
-
-function uploadwizard_newusers() {
-  if (wgNamespaceNumber == 4 && wgTitle == "Upload" && wgAction == "view") {
-    var oldDiv = document.getElementById("autoconfirmedusers"),
-        newDiv = document.getElementById("newusers");
-    if (oldDiv && newDiv) {
-      if (typeof wgUserGroups == "object" && wgUserGroups) {
-        for (i = 0; i < wgUserGroups.length; i++) {
-          if (wgUserGroups[i] == "autoconfirmed") {
-            oldDiv.style.display = "block";
-            newDiv.style.display = "none";
-            return;
-          }
-        }
-      }
-      oldDiv.style.display = "none";
-      newDiv.style.display = "block";
-      return;
-    }
-  }
-}
-//addOnloadHook(uploadwizard_newusers);
- ****/
- 
-/** IPv6 AAAA connectivity testing **/
-
-/* 
-var __ipv6wwwtest_factor = 100;
-var __ipv6wwwtest_done = 0;
-if ((wgServer != "https://secure.wikimedia.org") && (Math.floor(Math.random()*__ipv6wwwtest_factor)==42)) {
-    importScript("MediaWiki:Common.js/IPv6.js");
-}
-*/
- 
-/** Magic editintros ****************************************************
- *
- *  Description: Adds editintros on disambiguation pages and BLP pages.
- *  Maintainers: [[User:RockMFR]]
-
- 
-function addEditIntro(name)
-{
-  var el = document.getElementById('ca-edit');
-  if (!el)
-    return;
-  el = el.getElementsByTagName('a')[0];
-  if (el)
-    el.href += '&editintro=' + name;
-}
- 
- 
-if (wgNamespaceNumber == 0) {
-  addOnloadHook(function(){
-    if (document.getElementById('disambigbox'))
-      addEditIntro('Template:Disambig_editintro');
-  });
- 
-  addOnloadHook(function(){
-    var cats = document.getElementById('mw-normal-catlinks');
-    if (!cats)
-      return;
-    cats = cats.getElementsByTagName('a');
-    for (var i = 0; i < cats.length; i++) {
-      if (cats[i].title == 'Category:Living people' || cats[i].title == 'Category:Possibly living people') {
-        addEditIntro('Template:BLP_editintro');
-        break;
-      }
-    }
-  });
-}
- */
-//</source>
+ //</source>
