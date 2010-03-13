@@ -1455,7 +1455,7 @@ function uploadwizard_newusers() {
     }
   }
 }
-addOnloadHook(uploadwizard_newusers);
+//addOnloadHook(uploadwizard_newusers);
  
  
 /** IPv6 AAAA connectivity testing **/
