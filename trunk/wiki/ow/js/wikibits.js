@@ -1210,7 +1210,7 @@ function LinkFA()
     }
 }
  
-addOnloadHook( LinkFA );
+//addOnloadHook( LinkFA );
  
  
 /** Collapsible tables *********************************************************
