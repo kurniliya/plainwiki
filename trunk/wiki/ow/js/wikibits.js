@@ -1097,7 +1097,7 @@ importScriptURI(metaBase+"/w/index.php?title=MediaWiki:Wikiminiatlas.js&action=r
  *  *before* the images and etc of the page on all mobile devices.
  *
  *  Maintainer: [[User:Brion VIBBER]], [[User:hcatlin]]
- */
+
 if (/(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii)/.test(navigator.userAgent)) {
  
   var wgMainPageName = 'Main_Page';
@@ -1121,7 +1121,7 @@ if (/(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Por
     document.location = mobileSiteLink();
   }
 }
- 
+ */ 
  
 /* Scripts specific to Internet Explorer */
  
