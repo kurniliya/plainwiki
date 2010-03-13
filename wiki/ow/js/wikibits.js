@@ -586,11 +586,6 @@ function runOnloadHook() {
 	// might cause the function to terminate prematurely
 	doneOnloadHook = true;
 
-	//updateTooltipAccessKeys( null );
-	//akeytt( null );
-	//setupCheckboxShiftClick();
-	//sortables_init();
-
 	// Run any added-on functions
 	for (var i = 0; i < onloadFuncts.length; i++) {
 		onloadFuncts[i]();
@@ -612,30 +607,6 @@ function addHandler( element, attach, handler ) {
 	}
 }
 
-/**
- * Add a click event handler to an element
- *
- * @param Element element Element to add handler to
- * @param callable handler Event handler callback
- */
-function addClickHandler( element, handler ) {
-	addHandler( element, 'click', handler );
-}
-
-/**
- * Removes an event handler from an element
- *
- * @param Element element Element to remove handler from
- * @param String remove Event to remove
- * @param callable handler Event handler callback to remove
- */
-function removeHandler( element, remove, handler ) {
-	if( window.removeEventListener ) {
-		element.removeEventListener( remove, handler, false );
-	} else if( window.detachEvent ) {
-		element.detachEvent( 'on' + remove, handler );
-	}
-}
 //note: all skins should call runOnloadHook() at the end of html output,
 //      so the below should be redundant. It's there just in case.
 hookEvent("load", runOnloadHook);
