@@ -675,31 +675,6 @@ hookEvent("load", runOnloadHook);
 //<source lang="javascript">
 /* Former common.js scripts */
  
-/*
- * Description: Redirects from /User:UserName/skin.js or .css to the user's actual skin page
- * Maintainer: Cacycle
- */
-var slash = wgPageName.indexOf('/');
-var norm = wgPageName.substr(0, slash) + wgPageName.substr(slash).toLowerCase();
-var test = 'User:' + wgUserName + '/skin.';
-var ext = null;
-if (norm == test + 'js') ext = 'js';
-else if (norm == test + 'css') ext = 'css';
-if (ext != null) window.location.href = window.location.href.replace(/\/skin.(css|js)/i, '/' + skin + '.' + ext);
- 
- 
-/* Import more specific scripts if necessary */
- 
-if (wgAction == "edit" || wgAction == "submit" || wgPageName == "Special:Upload") //scripts specific to editing pages
-{
-    importScript("MediaWiki:Common.js/edit.js")
-}
-else if (wgPageName == "Special:Watchlist") //watchlist scripts
-{
-    importScript("MediaWiki:Common.js/watchlist.js")
-}
- 
- 
 /* Scripts specific to Internet Explorer */
  
 if (navigator.appName == "Microsoft Internet Explorer")
