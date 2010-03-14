@@ -125,12 +125,7 @@
 				</div>
 			</div>
 			
-			<xsl:call-template name="ExternalJS" />
-			<xsl:text disable-output-escaping="yes"> 
-				&lt;script type="text/javascript" src="ow/js/infobar.js">
-				&lt;/script>
-			</xsl:text>
-			
+			<xsl:call-template name="ExternalJS" />	
 			<xsl:call-template name="StatCounter" />			
 		 </body>
 	 </html>
