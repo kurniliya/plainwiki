@@ -356,6 +356,8 @@ function createNavigationBarToggleButton()
 addOnloadHook( showTocToggle );
 addOnloadHook( createNavigationBarToggleButton );
  
+//</source>
+ 
 /***********************************************
 
 * Animated Information Bar- by JavaScript Kit (www.javascriptkit.com)
@@ -421,45 +423,14 @@ window.onunload = function(){
 	this.barref = null	
 }
 
-function isChrome(){
-	try{
-		return navigator.userAgent.indexOf('Chrome') != -1
-	} catch(e){
-		return false;
+var infobar = new informationbar()
+
+function showInfobar() {
+	if(!is_gecko){
+		infobar.setContent('For proper formulae rendering it\'s recommended to use <a href="http://www.mozilla.com/">Firefox browser</a>.')
+		infobar.setfrequency('session') //Uncomment this line to set information bar to only display once per browser session!
+		infobar.initialize()
 	}
 }
 
-function isSafari(){
-	try{
-		return 	navigator.vendor.indexOf('Apple') != -1
-	} catch(e){
-		return false;
-	}		
-}
-
-function isOpera(){
-	try{
-		return 	window.opera
-	} catch(e){
-		return false;
-	}		
-}
-
-function isIE(){
-	try{
-		return 	navigator.userAgent.indexOf('MSIE') != -1
-	} catch(e){
-		return false;
-	}		
-}
-
-var infobar = new informationbar()
-
-
-if(isChrome() || isSafari()|| isOpera() || isIE()){
-	infobar.setContent('For proper formulae rendering it\'s recommended to use <a href="http://www.mozilla.com/">Firefox browser</a>.')
-	infobar.setfrequency('session') //Uncomment this line to set information bar to only display once per browser session!
-	infobar.initialize()
-} 
- 
- //</source>
+addOnloadHook( showInfobar );
