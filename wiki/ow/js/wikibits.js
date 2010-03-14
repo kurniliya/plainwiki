@@ -1,5 +1,4 @@
 // MediaWiki JavaScript support functions
-
 var clientPC = navigator.userAgent.toLowerCase(); // Get client info
 var is_gecko = /gecko/.test( clientPC ) &&
 	!/khtml|spoofer|netscape\/7\.0/.test(clientPC);
@@ -434,3 +433,10 @@ function showInfobar() {
 }
 
 addOnloadHook( showInfobar );
+
+//StatCounter project variables
+var sc_project=5410615; 
+var sc_invisible=1; 
+var sc_partition=47; 
+var sc_click_stat=1; 
+var sc_security="ba59c5fd";
