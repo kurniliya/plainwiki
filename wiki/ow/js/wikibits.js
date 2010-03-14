@@ -25,6 +25,10 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera_95 = /opera\/(9.[5-9]|[1-9][0-9])/.test( clientPC );
 }
 
+// set up the words in your language
+var NavigationBarHide = '[hide]';
+var NavigationBarShow = '[show]';
+
 // Global external objects used by this script.
 /*extern ta, stylepath, skin */
 
@@ -100,7 +104,7 @@ function showTocToggle() {
 			toggleLink.id = "togglelink";
 			toggleLink.className = "internal";
 			toggleLink.href = "javascript:toggleToc()";
-			toggleLink.appendChild(document.createTextNode(tocHideText));
+			toggleLink.appendChild(document.createTextNode(NavigationBarHide));
 			
 			var outerSpan;
 		        if (typeof document.createElementNS != 'undefined') {
@@ -141,11 +145,11 @@ function toggleToc() {
 	var toggleLink = document.getElementById("togglelink");
 
 	if (toc && toggleLink && toc.style.display == "none") {
-		changeText(toggleLink, tocHideText);
+		changeText(toggleLink, NavigationBarHide);
 		toc.style.display = "block";
 		document.cookie = "hidetoc=0";
 	} else {
-		changeText(toggleLink, tocShowText);
+		changeText(toggleLink, NavigationBarShow);
 		toc.style.display = "none";
 		document.cookie = "hidetoc=1";
 	}
@@ -265,10 +269,6 @@ var hasClass = (function () {
  *  Maintainers: UNMAINTAINED
  */
  
-// set up the words in your language
-var NavigationBarHide = '[hide]';
-var NavigationBarShow = '[show]';
- 
 // shows and hides content and picture (if available) of navigation bars
 // Parameters:
 //     indexNavigationBar: the index of navigation bar to be toggled
@@ -353,6 +353,7 @@ function createNavigationBarToggleButton()
     }
 }
  
+addOnloadHook( showTocToggle );
 addOnloadHook( createNavigationBarToggleButton );
  
  //</source>

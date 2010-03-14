@@ -23,15 +23,15 @@
 		</xsl:text>		
 	<xsl:comment>End of external JSs</xsl:comment>
 	
-	<xsl:comment>Inline JSs</xsl:comment>	
+<!--	<xsl:comment>Inline JSs</xsl:comment>	
 		<script type="text/javascript" charset="{/ow:wiki/@encoding}">
 			<xsl:text disable-output-escaping="yes">
 				/*&lt;![CDATA[*/
-				if (window.toggleToc) { var tocShowText = "[show]"; var tocHideText = "[hide]"; showTocToggle(); } 
+				if (window.toggleToc) { showTocToggle(); } 
 				/*]]&gt;*/ 
 			</xsl:text>
 		</script>	
-	<xsl:comment>End of inline JSs</xsl:comment>
+	<xsl:comment>End of inline JSs</xsl:comment>-->
 </xsl:template>
 
 <xsl:template name="EditJS">
