@@ -57,43 +57,6 @@
 		<meta http-equiv="imagetoolbar" content="no" />
 		<xsl:text disable-output-escaping="yes">&lt;![endif]--&gt;
 		</xsl:text>
-
-
-		<script type= "text/javascript">
-			<xsl:text disable-output-escaping="yes">
-				/*&lt;![CDATA[*/</xsl:text>
-			var skin = "monobook";
-			var wgVariantArticlePath = false;
-			var wgActionPaths = {};
-			var wgServer = "http://en.wikipedia.org";
-			var wgCanonicalNamespace = "";
-			var wgCanonicalSpecialPageName = false;
-			var wgNamespaceNumber = 0;
-			var wgPageName = "Agrippina_(opera)";
-			var wgTitle = "Agrippina (opera)";
-			var wgAction = "view";
-			var wgArticleId = "1257935";
-			var wgIsArticle = true;
-			var wgUserName = null;
-			var wgUserGroups = null;
-			var wgUserLanguage = "en";
-			var wgContentLanguage = "en";
-			var wgBreakFrames = false;
-			var wgCurRevisionId = 283719792;
-			var wgVersion = "1.15alpha";
-			var wgEnableAPI = true;
-			var wgEnableWriteAPI = true;
-			var wgSeparatorTransformTable = ["", ""];
-			var wgDigitTransformTable = ["", ""];
-			var wgMWSuggestTemplate = "http://en.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest";
-			var wgDBname = "enwiki";
-			var wgSearchNamespaces = [0];
-			var wgMWSuggestMessages = ["with suggestions", "no suggestions"];
-			var wgRestrictionEdit = [];
-			var wgRestrictionMove = ["sysop"];
-			<xsl:text disable-output-escaping="yes">
-				/*]]&gt;*/</xsl:text>
-		</script>
 	</head>
 </xsl:template>
 
