@@ -17,10 +17,10 @@
 			&lt;script type="text/javascript" src="ow/js/wikibits.js">
 			&lt;/script>
 		</xsl:text>
-		<xsl:text disable-output-escaping="yes"> 
+<!--		<xsl:text disable-output-escaping="yes"> 
 			&lt;script type="text/javascript" src="ow/js/infobar.js">
 			&lt;/script>
-		</xsl:text>		
+		</xsl:text>		-->
 	<xsl:comment>End of external JSs</xsl:comment>
 	
 <!--	<xsl:comment>Inline JSs</xsl:comment>	
