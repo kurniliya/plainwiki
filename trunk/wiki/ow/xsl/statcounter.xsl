@@ -11,7 +11,7 @@
 <xsl:template name="StatCounter">
 	<xsl:comment>Start of StatCounter Code</xsl:comment>
 	
-	<script type="text/javascript">
+<!--	<script type="text/javascript">
 		<xsl:text disable-output-escaping="yes">
 			/*&lt;![CDATA[*/</xsl:text>
 			var sc_project=5410615; 
@@ -21,7 +21,7 @@
 			var sc_security="ba59c5fd"; 
 		<xsl:text disable-output-escaping="yes">
 			/*]]&gt;*/</xsl:text>
-	</script>
+	</script>-->
 	
 	<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js">
 		<xsl:comment>Comment to prevent this block being blank</xsl:comment>
