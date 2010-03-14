@@ -20,7 +20,7 @@
 
 <xsl:template name="poweredBy">
 	<div id="f-poweredbyico">
-		<a onclick="return !window.open(this.href)" href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.gif" width="88" height="31" alt="Powered by OpenWiki" /></a>
+		<a onclick="return !window.open(this.href)" href="http://openwiki.com"><img src="{/ow:wiki/ow:imagepath}/poweredby.png" width="88" height="31" alt="Powered by OpenWiki" /></a>
     </div>
 </xsl:template>
 
